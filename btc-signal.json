@@ -1,51 +1,188 @@
 {
   "meta": {
-    "version": "1.0",
-    "description": "BTC择时信号日报 by BTC-Timing-Monitor",
-    "update_url": "https://api.github.com/repos/chenchenai/macro-oracle/contents/btc-signal.json"
+    "version": "2.0",
+    "description": "BTC择时买入策略日报 by 金融策略师/BTC-Timing-Monitor"
   },
-  "signal": {
-    "date": "2026-02-25",
-    "time": "09:00",
-    "session": "morning",
-    "direction": "NEUTRAL_WATCH",
-    "direction_label": "观望/轻仓试探",
-    "confidence": "medium",
-    "confidence_score": 3,
-    "signal_strength": "弱",
-    "entry_zone": {
-      "low": 62000,
-      "high": 65000,
-      "note": "等回调至区间再介入"
-    },
-    "stop_loss": 58000,
-    "take_profit": [
-      {"level": 72000, "label": "第一目标 50%止盈"},
-      {"level": 82000, "label": "第二目标 剩余50%"}
-    ],
-    "position_size": "20-30%",
-    "valid_until": "2026-02-26T09:00:00+08:00",
-    "basis": [
-      "MVRV Z-Score 0.355 — 历史积累区，链上极度低估",
-      "恐贪指数 11（Extreme Fear）— 历史级逆向信号",
-      "NUPL 0.159 — 接近投降底部，持有者普遍亏损"
-    ],
-    "risks": [
-      "BTC与SPX相关性60.5%，美股下跌可能继续拖累",
-      "Goldman PCE预测3.05%，宏观流动性偏紧"
-    ],
-    "next_checkpoint": "$66,000（多头确认）或 $60,000（加仓机会）",
-    "invalidation": "$58,000以下判断失效，止损出场",
-    "notes": "当前为主跌浪后的震荡筑底阶段。链上数据极度低估但宏观风险尚存，采取等待策略：优先等回调至$62K-$65K入场，不追高。",
-    "updated_at": "2026-02-25T09:00:00+08:00",
-    "updated_by": "BTC-Timing-Monitor"
+  "system": {
+    "status": "🔴 扫描建仓模式",
+    "status_code": "SCANNING",
+    "current_position": 0,
+    "today_signal": "无（未触发任何 Level）",
+    "signal_triggered": false
   },
-  "history": [
-    {
+  "metrics": {
+    "price": {
+      "value": 64928,
       "date": "2026-02-24",
-      "direction": "NEUTRAL_WATCH",
-      "entry": 64500,
-      "result": "观望，BTC -5%/24h，未触发入场条件"
+      "label": "BTC价格"
+    },
+    "wma_200": {
+      "value": 58379,
+      "date": "2026-02-24",
+      "label": "200WMA（周线）"
+    },
+    "realized_price": {
+      "value": 54633,
+      "date": "2026-02-24",
+      "label": "已实现价格"
+    },
+    "ahr999": {
+      "value": 0.3021,
+      "date": "2026-02-25",
+      "label": "Ahr999"
+    },
+    "mvrv_zscore": {
+      "value": 0.3316,
+      "date": "2026-02-24",
+      "label": "MVRV Z-Score"
+    },
+    "mayer_multiple": {
+      "value": 1.1122,
+      "date": "2026-02-24",
+      "label": "Mayer Multiple"
+    },
+    "cvdd": {
+      "value": 45298,
+      "date": "2026-02-24",
+      "label": "CVDD"
+    },
+    "balanced_price": {
+      "value": 41040,
+      "date": "2026-02-24",
+      "label": "Balanced Price"
+    },
+    "puell_multiple": {
+      "value": 0.7315,
+      "date": "2026-02-24",
+      "label": "Puell Multiple"
+    },
+    "lth_sopr": {
+      "value": 0.876,
+      "date": "2026-02-24",
+      "label": "LTH-SOPR"
+    },
+    "rsi_14d": {
+      "value": 33.007,
+      "date": "2026-02-24",
+      "label": "RSI(14d)"
+    },
+    "ma5": {
+      "value": 66615,
+      "date": "2026-02-24",
+      "label": "MA5(日线)"
+    },
+    "ma20": {
+      "value": 67775,
+      "date": "2026-02-24",
+      "label": "MA20(日线)"
     }
-  ]
+  },
+  "depression_zone": {
+    "activated": true,
+    "activated_count": 1,
+    "total_conditions": 5,
+    "conditions": [
+      {
+        "label": "Price < 200WMA",
+        "triggered": false,
+        "current": 64928,
+        "threshold": 58379
+      },
+      {
+        "label": "Price < Realized Price",
+        "triggered": false,
+        "current": 64928,
+        "threshold": 54633
+      },
+      {
+        "label": "Ahr999 < 0.45",
+        "triggered": true,
+        "current": 0.3021,
+        "threshold": 0.45
+      },
+      {
+        "label": "MVRV Z-Score < 0",
+        "triggered": false,
+        "current": 0.3316,
+        "threshold": 0
+      },
+      {
+        "label": "Mayer Multiple < 0.65",
+        "triggered": false,
+        "current": 1.1122,
+        "threshold": 0.65
+      }
+    ]
+  },
+  "levels": {
+    "level1": {
+      "name": "算法铁底",
+      "target_position": "50%",
+      "triggered": false,
+      "description": "Price ≤ CVDD 或 Price ≤ Balanced Price",
+      "conditions": [
+        {
+          "label": "Price ≤ CVDD",
+          "triggered": false,
+          "current": 64928,
+          "threshold": 45298
+        },
+        {
+          "label": "Price ≤ Balanced Price",
+          "triggered": false,
+          "current": 64928,
+          "threshold": 41040
+        }
+      ]
+    },
+    "level2": {
+      "name": "矿工投降",
+      "target_position": "80%",
+      "triggered": false,
+      "description": "前置：Depression Zone已激活 + Puell Multiple < 0.5",
+      "pre_condition": true,
+      "conditions": [
+        {
+          "label": "Puell Multiple < 0.5",
+          "triggered": false,
+          "current": 0.7315,
+          "threshold": 0.5
+        }
+      ]
+    },
+    "level3": {
+      "name": "趋势确认满仓",
+      "target_position": "100%",
+      "triggered": false,
+      "description": "Depression Zone激活 + LTH-SOPR<1 + 任一确认信号",
+      "pre_conditions": [
+        {
+          "label": "Depression Zone激活",
+          "triggered": true
+        },
+        {
+          "label": "LTH-SOPR < 1.0",
+          "triggered": true,
+          "current": 0.876
+        }
+      ],
+      "confirmation_signals": [
+        {
+          "label": "Slingshot（价格收复200WMA）",
+          "triggered": false
+        },
+        {
+          "label": "Micro Trend（MM<0.6且MA5上穿MA20）",
+          "triggered": false
+        },
+        {
+          "label": "Rebound（RSI从超卖回升）",
+          "triggered": false
+        }
+      ]
+    }
+  },
+  "raw_output": "📊 *BTC择时买入策略 · 每日信号*\n📅 推送时间：2026-02-25 19:27（北京时间）\n📆 指标数据截至：2026-02-24\n\n🌡️ *系统状态*：🔴 扫描建仓模式（已激活）\n💼 *当前仓位*：0%\n\n🔕 *今日信号*：无（未触发任何 Level）\n\n⚫ *Level 1 · 算法铁底（目标 50%）*\n  条件：Price ≤ CVDD 或 Price ≤ Balanced Price\n  ⬜ Price ≤ CVDD：64,928 ≤ 45,298\n  ⬜ Price ≤ Balanced：64,928 ≤ 41,040\n\n⚫ *Level 2 · 矿工投降（目标 80%）*\n  前置：Depression Zone 已激活\n  ⬜ Puell Multiple < 0.5：当前 0.7315\n\n⚫ *Level 3 · 趋势确认满仓（目标 100%）*\n  ✅ Depression Zone 激活\n  ✅ LTH-SOPR < 1.0：当前 0.8760\n  确认信号：\n    ⬜ Slingshot（价格收复 200WMA）\n    ⬜ Micro Trend（MM<0.6 且 MA5 上穿 MA20）\n    ⬜ Rebound（RSI 从超卖回升）\n\n━━━━━━━━━━━━━━━━━━━━\n📉 *Depression Zone 五条件明细*\n  ⬜ Price < 200WMA\n  ⬜ Price < Realized Price\n  ✅ Ahr999 < 0.45\n  ⬜ MVRV Z-Score < 0\n  ⬜ Mayer Multiple < 0.65\n\n📋 *关键指标快照*\n  Price：64,928 USD  (2026-02-24)\n  200WMA：58,379  (2026-02-24)\n  Realized Price：54,633  (2026-02-24)\n  Ahr999：0.3021  (2026-02-25)\n  MVRV Z-Score：0.3316  (2026-02-24)\n  Mayer Multiple：1.1122  (2026-02-24)\n  CVDD：45,298  (2026-02-24)\n  Balanced Price：41,040  (2026-02-24)\n  Puell Multiple：0.7315  (2026-02-24)\n  LTH-SOPR：0.8760  (2026-02-24)\n  RSI(14d)：33.0070  (2026-02-24)\n  MA5：66,615  (2026-02-24)\n  MA20：67,775  (2026-02-24)\n\n─────────────────────\n📌 策略版本 v1.2 · 仅供参考，人工执行",
+  "updated_at": "2026-02-25T19:26:00+08:00",
+  "updated_by": "btc_timing_signal.py v1.2"
 }
