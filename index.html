@@ -78,6 +78,20 @@ td{padding:3px 5px;font-size:11px;border-top:1px solid rgba(30,42,66,.5)}
 .analyst-date{font-size:9px;color:var(--dim);margin-left:6px}
 .analyst-view{font-size:10px;color:var(--text);margin-top:3px;line-height:1.5}
 .analyst-signal{font-size:10px;margin-top:3px}
+/* BTC Timing Signal */
+.sig-dir{display:flex;align-items:center;justify-content:center;border-radius:8px;padding:10px;margin:6px 0;font-weight:700;font-size:15px;letter-spacing:1px}
+.sig-dir.long{background:rgba(0,214,143,.15);border:2px solid var(--green);color:var(--green)}
+.sig-dir.short{background:rgba(255,71,87,.15);border:2px solid var(--red);color:var(--red)}
+.sig-dir.neutral{background:rgba(255,159,67,.1);border:2px solid var(--orange);color:var(--orange)}
+.sig-stars{color:var(--gold);letter-spacing:2px;font-size:14px}
+.sig-level{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-radius:5px;margin:3px 0;font-size:11px}
+.sig-level.entry{background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.3)}
+.sig-level.sl{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.25)}
+.sig-level.tp{background:rgba(0,214,143,.06);border:1px solid rgba(0,214,143,.2)}
+.sig-basis{font-size:10px;color:var(--dim);padding:3px 0;display:flex;gap:5px;align-items:flex-start}
+.sig-basis::before{content:"▸";color:var(--blue);flex-shrink:0}
+.sig-risk::before{content:"▸";color:var(--orange);flex-shrink:0}
+.sig-risk{font-size:10px;color:var(--dim);padding:3px 0;display:flex;gap:5px;align-items:flex-start}
 /* on-chain gauge */
 .gauge-row{display:flex;align-items:center;gap:6px;margin:3px 0}
 .gauge-label{width:90px;font-size:10px;color:var(--dim);flex-shrink:0}
@@ -252,6 +266,14 @@ a{color:inherit;text-decoration:none}
 <div style="margin-top:6px;font-size:10px;color:var(--dim)">链上综合评分</div>
 <div class="meter"><div class="meter-fill" id="oc-total-m" style="width:0%"></div></div>
 <div style="font-size:11px;text-align:center;font-weight:700" id="oc-total-s">计算中...</div>
+</div>
+
+<!-- ── BTC 择时信号 ── -->
+<div class="card span2">
+<div class="ct">🎯 BTC 择时信号日报 <span class="src">BTC-Timing-Monitor · 自动更新 · <a href="https://raw.githubusercontent.com/chenchenai/macro-oracle/main/btc-signal.json" target="_blank" style="color:var(--dim)">原始数据</a></span></div>
+<div id="btc-signal-container">
+  <div style="color:var(--dim);font-size:11px;padding:10px">⏳ 加载信号中...</div>
+</div>
 </div>
 
 <!-- ── 贵金属 ── -->
@@ -472,6 +494,122 @@ async function fetchBGSeq() {
   return results;
 }
 
+// ─── Fetch & Render: BTC 择时信号 ────────────────────────────
+const BTC_SIGNAL_URL = 'https://raw.githubusercontent.com/chenchenai/macro-oracle/main/btc-signal.json';
+const BTC_SIG_CACHE  = 'macro_oracle_btc_signal';
+const BTC_SIG_TTL    = 15 * 60 * 1000; // 15分钟缓存
+
+async function fetchBTCSignal() {
+  // localStorage 缓存
+  try{
+    const c=localStorage.getItem(BTC_SIG_CACHE);
+    if(c){const{ts,data}=JSON.parse(c);if(Date.now()-ts<BTC_SIG_TTL)return data;}
+  }catch{}
+  const r=await fetch(BTC_SIGNAL_URL+'?t='+Date.now(),{signal:AbortSignal.timeout(10000)});
+  if(!r.ok)throw new Error('BTC signal HTTP '+r.status);
+  const data=await r.json();
+  try{localStorage.setItem(BTC_SIG_CACHE,JSON.stringify({ts:Date.now(),data}));}catch{}
+  return data;
+}
+
+function renderBTCSignal(data) {
+  const s = data?.signal;
+  if(!s){sh('btc-signal-container','<div style="color:var(--dim);font-size:11px">暂无信号</div>');return;}
+
+  const dirMap = {
+    'LONG':         {cls:'long',  icon:'📈 做多',       color:'var(--green)'},
+    'SHORT':        {cls:'short', icon:'📉 做空',       color:'var(--red)'},
+    'NEUTRAL_WATCH':{cls:'neutral',icon:'⏸ 观望/等待', color:'var(--orange)'},
+    'NEUTRAL':      {cls:'neutral',icon:'⏸ 观望',      color:'var(--orange)'},
+  };
+  const dir = dirMap[s.direction] || {cls:'neutral',icon:s.direction_label||s.direction,color:'var(--orange)'};
+  const stars = '★'.repeat(s.confidence_score||3) + '☆'.repeat(5-(s.confidence_score||3));
+  const strengthMap={strong:'强',medium:'中',weak:'弱'};
+
+  // 更新时间
+  const updAt = s.updated_at ? new Date(s.updated_at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : s.date;
+  const validUntil = s.valid_until ? new Date(s.valid_until).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
+  const isExpired = s.valid_until && new Date(s.valid_until) < new Date();
+
+  let html = `
+  <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:12px;align-items:start">
+    <!-- 左：方向判断 -->
+    <div>
+      <div class="sig-dir ${dir.cls}">${dir.icon}</div>
+      <div style="text-align:center;margin-top:4px">
+        <div class="sig-stars">${stars}</div>
+        <div style="font-size:10px;color:var(--dim)">置信度 ${s.confidence_score||3}/5 · 信号${strengthMap[s.confidence]||'中'}</div>
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:var(--dim)">
+        <div>📅 ${s.date} ${s.session==='morning'?'盘前':s.session==='close'?'收盘':'盘中'}</div>
+        <div style="margin-top:2px">🕒 更新: ${updAt}</div>
+        <div style="margin-top:2px;color:${isExpired?'var(--red)':'var(--dim)'}">⏱ 有效至: ${validUntil}${isExpired?' ⚠️已过期':''}</div>
+      </div>
+      <div style="margin-top:6px;padding:6px;background:rgba(77,166,255,.07);border:1px solid rgba(77,166,255,.2);border-radius:5px;font-size:10px;color:var(--dim)">
+        📊 仓位建议<br><span style="color:var(--blue);font-weight:700;font-size:13px">${s.position_size||'—'}</span>
+      </div>
+    </div>
+    <!-- 中：执行参数 -->
+    <div>
+      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:4px">⚡ 执行参数</div>
+      <div class="sig-level entry">
+        <span style="color:var(--blue)">入场区间</span>
+        <span style="font-weight:700;color:var(--blue)">$${(s.entry_zone?.low||0).toLocaleString()} – $${(s.entry_zone?.high||0).toLocaleString()}</span>
+      </div>
+      ${s.entry_zone?.note?`<div style="font-size:9px;color:var(--dim);padding:2px 8px">└ ${s.entry_zone.note}</div>`:''}
+      <div class="sig-level sl">
+        <span style="color:var(--red)">🛑 止损</span>
+        <span style="font-weight:700;color:var(--red)">$${(s.stop_loss||0).toLocaleString()}</span>
+      </div>
+      ${(s.take_profit||[]).map(tp=>`
+      <div class="sig-level tp">
+        <span style="color:var(--green)">🎯 ${tp.label||'目标'}</span>
+        <span style="font-weight:700;color:var(--green)">$${(tp.level||0).toLocaleString()}</span>
+      </div>`).join('')}
+      <div style="margin-top:6px;padding:6px;background:rgba(255,71,87,.06);border:1px solid rgba(255,71,87,.2);border-radius:5px;font-size:10px">
+        <span style="color:var(--dim)">失效条件: </span><span style="color:var(--red)">${s.invalidation||'—'}</span>
+      </div>
+      <div style="margin-top:4px;padding:5px;background:rgba(0,214,143,.06);border:1px solid rgba(0,214,143,.2);border-radius:5px;font-size:10px">
+        <span style="color:var(--dim)">下一观察点: </span><span style="color:var(--green)">${s.next_checkpoint||'—'}</span>
+      </div>
+    </div>
+    <!-- 右：信号依据 + 风险 -->
+    <div>
+      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:4px">📋 信号依据</div>
+      ${(s.basis||[]).map(b=>`<div class="sig-basis">${b}</div>`).join('')}
+      <div style="font-size:10px;font-weight:700;color:var(--orange);margin:8px 0 4px">⚠️ 主要风险</div>
+      ${(s.risks||[]).map(r=>`<div class="sig-risk">${r}</div>`).join('')}
+      ${s.notes?`<div style="margin-top:8px;padding:6px;background:rgba(107,125,158,.08);border:1px solid rgba(107,125,158,.2);border-radius:5px;font-size:10px;color:var(--dim);line-height:1.5">${s.notes}</div>`:''}
+    </div>
+  </div>`;
+
+  // 历史信号
+  if(data.history?.length) {
+    html += `<div style="margin-top:10px;border-top:1px solid var(--border);padding-top:8px">
+      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:4px">📈 近期信号记录</div>
+      <table><tr><th>日期</th><th>方向</th><th>入场价</th><th>结果</th></tr>
+      ${data.history.slice(-5).reverse().map(h=>`<tr>
+        <td>${h.date}</td>
+        <td class="${h.direction==='LONG'?'up':h.direction==='SHORT'?'dn':'nt'}">${h.direction==='LONG'?'做多':h.direction==='SHORT'?'做空':'观望'}</td>
+        <td>${h.entry?('$'+h.entry.toLocaleString()):'—'}</td>
+        <td style="color:var(--dim)">${h.result||'—'}</td>
+      </tr>`).join('')}
+      </table>
+    </div>`;
+  }
+
+  sh('btc-signal-container', html);
+}
+
+async function loadBTCSignal() {
+  try {
+    const data = await fetchBTCSignal();
+    renderBTCSignal(data);
+  } catch(e) {
+    sh('btc-signal-container', `<div style="color:var(--orange);font-size:11px">⚠️ 信号加载失败: ${e.message} — 请稍后刷新</div>`);
+  }
+}
+
 // ─── 宏观日历 ─────────────────────────────────────────────────
 const MACRO_CALENDAR = [
   {date:'2026-02-26',label:'PCE/Core PCE Jan',desc:'滞胀关键验证 | 上次Core 3.0%，超预期',impact:'high',ref:'https://fred.stlouisfed.org/series/PCEPI'},
@@ -684,6 +822,8 @@ function render(d){
 
 // ─── 主循环 ───────────────────────────────────────────────────
 renderCalendar();
+loadBTCSignal(); // BTC 择时信号（独立加载，15分钟缓存）
+setInterval(loadBTCSignal, 15 * 60 * 1000);
 
 async function poll(){
   try{
