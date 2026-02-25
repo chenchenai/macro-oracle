@@ -3,87 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Macro Oracle Dashboard v3.2 · Standalone</title>
+<title>Macro Oracle Dashboard v4.0</title>
 <style>
 :root{--bg:#0a0e17;--card:#131a2b;--border:#1e2a42;--text:#e0e6f0;--dim:#6b7d9e;--green:#00d68f;--red:#ff4757;--gold:#ffd700;--blue:#4da6ff;--orange:#ff9f43;--purple:#a855f7}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:'SF Mono','Cascadia Code','Fira Code',monospace;font-size:13px;padding:12px}
 h1{font-size:18px;color:var(--gold);margin-bottom:4px;letter-spacing:1px}
-.sub{color:var(--dim);font-size:11px;margin-bottom:16px;display:flex;justify-content:space-between}
+.sub{color:var(--dim);font-size:11px;margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;animation:p 2s infinite}
 .dot.ok{background:var(--green)}.dot.err{background:var(--red)}.dot.loading{background:var(--orange)}
-@keyframes p{0%,100%{opacity:1}50%{opacity:0.3}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:12px;margin-bottom:12px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:14px;transition:border-color .3s}
-.card.flash{border-color:var(--gold)}
-.ct{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);padding-bottom:6px;display:flex;justify-content:space-between;align-items:center}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:10px;margin-bottom:10px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px}
+.card.span2{grid-column:span 2}
+.ct{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);padding-bottom:5px;display:flex;justify-content:space-between;align-items:center}
 .ct .src{font-size:9px;color:var(--dim);font-weight:400;text-transform:none}
 table{width:100%;border-collapse:collapse}
-th{text-align:left;color:var(--dim);font-size:11px;padding:3px 6px;font-weight:400}
-td{padding:4px 6px;font-size:12px;border-top:1px solid rgba(30,42,66,.5)}
-.v{font-weight:700;font-size:13px;transition:color .3s}
+th{text-align:left;color:var(--dim);font-size:10px;padding:2px 5px;font-weight:400}
+td{padding:3px 5px;font-size:11px;border-top:1px solid rgba(30,42,66,.5)}
+.v{font-weight:700;font-size:12px}
 .up{color:var(--green)}.dn{color:var(--red)}.nt{color:var(--orange)}.gl{color:var(--gold)}.dm{color:var(--dim)}
-.sig{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
-.sg{background:rgba(0,214,143,.15);color:var(--green)}
-.sr{background:rgba(255,71,87,.15);color:var(--red)}
-.sy{background:rgba(255,159,67,.15);color:var(--orange)}
-.meter{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:4px 0}
+.sig{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700}
+.sg{background:rgba(0,214,143,.15);color:var(--green)}.sr{background:rgba(255,71,87,.15);color:var(--red)}.sy{background:rgba(255,159,67,.15);color:var(--orange)}
+.meter{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin:3px 0}
 .meter-fill{height:100%;border-radius:3px;transition:width 1s}
-.src-tag{font-size:9px;padding:1px 5px;border-radius:3px;cursor:pointer;text-decoration:none;margin-left:3px;transition:opacity .2s}
+.src-tag{font-size:9px;padding:1px 4px;border-radius:3px;cursor:pointer;text-decoration:none;margin-left:2px}
 .src-tag:hover{opacity:.7}
-.src-primary{background:rgba(77,166,255,.2);color:var(--blue)}
-.src-verify{background:rgba(107,125,158,.2);color:var(--dim)}
-.stale-badge{font-size:9px;padding:1px 4px;border-radius:3px;background:rgba(255,159,67,.2);color:var(--orange);margin-left:3px}
-.fresh-badge{font-size:9px;padding:1px 4px;border-radius:3px;background:rgba(0,214,143,.15);color:var(--green);margin-left:3px}
-.qb{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;height:120px;margin:8px 0}
-.qb div{display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:11px;font-weight:700}
+.sp{background:rgba(77,166,255,.2);color:var(--blue)}
+.sv{background:rgba(107,125,158,.2);color:var(--dim)}
+.fb{font-size:9px;padding:1px 4px;border-radius:3px;margin-left:2px}
+.fb.ok{background:rgba(0,214,143,.15);color:var(--green)}
+.fb.stale{background:rgba(255,159,67,.2);color:var(--orange)}
+/* 四象限 */
+.qb{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:100px;margin:6px 0}
+.qb div{display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:10px;font-weight:700;text-align:center;padding:4px}
 .q-tl{background:rgba(255,71,87,.12);color:var(--red)}
 .q-tr{background:rgba(255,159,67,.12);color:var(--orange)}
 .q-bl{background:rgba(77,166,255,.12);color:var(--blue)}
-.q-br{background:rgba(0,214,143,.2);color:var(--green);border:2px solid var(--green)}
-.score-bar{display:flex;align-items:center;gap:8px;margin:4px 0}
-.score-label{width:70px;font-size:11px;color:var(--dim)}
-.score-track{flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
-.score-fill{height:100%;border-radius:4px;transition:width 1s}
-.score-num{width:30px;text-align:right;font-weight:700;font-size:12px}
-.alert-box{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.3);border-radius:6px;padding:10px;margin:6px 0}
-.alert-box .at{color:var(--red);font-weight:700;font-size:12px;margin-bottom:4px}
-.opp-box{background:rgba(0,214,143,.08);border:1px solid rgba(0,214,143,.3);border-radius:6px;padding:10px;margin:6px 0}
-.opp-box .at{color:var(--green);font-weight:700;font-size:12px;margin-bottom:4px}
-.alert-banner{background:rgba(255,71,87,.15);border:1px solid var(--red);border-radius:6px;padding:8px 12px;margin-bottom:12px;font-size:11px;display:none}
-.alert-banner.show{display:block}
+.q-br{background:rgba(0,214,143,.2);color:var(--green)}
+/* Score bars */
+.sbar{display:flex;align-items:center;gap:6px;margin:3px 0}
+.slabel{width:80px;font-size:10px;color:var(--dim);flex-shrink:0}
+.strack{flex:1;height:7px;background:var(--border);border-radius:3px;overflow:hidden}
+.sfill{height:100%;border-radius:3px;transition:width 1s}
+.snum{width:28px;text-align:right;font-weight:700;font-size:11px;flex-shrink:0}
+/* Alert/Opp boxes */
+.abox{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.3);border-radius:5px;padding:8px;margin:4px 0}
+.abox .at{color:var(--red);font-weight:700;font-size:11px;margin-bottom:3px}
+.obox{background:rgba(0,214,143,.08);border:1px solid rgba(0,214,143,.3);border-radius:5px;padding:8px;margin:4px 0}
+.obox .at{color:var(--green);font-weight:700;font-size:11px;margin-bottom:3px}
+.nbox{background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.25);border-radius:5px;padding:8px;margin:4px 0}
+.nbox .nt-h{color:var(--blue);font-weight:700;font-size:11px;margin-bottom:3px}
+.banner{background:rgba(255,71,87,.15);border:1px solid var(--red);border-radius:5px;padding:7px 10px;margin-bottom:10px;font-size:11px;display:none}
+.banner.show{display:block}
+/* Calendar */
+.cal-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-top:1px solid rgba(30,42,66,.5)}
+.cal-item:first-child{border-top:none}
+.cal-date{font-size:10px;font-weight:700;min-width:60px;padding-top:1px}
+.cal-date.past{color:var(--dim)}
+.cal-date.soon{color:var(--orange)}
+.cal-date.today{color:var(--red)}
+.cal-date.future{color:var(--blue)}
+.cal-body{flex:1}
+.cal-title{font-size:11px;font-weight:700}
+.cal-desc{font-size:10px;color:var(--dim);margin-top:1px}
+.cal-badge{font-size:9px;padding:1px 5px;border-radius:3px;margin-left:5px}
+.cb-high{background:rgba(255,71,87,.2);color:var(--red)}
+.cb-med{background:rgba(255,159,67,.2);color:var(--orange)}
+.cb-low{background:rgba(77,166,255,.2);color:var(--blue)}
+/* Analyst views */
+.analyst-card{padding:7px 0;border-top:1px solid rgba(30,42,66,.5)}
+.analyst-card:first-child{border-top:none}
+.analyst-name{font-size:11px;font-weight:700;color:var(--gold)}
+.analyst-date{font-size:9px;color:var(--dim);margin-left:6px}
+.analyst-view{font-size:10px;color:var(--text);margin-top:3px;line-height:1.5}
+.analyst-signal{font-size:10px;margin-top:3px}
+/* on-chain gauge */
+.gauge-row{display:flex;align-items:center;gap:6px;margin:3px 0}
+.gauge-label{width:90px;font-size:10px;color:var(--dim);flex-shrink:0}
+.gauge-val{width:70px;font-weight:700;font-size:11px;flex-shrink:0}
+.gauge-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.gauge-fill{height:100%;border-radius:3px;transition:width 1s}
+.gauge-sig{width:60px;font-size:10px;flex-shrink:0;text-align:right}
 a{color:inherit;text-decoration:none}
-.proxy-note{background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.3);border-radius:6px;padding:8px 12px;margin-bottom:12px;font-size:11px;color:var(--dim);display:none}
-.proxy-note.show{display:block}
 </style>
 </head>
 <body>
-
-<h1>🔮 MACRO ORACLE DASHBOARD <span style="font-size:11px;color:var(--dim)">v3.2 · Standalone</span></h1>
+<h1>🔮 MACRO ORACLE DASHBOARD <span style="font-size:10px;color:var(--dim)">v4.0 · Standalone · No Server Needed</span></h1>
 <div class="sub">
-  <span><span class="dot loading" id="dot"></span> 全站独立版 · 无需本地服务器 · 60秒自动刷新 · <span id="ts">加载中...</span></span>
+  <span><span class="dot loading" id="dot"></span><span id="ts">加载中...</span> · 60s自动刷新</span>
   <span id="conn"></span>
 </div>
-<div class="alert-banner" id="banner"></div>
-<div class="proxy-note" id="proxy-note">ℹ️ 股票数据通过 corsproxy.io 中转（Yahoo Finance 需要 CORS 代理）。如加载失败可刷新页面。</div>
+<div class="banner" id="banner"></div>
 
 <div class="grid">
 
-<!-- 核心判断 -->
-<div class="card" style="grid-column:span 2">
-<div class="ct">🎯 核心判断 + 实时价格 <span class="src">多源聚合 | 点击数据源可跳转原始页面</span></div>
+<!-- ── 核心判断 ── -->
+<div class="card span2">
+<div class="ct">🎯 核心判断 + 实时价格 <span class="src">多源聚合 | 点击数据源跳转原始页面</span></div>
 <table>
-<tr><th>资产</th><th>实时价格</th><th>变动</th><th>数据源</th><th>方向</th><th>置信度</th><th>目标</th><th>止损</th></tr>
-<tr><td class="v">S&P 500</td><td class="v" id="p-spx">—</td><td id="c-spx">—</td><td id="s-spx"></td><td class="up">BULL</td><td>3/5</td><td>7,000-7,200</td><td>6,500</td></tr>
-<tr><td class="v gl">BTC ⭐</td><td class="v" id="p-btc">—</td><td id="c-btc">—</td><td id="s-btc"></td><td class="up">BULL</td><td>4/5</td><td>$85K-$100K</td><td>$58K</td></tr>
-<tr><td class="v gl">黄金 XAU</td><td class="v" id="p-gold">—</td><td id="c-gold">—</td><td id="s-gold"></td><td class="up">BULL</td><td>4/5</td><td>$5,200-$5,400</td><td>$4,700</td></tr>
+<tr><th>资产</th><th>实时价格</th><th>变动</th><th>源</th><th>方向</th><th>置信度</th><th>目标</th><th>止损</th></tr>
+<tr><td class="v">S&P 500</td><td class="v" id="p-spx">—</td><td id="c-spx">—</td><td id="s-spx"></td><td class="nt">震荡偏弱</td><td>4/5</td><td>6,800-7,000</td><td>6,400</td></tr>
+<tr><td class="v gl">BTC ⭐</td><td class="v" id="p-btc">—</td><td id="c-btc">—</td><td id="s-btc"></td><td class="nt">警戒弱势</td><td>4/5</td><td>$85K-$100K</td><td>$58K</td></tr>
+<tr><td class="v gl">黄金 XAU</td><td class="v" id="p-gold">—</td><td id="c-gold">—</td><td id="s-gold"></td><td class="up">结构牛市</td><td>5/5</td><td>$5,200-$5,400</td><td>$4,700</td></tr>
 <tr><td class="v">白银 XAG</td><td class="v" id="p-silver">—</td><td id="c-silver">—</td><td id="s-silver"></td><td class="up">BULL</td><td>3/5</td><td>$90-$95</td><td>$72</td></tr>
 </table>
 </div>
 
-<!-- 市场快照 -->
+<!-- ── 市场快照 ── -->
 <div class="card">
-<div class="ct">📊 市场快照 <span class="src" id="snap-src">Yahoo Finance · CoinGecko</span></div>
+<div class="ct">📊 市场快照 <span class="src">Yahoo Finance · CoinGecko</span></div>
 <table>
 <tr><th>资产</th><th>价格</th><th>变动</th><th>源</th><th></th></tr>
 <tr><td>S&P 500</td><td class="v" id="m-spx">—</td><td id="mc-spx">—</td><td id="ms-spx"></td><td id="mf-spx"></td></tr>
@@ -98,19 +127,26 @@ a{color:inherit;text-decoration:none}
 </table>
 </div>
 
-<!-- 达利欧四象限 -->
+<!-- ── 达利欧四象限 ── -->
 <div class="card">
-<div class="ct">📐 达利欧四象限</div>
+<div class="ct">📐 宏观坐标</div>
 <div class="qb">
   <div class="q-tl">滞胀区<br>增长↓通胀↑</div>
   <div class="q-tr">过热区<br>增长↑通胀↑</div>
   <div class="q-bl">衰退区<br>增长↓通胀↓</div>
-  <div class="q-br">◉ 金发女孩区<br>增长↑通胀↓</div>
+  <div class="q-br">金发女孩<br>增长↑通胀↓</div>
 </div>
-<div style="font-size:11px;color:var(--dim)">当前：金发女孩 → 过渡中 | 置信度 3/5<br>ISM制造业 52.6 ↑ | 核心CPI 2.5% ↓ | 非农 +130K</div>
+<div style="background:rgba(255,71,87,.1);border:1px solid rgba(255,71,87,.4);border-radius:5px;padding:6px;font-size:10px;margin-top:4px">
+  <span style="color:var(--red);font-weight:700">◉ 当前：滞胀-Lite区间</span><br>
+  <span style="color:var(--dim)">GDP +1.4%（预期3.0%）| Core PCE 3.0% YoY<br>Supercore MoM +0.6% | J.P. Morgan：2026零降息<br>Dalio Stage 6 宣言（Feb 17）| "Sell America"叙事</span>
+</div>
+<div style="margin-top:6px;font-size:10px">
+  <span class="sig sr">滞胀象限确认</span>
+  <span style="color:var(--dim);margin-left:8px">置信度 4/5</span>
+</div>
 </div>
 
-<!-- 利率 -->
+<!-- ── 利率 ── -->
 <div class="card">
 <div class="ct">🏦 利率 <span class="src">FRED + Yahoo Finance</span></div>
 <table>
@@ -125,7 +161,7 @@ a{color:inherit;text-decoration:none}
 </table>
 </div>
 
-<!-- 信用 -->
+<!-- ── 信用 ── -->
 <div class="card">
 <div class="ct">🛡️ 信用 & 波动率 <span class="src">FRED + Yahoo</span></div>
 <table>
@@ -134,456 +170,505 @@ a{color:inherit;text-decoration:none}
 <tr><td>IG利差</td><td class="v" id="cr-ig">—</td><td id="cr-ig-s">—</td><td id="crs-ig"></td><td id="crf-ig"></td></tr>
 <tr><td>VIX</td><td class="v" id="cr-vix">—</td><td id="cr-vix-s">—</td><td id="crs-vix"></td><td id="crf-vix"></td></tr>
 </table>
-<div style="margin-top:8px">
-<div style="font-size:11px;color:var(--dim)">系统性风险评分</div>
+<div style="margin-top:6px">
+<div style="font-size:10px;color:var(--dim)">系统性风险评分</div>
 <div class="meter"><div class="meter-fill" id="risk-m" style="width:15%;background:var(--green)"></div></div>
 <div style="font-size:11px;text-align:center;font-weight:700" id="risk-s">低风险</div>
 </div>
+<div style="margin-top:6px;font-size:10px;color:var(--dim);background:rgba(255,159,67,.06);border:1px solid rgba(255,159,67,.2);border-radius:4px;padding:5px">
+  ⚠️ Marks/Pozsar："指数在撒谎" — 综合利差平静但<br>个券爆破。AI替代引发结构性信用损失。
+</div>
 </div>
 
-<!-- 流动性 -->
+<!-- ── 流动性 ── -->
 <div class="card">
 <div class="ct">💧 流动性 <span class="src">FRED</span></div>
 <table>
 <tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>Fed资产负债表</td><td class="v" id="l-bs">—</td><td class="dn">QT中</td><td id="ls-bs"></td><td id="lf-bs"></td></tr>
+<tr><td>Fed资产负债表</td><td class="v" id="l-bs">—</td><td class="dn">QT持续</td><td id="ls-bs"></td><td id="lf-bs"></td></tr>
 </table>
-<div style="margin-top:8px;font-size:11px;color:var(--dim)">流动性综合评分</div>
-<div class="meter"><div class="meter-fill" style="width:45%;background:var(--orange)"></div></div>
-<div style="font-size:11px;text-align:center;color:var(--orange);font-weight:700">中性偏紧 (45/100)</div>
+<div style="margin-top:6px;font-size:10px;color:var(--dim)">流动性综合评分</div>
+<div class="meter"><div class="meter-fill" style="width:40%;background:var(--orange)"></div></div>
+<div style="font-size:10px;text-align:center;color:var(--orange);font-weight:700;margin-bottom:6px">中性偏紧 (40/100)</div>
+<table style="margin-top:4px">
+<tr><th>分项</th><th>状态</th><th>方向</th></tr>
+<tr><td>Fed QT</td><td class="dn">$25B/月缩表</td><td class="dn">↓ 紧</td></tr>
+<tr><td>财政流动性</td><td class="nt">2月末支撑</td><td class="nt">→ 中性</td></tr>
+<tr><td>3月流动性</td><td class="dn">边际收紧预期</td><td class="dn">↓ 警惕</td></tr>
+</table>
 </div>
 
-<!-- BTC -->
+<!-- ── BTC 链上深度 ── -->
 <div class="card">
-<div class="ct">⛓️ BTC 链上 + 情绪 <span class="src">CoinGecko + Alternative.me</span></div>
-<table>
-<tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>BTC</td><td class="v" id="b-p">—</td><td id="b-p-s">—</td><td id="bs-p"></td><td id="bf-p"></td></tr>
-<tr><td>24h变动</td><td class="v" id="b-ch">—</td><td>—</td><td></td><td></td></tr>
-<tr><td>恐贪指数</td><td class="v" id="b-fg">—</td><td id="b-fg-s">—</td><td id="bs-fg"></td><td id="bf-fg"></td></tr>
-<tr><td>MVRV</td><td class="v" id="b-mv">—</td><td id="b-mv-s">—</td><td id="bs-mv"></td><td id="bf-mv"></td></tr>
-</table>
-<div style="margin-top:10px;font-size:11px;color:var(--dim)">BTC 多维评分</div>
-<div class="score-bar"><span class="score-label">链上</span><div class="score-track"><div class="score-fill" style="width:80%;background:var(--green)"></div></div><span class="score-num up">8</span></div>
-<div class="score-bar"><span class="score-label">流动性</span><div class="score-track"><div class="score-fill" style="width:50%;background:var(--orange)"></div></div><span class="score-num">5</span></div>
-<div class="score-bar"><span class="score-label">周期</span><div class="score-track"><div class="score-fill" style="width:60%;background:var(--blue)"></div></div><span class="score-num">6</span></div>
-<div class="score-bar"><span class="score-label">情绪</span><div class="score-track"><div class="score-fill" id="b-sb" style="width:90%;background:var(--green)"></div></div><span class="score-num up" id="b-sn">9</span></div>
-<div class="score-bar"><span class="score-label">宏观</span><div class="score-track"><div class="score-fill" style="width:50%;background:var(--orange)"></div></div><span class="score-num">5</span></div>
+<div class="ct">⛓️ BTC 链上深度 <span class="src">CoinGecko · bgeometrics · Alt.me</span></div>
+<div style="display:flex;gap:10px;margin-bottom:8px">
+  <div style="flex:1;text-align:center;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.2);border-radius:5px;padding:6px">
+    <div style="font-size:10px;color:var(--dim)">BTC 价格</div>
+    <div class="v" id="b-price" style="font-size:16px">—</div>
+    <div id="b-ch24" style="font-size:11px">—</div>
+  </div>
+  <div style="flex:1;text-align:center;background:rgba(255,159,67,.06);border:1px solid rgba(255,159,67,.2);border-radius:5px;padding:6px">
+    <div style="font-size:10px;color:var(--dim)">恐贪指数</div>
+    <div class="v" id="b-fg-val" style="font-size:16px">—</div>
+    <div id="b-fg-lab" style="font-size:10px;color:var(--dim)">—</div>
+  </div>
+  <div style="flex:1;text-align:center;background:rgba(0,214,143,.06);border:1px solid rgba(0,214,143,.2);border-radius:5px;padding:6px">
+    <div style="font-size:10px;color:var(--dim)">已实现价格</div>
+    <div class="v gl" id="b-rp" style="font-size:14px">—</div>
+    <div id="b-rp-sub" style="font-size:10px;color:var(--dim)">估值支撑</div>
+  </div>
+</div>
+<div style="font-size:10px;color:var(--dim);margin-bottom:4px;font-weight:700">📊 链上估值信号（bgeometrics）</div>
+<div class="gauge-row">
+  <div class="gauge-label">MVRV Z-Score</div>
+  <div class="gauge-val" id="oc-mvrv">—</div>
+  <div class="gauge-bar"><div class="gauge-fill" id="oc-mvrv-b" style="width:0%"></div></div>
+  <div class="gauge-sig" id="oc-mvrv-s">—</div>
+</div>
+<div class="gauge-row">
+  <div class="gauge-label">SOPR</div>
+  <div class="gauge-val" id="oc-sopr">—</div>
+  <div class="gauge-bar"><div class="gauge-fill" id="oc-sopr-b" style="width:0%"></div></div>
+  <div class="gauge-sig" id="oc-sopr-s">—</div>
+</div>
+<div class="gauge-row">
+  <div class="gauge-label">NUPL</div>
+  <div class="gauge-val" id="oc-nupl">—</div>
+  <div class="gauge-bar"><div class="gauge-fill" id="oc-nupl-b" style="width:0%"></div></div>
+  <div class="gauge-sig" id="oc-nupl-s">—</div>
+</div>
+<div class="gauge-row">
+  <div class="gauge-label">Puell Multiple</div>
+  <div class="gauge-val" id="oc-puell">—</div>
+  <div class="gauge-bar"><div class="gauge-fill" id="oc-puell-b" style="width:0%"></div></div>
+  <div class="gauge-sig" id="oc-puell-s">—</div>
+</div>
+<div class="gauge-row">
+  <div class="gauge-label">活跃地址数</div>
+  <div class="gauge-val" id="oc-addr">—</div>
+  <div class="gauge-bar"><div class="gauge-fill" id="oc-addr-b" style="width:50%;background:var(--blue)"></div></div>
+  <div class="gauge-sig" id="oc-addr-s">—</div>
+</div>
+<div style="margin-top:6px;font-size:10px;color:var(--dim)">链上综合评分</div>
+<div class="meter"><div class="meter-fill" id="oc-total-m" style="width:0%"></div></div>
+<div style="font-size:11px;text-align:center;font-weight:700" id="oc-total-s">计算中...</div>
 </div>
 
-<!-- 贵金属 -->
+<!-- ── 贵金属 ── -->
 <div class="card">
 <div class="ct">🥇 贵金属 <span class="src">Yahoo Finance</span></div>
 <table>
 <tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
 <tr><td>黄金</td><td class="v gl" id="pm-g">—</td><td id="pm-g-s">—</td><td id="pms-g"></td><td id="pmf-g"></td></tr>
 <tr><td>白银</td><td class="v gl" id="pm-s">—</td><td id="pm-s-s">—</td><td id="pms-s"></td><td id="pmf-s"></td></tr>
-<tr><td>G/S Ratio</td><td class="v" id="pm-r">—</td><td>—</td><td></td><td></td></tr>
-<tr><td>10Y TIPS</td><td class="v" id="pm-t">—</td><td>黄金核心驱动</td><td id="pms-t"></td><td></td></tr>
-<tr><td>央行购金</td><td class="v up">863吨/年</td><td>结构性需求</td><td><a href="https://www.gold.org/goldhub/data/gold-demand-by-country" target="_blank" class="src-tag src-primary">WGC</a></td><td><span class="stale-badge">季度</span></td></tr>
+<tr><td>G/S Ratio</td><td class="v" id="pm-r">—</td><td id="pm-r-s">—</td></tr>
+<tr><td>10Y TIPS</td><td class="v" id="pm-t">—</td><td>实际利率（黄金核心驱动）</td></tr>
+<tr><td>央行购金</td><td class="v up">863吨/年</td><td>结构性需求</td><td><a href="https://www.gold.org/goldhub/data/gold-demand-by-country" target="_blank" class="src-tag sp">WGC</a></td><td><span class="fb stale">季度</span></td></tr>
 </table>
+<div style="margin-top:6px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.25);border-radius:5px;padding:6px;font-size:10px">
+  <span style="color:var(--gold);font-weight:700">🏆 Dalio Stage 6 黄金逻辑</span><br>
+  <span style="color:var(--dim)">滞胀象限 + 央行购金 + "Sell America" = 黄金结构牛市<br>历史首破 $5,000 · 技术回调是逢低加仓机会</span>
+</div>
 </div>
 
-<!-- 告警 -->
-<div class="card" style="grid-column:span 2">
-<div class="ct">⚡ 实时告警 & 风险雷达</div>
+<!-- ── 宏观日历 ── -->
+<div class="card">
+<div class="ct">📅 宏观日历 <span class="src">关键事件 | 红=高影响 橙=中 蓝=低</span></div>
+<div id="cal-container"></div>
+</div>
+
+<!-- ── 宏观观点 ── -->
+<div class="card span2">
+<div class="ct">🧠 顶级分析师观点 <span class="src">最新 13F / 研报 / 公开发言</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+<div style="padding-right:12px;border-right:1px solid var(--border)">
+<div class="analyst-card">
+  <div><span class="analyst-name">Ray Dalio</span><span class="analyst-date">Feb 17, 2026 · 慕尼黑安全峰会</span></div>
+  <div class="analyst-view">正式宣布美国进入大周期 <strong style="color:var(--red)">Stage 6</strong>（秩序崩解期），类比1930年代"大无序"。"The World Order Has Broken Down."</div>
+  <div class="analyst-signal"><span class="sig sg">黄金/非美资产</span> <span class="sig sr">美债/美元</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 4/5</span></div>
+</div>
+<div class="analyst-card">
+  <div><span class="analyst-name">Stanley Druckenmiller</span><span class="analyst-date">Q4 2025 13F</span></div>
+  <div class="analyst-view">清仓 Meta/Arm/Sandisk/Seagate → 转仓 Amazon/Alphabet。新建 <strong style="color:var(--orange)">$6,400万 Bloom Energy</strong>（BE）多头。AI基础设施瓶颈：算力→<strong>电力</strong>。</div>
+  <div class="analyst-signal"><span class="sig sg">AI能源/应用层</span> <span class="sig sr">AI芯片高估值</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 4/5</span></div>
+</div>
+</div>
+<div style="padding-left:12px">
+<div class="analyst-card">
+  <div><span class="analyst-name">Bill Ackman</span><span class="analyst-date">Q4 2025 13F</span></div>
+  <div class="analyst-view">Mag 7核心仓位增65%（持仓$22亿，升至第三大重仓）。与Druckenmiller共识：<strong>AI核心基础设施+能源双轨配置</strong>。巴西R$330亿外资涌入，EWZ YTD +20%。</div>
+  <div class="analyst-signal"><span class="sig sg">非美资产/AI应用</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 3/5</span></div>
+</div>
+<div class="analyst-card">
+  <div><span class="analyst-name">Howard Marks / Zoltan Pozsar</span><span class="analyst-date">Feb 2026</span></div>
+  <div class="analyst-view">"Is It a Bubble?" — AI投资处于FOMO尾部，类比铁路泡沫。信用市场"<strong style="color:var(--orange)">指数在撒谎</strong>"：综合利差平静，个券爆破——商业模式被AI替代引发结构性信用损失。</div>
+  <div class="analyst-signal"><span class="sig sy">AI估值谨慎</span> <span class="sig sr">信用市场结构风险</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 3/5</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ── 实时告警 ── -->
+<div class="card span2">
+<div class="ct">⚡ 实时告警 & 机会扫描</div>
 <div id="alerts-c"><div style="color:var(--dim);font-size:11px">加载中...</div></div>
 </div>
 
-<!-- 数据质量 -->
-<div class="card">
-<div class="ct">🔍 数据质量监控</div>
-<div id="val-c"><div style="color:var(--dim);font-size:11px">等待校验...</div></div>
-</div>
-
-<!-- Kill Switch -->
+<!-- ── Kill Switch ── -->
 <div class="card">
 <div class="ct">🚨 Kill Switch</div>
 <table>
-<tr><td class="dn">核心CPI MoM &gt; 0.3%</td><td>→ 全面减仓</td><td id="ks-cpi">—</td></tr>
+<tr><th>触发条件</th><th>行动</th><th>状态</th></tr>
 <tr><td class="dn">BTC &lt; $58,000</td><td>→ 判断失效</td><td id="ks-btc">—</td></tr>
 <tr><td class="dn">HY利差 &gt; 400bp</td><td>→ 转为防御</td><td id="ks-hy">—</td></tr>
 <tr><td class="dn">VIX &gt; 35</td><td>→ 系统性风险</td><td id="ks-vix">—</td></tr>
 <tr><td class="dn">DXY &gt; 105</td><td>→ 流动性危机</td><td id="ks-dxy">—</td></tr>
+<tr><td class="dn">核心CPI MoM &gt; 0.4%</td><td>→ 全面减仓</td><td id="ks-cpi" class="dn">下次: Mar 11</td></tr>
 </table>
 </div>
 
+<!-- ── 数据质量 ── -->
+<div class="card">
+<div class="ct">🔍 数据质量</div>
+<div id="val-c"><div style="color:var(--dim);font-size:11px">等待校验...</div></div>
 </div>
+
+</div><!-- /grid -->
 
 <div style="text-align:center;color:var(--dim);font-size:10px;margin-top:8px">
-  Macro Oracle v3.2 Standalone | FRED · Yahoo Finance · CoinGecko · Alternative.me | 无需本地服务器 | <span id="src-count"></span>
+  Macro Oracle v4.0 | Yahoo Finance · FRED · CoinGecko · bgeometrics · Alternative.me | <span id="src-count"></span>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════════ -->
 <script>
-// ─── 配置 ───────────────────────────────────────────────────────────────────
-const FRED_KEY = '4b63504ba634719bd7d6b678c8b996b8';
-// Yahoo Finance 需要 CORS 代理（官方不开放跨域）
-const CORS_PROXY = 'https://corsproxy.io/?url=';
+// ─── 配置 ──────────────────────────────────────────────────────
+const FRED_KEY   = '4b63504ba634719bd7d6b678c8b996b8';
+const PROXY      = 'https://corsproxy.io/?url=';
 const YAHOO_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
-const REFRESH_MS = 60000; // 60秒刷新
+const BG_BASE    = 'https://bitcoin-data.com/v1/';
+const REFRESH_MS = 60000;
+const FRED_DELAY = 300; // ms between each FRED request to avoid rate-limiting
 
-// ─── 数据源定义 ──────────────────────────────────────────────────────────────
+// ─── 数据源定义 ────────────────────────────────────────────────
 const SRC = {
-  yahoo_spx:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5EGSPC',  freq:'实时' },
-  yahoo_ndx:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5EIXIC',  freq:'实时' },
-  yahoo_dow:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5EDJI',   freq:'实时' },
-  yahoo_vix:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5EVIX',   freq:'实时' },
-  yahoo_gold: { name:'Yahoo',      url:'https://finance.yahoo.com/quote/GC%3DF',   freq:'实时' },
-  yahoo_silver:{ name:'Yahoo',     url:'https://finance.yahoo.com/quote/SI%3DF',   freq:'实时' },
-  yahoo_wti:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/CL%3DF',   freq:'实时' },
-  yahoo_dxy:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/DX-Y.NYB', freq:'实时' },
-  yahoo_tnx:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5ETNX',   freq:'实时' },
-  yahoo_tyx:  { name:'Yahoo',      url:'https://finance.yahoo.com/quote/%5ETYX',   freq:'实时' },
-  fred_dff:   { name:'FRED',       url:'https://fred.stlouisfed.org/series/DFF',         freq:'每日T+1' },
-  fred_dgs2:  { name:'FRED',       url:'https://fred.stlouisfed.org/series/DGS2',        freq:'每日T+1' },
-  fred_dgs10: { name:'FRED',       url:'https://fred.stlouisfed.org/series/DGS10',       freq:'每日T+1' },
-  fred_t10y2y:{ name:'FRED',       url:'https://fred.stlouisfed.org/series/T10Y2Y',      freq:'每日T+1' },
-  fred_hy:    { name:'FRED',       url:'https://fred.stlouisfed.org/series/BAMLH0A0HYM2',freq:'每日T+1' },
-  fred_ig:    { name:'FRED',       url:'https://fred.stlouisfed.org/series/BAMLC0A4CBBB',freq:'每日T+1' },
-  fred_tips:  { name:'FRED',       url:'https://fred.stlouisfed.org/series/DFII10',      freq:'每日T+1' },
-  fred_bei:   { name:'FRED',       url:'https://fred.stlouisfed.org/series/T5YIE',       freq:'每日T+1' },
-  fred_walcl: { name:'FRED',       url:'https://fred.stlouisfed.org/series/WALCL',       freq:'每周三' },
-  coingecko:  { name:'CoinGecko',  url:'https://www.coingecko.com/en/coins/bitcoin',     freq:'实时' },
-  alt_fg:     { name:'Alt.me',     url:'https://alternative.me/crypto/fear-and-greed-index/', freq:'每日' },
-  glassnode:  { name:'Glassnode',  url:'https://studio.glassnode.com/metrics?a=BTC&m=market.Mvrv', freq:'每日' },
-  cnbc_spx:   { name:'CNBC',       url:'https://www.cnbc.com/quotes/.SPX',            freq:'实时',  role:'校验' },
-  fred_sp500: { name:'FRED SP500', url:'https://fred.stlouisfed.org/series/SP500',    freq:'每日T+1',role:'校验' },
-  kitco:      { name:'Kitco',      url:'https://www.kitco.com/charts/livegold.html',  freq:'实时',  role:'校验' },
-  cboe_vix:   { name:'CBOE',       url:'https://www.cboe.com/tradable_products/vix/', freq:'实时',  role:'校验' },
-  coindesk:   { name:'CoinDesk',   url:'https://www.coindesk.com/price/bitcoin/',     freq:'实时',  role:'校验' },
+  yahoo:     { name:'Yahoo',      url:'https://finance.yahoo.com' },
+  coingecko: { name:'CoinGecko',  url:'https://coingecko.com/en/coins/bitcoin' },
+  altme:     { name:'Alt.me',     url:'https://alternative.me/crypto/fear-and-greed-index/' },
+  fred:      { name:'FRED',       url:'https://fred.stlouisfed.org' },
+  bgeom:     { name:'bgeometrics',url:'https://charts.bgeometrics.com' },
 };
 
-// ─── 工具函数 ────────────────────────────────────────────────────────────────
+// ─── 工具函数 ─────────────────────────────────────────────────
 const fmt  = (n,d=2) => n!=null ? Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}) : '—';
-const chg  = (c,p)  => { if(!c||!p)return{t:'—',cl:'dm'};const r=((c-p)/p*100);return{t:(r>=0?'+':'')+r.toFixed(2)+'%',cl:r>=0?'up':'dn'};};
-const sv   = (id,v,cls) => { const e=document.getElementById(id); if(!e)return; e.textContent=v; if(cls)e.className='v '+cls; };
-const sh   = (id,h)     => { const e=document.getElementById(id); if(e)e.innerHTML=h; };
-const safe = r => r.status==='fulfilled' ? r.value : null;
+const chg  = (c,p)  => {if(!c||!p)return{t:'—',cl:'dm'};const r=((c-p)/p*100);return{t:(r>=0?'+':'')+r.toFixed(2)+'%',cl:r>=0?'up':'dn'};};
+const sv   = (id,v,cls) => {const e=document.getElementById(id);if(!e)return;e.textContent=v;if(cls)e.className='v '+cls;};
+const sh   = (id,h)     => {const e=document.getElementById(id);if(e)e.innerHTML=h;};
+const safe = r => r.status==='fulfilled'?r.value:null;
+const delay= ms => new Promise(r=>setTimeout(r,ms));
 
-function srcTag(info) {
-  if(!info)return '';
-  const role = info.role==='校验'?'src-verify':'src-primary';
-  return `<a href="${info.url||'#'}" target="_blank" class="src-tag ${role}" title="${info.freq||''}">${info.name}</a>`;
-}
-function srcTags(primary,verify){
-  let h=srcTag(primary);
-  if(verify&&verify.length)verify.forEach(v=>h+=srcTag({...v,role:'校验'}));
-  return h;
-}
-function freshBadge(dateStr,freqType){
-  if(!dateStr)return '<span class="stale-badge">无日期</span>';
+function stag(s){return `<a href="${s.url}" target="_blank" class="src-tag sp">${s.name}</a>`;}
+function fbadge(dateStr,isRt){
+  if(!dateStr)return '<span class="fb stale">—</span>';
   const d=new Date(dateStr),now=new Date(),diffH=(now-d)/3600000;
-  if(freqType==='实时')return diffH<0.083?'<span class="fresh-badge">实时</span>':diffH<24?'<span class="fresh-badge">今日</span>':`<span class="stale-badge">⏳${Math.floor(diffH/24)}天前</span>`;
-  if(freqType==='每周')return diffH<168?'<span class="fresh-badge">本周</span>':`<span class="stale-badge">⏳${Math.floor(diffH/24)}天前</span>`;
-  return diffH<48?'<span class="fresh-badge">最新</span>':`<span class="stale-badge">⏳${Math.floor(diffH/24)}天前</span>`;
-}
-function fredFresh(d){
-  if(!d?.date)return '<span class="stale-badge">—</span>';
-  const dt=new Date(d.date+'T00:00:00'),now=new Date(),diff=Math.floor((now-dt)/86400000);
-  return diff<=2?`<span class="fresh-badge">${d.date}</span>`:`<span class="stale-badge">⏳${d.date}(${diff}天前)</span>`;
+  if(isRt)return diffH<24?'<span class="fb ok">实时</span>':`<span class="fb stale">⏳${Math.floor(diffH/24)}d</span>`;
+  return diffH<50?`<span class="fb ok">${dateStr.slice(5)}</span>`:`<span class="fb stale">⏳${Math.floor(diffH/24)}d</span>`;
 }
 
-// ─── API 拉取函数 ─────────────────────────────────────────────────────────────
+// ─── Fetch: Yahoo Finance (直连→代理) ────────────────────────
 async function fetchYahoo(symbol) {
-  const rawUrl = `${YAHOO_BASE}${encodeURIComponent(symbol)}?interval=1d&range=2d&includeAdjustedClose=false`;
-
-  const parseYahoo = d => {
-    const meta = d?.chart?.result?.[0]?.meta;
-    if(!meta?.regularMarketPrice) throw new Error('no price');
-    return { price: meta.regularMarketPrice, prev_close: meta.previousClose ?? meta.chartPreviousClose ?? null };
+  const url = `${YAHOO_BASE}${encodeURIComponent(symbol)}?interval=1d&range=2d`;
+  const parse = d => {
+    const m = d?.chart?.result?.[0]?.meta;
+    if(!m?.regularMarketPrice)throw new Error('no price');
+    return{price:m.regularMarketPrice,prev_close:m.previousClose??m.chartPreviousClose??null};
   };
-
-  // 1️⃣ 先尝试直连（部分网络/浏览器可行）
-  try {
-    const r = await fetch(rawUrl, {signal: AbortSignal.timeout(6000)});
-    if(r.ok) { const d = await r.json(); return parseYahoo(d); }
-  } catch(e) { /* CORS 或超时 → 降级 */ }
-
-  // 2️⃣ corsproxy.io 降级
-  try {
-    const r = await fetch(CORS_PROXY + encodeURIComponent(rawUrl), {signal: AbortSignal.timeout(10000)});
-    if(r.ok) { const d = await r.json(); return parseYahoo(d); }
-  } catch(e2) { /* 代理也失败 */ }
-
-  // 3️⃣ allorigins 二级降级
-  const r2 = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(rawUrl)}`, {signal: AbortSignal.timeout(10000)});
-  if(!r2.ok) throw new Error(`Yahoo ${symbol}: all proxies failed`);
-  return parseYahoo(await r2.json());
+  try{const r=await fetch(url,{signal:AbortSignal.timeout(6000)});if(r.ok)return parse(await r.json());}catch{}
+  try{const r=await fetch(PROXY+encodeURIComponent(url),{signal:AbortSignal.timeout(10000)});if(r.ok)return parse(await r.json());}catch{}
+  const r=await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,{signal:AbortSignal.timeout(10000)});
+  return parse(await r.json());
 }
 
+// ─── Fetch: FRED (串行，每次间隔300ms) ───────────────────────
 async function fetchFred(seriesId) {
-  const url = `https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_KEY}&file_type=json&sort_order=desc&limit=1`;
-  const r = await fetch(url);
-  if(!r.ok) throw new Error(`FRED ${seriesId}: HTTP ${r.status}`);
-  const d = await r.json();
-  const obs = d.observations?.[0];
-  if(!obs) throw new Error(`FRED ${seriesId}: no data`);
-  return { value: obs.value==='.'?null:parseFloat(obs.value), date:obs.date };
+  const url=`https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_KEY}&file_type=json&sort_order=desc&limit=1`;
+  const r=await fetch(url,{signal:AbortSignal.timeout(12000)});
+  if(!r.ok)throw new Error(`FRED ${seriesId} HTTP ${r.status}`);
+  const d=await r.json();
+  const obs=d.observations?.[0];
+  if(!obs)throw new Error(`FRED ${seriesId} no data`);
+  return{value:obs.value==='.'?null:parseFloat(obs.value),date:obs.date};
 }
 
+async function fetchFredSeq(ids) {
+  const results={};
+  for(const id of ids){
+    await delay(FRED_DELAY);
+    try{results[id]=await fetchFred(id);}catch{results[id]=null;}
+  }
+  return results;
+}
+
+// ─── Fetch: CoinGecko (BTC) ───────────────────────────────────
 async function fetchBTC() {
-  const r = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_market_cap=true');
-  if(!r.ok) throw new Error(`CoinGecko: HTTP ${r.status}`);
-  const d = await r.json();
-  const b = d?.bitcoin;
-  return { price:b.usd, change_24h:parseFloat((b.usd_24h_change||0).toFixed(2)), market_cap:b.usd_market_cap };
+  const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_market_cap=true',{signal:AbortSignal.timeout(10000)});
+  const d=await r.json();const b=d.bitcoin;
+  return{price:b.usd,change_24h:parseFloat((b.usd_24h_change||0).toFixed(2)),market_cap:b.usd_market_cap};
 }
 
+// ─── Fetch: Alternative.me (F&G) ─────────────────────────────
 async function fetchFG() {
-  const r = await fetch('https://api.alternative.me/fng/?limit=1');
-  if(!r.ok) throw new Error(`Alt.me: HTTP ${r.status}`);
-  const d = await r.json();
-  const item = d?.data?.[0];
-  return { value:parseInt(item.value), label:item.value_classification, timestamp:item.timestamp };
+  const r=await fetch('https://api.alternative.me/fng/?limit=1',{signal:AbortSignal.timeout(8000)});
+  const d=await r.json();const i=d.data[0];
+  return{value:parseInt(i.value),label:i.value_classification,timestamp:i.timestamp};
 }
 
-// ─── 主数据聚合 ───────────────────────────────────────────────────────────────
-async function fetchAll() {
-  const now = new Date().toISOString();
-  const p = await Promise.allSettled([
-    fetchYahoo('^GSPC'),    // 0 spx
-    fetchYahoo('^IXIC'),    // 1 ndx
-    fetchYahoo('^DJI'),     // 2 dow
-    fetchYahoo('^VIX'),     // 3 vix
-    fetchYahoo('GC=F'),     // 4 gold
-    fetchYahoo('SI=F'),     // 5 silver
-    fetchYahoo('CL=F'),     // 6 wti
-    fetchYahoo('DX-Y.NYB'), // 7 dxy
-    fetchYahoo('^TNX'),     // 8 tnx (10Y yield)
-    fetchYahoo('^TYX'),     // 9 tyx (30Y yield)
-    fetchFred('DFF'),           // 10
-    fetchFred('DGS2'),          // 11
-    fetchFred('DGS10'),         // 12
-    fetchFred('T10Y2Y'),        // 13
-    fetchFred('BAMLH0A0HYM2'),  // 14 hy spread
-    fetchFred('BAMLC0A4CBBB'),  // 15 ig spread
-    fetchFred('DFII10'),        // 16 tips
-    fetchFred('T5YIE'),         // 17 bei
-    fetchFred('WALCL'),         // 18 fed bs
-    fetchBTC(),  // 19
-    fetchFG(),   // 20
+// ─── Fetch: bgeometrics (串行) ────────────────────────────────
+async function fetchBG(endpoint) {
+  const r=await fetch(BG_BASE+endpoint,{signal:AbortSignal.timeout(10000)});
+  if(!r.ok)throw new Error(`BG ${endpoint} HTTP ${r.status}`);
+  const d=await r.json();
+  return Array.isArray(d)?d[d.length-1]:d;
+}
+
+async function fetchBGSeq() {
+  const results={};
+  const eps={mvrv:'mvrv-zscore',sopr:'sopr',nupl:'nupl',puell:'puell-multiple',addr:'active-addresses',rp:'realized-price'};
+  for(const[key,ep] of Object.entries(eps)){
+    await delay(200);
+    try{results[key]=await fetchBG(ep);}catch{results[key]=null;}
+  }
+  return results;
+}
+
+// ─── 宏观日历 ─────────────────────────────────────────────────
+const MACRO_CALENDAR = [
+  {date:'2026-02-26',label:'PCE/Core PCE Jan',desc:'滞胀关键验证 | 上次Core 3.0%，超预期',impact:'high',ref:'https://fred.stlouisfed.org/series/PCEPI'},
+  {date:'2026-03-07',label:'NFP 就业报告',desc:'预期 +130K±50K | AHE同比是通胀后门',impact:'high',ref:'https://www.bls.gov/news.release/empsit.nr0.htm'},
+  {date:'2026-03-11',label:'CPI Feb 2026',desc:'前值 Core CPI 2.5% YoY | 0.3%以上=再通胀警报',impact:'high',ref:'https://www.bls.gov/news.release/cpi.nr0.htm'},
+  {date:'2026-03-18',label:'FOMC 会议（1/2天）',desc:'CME FedWatch：99%暂停 | 关注dot plot修正',impact:'high',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
+  {date:'2026-03-19',label:'FOMC 决议 + 发布会',desc:'暂停降息概率极高 | 关注2026 dot plot',impact:'high',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
+  {date:'2026-03-27',label:'GDP Q4 2025 终值',desc:'初值 +1.4%（大幅低于预期3.0%）',impact:'med',ref:'https://fred.stlouisfed.org/series/GDPC1'},
+  {date:'2026-04-04',label:'NFP 3月就业报告',desc:'关税冲击是否传导到就业',impact:'high',ref:'https://www.bls.gov/news.release/empsit.nr0.htm'},
+  {date:'2026-04-10',label:'CPI Mar 2026',desc:'关键：关税影响是否进入通胀数据',impact:'high',ref:'https://www.bls.gov/news.release/cpi.nr0.htm'},
+  {date:'2026-05-06',label:'FOMC 会议',desc:'2026年第三次会议 | 关税影响评估',impact:'med',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
+];
+
+function renderCalendar(){
+  const today=new Date();today.setHours(0,0,0,0);
+  let html='';
+  let shown=0;
+  for(const ev of MACRO_CALENDAR){
+    if(shown>=7)break;
+    const d=new Date(ev.date+'T00:00:00');
+    const diff=Math.round((d-today)/(86400000));
+    let cls='future',label='';
+    if(diff<0){cls='past';label=`${Math.abs(diff)}天前`;}
+    else if(diff===0){cls='today';label='今天';}
+    else if(diff<=3){cls='soon';label=`${diff}天后`;}
+    else{label=`${diff}天后`;}
+    if(diff<-7){continue;}
+    shown++;
+    const bd=ev.impact==='high'?'cb-high':ev.impact==='med'?'cb-med':'cb-low';
+    html+=`<div class="cal-item">
+      <div class="cal-date ${cls}">${ev.date.slice(5)}<br><span style="font-size:9px">${label}</span></div>
+      <div class="cal-body">
+        <div class="cal-title"><a href="${ev.ref}" target="_blank">${ev.label}</a><span class="cal-badge ${bd}">${ev.impact==='high'?'高影响':ev.impact==='med'?'中影响':'低影响'}</span></div>
+        <div class="cal-desc">${ev.desc}</div>
+      </div>
+    </div>`;
+  }
+  sh('cal-container',html||'<div style="color:var(--dim);font-size:11px">暂无近期事件</div>');
+}
+
+// ─── 主数据聚合 ────────────────────────────────────────────────
+async function fetchAll(){
+  const now=new Date().toISOString();
+  // Yahoo + BTC + FG 并行（无限速问题）
+  const [p_spx,p_ndx,p_dow,p_vix,p_gold,p_silver,p_wti,p_dxy,p_tnx,p_tyx,p_btc,p_fg]=await Promise.allSettled([
+    fetchYahoo('^GSPC'),fetchYahoo('^IXIC'),fetchYahoo('^DJI'),fetchYahoo('^VIX'),
+    fetchYahoo('GC=F'),fetchYahoo('SI=F'),fetchYahoo('CL=F'),fetchYahoo('DX-Y.NYB'),
+    fetchYahoo('^TNX'),fetchYahoo('^TYX'),fetchBTC(),fetchFG()
   ]);
+  // FRED 串行（解决并发限速）
+  const fred=await fetchFredSeq(['DFF','DGS2','DGS10','T10Y2Y','BAMLH0A0HYM2','BAMLC0A4CBBB','DFII10','T5YIE','WALCL']);
+  // bgeometrics 串行
+  const bg=await fetchBGSeq();
 
-  const spx=safe(p[0]),ndx=safe(p[1]),dow=safe(p[2]),vix=safe(p[3]),
-        gold=safe(p[4]),silver=safe(p[5]),wti=safe(p[6]),dxy=safe(p[7]),
-        tnx=safe(p[8]),tyx=safe(p[9]),
-        fred_dff=safe(p[10]),fred_2y=safe(p[11]),fred_10y=safe(p[12]),
-        fred_sp=safe(p[13]),fred_hy=safe(p[14]),fred_ig=safe(p[15]),
-        fred_tips=safe(p[16]),fred_bei=safe(p[17]),fred_bs=safe(p[18]),
-        btc=safe(p[19]),fg=safe(p[20]);
+  const spx=safe(p_spx),ndx=safe(p_ndx),dow=safe(p_dow),vix=safe(p_vix),
+        gold=safe(p_gold),silver=safe(p_silver),wti=safe(p_wti),dxy=safe(p_dxy),
+        tnx=safe(p_tnx),tyx=safe(p_tyx),btc=safe(p_btc),fg=safe(p_fg);
 
-  const mk = (ydata, srcKey, verifySrcs) => ({
-    price: ydata?.price ?? null,
-    prev_close: ydata?.prev_close ?? null,
-    primary: SRC[srcKey],
-    verify: (verifySrcs||[]).map(k=>SRC[k]),
-    fetched_at: now,
-  });
-  const mkF = (fd, srcKey, verifySrcs) => ({
-    value: fd?.value ?? null,
-    date: fd?.date ?? null,
-    primary: SRC[srcKey],
-    verify: (verifySrcs||[]).map(k=>SRC[k]),
-    fetched_at: now,
-  });
+  const errs=[p_spx,p_ndx,p_dow,p_vix,p_gold,p_silver,p_wti,p_dxy,p_tnx,p_tyx,p_btc,p_fg]
+    .filter(r=>r.status==='rejected').length
+    + Object.values(fred).filter(v=>v===null).length
+    + Object.values(bg).filter(v=>v===null).length;
 
-  const errors = p.filter(r=>r.status==='rejected').length;
-  const data = {
-    timestamp: now,
-    sources: SRC,
-    market: {
-      sp500:   mk(spx,  'yahoo_spx',  ['cnbc_spx','fred_sp500']),
-      nasdaq:  mk(ndx,  'yahoo_ndx',  []),
-      dow:     mk(dow,  'yahoo_dow',  []),
-    },
-    rates: {
-      fed_funds:    mkF(fred_dff,   'fred_dff',    []),
-      ust_2y:       { ...mkF(fred_2y, 'fred_dgs2',['fred_dgs2']), yahoo: null },
-      ust_10y:      { ...mkF(fred_10y,'fred_dgs10',[]), yahoo: tnx?.price ?? null },
-      ust_30y:      { value:tyx?.price??null, primary:SRC.yahoo_tyx, verify:[], fetched_at:now },
-      spread_2s10s: mkF(fred_sp,   'fred_t10y2y', []),
-      tips_10y:     mkF(fred_tips, 'fred_tips',   []),
-      bei_5y:       mkF(fred_bei,  'fred_bei',    []),
-    },
-    credit: {
-      hy_spread: mkF(fred_hy, 'fred_hy', []),
-      ig_spread: mkF(fred_ig, 'fred_ig', []),
-      vix: { price:vix?.price??null, primary:SRC.yahoo_vix, verify:[SRC.cboe_vix], fetched_at:now },
-    },
-    crypto: {
-      btc: btc ? {
-        price:      btc.price,
-        change_24h: btc.change_24h,
-        market_cap: btc.market_cap,
-        primary:    SRC.coingecko,
-        verify:     [SRC.coindesk],
-        fetched_at: now,
-      } : { price:null, primary:SRC.coingecko, verify:[], fetched_at:now },
-      fear_greed: fg ? {
-        value: fg.value, label:fg.label,
-        primary:SRC.alt_fg, verify:[], fetched_at:now,
-      } : { value:null, primary:SRC.alt_fg, verify:[], fetched_at:now },
-      mvrv: { value:null, error:'需API key (免费注册 glassnode.com)', primary:SRC.glassnode, verify:[], fetched_at:now },
-    },
-    commodities: {
-      gold:   mk(gold,   'yahoo_gold',   ['kitco']),
-      silver: mk(silver, 'yahoo_silver', []),
-      wti:    mk(wti,    'yahoo_wti',    []),
-    },
-    fx: {
-      dxy: { price:dxy?.price??null, primary:SRC.yahoo_dxy, verify:[], fetched_at:now },
-    },
-    liquidity: {
-      fed_bs: mkF(fred_bs, 'fred_walcl', []),
-    },
-  };
-
-  const alerts = buildAlerts(data);
-  return { data, alerts, errors };
+  return{spx,ndx,dow,vix,gold,silver,wti,dxy,tnx,tyx,btc,fg,fred,bg,now,errs};
 }
 
-// ─── 告警逻辑 ─────────────────────────────────────────────────────────────────
-function buildAlerts(data) {
-  const alerts = [];
-  // 10Y: Yahoo vs FRED
-  try {
-    const yy=data.rates.ust_10y.yahoo, fy=data.rates.ust_10y.value;
-    if(yy&&fy&&fy>0){const pct=Math.abs(yy-fy)/fy*100;if(pct>2)alerts.push({level:'WARNING',indicator:'10Y UST',msg:`10Y国债收益率Yahoo(${yy}%) vs FRED(${fy}%) 差异${pct.toFixed(1)}%`});}
-  }catch(e){}
-  // BTC range
-  try { const b=data.crypto.btc.price; if(b&&(b<10000||b>500000))alerts.push({level:'CRITICAL',indicator:'BTC',msg:`BTC价格异常: $${b}`}); }catch(e){}
-  // VIX range
-  try { const v=data.credit.vix.price; if(v&&(v<5||v>90))alerts.push({level:'WARNING',indicator:'VIX',msg:`VIX异常值: ${v}`}); }catch(e){}
-  return alerts;
-}
+// ─── 渲染 ─────────────────────────────────────────────────────
+function render(d){
+  const{spx,ndx,dow,vix,gold,silver,wti,dxy,tnx,tyx,btc,fg,fred,bg,now,errs}=d;
+  document.getElementById('ts').textContent=new Date(now).toLocaleString('zh-CN');
+  document.getElementById('dot').className=errs>10?'dot err':'dot ok';
+  sh('src-count',`FRED串行·Yahoo并行·bgeometrics链上 | 失败请求: ${errs}`);
 
-// ─── 渲染 ─────────────────────────────────────────────────────────────────────
-function render(data, alerts, errors) {
-  const now = data.timestamp;
-  document.getElementById('ts').textContent = new Date(now).toLocaleString('zh-CN');
-  document.getElementById('dot').className  = errors>8 ? 'dot err' : 'dot ok';
-  const primary=Object.values(SRC).filter(s=>!s.role).length;
-  const verify =Object.values(SRC).filter(s=>s.role).length;
-  sh('src-count',`${primary}个主源 + ${verify}个校验源 | 本次失败请求: ${errors}`);
-  if(errors>0)document.getElementById('proxy-note').className='proxy-note show';
-
-  // ── Market ──
-  [['sp500','spx'],['nasdaq','ndx'],['dow','dow']].forEach(([key,pre])=>{
-    const o=data.market[key];
+  // ── Market Snapshot ──
+  const snap=[
+    [spx,'spx','m-spx','^GSPC'],[ndx,'ndx','m-ndx','^IXIC'],[dow,'dow','m-dow','^DJI'],
+    [gold,'gold','m-gold','GC=F'],[silver,'silver','m-silver','SI=F'],[wti,'wti','m-wti','CL=F'],
+  ];
+  snap.forEach(([o,key,pid])=>{
     if(!o?.price)return;
     const c=chg(o.price,o.prev_close);
-    sv('m-'+pre,fmt(o.price),c.cl); sh('mc-'+pre,`<span class="${c.cl}">${c.t}</span>`);
-    sh('ms-'+pre,srcTags(o.primary,o.verify)); sh('mf-'+pre,freshBadge(o.fetched_at,'实时'));
-    if(pre==='spx'){sv('p-spx',fmt(o.price),c.cl);sh('c-spx',`<span class="${c.cl}">${c.t}</span>`);sh('s-spx',srcTags(o.primary,o.verify));}
+    sv(pid,key==='spx'||key==='ndx'||key==='dow'?fmt(o.price):('$'+fmt(o.price)),c.cl);
+    sh('mc-'+key,`<span class="${c.cl}">${c.t}</span>`);
+    sh('ms-'+key,stag(SRC.yahoo));
+    sh('mf-'+key,fbadge(now,true));
   });
-
-  // ── BTC ──
-  const btc=data.crypto.btc;
   if(btc?.price){
-    const c24=btc.change_24h||0,cl=c24>=0?'up':'dn';
-    sv('p-btc','$'+fmt(btc.price),cl); sh('c-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`); sh('s-btc',srcTags(btc.primary,btc.verify));
-    sv('m-btc','$'+fmt(btc.price),cl); sh('mc-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`); sh('ms-btc',srcTags(btc.primary,btc.verify)); sh('mf-btc',freshBadge(btc.fetched_at,'实时'));
-    sv('b-p','$'+fmt(btc.price)); sh('b-p-s','实时'); sh('bs-p',srcTags(btc.primary,btc.verify)); sh('bf-p',freshBadge(btc.fetched_at,'实时'));
-    sv('b-ch',(c24>=0?'+':'')+fmt(c24)+'%',cl);
-    sv('ks-btc',btc.price<58000?'🔴 触发!':'✅ $'+fmt(btc.price,0),btc.price<58000?'dn':'up');
+    const c24=btc.change_24h,cl=c24>=0?'up':'dn';
+    sv('m-btc','$'+fmt(btc.price),cl);
+    sh('mc-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);
+    sh('ms-btc',stag(SRC.coingecko)); sh('mf-btc',fbadge(now,true));
+  }
+  if(dxy?.price){sv('m-dxy',fmt(dxy.price));sh('mc-dxy','ICE DXY');sh('ms-dxy',stag(SRC.yahoo));sh('mf-dxy',fbadge(now,true));}
+  if(vix?.price){
+    const v=vix.price;
+    sv('m-vix',fmt(v),v>25?'dn':v>20?'nt':'up');
+    sh('mc-vix',v<20?'低波动':v<25?'中性':'高波动');
+    sh('ms-vix',stag(SRC.yahoo)); sh('mf-vix',fbadge(now,true));
   }
 
-  // ── Gold / Silver ──
-  const gold=data.commodities.gold,silver=data.commodities.silver;
-  if(gold?.price){
-    const c=chg(gold.price,gold.prev_close);
-    sv('p-gold','$'+fmt(gold.price),c.cl); sh('c-gold',`<span class="${c.cl}">${c.t}</span>`); sh('s-gold',srcTags(gold.primary,gold.verify));
-    sv('m-gold','$'+fmt(gold.price),'gl'); sh('mc-gold',`<span class="${c.cl}">${c.t}</span>`); sh('ms-gold',srcTags(gold.primary,gold.verify)); sh('mf-gold',freshBadge(gold.fetched_at,'实时'));
-    sv('pm-g','$'+fmt(gold.price)); sh('pm-g-s',c.t); sh('pms-g',srcTags(gold.primary,gold.verify)); sh('pmf-g',freshBadge(gold.fetched_at,'实时'));
-  }
-  if(silver?.price){
-    const c=chg(silver.price,silver.prev_close);
-    sv('p-silver','$'+fmt(silver.price),c.cl); sh('c-silver',`<span class="${c.cl}">${c.t}</span>`); sh('s-silver',srcTags(silver.primary,silver.verify));
-    sv('m-silver','$'+fmt(silver.price),'gl'); sh('mc-silver',`<span class="${c.cl}">${c.t}</span>`); sh('ms-silver',srcTags(silver.primary,silver.verify)); sh('mf-silver',freshBadge(silver.fetched_at,'实时'));
-    sv('pm-s','$'+fmt(silver.price)); sh('pm-s-s',c.t); sh('pms-s',srcTags(silver.primary,silver.verify)); sh('pmf-s',freshBadge(silver.fetched_at,'实时'));
-  }
-  if(gold?.price&&silver?.price&&silver.price>0)sv('pm-r',fmt(gold.price/silver.price,1)+'x');
+  // ── 核心判断 top panel ──
+  if(spx?.price){const c=chg(spx.price,spx.prev_close);sv('p-spx',fmt(spx.price),c.cl);sh('c-spx',`<span class="${c.cl}">${c.t}</span>`);sh('s-spx',stag(SRC.yahoo));}
+  if(btc?.price){const c24=btc.change_24h,cl=c24>=0?'up':'dn';sv('p-btc','$'+fmt(btc.price),cl);sh('c-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);sh('s-btc',stag(SRC.coingecko));}
+  if(gold?.price){const c=chg(gold.price,gold.prev_close);sv('p-gold','$'+fmt(gold.price),c.cl);sh('c-gold',`<span class="${c.cl}">${c.t}</span>`);sh('s-gold',stag(SRC.yahoo));}
+  if(silver?.price){const c=chg(silver.price,silver.prev_close);sv('p-silver','$'+fmt(silver.price),c.cl);sh('c-silver',`<span class="${c.cl}">${c.t}</span>`);sh('s-silver',stag(SRC.yahoo));}
 
-  // ── WTI / DXY ──
-  const wti=data.commodities.wti,dxy=data.fx.dxy;
-  if(wti?.price){const c=chg(wti.price,wti.prev_close);sv('m-wti','$'+fmt(wti.price),c.cl);sh('mc-wti',`<span class="${c.cl}">${c.t}</span>`);sh('ms-wti',srcTags(wti.primary,wti.verify));sh('mf-wti',freshBadge(wti.fetched_at,'实时'));}
-  if(dxy?.price){sv('m-dxy',fmt(dxy.price));sh('mc-dxy','ICE DXY');sh('ms-dxy',srcTags(dxy.primary,dxy.verify));sh('mf-dxy',freshBadge(dxy.fetched_at,'实时'));sv('ks-dxy',dxy.price>105?'🔴 触发!':'✅ '+fmt(dxy.price),dxy.price>105?'dn':'up');}
-
-  // ── VIX ──
-  const vv=data.credit.vix;
-  if(vv?.price){
-    const v=vv.price;
-    sv('m-vix',fmt(v),v>25?'dn':v>20?'nt':'up'); sh('mc-vix',v<20?'低波动':v<25?'中性':'高波动'); sh('ms-vix',srcTags(vv.primary,vv.verify)); sh('mf-vix',freshBadge(vv.fetched_at,'实时'));
-    sv('cr-vix',fmt(v)); sh('cr-vix-s',v<20?'<span class="sig sg">低波动</span>':v<25?'<span class="sig sy">中性</span>':'<span class="sig sr">高波动</span>'); sh('crs-vix',srcTags(vv.primary,vv.verify)); sh('crf-vix',freshBadge(vv.fetched_at,'实时'));
-    sv('ks-vix',v>35?'🔴 触发!':'✅ '+fmt(v),v>35?'dn':'up');
+  // ── 贵金属卡 ──
+  if(gold?.price){const c=chg(gold.price,gold.prev_close);sv('pm-g','$'+fmt(gold.price),'gl');sh('pm-g-s',`<span class="${c.cl}">${c.t}</span>`);sh('pms-g',stag(SRC.yahoo));sh('pmf-g',fbadge(now,true));}
+  if(silver?.price){const c=chg(silver.price,silver.prev_close);sv('pm-s','$'+fmt(silver.price),'gl');sh('pm-s-s',`<span class="${c.cl}">${c.t}</span>`);sh('pms-s',stag(SRC.yahoo));sh('pmf-s',fbadge(now,true));}
+  if(gold?.price&&silver?.price&&silver.price>0){
+    const r=gold.price/silver.price;sv('pm-r',fmt(r,1)+'x');
+    sh('pm-r-s',r>90?'<span class="sig sg">银低估</span>':r<70?'<span class="sig sr">金低估</span>':'<span class="sig sy">中性</span>');
   }
 
-  // ── Rates ──
-  const r=data.rates;
-  if(r.fed_funds?.value!=null){sv('r-ffr',r.fed_funds.value+'%');sh('rs-ffr',srcTags(r.fed_funds.primary,r.fed_funds.verify));sh('rf-ffr',fredFresh(r.fed_funds));}
-  if(r.ust_2y){const v=r.ust_2y.value;if(v)sv('r-2y',fmt(v)+'%');sh('r-2y-s',v&&r.fed_funds?.value&&v<r.fed_funds.value?'低于FFR':'');sh('rs-2y',srcTags(r.ust_2y.primary,r.ust_2y.verify));sh('rf-2y',fredFresh(r.ust_2y));}
-  if(r.ust_10y){const v=r.ust_10y.yahoo||r.ust_10y.value;if(v)sv('r-10y',fmt(v)+'%');sh('rs-10y',srcTags(r.ust_10y.primary,r.ust_10y.verify));sh('rf-10y',fredFresh(r.ust_10y));}
-  if(r.ust_30y?.value)sv('r-30y',fmt(r.ust_30y.value)+'%');if(r.ust_30y)sh('rs-30y',srcTags(r.ust_30y.primary,r.ust_30y.verify));
-  if(r.spread_2s10s?.value!=null){const s=r.spread_2s10s.value;sv('r-sp',(s>=0?'+':'')+fmt(s)+'%',s>=0?'up':'dn');sh('r-sp-s',s>=0?'正斜率✅':'倒挂⚠️');sh('rs-sp',srcTags(r.spread_2s10s.primary,r.spread_2s10s.verify));sh('rf-sp',fredFresh(r.spread_2s10s));}
-  if(r.bei_5y?.value){sv('r-bei',fmt(r.bei_5y.value)+'%');sh('rs-bei',srcTags(r.bei_5y.primary,r.bei_5y.verify));sh('rf-bei',fredFresh(r.bei_5y));}
-  if(r.tips_10y?.value!=null){sv('r-tips',fmt(r.tips_10y.value)+'%');sh('rs-tips',srcTags(r.tips_10y.primary,r.tips_10y.verify));sh('rf-tips',fredFresh(r.tips_10y));sv('pm-t',fmt(r.tips_10y.value)+'%');sh('pms-t',srcTags(r.tips_10y.primary,r.tips_10y.verify));}
+  // ── 利率 ──
+  if(fred.DFF?.value!=null){sv('r-ffr',fred.DFF.value+'%');sh('rs-ffr',stag(SRC.fred));sh('rf-ffr',fbadge(fred.DFF.date,false));}
+  if(fred.DGS2?.value!=null){sv('r-2y',fmt(fred.DGS2.value)+'%');sh('r-2y-s',fred.DGS2.value&&fred.DFF?.value&&fred.DGS2.value<fred.DFF.value?'低于FFR':'');sh('rs-2y',stag(SRC.fred));sh('rf-2y',fbadge(fred.DGS2.date,false));}
+  if(fred.DGS10?.value!=null||tnx?.price){const v=tnx?.price??fred.DGS10?.value;if(v!=null){sv('r-10y',fmt(v)+'%');sh('rs-10y',stag(tnx?SRC.yahoo:SRC.fred));sh('rf-10y',fbadge(tnx?now:fred.DGS10?.date,!!tnx));}}
+  if(tyx?.price){sv('r-30y',fmt(tyx.price)+'%');sh('rs-30y',stag(SRC.yahoo));}
+  if(fred.T10Y2Y?.value!=null){const s=fred.T10Y2Y.value;sv('r-sp',(s>=0?'+':'')+fmt(s)+'%',s>=0?'up':'dn');sh('r-sp-s',s>=0?'正斜率✅':'倒挂⚠️');sh('rs-sp',stag(SRC.fred));sh('rf-sp',fbadge(fred.T10Y2Y.date,false));}
+  if(fred.T5YIE?.value!=null){sv('r-bei',fmt(fred.T5YIE.value)+'%');sh('rs-bei',stag(SRC.fred));sh('rf-bei',fbadge(fred.T5YIE.date,false));}
+  if(fred.DFII10?.value!=null){sv('r-tips',fmt(fred.DFII10.value)+'%');sh('rs-tips',stag(SRC.fred));sh('rf-tips',fbadge(fred.DFII10.date,false));sv('pm-t',fmt(fred.DFII10.value)+'%');}
 
-  // ── Credit ──
-  const cr=data.credit;
-  const hy=cr.hy_spread?.value;
-  if(hy!=null){const bp=Math.round(hy*100);sv('cr-hy',bp+'bp',bp<350?'up':'dn');sh('cr-hy-s',bp<500?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-hy',srcTags(cr.hy_spread.primary,cr.hy_spread.verify));sh('crf-hy',fredFresh(cr.hy_spread));sv('ks-hy',bp>400?'🔴 触发!':'✅ '+bp+'bp',bp>400?'dn':'up');}
-  const ig=cr.ig_spread?.value;
-  if(ig!=null){const bp=Math.round(ig*100);sv('cr-ig',bp+'bp',bp<150?'up':'nt');sh('cr-ig-s',bp<200?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-ig',srcTags(cr.ig_spread.primary,cr.ig_spread.verify));sh('crf-ig',fredFresh(cr.ig_spread));}
+  // ── 信用 ──
+  if(fred.BAMLH0A0HYM2?.value!=null){const bp=Math.round(fred.BAMLH0A0HYM2.value*100);sv('cr-hy',bp+'bp',bp<350?'up':'dn');sh('cr-hy-s',bp<500?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-hy',stag(SRC.fred));sh('crf-hy',fbadge(fred.BAMLH0A0HYM2.date,false));sv('ks-hy',bp>400?'🔴触发!':'✅ '+bp+'bp',bp>400?'dn':'up');}
+  if(fred.BAMLC0A4CBBB?.value!=null){const bp=Math.round(fred.BAMLC0A4CBBB.value*100);sv('cr-ig',bp+'bp',bp<150?'up':'nt');sh('cr-ig-s',bp<200?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-ig',stag(SRC.fred));sh('crf-ig',fbadge(fred.BAMLC0A4CBBB.date,false));}
+  if(vix?.price){const v=vix.price;sv('cr-vix',fmt(v),v>25?'dn':v>20?'nt':'up');sh('cr-vix-s',v<20?'<span class="sig sg">低波动</span>':v<25?'<span class="sig sy">中性</span>':'<span class="sig sr">高波动</span>');sh('crs-vix',stag(SRC.yahoo));sh('crf-vix',fbadge(now,true));sv('ks-vix',v>35?'🔴触发!':'✅ '+fmt(v),v>35?'dn':'up');}
+  // Risk meter
+  let rs=10;if(vix?.price>25)rs+=20;if(vix?.price>35)rs+=30;if(fred.BAMLH0A0HYM2?.value>4)rs+=25;
+  document.getElementById('risk-m').style.cssText=`width:${rs}%;background:${rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)'}`;
+  document.getElementById('risk-s').textContent=(rs<30?'低风险':rs<60?'中风险':'高风险')+` (${rs}/100)`;
+  document.getElementById('risk-s').style.color=rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)';
 
-  // ── Fear & Greed ──
-  const fg=data.crypto.fear_greed;
-  if(fg?.value!=null){sv('b-fg',fg.value+' ('+(fg.label||'')+')',fg.value<25?'dn':fg.value>75?'up':'nt');sh('b-fg-s','实时');sh('bs-fg',srcTags(fg.primary,fg.verify));sh('bf-fg',freshBadge(fg.fetched_at,'每日'));const sn=fg.value<15?9:fg.value<25?8:fg.value<40?6:5;document.getElementById('b-sb').style.width=sn*10+'%';document.getElementById('b-sn').textContent=sn;}
+  // ── 流动性 ──
+  if(fred.WALCL?.value){const bs=fred.WALCL.value/1000000;sv('l-bs','$'+fmt(bs,3)+'T');sh('ls-bs',stag(SRC.fred));sh('lf-bs',fbadge(fred.WALCL.date,false));}
 
-  // ── MVRV ──
-  const mv=data.crypto.mvrv;
-  if(mv){sv('b-mv',mv.value?fmt(mv.value,4):(mv.error||'—'),mv.value&&mv.value<1.5?'up':'dm');sh('b-mv-s',mv.value?'实时':'⚠️ 需API key');sh('bs-mv',srcTags(mv.primary,mv.verify));sh('bf-mv',mv.value?freshBadge(mv.fetched_at,'每日'):'<span class="stale-badge">未接入</span>');}
+  // ── BTC 链上 ──
+  if(btc?.price){
+    const c24=btc.change_24h,cl=c24>=0?'up':'dn';
+    sv('b-price','$'+fmt(btc.price),cl);
+    sh('b-ch24',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);
+    sv('ks-btc',btc.price<58000?'🔴触发!':'✅ $'+fmt(btc.price,0),btc.price<58000?'dn':'up');
+  }
+  if(fg?.value!=null){
+    const fv=fg.value,fcl=fv<25?'dn':fv>75?'up':'nt';
+    sv('b-fg-val',fv,fcl);
+    sh('b-fg-lab',`<span class="${fcl}">${fg.label}</span>`);
+  }
+  // bgeometrics 链上指标渲染
+  let ocScore=0,ocCount=0;
+  if(bg.mvrv){
+    const v=parseFloat(bg.mvrv.mvrvZscore);const pct=Math.min(100,Math.max(0,(v+1)/3*100));
+    sv('oc-mvrv',fmt(v,3));document.getElementById('oc-mvrv-b').style.cssText=`width:${pct}%;background:${v<1?'var(--green)':v<2?'var(--orange)':'var(--red)'}`;
+    const sig=v<1?'🟢极度低估':v<2?'🟡低估区':v<3?'🟠中性':v<5?'🔴高估':'⛔泡沫';
+    sh('oc-mvrv-s',sig);if(v<1){ocScore+=90;ocCount++;}else if(v<2){ocScore+=70;ocCount++;}else{ocScore+=40;ocCount++;}
+  }
+  if(bg.sopr){
+    const v=parseFloat(bg.sopr.sopr);sv('oc-sopr',fmt(v,4));
+    const pct=Math.min(100,Math.max(0,(v-0.9)/0.3*100));
+    document.getElementById('oc-sopr-b').style.cssText=`width:${pct}%;background:${v<1?'var(--red)':v>1.03?'var(--orange)':'var(--green)'}`;
+    const sig=v<0.97?'亏损抛售':'🟢获利兑现';sh('oc-sopr-s',sig);ocScore+=(v<1?40:75);ocCount++;
+  }
+  if(bg.nupl){
+    const v=parseFloat(bg.nupl.nupl);sv('oc-nupl',fmt(v,4));
+    const pct=Math.min(100,Math.max(0,(v+0.5)/1.5*100));
+    document.getElementById('oc-nupl-b').style.cssText=`width:${pct}%;background:${v<0.25?'var(--green)':v<0.5?'var(--orange)':'var(--red)'}`;
+    const sig=v<0?'🟢投降底部':v<0.25?'🟢积累区':v<0.5?'🟡中性':v<0.75?'🔴乐观区':'⛔极度贪婪';
+    sh('oc-nupl-s',sig);ocScore+=(v<0.25?90:v<0.5?65:40);ocCount++;
+  }
+  if(bg.puell){
+    const v=parseFloat(bg.puell.puellMultiple);sv('oc-puell',fmt(v,3));
+    const pct=Math.min(100,Math.max(0,v/5*100));
+    document.getElementById('oc-puell-b').style.cssText=`width:${pct}%;background:${v<0.5?'var(--green)':v<1?'var(--orange)':'var(--red)'}`;
+    const sig=v<0.5?'🟢矿工极度低估':v<1?'🟡矿工低估':v<2?'🔴中性':'⛔矿工高利润';
+    sh('oc-puell-s',sig);ocScore+=(v<1?85:v<2?60:35);ocCount++;
+  }
+  if(bg.addr){
+    const v=bg.addr.activeAddresses;sv('oc-addr',fmt(v,0));
+    sh('oc-addr-s',v>900000?'🟢高活跃':v>700000?'🟡中活跃':'活跃度低');
+  }
+  if(bg.rp&&btc?.price){
+    const rp=parseFloat(bg.rp.realizedPrice);
+    sv('b-rp','$'+fmt(rp,0),'gl');
+    const prem=(btc.price-rp)/rp*100;
+    sh('b-rp-sub',`较已实现价 ${prem>=0?'+':''}${fmt(prem,1)}%`);
+  }
+  if(ocCount>0){
+    const avg=Math.round(ocScore/ocCount);
+    document.getElementById('oc-total-m').style.cssText=`width:${avg}%;background:${avg>70?'var(--green)':avg>50?'var(--orange)':'var(--red)'}`;
+    document.getElementById('oc-total-s').textContent=(avg>70?'🟢链上极度低估（历史级买点）':avg>55?'🟡链上低估区间':avg>40?'中性':'🔴链上高估区间')+` ${avg}/100`;
+    document.getElementById('oc-total-s').style.color=avg>70?'var(--green)':avg>50?'var(--orange)':'var(--red)';
+  }
 
-  // ── Fed Balance Sheet ──
-  if(data.liquidity?.fed_bs?.value){const bs=data.liquidity.fed_bs.value/1000000;sv('l-bs','$'+fmt(bs,3)+'T');sh('ls-bs',srcTags(data.liquidity.fed_bs.primary,data.liquidity.fed_bs.verify));sh('lf-bs',fredFresh(data.liquidity.fed_bs));}
-
-  // ── Risk Meter ──
-  let rs=15;const vvp=vv?.price;if(vvp>25)rs+=20;if(vvp>35)rs+=30;const hyp=cr.hy_spread?.value;if(hyp&&hyp>4)rs+=25;
-  document.getElementById('risk-m').style.width=rs+'%';document.getElementById('risk-m').style.background=rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)';
-  document.getElementById('risk-s').textContent=(rs<30?'低风险':rs<60?'中风险':'高风险')+' ('+rs+'/100)';document.getElementById('risk-s').style.color=rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)';
-
-  // ── Alerts ──
+  // ── 告警 ──
   let ah='';
-  ah+='<div class="opp-box"><div class="at">🟢 最大非对称机会：BTC</div><div style="font-size:11px">恐贪极低 + 链上极度低估 = 历史级逆向信号</div></div>';
-  ah+='<div class="alert-box"><div class="at">⚠️ 传统指标集体失效</div><div style="font-size:11px">机构化改变BTC市场结构。提高ETF流量+宏观流动性权重。</div></div>';
-  if(alerts.length){
-    document.getElementById('banner').className='alert-banner show';
-    document.getElementById('banner').innerHTML='🚨 '+alerts.map(a=>a.msg).join(' | ');
-    alerts.forEach(a=>ah+=`<div class="alert-box"><div class="at">🔴 ${a.level}: ${a.indicator}</div><div style="font-size:11px">${a.msg}</div></div>`);
-  } else {document.getElementById('banner').className='alert-banner';}
+  ah+=`<div class="obox"><div class="at">🟢 最大非对称机会：BTC链上信号历史级低估</div><div style="font-size:10px">MVRV Z-Score ${bg.mvrv?parseFloat(bg.mvrv.mvrvZscore).toFixed(3):'—'} · NUPL ${bg.nupl?parseFloat(bg.nupl.nupl).toFixed(3):'—'} · Puell ${bg.puell?parseFloat(bg.puell.puellMultiple).toFixed(3):'—'}<br>三指标同时处于"积累区"，历史上此区间买入持有12个月均盈利。</div></div>`;
+  ah+=`<div class="obox"><div class="at">🟢 黄金：Dalio Stage 6 结构牛市</div><div style="font-size:10px">滞胀象限 + 全球去美元化 + 央行购金 = 多年结构性多头。回调是买点。</div></div>`;
+  ah+=`<div class="abox"><div class="at">⚠️ 滞胀-Lite象限：美股估值承压</div><div style="font-size:10px">Core PCE 3.0% + GDP 1.4% + 15%全球关税 = Stagflation trade。J.P. Morgan：2026零降息概率上升。</div></div>`;
+  ah+=`<div class="abox"><div class="at">⚠️ "Sell America" 叙事加速</div><div style="font-size:10px">DXY ${dxy?.price?fmt(dxy.price):'—'} · EU暂停美欧贸易协定 · 聪明钱（Druck+Ackman）已布局非美/巴西/能源。</div></div>`;
+  if(vix?.price>25)ah+=`<div class="abox"><div class="at">🔴 VIX ${fmt(vix.price)} — 高波动警报</div><div style="font-size:10px">系统性风险上升，建议降低组合beta。</div></div>`;
   sh('alerts-c',ah);
 
-  // ── Val ──
-  sh('val-c',`<div style="font-size:11px;color:var(--green)">✅ 数据校验 | ${alerts.length}条告警 | ${errors}次API失败 | 无需本地服务器</div><div style="font-size:10px;color:var(--dim);margin-top:4px">数据源: FRED · Yahoo Finance(via corsproxy.io) · CoinGecko · Alternative.me | 60秒自动刷新</div>`);
+  // ── Kill Switch DXY ──
+  if(dxy?.price)sv('ks-dxy',dxy.price>105?'🔴触发!':'✅ '+fmt(dxy.price),dxy.price>105?'dn':'up');
 
-  sh('conn',`<span style="color:${errors>8?'var(--red)':'var(--green)'}">● ${errors>8?'部分离线':'在线'}</span>`);
+  // ── Data quality ──
+  sh('val-c',`<div style="font-size:10px;color:var(--green)">✅ v4.0 | FRED串行修复 | bgeometrics链上 | 宏观日历 | 分析师观点</div><div style="font-size:10px;color:var(--dim);margin-top:3px">失败请求: ${errs} | Yahoo→CORS代理 | FRED串行300ms | BG串行200ms | 60s刷新</div>`);
+  sh('conn',`<span style="color:${errs>12?'var(--red)':'var(--green)'}">● ${errs>12?'部分离线':'在线'}</span>`);
 }
 
-// ─── 主循环 ───────────────────────────────────────────────────────────────────
-async function poll() {
-  try {
-    document.getElementById('dot').className = 'dot loading';
-    const {data,alerts,errors} = await fetchAll();
-    render(data, alerts, errors);
-  } catch(e) {
-    document.getElementById('dot').className = 'dot err';
+// ─── 主循环 ───────────────────────────────────────────────────
+renderCalendar();
+
+async function poll(){
+  try{
+    document.getElementById('dot').className='dot loading';
+    const data=await fetchAll();
+    render(data);
+  }catch(e){
+    document.getElementById('dot').className='dot err';
     sh('conn','<span style="color:var(--red)">● 离线</span>');
-    sh('val-c',`<div style="font-size:11px;color:var(--red)">❌ 数据拉取失败: ${e.message}</div>`);
-    console.error('[Macro Oracle]', e);
+    sh('val-c',`<div style="font-size:11px;color:var(--red)">❌ ${e.message}</div>`);
+    console.error('[Macro Oracle v4.0]',e);
   }
 }
-
 poll();
-setInterval(poll, REFRESH_MS);
+setInterval(poll,REFRESH_MS);
 </script>
 </body>
 </html>
