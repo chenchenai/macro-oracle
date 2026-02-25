@@ -432,20 +432,42 @@ async function fetchFG() {
   return{value:parseInt(i.value),label:i.value_classification,timestamp:i.timestamp};
 }
 
-// ─── Fetch: bgeometrics (串行) ────────────────────────────────
+// ─── Fetch: bgeometrics (localStorage缓存 · 每小时最多6次) ──
+// 免费限额 8次/小时，用 50分钟 TTL 缓存避免超限
+const BG_CACHE_KEY = 'macro_oracle_bg_cache';
+const BG_CACHE_TTL = 50 * 60 * 1000; // 50分钟
+
 async function fetchBG(endpoint) {
-  const r=await fetch(BG_BASE+endpoint,{signal:AbortSignal.timeout(10000)});
-  if(!r.ok)throw new Error(`BG ${endpoint} HTTP ${r.status}`);
+  const r=await fetch(BG_BASE+endpoint,{signal:AbortSignal.timeout(12000)});
+  if(!r.ok)throw new Error(`BG ${endpoint} HTTP ${r.status} — rate limit?`);
   const d=await r.json();
-  return Array.isArray(d)?d[d.length-1]:d;
+  if(!Array.isArray(d)||d.length===0)throw new Error(`BG ${endpoint} empty`);
+  return d[d.length-1];
 }
 
 async function fetchBGSeq() {
+  // 先查 localStorage 缓存
+  try{
+    const cached=localStorage.getItem(BG_CACHE_KEY);
+    if(cached){
+      const {ts,data}=JSON.parse(cached);
+      if(Date.now()-ts < BG_CACHE_TTL){
+        console.log('[BG] cache hit, age='+(((Date.now()-ts)/60000).toFixed(1))+'min');
+        return data;
+      }
+    }
+  }catch{}
+  // 缓存过期或不存在 → 真正请求
   const results={};
   const eps={mvrv:'mvrv-zscore',sopr:'sopr',nupl:'nupl',puell:'puell-multiple',addr:'active-addresses',rp:'realized-price'};
   for(const[key,ep] of Object.entries(eps)){
-    await delay(200);
-    try{results[key]=await fetchBG(ep);}catch{results[key]=null;}
+    await delay(500); // 加大间隔，降低并发压力
+    try{results[key]=await fetchBG(ep);}
+    catch(e){console.warn('[BG]',key,e.message);results[key]=null;}
+  }
+  // 写入缓存（只有至少一个成功才缓存）
+  if(Object.values(results).some(v=>v!==null)){
+    try{localStorage.setItem(BG_CACHE_KEY,JSON.stringify({ts:Date.now(),data:results}));}catch{}
   }
   return results;
 }
