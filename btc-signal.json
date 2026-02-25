@@ -1,0 +1,51 @@
+{
+  "meta": {
+    "version": "1.0",
+    "description": "BTC择时信号日报 by BTC-Timing-Monitor",
+    "update_url": "https://api.github.com/repos/chenchenai/macro-oracle/contents/btc-signal.json"
+  },
+  "signal": {
+    "date": "2026-02-25",
+    "time": "09:00",
+    "session": "morning",
+    "direction": "NEUTRAL_WATCH",
+    "direction_label": "观望/轻仓试探",
+    "confidence": "medium",
+    "confidence_score": 3,
+    "signal_strength": "弱",
+    "entry_zone": {
+      "low": 62000,
+      "high": 65000,
+      "note": "等回调至区间再介入"
+    },
+    "stop_loss": 58000,
+    "take_profit": [
+      {"level": 72000, "label": "第一目标 50%止盈"},
+      {"level": 82000, "label": "第二目标 剩余50%"}
+    ],
+    "position_size": "20-30%",
+    "valid_until": "2026-02-26T09:00:00+08:00",
+    "basis": [
+      "MVRV Z-Score 0.355 — 历史积累区，链上极度低估",
+      "恐贪指数 11（Extreme Fear）— 历史级逆向信号",
+      "NUPL 0.159 — 接近投降底部，持有者普遍亏损"
+    ],
+    "risks": [
+      "BTC与SPX相关性60.5%，美股下跌可能继续拖累",
+      "Goldman PCE预测3.05%，宏观流动性偏紧"
+    ],
+    "next_checkpoint": "$66,000（多头确认）或 $60,000（加仓机会）",
+    "invalidation": "$58,000以下判断失效，止损出场",
+    "notes": "当前为主跌浪后的震荡筑底阶段。链上数据极度低估但宏观风险尚存，采取等待策略：优先等回调至$62K-$65K入场，不追高。",
+    "updated_at": "2026-02-25T09:00:00+08:00",
+    "updated_by": "BTC-Timing-Monitor"
+  },
+  "history": [
+    {
+      "date": "2026-02-24",
+      "direction": "NEUTRAL_WATCH",
+      "entry": 64500,
+      "result": "观望，BTC -5%/24h，未触发入场条件"
+    }
+  ]
+}
