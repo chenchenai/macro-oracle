@@ -1,188 +1,100 @@
 {
   "meta": {
     "version": "2.0",
-    "description": "BTC择时买入策略日报 by 金融策略师/BTC-Timing-Monitor"
+    "description": "BTC择时买入策略日报 by 金融数据猎手/BTC-Timing-Monitor",
+    "data_source": "Glassnode(本地SQLite) + CoinGecko"
   },
+  "updated_at": "2026-03-02T18:48:00+08:00",
   "system": {
-    "status": "🔴 扫描建仓模式",
-    "status_code": "SCANNING",
+    "status": "🟡 观察模式",
+    "status_code": "WATCHING",
     "current_position": 0,
-    "today_signal": "无（未触发任何 Level）",
+    "today_signal": "Level3 1/3触发",
     "signal_triggered": false
   },
   "metrics": {
     "price": {
-      "value": 64928,
-      "date": "2026-02-24",
+      "value": 66251.0,
+      "date": "2026-03-02",
       "label": "BTC价格"
     },
     "wma_200": {
-      "value": 58379,
-      "date": "2026-02-24",
+      "value": 58479,
+      "date": "2026-03-01",
       "label": "200WMA（周线）"
     },
     "realized_price": {
-      "value": 54633,
-      "date": "2026-02-24",
+      "value": 54565,
+      "date": "2026-03-01",
       "label": "已实现价格"
     },
     "ahr999": {
-      "value": 0.3021,
-      "date": "2026-02-25",
+      "value": 0.312,
+      "date": "2026-03-02",
       "label": "Ahr999"
     },
     "mvrv_zscore": {
-      "value": 0.3316,
-      "date": "2026-02-24",
+      "value": 0.394,
+      "date": "2026-03-01",
       "label": "MVRV Z-Score"
     },
+    "mvrv": {
+      "value": 1.2057,
+      "date": "2026-03-01",
+      "label": "MVRV Ratio"
+    },
     "mayer_multiple": {
-      "value": 1.1122,
-      "date": "2026-02-24",
+      "value": 0.6776,
+      "date": "2026-03-01",
       "label": "Mayer Multiple"
     },
     "cvdd": {
-      "value": 45298,
-      "date": "2026-02-24",
+      "value": 45493,
+      "date": "2026-03-01",
       "label": "CVDD"
     },
     "balanced_price": {
-      "value": 41040,
-      "date": "2026-02-24",
+      "value": 40874,
+      "date": "2026-03-01",
       "label": "Balanced Price"
     },
     "puell_multiple": {
-      "value": 0.7315,
-      "date": "2026-02-24",
+      "value": 0.6827,
+      "date": "2026-03-01",
       "label": "Puell Multiple"
     },
     "lth_sopr": {
-      "value": 0.876,
-      "date": "2026-02-24",
+      "value": 0.799,
+      "date": "2026-03-01",
       "label": "LTH-SOPR"
-    },
-    "rsi_14d": {
-      "value": 33.007,
-      "date": "2026-02-24",
-      "label": "RSI(14d)"
-    },
-    "ma5": {
-      "value": 66615,
-      "date": "2026-02-24",
-      "label": "MA5(日线)"
-    },
-    "ma20": {
-      "value": 67775,
-      "date": "2026-02-24",
-      "label": "MA20(日线)"
     }
   },
   "depression_zone": {
-    "activated": true,
-    "activated_count": 1,
-    "total_conditions": 5,
-    "conditions": [
-      {
-        "label": "Price < 200WMA",
-        "triggered": false,
-        "current": 64928,
-        "threshold": 58379
-      },
-      {
-        "label": "Price < Realized Price",
-        "triggered": false,
-        "current": 64928,
-        "threshold": 54633
-      },
-      {
-        "label": "Ahr999 < 0.45",
-        "triggered": true,
-        "current": 0.3021,
-        "threshold": 0.45
-      },
-      {
-        "label": "MVRV Z-Score < 0",
-        "triggered": false,
-        "current": 0.3316,
-        "threshold": 0
-      },
-      {
-        "label": "Mayer Multiple < 0.65",
-        "triggered": false,
-        "current": 1.1122,
-        "threshold": 0.65
-      }
+    "active": true,
+    "triggered_count": 2,
+    "signals": [
+      "Ahr999 0.3120 < 0.45 ✅",
+      "LTH-SOPR 0.7990 < 1.0 ✅"
     ]
   },
-  "levels": {
-    "level1": {
-      "name": "算法铁底",
-      "target_position": "50%",
-      "triggered": false,
-      "description": "Price ≤ CVDD 或 Price ≤ Balanced Price",
-      "conditions": [
-        {
-          "label": "Price ≤ CVDD",
-          "triggered": false,
-          "current": 64928,
-          "threshold": 45298
-        },
-        {
-          "label": "Price ≤ Balanced Price",
-          "triggered": false,
-          "current": 64928,
-          "threshold": 41040
-        }
-      ]
-    },
-    "level2": {
-      "name": "矿工投降",
-      "target_position": "80%",
-      "triggered": false,
-      "description": "前置：Depression Zone已激活 + Puell Multiple < 0.5",
-      "pre_condition": true,
-      "conditions": [
-        {
-          "label": "Puell Multiple < 0.5",
-          "triggered": false,
-          "current": 0.7315,
-          "threshold": 0.5
-        }
-      ]
-    },
-    "level3": {
-      "name": "趋势确认满仓",
-      "target_position": "100%",
-      "triggered": false,
-      "description": "Depression Zone激活 + LTH-SOPR<1 + 任一确认信号",
-      "pre_conditions": [
-        {
-          "label": "Depression Zone激活",
-          "triggered": true
-        },
-        {
-          "label": "LTH-SOPR < 1.0",
-          "triggered": true,
-          "current": 0.876
-        }
-      ],
-      "confirmation_signals": [
-        {
-          "label": "Slingshot（价格收复200WMA）",
-          "triggered": false
-        },
-        {
-          "label": "Micro Trend（MM<0.6且MA5上穿MA20）",
-          "triggered": false
-        },
-        {
-          "label": "Rebound（RSI从超卖回升）",
-          "triggered": false
-        }
-      ]
+  "level3": {
+    "triggered_count": 1,
+    "conditions": {
+      "price_above_200wma": true,
+      "mayer_lt_06_ma5_cross": false,
+      "rsi_recovery": false
     }
   },
-  "raw_output": "📊 *BTC择时买入策略 · 每日信号*\n📅 推送时间：2026-02-25 19:27（北京时间）\n📆 指标数据截至：2026-02-24\n\n🌡️ *系统状态*：🔴 扫描建仓模式（已激活）\n💼 *当前仓位*：0%\n\n🔕 *今日信号*：无（未触发任何 Level）\n\n⚫ *Level 1 · 算法铁底（目标 50%）*\n  条件：Price ≤ CVDD 或 Price ≤ Balanced Price\n  ⬜ Price ≤ CVDD：64,928 ≤ 45,298\n  ⬜ Price ≤ Balanced：64,928 ≤ 41,040\n\n⚫ *Level 2 · 矿工投降（目标 80%）*\n  前置：Depression Zone 已激活\n  ⬜ Puell Multiple < 0.5：当前 0.7315\n\n⚫ *Level 3 · 趋势确认满仓（目标 100%）*\n  ✅ Depression Zone 激活\n  ✅ LTH-SOPR < 1.0：当前 0.8760\n  确认信号：\n    ⬜ Slingshot（价格收复 200WMA）\n    ⬜ Micro Trend（MM<0.6 且 MA5 上穿 MA20）\n    ⬜ Rebound（RSI 从超卖回升）\n\n━━━━━━━━━━━━━━━━━━━━\n📉 *Depression Zone 五条件明细*\n  ⬜ Price < 200WMA\n  ⬜ Price < Realized Price\n  ✅ Ahr999 < 0.45\n  ⬜ MVRV Z-Score < 0\n  ⬜ Mayer Multiple < 0.65\n\n📋 *关键指标快照*\n  Price：64,928 USD  (2026-02-24)\n  200WMA：58,379  (2026-02-24)\n  Realized Price：54,633  (2026-02-24)\n  Ahr999：0.3021  (2026-02-25)\n  MVRV Z-Score：0.3316  (2026-02-24)\n  Mayer Multiple：1.1122  (2026-02-24)\n  CVDD：45,298  (2026-02-24)\n  Balanced Price：41,040  (2026-02-24)\n  Puell Multiple：0.7315  (2026-02-24)\n  LTH-SOPR：0.8760  (2026-02-24)\n  RSI(14d)：33.0070  (2026-02-24)\n  MA5：66,615  (2026-02-24)\n  MA20：67,775  (2026-02-24)\n\n─────────────────────\n📌 策略版本 v1.2 · 仅供参考，人工执行",
-  "updated_at": "2026-02-25T19:26:00+08:00",
-  "updated_by": "btc_timing_signal.py v1.2"
+  "signal": {
+    "direction": "NEUTRAL",
+    "direction_label": "观望",
+    "confidence_score": 2,
+    "position_size": "0%",
+    "entry_zone": {
+      "low": 60000,
+      "high": 65000
+    },
+    "stop_loss": 58000,
+    "notes": "Depression Zone激活(2/5)，链上极度低估，等待Level3确认信号。LTH-SOPR<1说明老钱仍在卖出，暂不追涨。"
+  }
 }
