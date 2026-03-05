@@ -1,137 +1,85 @@
 {
   "meta": {
-    "version": "2.0",
-    "description": "BTC择时买入策略日报 by 金融数据猎手/BTC-Timing-Monitor",
-    "data_source": "Binance(技术面) + Glassnode(链上估算) + Alternative.me(情绪)"
+    "version": "2.1",
+    "description": "BTC择时买入策略 by BTC-Timing-Monitor",
+    "data_source": "Binance(技术面) + Glassnode(链上估算) + Alternative.me(情绪)",
+    "push_format": "v2.0 七模块结构化推送"
   },
-  "updated_at": "2026-03-05T11:35:00+08:00",
+  "updated_at": "2026-03-05T16:05:00+08:00",
   "system": {
-    "status": "🟠 信号升级：观察→局部做多",
-    "status_code": "LEVEL3_FORMING",
+    "status": "🟡 预警窗口：观察回踩入场",
+    "status_code": "NEUTRAL_WATCH",
     "current_position": 0,
-    "today_signal": "Level3 RSI回升确认，2/3条件达成",
-    "signal_triggered": true
+    "depression_zone_triggered": "3/5",
+    "level3_triggered": "2/3",
+    "action_required": "设置 $70,000 / $68,500 价格预警"
+  },
+  "cycle": {
+    "phase": "熊市末期 → 周期底部确认阶段",
+    "historical_analog": ["2018-12 $3,200底部后首次反弹", "2022-11 $16k底部后震荡筑底"],
+    "bottom_probability": "70%已触及底部区间($62k-$68k) / 30%二次探底风险($58k-$62k)"
+  },
+  "entry_window": {
+    "status": "🟡 预警窗口",
+    "ideal_zone_low": 66000,
+    "ideal_zone_high": 70000,
+    "current_vs_zone": "略高于区间上沿，追多性价比低",
+    "trigger_conditions": [
+      "① 回踩$68,000-$70,000 + RSI≥50 → 第一批",
+      "② MVRV Z-Score < 0.2 OR 二次回踩$65k-$67k",
+      "③ Mayer MA5穿越0.6向上 OR MVRV Z-Score < 0"
+    ]
   },
   "metrics": {
-    "price": {
-      "value": 72380,
-      "date": "2026-03-05",
-      "label": "BTC价格"
-    },
-    "price_change_24h": {
-      "value": 7.18,
-      "date": "2026-03-05",
-      "label": "24h涨幅%"
-    },
-    "ma200": {
-      "value": 96154,
-      "date": "2026-03-05",
-      "label": "200日均线(DMA)"
-    },
-    "ma7": {
-      "value": 68691,
-      "date": "2026-03-05",
-      "label": "7日均线"
-    },
-    "wma_200": {
-      "value": 58600,
-      "date": "2026-03-04",
-      "label": "200WMA（周线，估算）"
-    },
-    "realized_price": {
-      "value": 54565,
-      "date": "2026-03-01",
-      "label": "已实现价格（链上，3/1数据）"
-    },
-    "ahr999": {
-      "value": 0.341,
-      "date": "2026-03-05",
-      "label": "Ahr999（估算）"
-    },
-    "mvrv_zscore": {
-      "value": 0.43,
-      "date": "2026-03-05",
-      "label": "MVRV Z-Score（估算）"
-    },
-    "mvrv": {
-      "value": 1.317,
-      "date": "2026-03-05",
-      "label": "MVRV Ratio（估算）"
-    },
-    "mayer_multiple": {
-      "value": 0.7527,
-      "date": "2026-03-05",
-      "label": "Mayer Multiple"
-    },
-    "rsi_14d": {
-      "value": 62.5,
-      "date": "2026-03-05",
-      "label": "RSI(14日)"
-    },
-    "fear_greed": {
-      "value": 22,
-      "date": "2026-03-05",
-      "label": "恐贪指数（极度恐惧）"
-    },
-    "puell_multiple": {
-      "value": 0.746,
-      "date": "2026-03-05",
-      "label": "Puell Multiple（估算）"
-    },
-    "lth_sopr": {
-      "value": 0.82,
-      "date": "2026-03-04",
-      "label": "LTH-SOPR（估算）"
-    }
+    "price": {"value": 71905, "date": "2026-03-05", "label": "BTC价格"},
+    "price_change_24h": {"value": -1.05, "date": "2026-03-05", "label": "24h涨幅%"},
+    "ma200": {"value": 96152, "date": "2026-03-05", "label": "200日均线"},
+    "ma7": {"value": 68623, "date": "2026-03-05", "label": "7日均线"},
+    "wma_200": {"value": 58600, "date": "2026-03-04", "label": "200WMA（周线，估算）"},
+    "realized_price": {"value": 54565, "date": "2026-03-01", "label": "已实现价格"},
+    "ahr999": {"value": 0.339, "date": "2026-03-05", "label": "Ahr999", "status": "🟢底部区", "triggered": true},
+    "mvrv_zscore": {"value": 0.428, "date": "2026-03-05", "label": "MVRV Z-Score", "status": "🟡安全区", "triggered": false},
+    "mvrv": {"value": 1.311, "date": "2026-03-05", "label": "MVRV Ratio", "status": "🟢低估区"},
+    "mayer_multiple": {"value": 0.7478, "date": "2026-03-05", "label": "Mayer Multiple", "status": "🟡低估区", "triggered": false},
+    "rsi_14d": {"value": 61.2, "date": "2026-03-05", "label": "RSI(14日)", "status": "🟡中性偏多", "triggered": true},
+    "fear_greed": {"value": 22, "date": "2026-03-05", "label": "恐贪指数", "status": "🔴极度恐惧"},
+    "puell_multiple": {"value": 0.745, "date": "2026-03-05", "label": "Puell Multiple", "status": "🟢矿工压力极低"},
+    "lth_sopr": {"value": 0.82, "date": "2026-03-04", "label": "LTH-SOPR", "status": "🟡老钱仍割", "triggered": true}
   },
   "depression_zone": {
     "active": true,
-    "triggered_count": 2,
+    "triggered_count": 3,
+    "total": 5,
     "signals": [
-      "Ahr999 0.341 < 0.45 ✅",
-      "LTH-SOPR ~0.82 < 1.0 ✅（链上老钱仍在低位割）"
+      "Ahr999 0.339 < 0.45 ✅",
+      "LTH-SOPR ~0.82 < 1.0 ✅",
+      "RSI从超卖回升至61.2 ✅",
+      "MVRV Z-Score 0.428（需<0）❌",
+      "Mayer MA5穿越0.6（当前0.748）❌"
     ]
-  },
-  "level3": {
-    "triggered_count": 2,
-    "conditions": {
-      "price_above_200wma": true,
-      "mayer_lt_06_ma5_cross": false,
-      "rsi_recovery": true
-    },
-    "notes": "RSI从超卖区大幅回升至62.5，本次弹升+9.3%，Level3条件由1/3升至2/3"
   },
   "signal": {
     "direction": "NEUTRAL_WATCH",
-    "direction_label": "观察/等待",
+    "direction_label": "观察等待入场",
     "confidence": "medium",
-    "confidence_score": 2,
+    "confidence_score": 3,
     "signal_strength": "中",
-    "position_size": "0%（等待确认）",
-    "entry_zone": {
-      "low": 68000,
-      "high": 72000,
-      "note": "若回测7DMA区间（$68k-$69k）可视为更优入场"
-    },
-    "stop_loss": 65000,
+    "position_plan": [
+      {"batch": 1, "size": "10-15%", "trigger": "回踩$68,000-$70,000 + RSI≥50"},
+      {"batch": 2, "size": "10-15%", "trigger": "MVRV Z-Score < 0.2 OR 二次回踩$65k-$67k"},
+      {"batch": 3, "size": "10-15%", "trigger": "MVRV Z-Score < 0 OR Mayer MA5穿越0.6"}
+    ],
+    "max_position": "30-40%",
+    "stop_loss": 63500,
     "take_profit": [
-      {"level": 80000, "label": "第一目标（50%止盈）"},
-      {"level": 88000, "label": "第二目标（剩余50%）"}
+      {"level": 82000, "label": "第一目标（50%止盈）"},
+      {"level": 95000, "label": "第二目标（余量持有）"}
     ],
-    "valid_until": "2026-03-06T20:00:00+08:00",
-    "basis": [
-      "Depression Zone激活(2/5)：Ahr999=0.341 + LTH-SOPR≈0.82，链上极度低估",
-      "Level3升至2/3：RSI(14)=62.5从超卖区显著回升，动能改善",
-      "恐贪指数22（极度恐惧），历史上是逆向做多的高胜率区域"
-    ],
-    "risks": [
-      "LTH-SOPR仍<1，长期持有者仍在低位兑现，卖压未完全出清",
-      "Mayer Multiple仅0.75，远低于历史均值，200DMA上方巨大压力带（$96k）"
-    ],
-    "next_checkpoint": "观察是否回踩$68k-$69k区间并企稳；或Mayer MA5突破0.6触发Level3完整确认",
-    "invalidation": "跌破$65k（200WMA上方支撑失守），信号失效，降至观望",
-    "notes": "短线大幅反弹（+9.3%/3天），链上估值仍处历史低位，情绪极度恐惧。格局从'单纯等待'升至'观察入场窗口'，可设置$68k-$69k回踩买入预警。",
-    "updated_at": "2026-03-05T11:35:00+08:00",
+    "invalidation": "跌破$63,500，止损全出",
+    "downgrade": "反弹至$75k+未确认新高，减仓等待",
+    "next_checkpoint": "是否回踩$68,500-$70,000企稳（24-48h内）",
+    "notes": "链上3/5触发，已达第一批建仓阈值，但当前价位偏高。等待回踩是最优策略，不追。",
+    "updated_at": "2026-03-05T16:05:00+08:00",
     "updated_by": "BTC-Timing-Monitor"
   }
 }
