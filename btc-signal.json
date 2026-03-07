@@ -2,15 +2,82 @@
   "meta": {
     "version": "3.1",
     "description": "BTC择时信号日报 by BTC-Timing-Monitor",
-    "format": "v3.1 八模块结构化推送（含宏观&流动性维度）",
-    "data_sources": ["Glassnode(本地SQLite)", "Binance", "Alternative.me", "FRED", "Yahoo Finance"]
+    "format": "v3.1 八模块结构化推送"
   },
-  "updated_at": "2026-03-07T11:15:00+08:00",
+  "updated_at": "2026-03-07T11:25:00+08:00",
   "system": {
     "status": "🟡 预警窗口：观望，等待DZ条件积累",
     "status_code": "NEUTRAL_WATCH",
-    "depression_zone": "1/5",
-    "phase": "熊市初期（峰值后第5个月）"
+    "today_signal": "NEUTRAL_WATCH ★★★☆☆",
+    "signal_triggered": false,
+    "current_position": 0,
+    "depression_zone": "1/5（弱激活）",
+    "cycle_phase": "减半后第23个月，本轮峰值$124,774后第5个月，熊市初期"
+  },
+  "metrics": {
+    "price":          { "value": 68117,  "date": "2026-03-06" },
+    "wma_200":        { "value": 58593,  "date": "2026-03-06" },
+    "realized_price": { "value": 54491,  "date": "2026-03-06" },
+    "cvdd":           { "value": 45503,  "date": "2026-03-06" },
+    "balanced_price": { "value": 40811,  "date": "2026-03-06" },
+    "ahr999":         { "value": 0.3585, "date": "2026-03-06" },
+    "mvrv_zscore":    { "value": 0.4796, "date": "2026-03-06" },
+    "mayer_multiple": { "value": 0.7103, "date": "2026-03-06" },
+    "puell_multiple": { "value": 0.7135, "date": "2026-03-06" },
+    "lth_sopr":       { "value": 0.7790, "date": "2026-03-06" },
+    "rsi_14d":        { "value": 46.04,  "date": "2026-03-06" },
+    "ma5":            { "value": 69768,  "date": "2026-03-06" },
+    "ma20":           { "value": 67736,  "date": "2026-03-06" }
+  },
+  "depression_zone": {
+    "activated_count": 1,
+    "total_conditions": 5,
+    "activated": true,
+    "conditions": [
+      { "triggered": false, "label": "Price < 200WMA",         "current": 68117,  "threshold": 58593 },
+      { "triggered": false, "label": "Price < Realized Price",  "current": 68117,  "threshold": 54491 },
+      { "triggered": true,  "label": "Ahr999 < 0.45",          "current": 0.3585, "threshold": 0.45  },
+      { "triggered": false, "label": "MVRV Z-Score < 0",        "current": 0.4796, "threshold": 0     },
+      { "triggered": false, "label": "Mayer Multiple < 0.65",   "current": 0.7103, "threshold": 0.65  }
+    ]
+  },
+  "levels": {
+    "level1": {
+      "triggered": false,
+      "name": "算法铁底",
+      "target_position": "50%",
+      "pre_conditions": [],
+      "conditions": [
+        { "triggered": false, "label": "Price ≤ CVDD",          "current": 68117, "threshold": 45503 },
+        { "triggered": false, "label": "Price ≤ Balanced Price", "current": 68117, "threshold": 40811 }
+      ]
+    },
+    "level2": {
+      "triggered": false,
+      "name": "矿工投降",
+      "target_position": "80%",
+      "pre_conditions": [
+        { "triggered": true, "label": "Depression Zone 已激活（1/5）" }
+      ],
+      "conditions": [
+        { "triggered": false, "label": "Puell Multiple < 0.5", "current": 0.7135, "threshold": 0.5 }
+      ]
+    },
+    "level3": {
+      "triggered": false,
+      "name": "趋势确认",
+      "target_position": "100%",
+      "pre_conditions": [
+        { "triggered": true,  "label": "Depression Zone 已激活（1/5）" },
+        { "triggered": true,  "label": "LTH-SOPR < 1.0", "current": 0.7790, "threshold": 1.0 }
+      ],
+      "conditions": [],
+      "confirmation_signals": [
+        { "triggered": false, "label": "Slingshot（价格从下方收复200WMA）" },
+        { "triggered": false, "label": "Micro Trend（Mayer<0.6 且 MA5上穿MA20）" },
+        { "triggered": false, "label": "Rebound（RSI从超卖区<30回升至>50）" }
+      ]
+    }
   },
   "cycle": {
     "halving_date": "2024-04-20",
@@ -19,82 +86,19 @@
     "peak_date": "2025-10-06",
     "months_post_peak": 5,
     "drawdown_from_peak_pct": -45.4,
-    "phase": "减半后第23个月，本轮峰值$124,774后第5个月，熊市初期",
-    "historical_analog": [
-      "2022-03 $47K（距2021-11峰值4个月，-32%，最终底$16K）",
-      "2018-04 $8K（距2017-12峰值4个月，-60%，最终底$3.1K）"
-    ],
+    "phase_label": "熊市初期",
+    "historical_analog": "2022-03 $47K（距2021-11峰值4个月）/ 2018-04 $8K（距2017-12峰值5个月）",
     "bottom_probability": "25%已触底，75%继续下行至$45K-$60K区间"
-  },
-  "entry_window": {
-    "status": "🟡 预警窗口（未开启）",
-    "ideal_zone": { "low": 55000, "high": 65000 },
-    "triggers": [
-      "① L2: DZ≥3/5 + Puell<0.5（目标仓位30-35%）",
-      "② L3: DZ≥2/5 + LTH-SOPR<1 + 确认信号（目标10-15%）",
-      "③ L1: Price≤CVDD($45,503) 或 Price≤Balanced($40,811)（目标40-50%）"
-    ]
-  },
-  "metrics": {
-    "btc": {
-      "price": 68117,
-      "data_date": "2026-03-06",
-      "chg_24h_pct": -3.9
-    },
-    "indicators": {
-      "ahr999": { "value": 0.3585, "date": "2026-03-06", "signal": "底部区间(<0.45)", "triggered": true },
-      "mvrv_z_score": { "value": 0.4796, "date": "2026-03-06", "threshold": 0, "triggered": false },
-      "mayer_multiple": { "value": 0.7103, "date": "2026-03-06", "threshold": 0.65, "triggered": false },
-      "lth_sopr": { "value": 0.7790, "date": "2026-03-06", "threshold": 1.0, "triggered": true },
-      "puell_multiple": { "value": 0.7135, "date": "2026-03-06", "threshold": 0.5, "triggered": false },
-      "rsi_14d": { "value": 46.04, "date": "2026-03-06" },
-      "ma5": { "value": 69768, "date": "2026-03-06" },
-      "ma20": { "value": 67736, "date": "2026-03-06" },
-      "ma_200w": { "value": 58593, "date": "2026-03-06" },
-      "realized_price": { "value": 54491, "date": "2026-03-06" },
-      "cvdd": { "value": 45503, "date": "2026-03-06" },
-      "balanced_price": { "value": 40811, "date": "2026-03-06" }
-    },
-    "depression_zone": {
-      "activated": 1,
-      "total": 5,
-      "conditions": {
-        "price_lt_200wma": false,
-        "price_lt_realized": false,
-        "ahr999_lt_045": true,
-        "mvrv_z_lt_0": false,
-        "mayer_lt_065": false
-      }
-    },
-    "signals": {
-      "L1": false,
-      "L2": false,
-      "L3_partial": false
-    },
-    "fear_greed": { "value": 12, "label": "Extreme Fear", "date": "2026-03-07" }
   },
   "macro": {
     "regime": "D/E过渡（法币贬值+滞胀前兆）",
-    "btc_bias": "🟠 有条件顺风（黄金优先）",
-    "dalio_quadrant": "增长下行×通胀粘性",
-    "key_events": ["2026-03-12 CPI", "2026-03-18/19 FOMC"],
-    "throughlines": {
-      "primary": "LTH-SOPR=0.779，长期持有者平均亏损22%卖出，历史中期底部信号积累",
-      "conflict": "WTI $88+中东冲突，滞胀叙事与降息预期博弈",
-      "tail_risk": "油价破$90→核心通胀二次上行→Fed重新加息→流动性收紧"
-    }
-  },
-  "strategy": {
-    "position_pct": 0,
-    "max_position_pct": 50,
-    "leverage": "零杠杆铁律",
-    "batch_plan": [
-      { "trigger": "L3触发+DZ≥2/5", "price_range": "$58K-$65K", "size_pct": 10 },
-      { "trigger": "L2触发+DZ≥3/5", "price_range": "$50K-$55K", "size_pct": 15 },
-      { "trigger": "L1触发(CVDD)", "price_range": "$40K-$46K", "size_pct": 15 }
-    ],
-    "stop_loss": 35000,
-    "invalidation": "周收盘价破$55,000"
-  },
-  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
+    "dalio_quadrant": "增长下行 × 通胀粘性",
+    "btc_bias": "🟠 有条件顺风（黄金优先于BTC）",
+    "throughline_primary":  "LTH-SOPR=0.779，长期持有者平均亏损22%卖出，历史底部信号积累",
+    "throughline_conflict":  "WTI $88（中东冲突），滞胀叙事与降息预期博弈",
+    "throughline_tail_risk": "油价破$90→核心通胀二次上行→Fed重新加息→流动性收紧",
+    "fear_greed": 12,
+    "fear_greed_label": "Extreme Fear",
+    "key_events": ["2026-03-12 CPI", "2026-03-18/19 FOMC"]
+  }
 }
