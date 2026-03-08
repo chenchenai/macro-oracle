@@ -1,0 +1,170 @@
+{
+  "updated": "2026-03-08T14:40:38+08:00",
+  "retain_days": 7,
+  "events": [
+    {
+      "id": "20260308-001",
+      "date": "2026-03-08",
+      "priority": "P0",
+      "color": "red",
+      "title": "美最高法院裁定IEEPA关税违法",
+      "fact": "美最高法院裁定特朗普援引《国际紧急经济权力法》（IEEPA）实施的大范围关税措施违宪，过去2年关税架构法律基础被推翻。",
+      "importance": "政策重建路径高度不确定；贸易摩擦进入再定价阶段，各方等待政府替代方案。",
+      "investment": "短期美元承压、通胀预期分化；关税敏感行业（科技/消费制造）波动加剧；密切关注USTR替代路径。",
+      "sources": [
+        {
+          "label": "SCOTUS",
+          "url": "https://www.supremecourt.gov/"
+        },
+        {
+          "label": "USTR",
+          "url": "https://ustr.gov/"
+        },
+        {
+          "label": "路透社",
+          "url": "https://www.reuters.com/world/us/us-supreme-court/"
+        }
+      ]
+    },
+    {
+      "id": "20260308-002",
+      "date": "2026-03-08",
+      "priority": "P0",
+      "color": "red",
+      "title": "美以联合对伊朗军事打击持续",
+      "fact": "3月初美以联军发动 Operation Epic Fury，霍尔木兹海峡运输近乎中断，WTI原油升至 ~$88/桶，黄金突破 $5,000/oz 并维持高位。",
+      "importance": "全球约20%原油经霍尔木兹海峡，供应冲击触发通胀预期重新定价；若持续超2周，通胀中枢系统性抬升。",
+      "investment": "做多黄金/能源（GLD/XLE）；BTC 随避险情绪同步上涨；美股成长股承压；关注OPEC+紧急回应与美国SPR释放信号。",
+      "sources": [
+        {
+          "label": "Guardian",
+          "url": "https://www.theguardian.com/world/iran"
+        },
+        {
+          "label": "EIA石油数据",
+          "url": "https://www.eia.gov/petroleum/"
+        },
+        {
+          "label": "Oxford Economics",
+          "url": "https://www.oxfordeconomics.com/"
+        }
+      ]
+    },
+    {
+      "id": "20260308-003",
+      "date": "2026-03-08",
+      "priority": "P1",
+      "color": "orange",
+      "title": "堪萨斯城联储：服务通胀顽固，降息路径收窄",
+      "fact": "堪萨斯城联储主席讲话指出CPI接近3%，服务通胀（超核心）远超2%目标；市场确认3月FOMC按兵不动概率接近100%。",
+      "importance": "明确暗示美联储降息窗口继续后移；J.P. Morgan已将2026全年降息预测下调至0次。",
+      "investment": "短端利率维持高位；成长股/高估值资产持续承压；TIPS/黄金受益于通胀预期锚定上移。",
+      "sources": [
+        {
+          "label": "Kansas City Fed",
+          "url": "https://www.kansascityfed.org/"
+        },
+        {
+          "label": "CME FedWatch",
+          "url": "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html"
+        },
+        {
+          "label": "JPM研报",
+          "url": "https://www.jpmorgan.com/insights/economy/"
+        }
+      ]
+    },
+    {
+      "id": "20260306-001",
+      "date": "2026-03-06",
+      "priority": "P0",
+      "color": "red",
+      "title": "2月非农就业NFP数据出炉",
+      "fact": "美国2月非农就业新增不足预期（预期+58k-65k），AHE同比+0.4%通胀压力未减；就业降温+通胀顽固的组合确认滞胀信号。",
+      "importance": "劳动力市场出现裂缝（联邦裁员+天气因素），但工资通胀维持高位，Fed两难困境加深。",
+      "investment": "弱NFP→降息预期小幅前移，BTC/黄金短暂受益；AHE未降→中长期利率维持高位；3月CPI（3/11）成为下一定价锚。",
+      "sources": [
+        {
+          "label": "BLS官网",
+          "url": "https://www.bls.gov/news.release/empsit.nr0.htm"
+        },
+        {
+          "label": "FRED就业数据",
+          "url": "https://fred.stlouisfed.org/series/PAYEMS"
+        },
+        {
+          "label": "Trading Economics",
+          "url": "https://tradingeconomics.com/united-states/non-farm-payrolls"
+        }
+      ]
+    },
+    {
+      "id": "20260305-001",
+      "date": "2026-03-05",
+      "priority": "P1",
+      "color": "orange",
+      "title": "ADP私人就业报告弱于预期",
+      "fact": "ADP 2月私人就业新增约14.5万（预期），但细分数据显示制造业持续萎缩，服务业雇佣边际放缓。",
+      "importance": "ADP数据为NFP前瞻，弱势延续意味着劳动力市场降温逐步确认。",
+      "investment": "降息预期温和升温，美元短线承压；加密/成长股短暂获益，但AHE通胀数据才是决定性变量。",
+      "sources": [
+        {
+          "label": "ADP研究院",
+          "url": "https://adpemploymentreport.com/"
+        },
+        {
+          "label": "FRED ADP",
+          "url": "https://fred.stlouisfed.org/series/ADPWNUSNERSA"
+        }
+      ]
+    },
+    {
+      "id": "20260303-001",
+      "date": "2026-03-03",
+      "priority": "P0",
+      "color": "red",
+      "title": "美以对伊军事打击首日：油价单日暴涨6%",
+      "fact": "3月3日美以联合打击伊朗，WTI原油单日+6%，霍尔木兹海峡运输近乎中断，中东多处炼油设施受损。BTC当日+4.6%，显现数字黄金属性。",
+      "importance": "若冲突持续→全球能源供应缺口扩大→通胀中枢系统性抬升，2024-2025降息成果部分消耗。",
+      "investment": "战术：做多能源/黄金/BTC；战略：增持TIPS对冲通胀。关注OPEC+紧急回应与美国SPR释放。",
+      "sources": [
+        {
+          "label": "EIA",
+          "url": "https://www.eia.gov/petroleum/"
+        },
+        {
+          "label": "Reuters中东",
+          "url": "https://www.reuters.com/world/middle-east/"
+        },
+        {
+          "label": "WGC黄金",
+          "url": "https://www.gold.org/goldhub/data/gold-prices"
+        }
+      ]
+    },
+    {
+      "id": "20260302-001",
+      "date": "2026-03-02",
+      "priority": "P0",
+      "color": "red",
+      "title": "最高法院IEEPA关税违宪裁决（初步）",
+      "fact": "2月末最高法院以6-3裁定IEEPA紧急状态有效，但以此为由征收关税的权力受法律质疑；行政部门随即援引1974年贸易法第122条启动新一轮关税措施。",
+      "importance": "两年关税政策框架面临根本性挑战；新的替代关税路径合法性亦存争议，贸易政策不确定性将持续数月。",
+      "investment": "贸易敏感行业（消费/汽车/制造）短暂博弈机会；长期看美元结构性承压；非美资产（欧股/巴西EWZ）相对受益。",
+      "sources": [
+        {
+          "label": "SCOTUS",
+          "url": "https://www.supremecourt.gov/"
+        },
+        {
+          "label": "Tax Foundation",
+          "url": "https://taxfoundation.org/research/all/federal/trump-tariffs-trade-war/"
+        },
+        {
+          "label": "Politico",
+          "url": "https://www.politico.com/news/tariffs"
+        }
+      ]
+    }
+  ]
+}
