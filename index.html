@@ -532,108 +532,203 @@ async function fetchBTCSignal() {
   return data;
 }
 
+// ─── BTC信号字段映射（btc-signal.json v2 schema）────────────
+// JSON schema:
+//   data.timestamp          → 更新时间
+//   data.signal.direction   → 信号方向
+//   data.signal.confidence  → 置信度(1-5)
+//   data.signal.action      → 操作建议
+//   data.price.current      → BTC现价
+//   data.price.*            → 各价格对比基准
+//   data.onchain.*          → 链上指标数值
+//   data.technical.*        → 技术指标
+//   data.depression_zone.activated  → 已激活条件数(Number)
+//   data.depression_zone.total      → 总条件数(5)
+//   data.depression_zone.conditions → 对象{key:bool}，非数组！
+//   data.levels.L1/L2/L3   → 各级别状态（非level1/2/3）
+//   data.macro.*            → 宏观指标
+//   data.sentiment.*        → 情绪指标
+//   data.cycle.*            → 周期信息
+// ⚠️ 注意：conditions是Object不是Array，必须用Object.entries()迭代
+
+const DZ_CONDITION_LABELS = {
+  price_lt_200wma:   'Price < 200WMA',
+  price_lt_realized: 'Price < 已实现价',
+  ahr999_lt_045:     'Ahr999 < 0.45',
+  mvrv_zscore_lt_0:  'MVRV Z-Score < 0',
+  mayer_lt_065:      'Mayer < 0.65',
+};
+
+const SIGNAL_COLORS = {
+  LONG:         'var(--green)',
+  NEUTRAL_WATCH:'var(--orange)',
+  NEUTRAL:      'var(--orange)',
+  HOLD:         'var(--blue)',
+  REDUCE:       'var(--red)',
+};
+
 function renderBTCSignal(data) {
   if(!data){sh('btc-signal-container','<div style="color:var(--dim);font-size:11px">暂无信号数据</div>');return;}
-  const sys=data.system||{}, metrics=data.metrics||{}, dz=data.depression_zone||{}, levels=data.levels||{};
-  const updAt = data.updated_at ? new Date(data.updated_at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : '—';
 
-  const tick = t => t ? `<span style="color:var(--green);font-weight:700">✅</span>` : `<span style="color:var(--dim)">⬜</span>`;
-  const fmtV = (v,d=2) => v!=null ? Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:d}) : '—';
-  const fmtP = v => v!=null ? '$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0}) : '—';
+  // ── 字段提取（匹配 v2 schema）──────────────────────────────
+  const sig   = data.signal   || {};
+  const price = data.price    || {};
+  const oc    = data.onchain  || {};
+  const tech  = data.technical|| {};
+  const dz    = data.depression_zone || {};
+  const lvs   = data.levels   || {};
+  const macro = data.macro    || {};
+  const senti = data.sentiment|| {};
+  const cycle = data.cycle    || {};
 
-  // ── 状态栏 ──
-  const isSig = sys.signal_triggered;
-  const statusColor = isSig ? 'var(--green)' : sys.status_code==='SCANNING' ? 'var(--orange)' : 'var(--red)';
-  const posBar = `<div style="display:flex;align-items:center;gap:6px"><div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden"><div style="width:${sys.current_position||0}%;height:100%;background:${statusColor};border-radius:4px"></div></div><span style="font-weight:700;color:${statusColor}">${sys.current_position||0}%</span></div>`;
+  const updAt = data.timestamp
+    ? new Date(data.timestamp).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})
+    : '—';
 
-  // ── Depression Zone ──
-  const dzCount = dz.activated_count||0, dzTotal = dz.total_conditions||5;
-  const dzPct = dzCount/dzTotal*100;
-  const dzActive = dz.activated;
-  const dzBar = `<div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden"><div style="width:${dzPct}%;height:100%;background:${dzPct>=60?'var(--red)':dzPct>=40?'var(--orange)':'var(--blue)'}"></div></div>`;
+  const tick  = t => t ? `<span style="color:var(--green)">✅</span>` : `<span style="color:var(--dim)">⬜</span>`;
+  const fmtV  = (v,d=2) => v!=null ? Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:d}) : '—';
+  const fmtP  = v => v!=null ? '$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0}) : '—';
+  const clr   = (v, thresholds) => {
+    for(const [thr, cls] of thresholds) if(v!=null && v<=thr) return cls;
+    return 'dn';
+  };
 
-  // ── Level boxes ──
-  function levelBox(lv, def) {
-    if(!lv)lv={};
-    const t = lv.triggered;
-    const pcs = lv.pre_conditions||[];
-    const conds = lv.conditions||[];
-    const confs = lv.confirmation_signals||[];
-    const allConds = [...pcs,...conds,...confs];
-    const triggeredCount = allConds.filter(c=>c.triggered).length;
-    const bc = t?'rgba(0,214,143,.12)':'rgba(30,42,66,.5)';
-    const brd = t?'var(--green)':'var(--border)';
-    return `<div style="background:${bc};border:1px solid ${brd};border-radius:6px;padding:8px;flex:1">
-      <div style="font-size:11px;font-weight:700;color:${t?'var(--green)':'var(--text)'};margin-bottom:4px">${tick(t)} <span style="color:var(--gold)">Level ${def.n}</span> · ${lv.name||def.name}</div>
-      <div style="font-size:9px;color:var(--dim);margin-bottom:4px">目标仓位: <span style="color:var(--blue);font-weight:700">${lv.target_position||def.pos}</span></div>
-      ${allConds.map(c=>`<div style="font-size:10px;padding:2px 0;display:flex;gap:4px;align-items:center">${tick(c.triggered)}<span style="color:${c.triggered?'var(--green)':'var(--dim)'}">${c.label}${c.current!=null&&c.threshold!=null?' <span style="color:var(--dim)">'+fmtV(c.current,4)+'/'+fmtV(c.threshold,4)+'</span>':''}</span></div>`).join('')}
+  // ── 信号方向 ────────────────────────────────────────────────
+  const dir = sig.direction || 'NEUTRAL';
+  const sigColor = SIGNAL_COLORS[dir] || 'var(--dim)';
+  const stars = '★'.repeat(sig.confidence||0) + '☆'.repeat(5-(sig.confidence||0));
+
+  // ── Depression Zone ────────────────────────────────────────
+  const dzCount  = typeof dz.activated === 'number' ? dz.activated : 0;
+  const dzTotal  = dz.total || 5;
+  const dzIsOn   = dzCount >= 1;          // 激活 = 有任意1条满足
+  const dzPct    = dzCount / dzTotal * 100;
+  const dzStrength = dz.strength || '';
+
+  // ⭐ 关键修复：conditions是Object，用Object.entries转换为可迭代的数组
+  const dzCondEntries = dz.conditions && typeof dz.conditions === 'object' && !Array.isArray(dz.conditions)
+    ? Object.entries(dz.conditions).map(([k, v]) => ({key:k, triggered:v, label: DZ_CONDITION_LABELS[k]||k}))
+    : Array.isArray(dz.conditions)
+      ? dz.conditions  // 兼容未来可能改成数组的版本
+      : [];
+
+  // ── Level Box 渲染 ─────────────────────────────────────────
+  function levelBox(lv, meta) {
+    if(!lv) lv = {};
+    const triggered = !!lv.triggered;
+    const prereqMet = lv.prerequisites_met !== undefined ? lv.prerequisites_met : null;
+    const posPct    = lv.target_position_pct || meta.pos;
+    const bc  = triggered ? 'rgba(0,214,143,.12)' : 'rgba(30,42,66,.5)';
+    const brd = triggered ? 'rgba(0,214,143,.5)'  : 'var(--border)';
+    const prereqHtml = prereqMet !== null
+      ? `<div style="font-size:9px;color:${prereqMet?'var(--green)':'var(--dim)'};margin-top:2px">${tick(prereqMet)} 前置条件${prereqMet?'满足':'未满足'}</div>`
+      : '';
+    return `<div style="background:${bc};border:1px solid ${brd};border-radius:6px;padding:8px;flex:1;min-width:0">
+      <div style="font-size:11px;font-weight:700;color:${triggered?'var(--green)':'var(--text)'}">
+        ${tick(triggered)} <span style="color:var(--gold)">Level ${meta.n}</span>
+        <span style="font-size:9px;font-weight:400;color:var(--dim)"> · ${meta.name}</span>
+      </div>
+      <div style="font-size:9px;color:var(--dim);margin:3px 0">目标仓位: <span style="color:var(--blue);font-weight:700">${posPct}%</span></div>
+      ${prereqHtml}
+      <div style="font-size:10px;color:${triggered?'var(--green)':'var(--dim)'};margin-top:3px;font-weight:${triggered?700:400}">
+        ${triggered ? '🎯 已触发！' : '⏳ 等待触发'}
+      </div>
     </div>`;
   }
 
-  // ── Key Metrics ──
-  const mKeys=[
-    ['price','BTC现价'],['wma_200','200WMA'],['realized_price','已实现价'],['cvdd','CVDD'],['balanced_price','Balanced'],
-    ['ahr999','Ahr999'],['mvrv_zscore','MVRV Z'],['mayer_multiple','Mayer MM'],['puell_multiple','Puell'],
-    ['lth_sopr','LTH-SOPR'],['rsi_14d','RSI(14d)'],['ma5','MA5'],['ma20','MA20']
-  ];
-  const isPrice = ['price','wma_200','realized_price','cvdd','balanced_price','ma5','ma20'];
-  const metricsHtml = mKeys.map(([k,lb])=>{
-    const m=metrics[k]; if(!m)return '';
-    const v=m.value; const vStr=isPrice.includes(k)?fmtP(v):fmtV(v,4);
-    // color logic
-    let cl='';
-    if(k==='ahr999')cl=v<0.45?'up':'dn';
-    if(k==='mvrv_zscore')cl=v<0?'up':v<1?'nt':'dn';
-    if(k==='mayer_multiple')cl=v<0.65?'up':v<1?'nt':'dn';
-    if(k==='lth_sopr')cl=v<1?'up':'dn';
-    if(k==='puell_multiple')cl=v<0.5?'up':v<1?'nt':'dn';
-    if(k==='rsi_14d')cl=v<30?'up':v<50?'nt':'dn';
-    return `<tr><td style="color:var(--dim)">${lb}</td><td class="v ${cl}">${vStr}</td><td style="font-size:9px;color:var(--dim)">${m.date||''}</td></tr>`;
-  }).join('');
+  // ── 指标表 ─────────────────────────────────────────────────
+  const metricsRows = [
+    ['BTC 现价',   fmtP(price.current),     price.change_24h_pct!=null?`${price.change_24h_pct>0?'+':''}${fmtV(price.change_24h_pct,2)}%`:'—'],
+    ['200WMA',    fmtP(oc['200wma']),       '底部基准'],
+    ['已实现价',   fmtP(oc.realized_price),  ''],
+    ['CVDD',      fmtP(oc.cvdd),            'L1阈值'],
+    ['Balanced',  fmtP(oc.balanced_price),  'L1阈值'],
+    ['MA5',       fmtP(tech.ma5),           ''],
+    ['MA20',      fmtP(tech.ma20),          ''],
+    ['Ahr999',    fmtV(oc.ahr999,4),        oc.ahr999<0.45?'✅<0.45':''],
+    ['MVRV Z',    fmtV(oc.mvrv_zscore,4),   oc.mvrv_zscore<0?'✅<0':''],
+    ['Mayer MM',  fmtV(oc.mayer_multiple,3),oc.mayer_multiple<0.65?'✅<0.65':''],
+    ['Puell',     fmtV(oc.puell_multiple,4),oc.puell_multiple<0.5?'✅<0.5':''],
+    ['LTH-SOPR',  fmtV(oc.lth_sopr,3),     oc.lth_sopr<1?'✅<1.0':''],
+    ['RSI(14)',   fmtV(tech.rsi_14,1),      tech.rsi_14<30?'✅超卖':''],
+  ].map(([lb,v,note])=>`<tr>
+    <td style="color:var(--dim);font-size:10px">${lb}</td>
+    <td class="v" style="font-size:11px">${v}</td>
+    <td style="font-size:9px;color:var(--green)">${note}</td>
+  </tr>`).join('');
 
-  let html = `
-  <!-- 状态栏 -->
-  <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;padding:8px;background:rgba(30,42,66,.4);border-radius:6px">
-    <div style="font-size:12px;font-weight:700;color:${statusColor}">${sys.status||'—'}</div>
-    <div style="flex:1"></div>
-    <div style="font-size:11px;color:var(--dim)">当前仓位</div>
-    <div style="width:120px">${posBar}</div>
-    <div style="font-size:10px;color:${isSig?'var(--green)':'var(--orange)'}">📡 信号：${sys.today_signal||'—'}</div>
-    <div style="font-size:9px;color:var(--dim)">更新 ${updAt}</div>
+  // ── 宏观快照 ───────────────────────────────────────────────
+  const macroRows = [
+    ['宏观体制', `${macro.regime||'—'} · ${macro.regime_label||''}`, `BTC顺风: ${macro.btc_bias||'—'}`],
+    ['VIX',      fmtV(macro.vix,2), macro.vix>30?'⚠️高波动':''],
+    ['DXY',      fmtV(macro.dxy,2), macro.dxy_chg_pct!=null?`${macro.dxy_chg_pct>0?'+':''}${fmtV(macro.dxy_chg_pct,2)}%`:''],
+    ['S&P500',   fmtV(macro.spx,0), macro.spx_chg_pct!=null?`${macro.spx_chg_pct>0?'+':''}${fmtV(macro.spx_chg_pct,2)}%`:''],
+    ['ETF净流',  macro.btc_etf_latest_m!=null?`${macro.btc_etf_latest_m>0?'+':''}$${fmtV(macro.btc_etf_latest_m,1)}M`:'—',
+                 macro.btc_etf_5d_sum_m!=null?`5d: ${macro.btc_etf_5d_sum_m>0?'+':''}$${fmtV(macro.btc_etf_5d_sum_m,1)}M`:''],
+    ['恐贪指数', senti.fear_greed!=null?`${senti.fear_greed} ${senti.fear_greed_label||''}`:'—', ''],
+    ['减半后',   cycle.months_since_halving!=null?`${cycle.months_since_halving}个月`:'—', cycle.phase||''],
+  ].map(([lb,v,note])=>`<tr>
+    <td style="color:var(--dim);font-size:10px">${lb}</td>
+    <td class="v" style="font-size:10px;white-space:nowrap">${v}</td>
+    <td style="font-size:9px;color:var(--dim)">${note}</td>
+  </tr>`).join('');
+
+  // ── 组装 HTML ──────────────────────────────────────────────
+  const html = `
+  <!-- 信号头部 -->
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:8px 10px;background:rgba(30,42,66,.5);border-radius:6px;border:1px solid ${sigColor}44">
+    <div>
+      <div style="font-size:13px;font-weight:700;color:${sigColor};letter-spacing:.5px">${dir}</div>
+      <div style="font-size:12px;color:var(--gold)">${stars}</div>
+    </div>
+    <div style="flex:1;font-size:11px;color:var(--text)">${sig.action||'—'}</div>
+    <div style="font-size:9px;color:var(--dim);text-align:right">📡 ${updAt}<br>${data.date||''}</div>
   </div>
+
   <!-- Depression Zone -->
-  <div style="margin-bottom:8px;padding:6px 8px;background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.${dzActive?4:2});border-radius:5px">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-      <span style="font-size:10px;font-weight:700;color:${dzActive?'var(--blue)':'var(--dim)'}">🌑 Depression Zone ${dzActive?'✅ 已激活':'⬜ 未激活'} (${dzCount}/${dzTotal})</span>
-      ${dzBar}
+  <div style="margin-bottom:8px;padding:7px 10px;background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.${dzIsOn?5:2});border-radius:5px">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+      <span style="font-size:10px;font-weight:700;color:${dzIsOn?'var(--blue)':'var(--dim)'}">
+        🌑 Depression Zone ${dzIsOn?'✅ 激活':'⬜ 未激活'}
+        (${dzCount}/${dzTotal} · ${dzStrength})
+      </span>
+      <div style="flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden">
+        <div style="width:${dzPct}%;height:100%;background:${dzPct>=60?'var(--red)':dzPct>=40?'var(--orange)':'var(--blue)'}"></div>
+      </div>
     </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap">
-      ${(dz.conditions||[]).map(c=>`<div style="font-size:9px;padding:1px 6px;border-radius:3px;background:${c.triggered?'rgba(0,214,143,.15)':'rgba(30,42,66,.6)'};color:${c.triggered?'var(--green)':'var(--dim)'}">${c.triggered?'✅':'⬜'} ${c.label}</div>`).join('')}
+    <div style="display:flex;gap:5px;flex-wrap:wrap">
+      ${dzCondEntries.map(c=>`
+        <div style="font-size:9px;padding:2px 6px;border-radius:3px;
+          background:${c.triggered?'rgba(0,214,143,.15)':'rgba(30,42,66,.6)'};
+          color:${c.triggered?'var(--green)':'var(--dim)'}">
+          ${c.triggered?'✅':'⬜'} ${c.label}
+        </div>`).join('')}
     </div>
   </div>
-  <!-- 3 Level Boxes -->
+
+  <!-- Level 1 / 2 / 3 -->
   <div style="display:flex;gap:8px;margin-bottom:8px">
-    ${levelBox(levels.level1,{n:1,name:'算法铁底',pos:'50%'})}
-    ${levelBox(levels.level2,{n:2,name:'矿工投降',pos:'80%'})}
-    ${levelBox(levels.level3,{n:3,name:'趋势确认',pos:'100%'})}
+    ${levelBox(lvs.L1, {n:1, name:'算法铁底', pos:50})}
+    ${levelBox(lvs.L2, {n:2, name:'矿工投降', pos:80})}
+    ${levelBox(lvs.L3, {n:3, name:'趋势确认', pos:100})}
   </div>
-  <!-- Key Metrics -->
+
+  <!-- 指标 + 宏观双列 -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
     <div>
-      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px">📋 关键指标快照</div>
-      <table><tr><th>指标</th><th>值</th><th>日期</th></tr>${metricsHtml}</table>
+      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px">📋 择时指标</div>
+      <table><tr><th>指标</th><th>值</th><th>信号</th></tr>${metricsRows}</table>
     </div>
-    <div style="padding:8px;background:rgba(30,42,66,.4);border-radius:6px">
-      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:6px">📖 策略说明</div>
-      <div style="font-size:10px;color:var(--dim);line-height:1.6">
-        <div style="margin-bottom:4px"><span style="color:var(--blue);font-weight:700">Depression Zone</span><br>5条件满足≥1条激活 → 进入扫描建仓模式</div>
-        <div style="margin-bottom:4px"><span style="color:var(--gold);font-weight:700">Level 1</span> 算法铁底<br>Price≤CVDD或Balanced → 直接50%仓</div>
-        <div style="margin-bottom:4px"><span style="color:var(--gold);font-weight:700">Level 2</span> 矿工投降<br>Depression激活+Puell&lt;0.5 → 加至80%</div>
-        <div><span style="color:var(--gold);font-weight:700">Level 3</span> 趋势确认<br>DZ+LTH-SOPR&lt;1+任一确认信号 → 满仓100%</div>
+    <div>
+      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px">🌍 宏观快照</div>
+      <table><tr><th>项目</th><th>值</th><th>备注</th></tr>${macroRows}</table>
+      <div style="margin-top:6px;font-size:9px;color:var(--dim);padding:4px;background:rgba(30,42,66,.4);border-radius:4px">
+        ATH: ${fmtP(price.peak_price)} (${price.peak_date||'—'}) · 回撤: ${price.drawdown_from_peak_pct!=null?price.drawdown_from_peak_pct.toFixed(1)+'%':'—'}<br>
+        类比: ${cycle.historical_analog||'—'} · 减半后第${cycle.months_since_halving||'?'}月
       </div>
-      <div style="margin-top:6px;font-size:9px;color:var(--dim);border-top:1px solid var(--border);padding-top:4px">v1.2 · 来源：金融策略师 BTC择时买入策略脚本 · 仅供参考，人工执行</div>
     </div>
-  </div>`;
+  </div>
+  <div style="margin-top:6px;font-size:9px;color:var(--dim);text-align:right">v2.0 schema fixed · 仅供参考，人工执行</div>`;
 
   sh('btc-signal-container', html);
 }
