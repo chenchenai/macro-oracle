@@ -1,86 +1,66 @@
 {
-  "timestamp": "2026-03-08T10:07:00+08:00",
-  "date": "2026-03-08",
-  "signal": {
-    "direction": "NEUTRAL_WATCH",
-    "confidence": 3,
-    "action": "等待下探，禁止追涨，现金持有"
-  },
-  "price": {
-    "current": 67257,
-    "change_24h_pct": null,
-    "vs_200wma": 58616,
-    "vs_realized": 54480,
-    "vs_cvdd": 45511,
-    "vs_balanced": 40785,
-    "drawdown_from_peak_pct": -46.1,
-    "peak_price": 124774,
-    "peak_date": "2025-10-06"
-  },
-  "onchain": {
-    "ahr999": 0.3232,
-    "mvrv_zscore": 0.4463,
-    "mayer_multiple": 0.7030,
-    "puell_multiple": 0.6264,
-    "lth_sopr": 0.7790,
-    "200wma": 58616,
-    "realized_price": 54480,
-    "cvdd": 45511,
-    "balanced_price": 40785
-  },
-  "technical": {
-    "rsi_14": 44.41,
-    "ma5": 69454,
-    "ma20": 67663
-  },
+  "date": "2026-03-09",
+  "timestamp": "2026-03-09T19:24:00+08:00",
+  "price": 65975,
+  "signal": "NEUTRAL",
+  "confidence": 2,
+  "cycle_phase": "熊市初期",
+  "months_since_peak": 5,
+  "peak_price": 124774,
+  "peak_date": "2025-10-06",
+  "drawdown_pct": -47.1,
+  "entry_window": "RED",
+  "position_pct": 0,
   "depression_zone": {
-    "activated": 1,
-    "total": 5,
-    "strength": "弱激活",
+    "score": 1,
+    "max": 5,
     "conditions": {
-      "price_lt_200wma": false,
-      "price_lt_realized": false,
-      "ahr999_lt_045": true,
-      "mvrv_zscore_lt_0": false,
-      "mayer_lt_065": false
+      "price_below_200wma": false,
+      "price_below_realized": false,
+      "ahr999_below_045": true,
+      "mvrv_z_below_0": false,
+      "mayer_below_065": false
     }
   },
+  "onchain": {
+    "ahr999": 0.3306,
+    "mvrv_z_score": 0.4069,
+    "mayer_multiple": 0.6913,
+    "puell_multiple": 0.6209,
+    "lth_sopr": 1.4340,
+    "rsi_14d": 42.03,
+    "ma5": 68984,
+    "ma20": 67514,
+    "ma200w": 58639,
+    "realized_price": 54475,
+    "cvdd": 45515,
+    "balanced_price": 40778
+  },
   "levels": {
-    "L1": { "triggered": false, "target_position_pct": 50 },
-    "L2": { "triggered": false, "target_position_pct": 80 },
-    "L3": { "triggered": false, "prerequisites_met": true, "target_position_pct": 100 }
+    "L1_triggered": false,
+    "L2_triggered": false,
+    "L3_triggered": false
   },
   "macro": {
     "regime": "D",
     "regime_label": "Inflationary/Debasement",
-    "btc_bias": "强顺风",
+    "btc_bias": "conditional_tailwind",
     "net_liquidity_b": 5795.3,
     "m2_yoy_pct": 4.29,
     "rrp_b": 1.51,
-    "hy_spread_pct": 3.0,
-    "bei_5y_pct": 2.56,
-    "treasury_10y": 4.13,
-    "treasury_2y": 3.57,
-    "yield_spread": 0.56,
+    "hy_spread_bp": 300,
     "vix": 23.75,
-    "dxy": 98.99,
-    "dxy_chg_pct": -0.33,
-    "gold_usd": 5146,
-    "gold_chg_pct": 1.6,
-    "usdjpy": 157.53,
+    "bei_5y": 2.56,
+    "dxy": 99.23,
+    "gold_usd": 5099,
+    "usdjpy": 158.43,
     "spx": 6740,
-    "spx_chg_pct": -1.33,
     "btc_etf_latest_m": -348.9,
     "btc_etf_5d_sum_m": 568.5
   },
   "sentiment": {
-    "fear_greed": 12,
+    "fear_greed": 8,
     "fear_greed_label": "Extreme Fear"
   },
-  "cycle": {
-    "months_since_halving": 23,
-    "months_since_peak": 5,
-    "phase": "熊市初期",
-    "historical_analog": "2022年3-5月"
-  }
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
 }
