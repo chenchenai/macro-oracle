@@ -1,66 +1,76 @@
 {
+  "timestamp": "2026-03-09T19:49:00+08:00",
   "date": "2026-03-09",
-  "timestamp": "2026-03-09T19:24:00+08:00",
-  "price": 65975,
-  "signal": "NEUTRAL",
+  "price": 67593,
+  "price_chg_24h_pct": 2.45,
+  "signal": "NEUTRAL_WATCH",
   "confidence": 2,
-  "cycle_phase": "熊市初期",
-  "months_since_peak": 5,
+  "cycle_phase": "熊市初期（峰值后第5月）",
   "peak_price": 124774,
   "peak_date": "2025-10-06",
-  "drawdown_pct": -47.1,
-  "entry_window": "RED",
-  "position_pct": 0,
-  "depression_zone": {
-    "score": 1,
-    "max": 5,
-    "conditions": {
-      "price_below_200wma": false,
-      "price_below_realized": false,
-      "ahr999_below_045": true,
-      "mvrv_z_below_0": false,
-      "mayer_below_065": false
-    }
-  },
+  "drawdown_pct": -45.8,
+  "window_status": "未开启",
+  "entry_range_low": 45000,
+  "entry_range_high": 62000,
   "onchain": {
-    "ahr999": 0.3306,
+    "price_close": 65975,
+    "wma_200w": 58639,
+    "realized_price": 54475,
+    "ahr999": 0.3275,
     "mvrv_z_score": 0.4069,
     "mayer_multiple": 0.6913,
+    "cvdd": 45515,
+    "balanced_price": 40778,
     "puell_multiple": 0.6209,
     "lth_sopr": 1.4340,
     "rsi_14d": 42.03,
     "ma5": 68984,
-    "ma20": 67514,
-    "ma200w": 58639,
-    "realized_price": 54475,
-    "cvdd": 45515,
-    "balanced_price": 40778
+    "ma20": 67514
   },
-  "levels": {
-    "L1_triggered": false,
-    "L2_triggered": false,
-    "L3_triggered": false
+  "depression_zone": {
+    "activated": 1,
+    "total": 5,
+    "conditions": {
+      "price_below_200wma": false,
+      "price_below_realized": false,
+      "ahr999_below_045": true,
+      "mvrv_z_negative": false,
+      "mayer_below_065": false
+    }
   },
+  "l1_triggered": false,
+  "l2_triggered": false,
+  "l3_triggered": false,
   "macro": {
     "regime": "D",
     "regime_label": "Inflationary/Debasement",
-    "btc_bias": "conditional_tailwind",
-    "net_liquidity_b": 5795.3,
+    "btc_bias": "strong_tailwind",
     "m2_yoy_pct": 4.29,
-    "rrp_b": 1.51,
-    "hy_spread_bp": 300,
+    "hy_spread_pct": 3.0,
     "vix": 23.75,
     "bei_5y": 2.56,
-    "dxy": 99.23,
+    "treasury_10y": 4.13,
+    "treasury_2y": 3.57,
+    "yield_spread": 0.56,
+    "dxy": 99.25,
     "gold_usd": 5099,
-    "usdjpy": 158.43,
-    "spx": 6740,
-    "btc_etf_latest_m": -348.9,
-    "btc_etf_5d_sum_m": 568.5
+    "usdjpy": 158.48,
+    "spx": 6740
+  },
+  "etf": {
+    "latest_date": "2026-03-06",
+    "latest_net_flow_m": -348.9,
+    "flow_5d_sum_m": 568.5,
+    "trend": "inflow"
   },
   "sentiment": {
     "fear_greed": 8,
     "fear_greed_label": "Extreme Fear"
   },
-  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
+  "position_pct": 0,
+  "max_position_pct": 50,
+  "stop_loss": 35000,
+  "target_1": 95000,
+  "target_2": 120000,
+  "leverage": false
 }
