@@ -1,25 +1,65 @@
 {
-  "timestamp": "2026-03-17T10:21:00+08:00",
-  "date": "2026-03-17",
-  "price_usd": 75224,
-  "signal": "NEUTRAL_WATCH",
-  "confidence": 2,
-  "dz_activation": "1/5",
-  "l1_triggered": false,
-  "l2_triggered": false,
-  "l3_triggered": "weak",
-  "ahr999": 0.4152,
-  "mvrv": 1.8955,
-  "mvrv_z_score": 0.5849,
-  "lth_sopr": 0.93,
-  "puell_multiple": 0.6387,
-  "mayer_multiple": 0.7565,
-  "rsi_14d": 53.94,
-  "ma_200w": 58812,
-  "fear_greed": 28,
-  "macro_regime": "D",
-  "dxy": 99.93,
-  "gold": 5025,
-  "spx": 6699,
-  "etf_flow_5d_m": 656.3
+  "timestamp": "2026-03-18T02:06:00Z",
+  "date": "2026-03-18",
+  "time_cst": "10:06",
+  "price": 74102,
+  "peak": 124774,
+  "peak_date": "2025-10-06",
+  "drawdown_pct": -40.6,
+  "signal": {
+    "direction": "NEUTRAL_WATCH",
+    "confidence": 2,
+    "action": "空仓等待，DZ仅1/5弱激活"
+  },
+  "depression_zone": {
+    "activated": 1,
+    "total": 5,
+    "conditions": {
+      "price_below_200wma": false,
+      "price_below_realized": false,
+      "ahr999_below_045": true,
+      "mvrv_z_below_0": false,
+      "mayer_below_065": false
+    }
+  },
+  "levels": {
+    "L1": "not_triggered",
+    "L2": "not_triggered",
+    "L3": "not_triggered"
+  },
+  "onchain": {
+    "ahr999": 0.3991,
+    "mvrv_z_score": 0.700,
+    "mvrv_ratio": 1.376,
+    "nupl": 0.273,
+    "puell_multiple": 0.657,
+    "lth_sopr": 0.971,
+    "sth_sopr": 0.999,
+    "mayer_multiple": 0.790,
+    "rsi_14d": 60.48,
+    "realized_price": 54406,
+    "balanced_price": 40692,
+    "cvdd": 45573,
+    "ma200w": 58873,
+    "ma5": 71907,
+    "ma20": 69222,
+    "lth_supply_pct": 72.74,
+    "exchange_net_flow": -75130
+  },
+  "macro": {
+    "vix": 24.29,
+    "dxy": 99.55,
+    "gold": 4998,
+    "dow_jones": 46993,
+    "btc_etf_flow_usd_m": 202,
+    "etf_consecutive_inflow_days": 6,
+    "regime": "D",
+    "regime_name": "Inflationary/Debasement"
+  },
+  "sentiment": {
+    "fear_greed": 26,
+    "label": "Fear"
+  },
+  "cycle_phase": "熊市初期（峰值后第5.5个月）",
+  "macro_regime": "D — 通胀/货币贬值"
 }
