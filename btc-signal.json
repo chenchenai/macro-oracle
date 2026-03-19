@@ -1,15 +1,19 @@
 {
-  "timestamp": "2026-03-18T02:06:00Z",
-  "date": "2026-03-18",
+  "timestamp": "2026-03-19T02:06:00Z",
+  "date": "2026-03-19",
   "time_cst": "10:06",
-  "price": 74102,
-  "peak": 124774,
-  "peak_date": "2025-10-06",
-  "drawdown_pct": -40.6,
+  "btc_price": 70993,
   "signal": {
     "direction": "NEUTRAL_WATCH",
-    "confidence": 2,
-    "action": "空仓等待，DZ仅1/5弱激活"
+    "confidence": 3,
+    "action": "L3弱触发·轻仓10-15%先行·等待DZ进一步激活"
+  },
+  "cycle": {
+    "peak_price": 124774,
+    "peak_date": "2025-10-06",
+    "drawdown_pct": -43.1,
+    "months_from_peak": 5,
+    "phase": "熊市初期"
   },
   "depression_zone": {
     "activated": 1,
@@ -22,44 +26,52 @@
       "mayer_below_065": false
     }
   },
-  "levels": {
-    "L1": "not_triggered",
-    "L2": "not_triggered",
-    "L3": "not_triggered"
+  "signals": {
+    "L1": "未触发",
+    "L2": "未触发",
+    "L3": "🟡已触发(Slingshot·DZ弱)"
   },
   "onchain": {
-    "ahr999": 0.3991,
-    "mvrv_z_score": 0.700,
-    "mvrv_ratio": 1.376,
-    "nupl": 0.273,
-    "puell_multiple": 0.657,
+    "ahr999": 0.3674,
+    "mvrv_z_score": 0.684,
+    "mvrv_ratio": 1.359,
+    "nupl": 0.264,
     "lth_sopr": 0.971,
     "sth_sopr": 0.999,
-    "mayer_multiple": 0.790,
-    "rsi_14d": 60.48,
-    "realized_price": 54406,
-    "balanced_price": 40692,
-    "cvdd": 45573,
-    "ma200w": 58873,
-    "ma5": 71907,
-    "ma20": 69222,
-    "lth_supply_pct": 72.74,
-    "exchange_net_flow": -75130
+    "puell_multiple": 0.6618,
+    "realized_price": 54405,
+    "cvdd": 45582,
+    "balanced_price": 40672,
+    "mayer_multiple": 0.7629,
+    "ma_200w": 58935,
+    "ma_5d": 72809,
+    "ma_20d": 69744,
+    "rsi_14d": 51.53,
+    "lth_supply_pct": 72.76,
+    "exchange_net_flow": -81367
   },
   "macro": {
-    "vix": 24.29,
-    "dxy": 99.55,
-    "gold": 4998,
-    "dow_jones": 46993,
-    "btc_etf_flow_usd_m": 202,
-    "etf_consecutive_inflow_days": 6,
-    "regime": "D",
-    "regime_name": "Inflationary/Debasement"
+    "fed_rate": "3.5-3.75%",
+    "fomc_decision": "维持不变·点阵图1次降息2026·偏鹰",
+    "gold": 4844,
+    "oil": 100,
+    "btf_etf_7d_flow": 1170000000,
+    "btf_etf_march_total": 2800000000,
+    "regime": "D/E过渡·滞胀前兆",
+    "dalio_quadrant": "增长↓+通胀↑"
   },
   "sentiment": {
-    "fear_greed": 26,
-    "label": "Fear"
+    "fear_greed_index": 23,
+    "fear_greed_label": "Extreme Fear"
   },
-  "cycle_phase": "熊市初期（峰值后第5.5个月）",
-  "macro_regime": "D — 通胀/货币贬值"
+  "strategy": {
+    "batch1": {"trigger": "当前L3弱触发", "range": "68000-72000", "size_pct": "10-15", "stop": 58000},
+    "batch2": {"trigger": "Puell<0.5 OR 价格<62000", "range": "58000-65000", "size_pct": "15-20", "stop": 45000},
+    "batch3": {"trigger": "CVDD触发<45582", "range": "40000-46000", "size_pct": "加至40-50%上限", "stop": 35000},
+    "max_position": "40-50%总资金",
+    "leverage": "零杠杆",
+    "target1": 95000,
+    "target2": 120000
+  },
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
 }
