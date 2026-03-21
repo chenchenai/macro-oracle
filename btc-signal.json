@@ -1,64 +1,25 @@
 {
-  "date": "2026-03-20",
-  "time": "10:08",
-  "tz": "Asia/Shanghai",
-  "price_usd": 70438,
-  "signal": {
-    "direction": "NEUTRAL_WATCH",
-    "confidence": 2,
-    "action": "L3弱触发+DZ 1/5激活，轻仓首批5-10%试探，主仓等待$55K-$65K"
-  },
-  "cycle": {
-    "peak": 124774,
-    "peak_date": "2025-10-06",
-    "months_since_peak": 5.5,
-    "drawdown_pct": -43.6,
-    "stage": "熊市初期"
-  },
-  "entry_window": {
-    "status": "ALERT",
-    "ideal_low": 45000,
-    "ideal_high": 65000
-  },
-  "onchain": {
-    "ahr999": 0.3615,
-    "mvrv_ratio": 1.359,
-    "mvrv_z_score": 0.684,
-    "nupl": 0.264,
-    "lth_sopr": 0.727,
-    "sth_sopr": 0.962,
-    "puell_multiple": 0.697,
-    "realized_price": 54405,
-    "cvdd": 45585,
-    "balanced_price": 40645,
-    "ma_200w": 58964,
-    "mayer_multiple": 0.750,
-    "rsi_14d": 48.23,
-    "ma_5d": 72552,
-    "ma_20d": 69945,
-    "lth_supply_pct": 72.76,
-    "exchange_net_flow": -81367
-  },
-  "macro": {
-    "regime": "D",
-    "regime_label": "Inflationary/Debasement",
-    "dxy": 99.36,
-    "gold": 4683,
-    "silver": 73.82,
-    "spx": 6606,
-    "usdjpy": 158.14,
-    "etf_5d_flow_m": 363.8,
-    "etf_latest_flow_m": -51.9
-  },
-  "sentiment": {
-    "fear_greed": 11,
-    "label": "Extreme Fear"
-  },
-  "signals": {
-    "dz_activation": "1/5",
-    "l1_triggered": false,
-    "l2_triggered": false,
-    "l3_triggered": false,
-    "l3_prereq_met": true
-  }
+  "date": "2026-03-21",
+  "price": 70665,
+  "signal": "NEUTRAL_WATCH",
+  "confidence": 2,
+  "ahr999": 0.3624,
+  "mvrv": 1.2864,
+  "mvrv_z_score": 0.5401,
+  "lth_sopr": 1.039,
+  "puell_multiple": 0.6598,
+  "mayer_multiple": 0.758,
+  "rsi_14d": 49.77,
+  "ma_200w": 58993,
+  "dz_activation": "1/5",
+  "l1_triggered": false,
+  "l2_triggered": false,
+  "l3_triggered": false,
+  "fear_greed": 12,
+  "fear_greed_label": "Extreme Fear",
+  "dxy": 99.5,
+  "gold": 4492,
+  "macro_regime": "D",
+  "etf_flow_latest": -6.1,
+  "etf_flow_5d": 139.0
 }
