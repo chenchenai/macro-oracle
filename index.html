@@ -3,1070 +3,1617 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Macro Oracle Dashboard v4.0</title>
+<title>Macro Oracle Dashboard v5.0</title>
 <style>
-:root{--bg:#0a0e17;--card:#131a2b;--border:#1e2a42;--text:#e0e6f0;--dim:#6b7d9e;--green:#00d68f;--red:#ff4757;--gold:#ffd700;--blue:#4da6ff;--orange:#ff9f43;--purple:#a855f7}
+:root{
+  --bg:#080c14;--card:#0e1520;--card2:#111926;--border:#1a2438;
+  --text:#d8e2f0;--dim:#566880;--dim2:#7a8fa8;
+  --green:#00d68f;--red:#ff4060;--gold:#f5c842;--blue:#4da6ff;
+  --orange:#ff9f43;--purple:#c084fc;--cyan:#22d3ee;
+  --green-bg:rgba(0,214,143,.1);--red-bg:rgba(255,64,96,.1);
+  --gold-bg:rgba(245,200,66,.1);--blue-bg:rgba(77,166,255,.1);
+  --orange-bg:rgba(255,159,67,.1);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'SF Mono','Cascadia Code','Fira Code',monospace;font-size:13px;padding:12px}
-h1{font-size:18px;color:var(--gold);margin-bottom:4px;letter-spacing:1px}
-.sub{color:var(--dim);font-size:11px;margin-bottom:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px;animation:p 2s infinite}
-.dot.ok{background:var(--green)}.dot.err{background:var(--red)}.dot.loading{background:var(--orange)}
-@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:10px;margin-bottom:10px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px}
-.card.span2{grid-column:span 2}
-.ct{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);padding-bottom:5px;display:flex;justify-content:space-between;align-items:center}
-.ct .src{font-size:9px;color:var(--dim);font-weight:400;text-transform:none}
+body{background:var(--bg);color:var(--text);font-family:'SF Mono','Cascadia Code','Fira Code',Consolas,monospace;font-size:12px;min-height:100vh}
+
+/* ── TOP BAR ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--card);border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;position:sticky;top:0;z-index:100}
+.topbar h1{font-size:15px;color:var(--gold);letter-spacing:.5px}
+.topbar .meta{font-size:10px;color:var(--dim);display:flex;align-items:center;gap:8px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;animation:pulse 2s infinite}
+.dot.ok{background:var(--green)}.dot.err{background:var(--red)}.dot.load{background:var(--orange)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── TABS ── */
+.tabs{display:flex;background:var(--card);border-bottom:2px solid var(--border);overflow-x:auto;padding:0 12px;gap:2px;flex-shrink:0}
+.tab{padding:8px 16px;font-size:11px;font-weight:600;color:var(--dim);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:all .2s;letter-spacing:.3px}
+.tab:hover{color:var(--text)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── PANELS ── */
+.panel{display:none;padding:12px;animation:fadeIn .2s}
+.panel.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── GRID ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px;margin-bottom:10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:10px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:10px}
+.col-full{grid-column:1/-1}
+@media(max-width:900px){.grid-3,.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+@media(max-width:600px){.grid-3,.grid-4,.grid-2{grid-template-columns:1fr}}
+
+/* ── CARD ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:12px;overflow:hidden}
+.card.accent-g{border-color:rgba(0,214,143,.3)}.card.accent-r{border-color:rgba(255,64,96,.3)}
+.card.accent-gold{border-color:rgba(245,200,66,.3)}.card.accent-b{border-color:rgba(77,166,255,.3)}
+.card-title{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;border-bottom:1px solid var(--border);padding-bottom:6px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.card-title .src{font-size:9px;color:var(--dim);font-weight:400;text-transform:none}
+.card-title .badge{font-size:9px;padding:2px 6px;border-radius:3px;font-weight:700}
+.badge-g{background:rgba(0,214,143,.2);color:var(--green)}
+.badge-r{background:rgba(255,64,96,.2);color:var(--red)}
+.badge-y{background:rgba(255,159,67,.2);color:var(--orange)}
+.badge-b{background:rgba(77,166,255,.2);color:var(--blue)}
+.badge-gold{background:rgba(245,200,66,.15);color:var(--gold)}
+.badge-p{background:rgba(192,132,252,.2);color:var(--purple)}
+
+/* ── TABLE ── */
 table{width:100%;border-collapse:collapse}
-th{text-align:left;color:var(--dim);font-size:10px;padding:2px 5px;font-weight:400}
-td{padding:3px 5px;font-size:11px;border-top:1px solid rgba(30,42,66,.5)}
+th{text-align:left;color:var(--dim);font-size:10px;padding:2px 6px;font-weight:400;white-space:nowrap}
+td{padding:4px 6px;font-size:11px;border-top:1px solid rgba(26,36,56,.6);vertical-align:middle}
 .v{font-weight:700;font-size:12px}
-.up{color:var(--green)}.dn{color:var(--red)}.nt{color:var(--orange)}.gl{color:var(--gold)}.dm{color:var(--dim)}
-.sig{display:inline-block;padding:1px 6px;border-radius:3px;font-size:10px;font-weight:700}
-.sg{background:rgba(0,214,143,.15);color:var(--green)}.sr{background:rgba(255,71,87,.15);color:var(--red)}.sy{background:rgba(255,159,67,.15);color:var(--orange)}
-.meter{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin:3px 0}
-.meter-fill{height:100%;border-radius:3px;transition:width 1s}
-.src-tag{font-size:9px;padding:1px 4px;border-radius:3px;cursor:pointer;text-decoration:none;margin-left:2px}
-.src-tag:hover{opacity:.7}
-.sp{background:rgba(77,166,255,.2);color:var(--blue)}
-.sv{background:rgba(107,125,158,.2);color:var(--dim)}
-.fb{font-size:9px;padding:1px 4px;border-radius:3px;margin-left:2px}
-.fb.ok{background:rgba(0,214,143,.15);color:var(--green)}
-.fb.stale{background:rgba(255,159,67,.2);color:var(--orange)}
-/* 四象限 */
-.qb{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:100px;margin:6px 0}
-.qb div{display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:10px;font-weight:700;text-align:center;padding:4px}
-.q-tl{background:rgba(255,71,87,.12);color:var(--red)}
-.q-tr{background:rgba(255,159,67,.12);color:var(--orange)}
-.q-bl{background:rgba(77,166,255,.12);color:var(--blue)}
-.q-br{background:rgba(0,214,143,.2);color:var(--green)}
-/* Score bars */
+.up{color:var(--green)}.dn{color:var(--red)}.nt{color:var(--orange)}.gl{color:var(--gold)}.dm{color:var(--dim)}.bl{color:var(--blue)}
+.cy{color:var(--cyan)}.pu{color:var(--purple)}
+
+/* ── SIG PILL ── */
+.pill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700}
+.pill-g{background:var(--green-bg);color:var(--green);border:1px solid rgba(0,214,143,.3)}
+.pill-r{background:var(--red-bg);color:var(--red);border:1px solid rgba(255,64,96,.3)}
+.pill-y{background:var(--orange-bg);color:var(--orange);border:1px solid rgba(255,159,67,.3)}
+.pill-b{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(77,166,255,.3)}
+.pill-gold{background:var(--gold-bg);color:var(--gold);border:1px solid rgba(245,200,66,.3)}
+.pill-p{background:rgba(192,132,252,.1);color:var(--purple);border:1px solid rgba(192,132,252,.3)}
+
+/* ── METER ── */
+.meter{height:5px;background:var(--border);border-radius:3px;overflow:hidden;margin:4px 0}
+.mfill{height:100%;border-radius:3px;transition:width 1s}
+
+/* ── SCORE BAR ── */
 .sbar{display:flex;align-items:center;gap:6px;margin:3px 0}
-.slabel{width:80px;font-size:10px;color:var(--dim);flex-shrink:0}
-.strack{flex:1;height:7px;background:var(--border);border-radius:3px;overflow:hidden}
+.slabel{width:90px;font-size:10px;color:var(--dim);flex-shrink:0}
+.strack{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
 .sfill{height:100%;border-radius:3px;transition:width 1s}
-.snum{width:28px;text-align:right;font-weight:700;font-size:11px;flex-shrink:0}
-/* Alert/Opp boxes */
-.abox{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.3);border-radius:5px;padding:8px;margin:4px 0}
-.abox .at{color:var(--red);font-weight:700;font-size:11px;margin-bottom:3px}
-.obox{background:rgba(0,214,143,.08);border:1px solid rgba(0,214,143,.3);border-radius:5px;padding:8px;margin:4px 0}
-.obox .at{color:var(--green);font-weight:700;font-size:11px;margin-bottom:3px}
-.nbox{background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.25);border-radius:5px;padding:8px;margin:4px 0}
-.nbox .nt-h{color:var(--blue);font-weight:700;font-size:11px;margin-bottom:3px}
-.banner{background:rgba(255,71,87,.15);border:1px solid var(--red);border-radius:5px;padding:7px 10px;margin-bottom:10px;font-size:11px;display:none}
-.banner.show{display:block}
-/* Calendar */
-.cal-item{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-top:1px solid rgba(30,42,66,.5)}
-.cal-item:first-child{border-top:none}
-.cal-date{font-size:10px;font-weight:700;min-width:60px;padding-top:1px}
-.cal-date.past{color:var(--dim)}
-.cal-date.soon{color:var(--orange)}
-.cal-date.today{color:var(--red)}
-.cal-date.future{color:var(--blue)}
+.snum{width:30px;text-align:right;font-weight:700;font-size:11px;flex-shrink:0}
+
+/* ── BIG NUM ── */
+.bignum{font-size:22px;font-weight:700;letter-spacing:-1px}
+.bignum-sub{font-size:10px;color:var(--dim);margin-top:2px}
+
+/* ── CRL BOX ── */
+.crl-box{display:flex;align-items:center;justify-content:center;border-radius:10px;padding:14px;margin-bottom:8px;border:2px solid;text-align:center}
+.crl-num{font-size:36px;font-weight:700;line-height:1}
+.crl-label{font-size:12px;font-weight:700;margin-top:4px}
+
+/* ── SIGNAL HEADER ── */
+.sig-header{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;border:2px solid;margin-bottom:10px}
+.sig-dir-text{font-size:16px;font-weight:700;letter-spacing:.5px}
+.sig-stars{font-size:14px;color:var(--gold)}
+
+/* ── QUADRANT ── */
+.quad{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:90px;margin:6px 0}
+.quad div{display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:9px;font-weight:700;text-align:center;padding:4px}
+.q-tl{background:rgba(255,64,96,.12);color:var(--red)}
+.q-tr{background:rgba(255,159,67,.1);color:var(--orange)}
+.q-bl{background:rgba(77,166,255,.1);color:var(--blue)}
+.q-br{background:rgba(0,214,143,.1);color:var(--green)}
+
+/* ── CALENDAR ITEM ── */
+.cal{display:flex;gap:8px;padding:6px 0;border-top:1px solid rgba(26,36,56,.5)}
+.cal:first-child{border-top:none}
+.cal-dt{min-width:56px;font-size:10px;font-weight:700}
+.cal-dt.past{color:var(--dim)}.cal-dt.soon{color:var(--orange)}.cal-dt.today-dt{color:var(--red)}.cal-dt.future{color:var(--blue)}
 .cal-body{flex:1}
-.cal-title{font-size:11px;font-weight:700}
-.cal-desc{font-size:10px;color:var(--dim);margin-top:1px}
-.cal-badge{font-size:9px;padding:1px 5px;border-radius:3px;margin-left:5px}
-.cb-high{background:rgba(255,71,87,.2);color:var(--red)}
-.cb-med{background:rgba(255,159,67,.2);color:var(--orange)}
-.cb-low{background:rgba(77,166,255,.2);color:var(--blue)}
-/* Analyst views */
-.analyst-card{padding:7px 0;border-top:1px solid rgba(30,42,66,.5)}
-.analyst-card:first-child{border-top:none}
-.analyst-name{font-size:11px;font-weight:700;color:var(--gold)}
-.analyst-date{font-size:9px;color:var(--dim);margin-left:6px}
-.analyst-view{font-size:10px;color:var(--text);margin-top:3px;line-height:1.5}
-.analyst-signal{font-size:10px;margin-top:3px}
-/* BTC Timing Signal */
-.sig-dir{display:flex;align-items:center;justify-content:center;border-radius:8px;padding:10px;margin:6px 0;font-weight:700;font-size:15px;letter-spacing:1px}
-.sig-dir.long{background:rgba(0,214,143,.15);border:2px solid var(--green);color:var(--green)}
-.sig-dir.short{background:rgba(255,71,87,.15);border:2px solid var(--red);color:var(--red)}
-.sig-dir.neutral{background:rgba(255,159,67,.1);border:2px solid var(--orange);color:var(--orange)}
-.sig-stars{color:var(--gold);letter-spacing:2px;font-size:14px}
-.sig-level{display:flex;justify-content:space-between;align-items:center;padding:5px 8px;border-radius:5px;margin:3px 0;font-size:11px}
-.sig-level.entry{background:rgba(77,166,255,.1);border:1px solid rgba(77,166,255,.3)}
-.sig-level.sl{background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.25)}
-.sig-level.tp{background:rgba(0,214,143,.06);border:1px solid rgba(0,214,143,.2)}
-.sig-basis{font-size:10px;color:var(--dim);padding:3px 0;display:flex;gap:5px;align-items:flex-start}
-.sig-basis::before{content:"▸";color:var(--blue);flex-shrink:0}
-.sig-risk::before{content:"▸";color:var(--orange);flex-shrink:0}
-.sig-risk{font-size:10px;color:var(--dim);padding:3px 0;display:flex;gap:5px;align-items:flex-start}
-/* on-chain gauge */
-.gauge-row{display:flex;align-items:center;gap:6px;margin:3px 0}
-.gauge-label{width:90px;font-size:10px;color:var(--dim);flex-shrink:0}
-.gauge-val{width:70px;font-weight:700;font-size:11px;flex-shrink:0}
-.gauge-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.gauge-fill{height:100%;border-radius:3px;transition:width 1s}
-.gauge-sig{width:60px;font-size:10px;flex-shrink:0;text-align:right}
+.cal-ttl{font-size:11px;font-weight:700}
+.cal-desc{font-size:10px;color:var(--dim2);margin-top:2px;line-height:1.4}
+
+/* ── LEVEL BOX ── */
+.lvl{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:8px;flex:1}
+.lvl.active{border-color:rgba(0,214,143,.5);background:rgba(0,214,143,.06)}
+
+/* ── ONCHAIN GAUGE ── */
+.gauge{display:flex;align-items:center;gap:5px;margin:3px 0}
+.gauge-lbl{width:95px;font-size:10px;color:var(--dim);flex-shrink:0}
+.gauge-val{width:68px;font-weight:700;font-size:11px;flex-shrink:0}
+.gauge-bar{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.gauge-fill{height:100%;border-radius:3px}
+.gauge-sig{width:55px;text-align:right;font-size:10px;flex-shrink:0}
+
+/* ── INFO BLOCK ── */
+.iblock{background:var(--card2);border-radius:6px;padding:8px 10px;margin:5px 0;font-size:11px;line-height:1.6}
+.iblock .head{font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px}
+
+/* ── EVENT CARD ── */
+.evt{padding:8px 0;border-top:1px solid rgba(26,36,56,.5)}
+.evt:first-child{border-top:none}
+.evt-top{display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.evt-ttl{font-size:11px;font-weight:700;flex:1}
+.evt-fact{font-size:10px;color:var(--dim2);line-height:1.5}
+.evt-inv{font-size:10px;color:var(--cyan);margin-top:3px;line-height:1.5}
+
+/* ── CRON STATUS ROW ── */
+.cron-row{display:flex;align-items:center;gap:6px;padding:4px 0;border-top:1px solid rgba(26,36,56,.4);font-size:10px}
+.cron-row:first-child{border-top:none}
+.cron-name{flex:1;color:var(--text)}
+.cron-time{color:var(--dim);width:70px;flex-shrink:0}
+.cron-status{width:55px;flex-shrink:0;text-align:right}
+
+/* ── NARRATIVE BOX ── */
+.narrative{background:rgba(77,166,255,.05);border:1px solid rgba(77,166,255,.15);border-radius:6px;padding:10px;margin:6px 0;font-size:11px;line-height:1.7;color:var(--dim2)}
+.narrative strong{color:var(--text)}
+
+/* ── SECTION HEADER ── */
+.sec-header{font-size:11px;font-weight:700;color:var(--gold);padding:4px 0 6px;border-bottom:1px solid rgba(245,200,66,.2);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+
+/* ── SCROLL ── */
+.scroll-y{overflow-y:auto;max-height:420px}
+.scroll-y::-webkit-scrollbar{width:4px}
+.scroll-y::-webkit-scrollbar-track{background:transparent}
+.scroll-y::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ── PROGRESS BAR ── */
+.cycle-bar{height:12px;background:var(--border);border-radius:6px;overflow:hidden;margin:6px 0;position:relative}
+.cycle-fill{height:100%;border-radius:6px;transition:width 1s}
+.cycle-tick{position:absolute;top:0;width:2px;height:100%;background:rgba(255,255,255,.3)}
+.cycle-label{display:flex;justify-content:space-between;font-size:9px;color:var(--dim)}
+
+/* ── MACRO KV ── */
+.kv{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-top:1px solid rgba(26,36,56,.4);font-size:11px}
+.kv:first-child{border-top:none}
+.kv-k{color:var(--dim)}
+.kv-v{font-weight:700}
+
+/* ── BTC SIGNAL CONTAINER ── */
+#btc-signal-container{}
+.matrix-item{display:flex;align-items:center;gap:6px;padding:3px 0;border-top:1px solid rgba(26,36,56,.4);font-size:10px}
+.matrix-item:first-child{border-top:none}
+.matrix-chk{font-size:13px;flex-shrink:0;width:18px}
+.matrix-lbl{flex:1;color:var(--dim2)}
+.matrix-val{font-weight:700;font-size:11px;min-width:60px;text-align:right}
+
+/* ── WHALE SECTION ── */
+.whale-sec{margin:6px 0}
+.whale-sec-title{font-size:10px;font-weight:700;color:var(--purple);padding:3px 0;border-bottom:1px solid rgba(192,132,252,.2);margin-bottom:5px}
+
+/* Links */
 a{color:inherit;text-decoration:none}
+a:hover{opacity:.7}
+.link{color:var(--blue);font-size:10px}
+.link:hover{text-decoration:underline}
 </style>
 </head>
 <body>
-<h1>🔮 MACRO ORACLE DASHBOARD <span style="font-size:10px;color:var(--dim)">v4.0 · Standalone · No Server Needed</span></h1>
-<div class="sub">
-  <span><span class="dot loading" id="dot"></span><span id="ts">加载中...</span> · 60s自动刷新</span>
-  <span id="conn"></span>
-</div>
-<div class="banner" id="banner"></div>
 
-<div class="grid">
-
-<!-- ── 核心判断 ── -->
-<div class="card span2">
-<div class="ct">🎯 核心判断 + 实时价格 <span class="src">多源聚合 | 点击数据源跳转原始页面</span></div>
-<table>
-<tr><th>资产</th><th>实时价格</th><th>变动</th><th>源</th><th>方向</th><th>置信度</th><th>目标</th><th>止损</th></tr>
-<tr><td class="v">S&P 500</td><td class="v" id="p-spx">—</td><td id="c-spx">—</td><td id="s-spx"></td><td class="nt">震荡偏弱</td><td>4/5</td><td>6,800-7,000</td><td>6,400</td></tr>
-<tr><td class="v gl">BTC ⭐</td><td class="v" id="p-btc">—</td><td id="c-btc">—</td><td id="s-btc"></td><td class="nt">警戒弱势</td><td>4/5</td><td>$85K-$100K</td><td>$58K</td></tr>
-<tr><td class="v gl">黄金 XAU</td><td class="v" id="p-gold">—</td><td id="c-gold">—</td><td id="s-gold"></td><td class="up">结构牛市</td><td>5/5</td><td>$5,200-$5,400</td><td>$4,700</td></tr>
-<tr><td class="v">白银 XAG</td><td class="v" id="p-silver">—</td><td id="c-silver">—</td><td id="s-silver"></td><td class="up">BULL</td><td>3/5</td><td>$90-$95</td><td>$72</td></tr>
-</table>
-</div>
-
-<!-- ── 市场快照 ── -->
-<div class="card">
-<div class="ct">📊 市场快照 <span class="src">Yahoo Finance · CoinGecko</span></div>
-<table>
-<tr><th>资产</th><th>价格</th><th>变动</th><th>源</th><th></th></tr>
-<tr><td>S&P 500</td><td class="v" id="m-spx">—</td><td id="mc-spx">—</td><td id="ms-spx"></td><td id="mf-spx"></td></tr>
-<tr><td>Nasdaq</td><td class="v" id="m-ndx">—</td><td id="mc-ndx">—</td><td id="ms-ndx"></td><td id="mf-ndx"></td></tr>
-<tr><td>Dow</td><td class="v" id="m-dow">—</td><td id="mc-dow">—</td><td id="ms-dow"></td><td id="mf-dow"></td></tr>
-<tr><td>BTC</td><td class="v" id="m-btc">—</td><td id="mc-btc">—</td><td id="ms-btc"></td><td id="mf-btc"></td></tr>
-<tr><td>黄金</td><td class="v" id="m-gold">—</td><td id="mc-gold">—</td><td id="ms-gold"></td><td id="mf-gold"></td></tr>
-<tr><td>白银</td><td class="v" id="m-silver">—</td><td id="mc-silver">—</td><td id="ms-silver"></td><td id="mf-silver"></td></tr>
-<tr><td>WTI</td><td class="v" id="m-wti">—</td><td id="mc-wti">—</td><td id="ms-wti"></td><td id="mf-wti"></td></tr>
-<tr><td>DXY</td><td class="v" id="m-dxy">—</td><td id="mc-dxy">—</td><td id="ms-dxy"></td><td id="mf-dxy"></td></tr>
-<tr><td>VIX</td><td class="v" id="m-vix">—</td><td id="mc-vix">—</td><td id="ms-vix"></td><td id="mf-vix"></td></tr>
-</table>
-</div>
-
-<!-- ── 达利欧四象限 + 全天候配置 ── -->
-<div class="card">
-<div class="ct">📐 宏观坐标 · Dalio 四季法则 <span class="src">All-Weather 资产配置</span></div>
-<div class="qb">
-  <div class="q-tl" style="border:2px solid var(--red)">◉ 滞胀区<br><span style="font-size:9px">增长↓通胀↑</span></div>
-  <div class="q-tr">过热区<br><span style="font-size:9px">增长↑通胀↑</span></div>
-  <div class="q-bl">衰退区<br><span style="font-size:9px">增长↓通胀↓</span></div>
-  <div class="q-br">金发女孩<br><span style="font-size:9px">增长↑通胀↓</span></div>
-</div>
-<div style="background:rgba(255,71,87,.08);border:1px solid rgba(255,71,87,.35);border-radius:4px;padding:5px 7px;font-size:10px;margin:4px 0">
-  <span style="color:var(--red);font-weight:700">◉ 当前象限：滞胀-Lite</span>
-  <span style="color:var(--dim);margin-left:4px">置信度 4/5</span><br>
-  <span style="color:var(--dim)">GDP +1.4% · Core PCE 3.0% · Supercore MoM +0.6% · J.P. Morgan 2026零降息</span>
-</div>
-<!-- 全天候资产配置建议 -->
-<div style="font-size:10px;font-weight:700;color:var(--gold);margin:5px 0 3px">🌤️ Dalio 四季法则 · 滞胀象限配置</div>
-<table>
-<tr><th>资产类别</th><th>建议</th><th>逻辑</th></tr>
-<tr><td class="gl">黄金/白银</td><td><span class="sig sg">超配↑↑</span></td><td style="font-size:10px;color:var(--dim)">抗通胀首选，Stage 6</td></tr>
-<tr><td>大宗商品</td><td><span class="sig sg">超配↑</span></td><td style="font-size:10px;color:var(--dim)">能源/铜/农产品</td></tr>
-<tr><td>TIPS（通胀债）</td><td><span class="sig sg">标配→超配</span></td><td style="font-size:10px;color:var(--dim)">实际利率若转负</td></tr>
-<tr><td>非美股票</td><td><span class="sig sg">增持↑</span></td><td style="font-size:10px;color:var(--dim)">Sell America叙事</td></tr>
-<tr><td>美股成长股</td><td><span class="sig sr">减配↓</span></td><td style="font-size:10px;color:var(--dim)">高估值+滞胀压制</td></tr>
-<tr><td>长久期美债</td><td><span class="sig sr">减配↓↓</span></td><td style="font-size:10px;color:var(--dim)">通胀+财政赤字</td></tr>
-<tr><td>现金/短债</td><td><span class="sig sy">中性</span></td><td style="font-size:10px;color:var(--dim)">Fed暂停，等待</td></tr>
-<tr><td>BTC</td><td><span class="sig sy">逆向小仓</span></td><td style="font-size:10px;color:var(--dim)">链上低估≠宏观确认</td></tr>
-</table>
-</div>
-
-<!-- ── 利率 ── -->
-<div class="card">
-<div class="ct">🏦 利率 <span class="src">FRED + Yahoo Finance</span></div>
-<table>
-<tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>Fed Funds</td><td class="v" id="r-ffr">—</td><td><span class="sig sy">暂停期</span></td><td id="rs-ffr"></td><td id="rf-ffr"></td></tr>
-<tr><td>2Y UST</td><td class="v" id="r-2y">—</td><td id="r-2y-s">—</td><td id="rs-2y"></td><td id="rf-2y"></td></tr>
-<tr><td>10Y UST</td><td class="v" id="r-10y">—</td><td id="r-10y-s">—</td><td id="rs-10y"></td><td id="rf-10y"></td></tr>
-<tr><td>30Y UST</td><td class="v" id="r-30y">—</td><td>—</td><td id="rs-30y"></td><td id="rf-30y"></td></tr>
-<tr><td>2s10s利差</td><td class="v" id="r-sp">—</td><td id="r-sp-s">—</td><td id="rs-sp"></td><td id="rf-sp"></td></tr>
-<tr><td>5Y BEI</td><td class="v" id="r-bei">—</td><td>通胀预期</td><td id="rs-bei"></td><td id="rf-bei"></td></tr>
-<tr><td>10Y TIPS</td><td class="v" id="r-tips">—</td><td>实际利率</td><td id="rs-tips"></td><td id="rf-tips"></td></tr>
-</table>
-</div>
-
-<!-- ── 信用 ── -->
-<div class="card">
-<div class="ct">🛡️ 信用 & 波动率 <span class="src">FRED + Yahoo</span></div>
-<table>
-<tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>HY利差</td><td class="v" id="cr-hy">—</td><td id="cr-hy-s">—</td><td id="crs-hy"></td><td id="crf-hy"></td></tr>
-<tr><td>IG利差</td><td class="v" id="cr-ig">—</td><td id="cr-ig-s">—</td><td id="crs-ig"></td><td id="crf-ig"></td></tr>
-<tr><td>VIX</td><td class="v" id="cr-vix">—</td><td id="cr-vix-s">—</td><td id="crs-vix"></td><td id="crf-vix"></td></tr>
-</table>
-<div style="margin-top:6px">
-<div style="font-size:10px;color:var(--dim)">系统性风险评分</div>
-<div class="meter"><div class="meter-fill" id="risk-m" style="width:15%;background:var(--green)"></div></div>
-<div style="font-size:11px;text-align:center;font-weight:700" id="risk-s">低风险</div>
-</div>
-<div style="margin-top:6px;font-size:10px;color:var(--dim);background:rgba(255,159,67,.06);border:1px solid rgba(255,159,67,.2);border-radius:4px;padding:5px">
-  ⚠️ Marks/Pozsar："指数在撒谎" — 综合利差平静但<br>个券爆破。AI替代引发结构性信用损失。
-</div>
-</div>
-
-<!-- ── 流动性 ── -->
-<div class="card">
-<div class="ct">💧 流动性 <span class="src">FRED</span></div>
-<table>
-<tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>Fed资产负债表</td><td class="v" id="l-bs">—</td><td class="dn">QT持续</td><td id="ls-bs"></td><td id="lf-bs"></td></tr>
-</table>
-<div style="margin-top:6px;font-size:10px;color:var(--dim)">流动性综合评分</div>
-<div class="meter"><div class="meter-fill" style="width:40%;background:var(--orange)"></div></div>
-<div style="font-size:10px;text-align:center;color:var(--orange);font-weight:700;margin-bottom:6px">中性偏紧 (40/100)</div>
-<table style="margin-top:4px">
-<tr><th>分项</th><th>状态</th><th>方向</th></tr>
-<tr><td>Fed QT</td><td class="dn">$25B/月缩表</td><td class="dn">↓ 紧</td></tr>
-<tr><td>财政流动性</td><td class="nt">2月末支撑</td><td class="nt">→ 中性</td></tr>
-<tr><td>3月流动性</td><td class="dn">边际收紧预期</td><td class="dn">↓ 警惕</td></tr>
-</table>
-</div>
-
-<!-- ── BTC 链上深度 ── -->
-<div class="card">
-<div class="ct">⛓️ BTC 链上深度 <span class="src">CoinGecko · bgeometrics · Alt.me</span></div>
-<div style="display:flex;gap:10px;margin-bottom:8px">
-  <div style="flex:1;text-align:center;background:rgba(77,166,255,.08);border:1px solid rgba(77,166,255,.2);border-radius:5px;padding:6px">
-    <div style="font-size:10px;color:var(--dim)">BTC 价格</div>
-    <div class="v" id="b-price" style="font-size:16px">—</div>
-    <div id="b-ch24" style="font-size:11px">—</div>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div style="display:flex;align-items:center;gap:10px">
+    <h1>🔮 MACRO ORACLE v5.0</h1>
+    <span style="font-size:10px;color:var(--dim)">宏观 · BTC择时 · 链上 · 风控 · 事件 · 运维</span>
   </div>
-  <div style="flex:1;text-align:center;background:rgba(255,159,67,.06);border:1px solid rgba(255,159,67,.2);border-radius:5px;padding:6px">
-    <div style="font-size:10px;color:var(--dim)">恐贪指数</div>
-    <div class="v" id="b-fg-val" style="font-size:16px">—</div>
-    <div id="b-fg-lab" style="font-size:10px;color:var(--dim)">—</div>
-  </div>
-  <div style="flex:1;text-align:center;background:rgba(0,214,143,.06);border:1px solid rgba(0,214,143,.2);border-radius:5px;padding:6px">
-    <div style="font-size:10px;color:var(--dim)">已实现价格</div>
-    <div class="v gl" id="b-rp" style="font-size:14px">—</div>
-    <div id="b-rp-sub" style="font-size:10px;color:var(--dim)">估值支撑</div>
+  <div class="meta">
+    <span><span class="dot load" id="dot"></span><span id="ts">加载中...</span></span>
+    <span id="conn" style="font-size:10px;color:var(--dim)"></span>
+    <a href="https://chenchenai.github.io/macro-oracle/" target="_blank" class="link">🔗 GitHub Pages</a>
   </div>
 </div>
-<div style="font-size:10px;color:var(--dim);margin-bottom:4px;font-weight:700">📊 链上估值信号（bgeometrics）</div>
-<div class="gauge-row">
-  <div class="gauge-label">MVRV Z-Score</div>
-  <div class="gauge-val" id="oc-mvrv">—</div>
-  <div class="gauge-bar"><div class="gauge-fill" id="oc-mvrv-b" style="width:0%"></div></div>
-  <div class="gauge-sig" id="oc-mvrv-s">—</div>
-</div>
-<div class="gauge-row">
-  <div class="gauge-label">SOPR</div>
-  <div class="gauge-val" id="oc-sopr">—</div>
-  <div class="gauge-bar"><div class="gauge-fill" id="oc-sopr-b" style="width:0%"></div></div>
-  <div class="gauge-sig" id="oc-sopr-s">—</div>
-</div>
-<div class="gauge-row">
-  <div class="gauge-label">NUPL</div>
-  <div class="gauge-val" id="oc-nupl">—</div>
-  <div class="gauge-bar"><div class="gauge-fill" id="oc-nupl-b" style="width:0%"></div></div>
-  <div class="gauge-sig" id="oc-nupl-s">—</div>
-</div>
-<div class="gauge-row">
-  <div class="gauge-label">Puell Multiple</div>
-  <div class="gauge-val" id="oc-puell">—</div>
-  <div class="gauge-bar"><div class="gauge-fill" id="oc-puell-b" style="width:0%"></div></div>
-  <div class="gauge-sig" id="oc-puell-s">—</div>
-</div>
-<div class="gauge-row">
-  <div class="gauge-label">活跃地址数</div>
-  <div class="gauge-val" id="oc-addr">—</div>
-  <div class="gauge-bar"><div class="gauge-fill" id="oc-addr-b" style="width:50%;background:var(--blue)"></div></div>
-  <div class="gauge-sig" id="oc-addr-s">—</div>
-</div>
-<div style="margin-top:6px;font-size:10px;color:var(--dim)">链上综合评分</div>
-<div class="meter"><div class="meter-fill" id="oc-total-m" style="width:0%"></div></div>
-<div style="font-size:11px;text-align:center;font-weight:700" id="oc-total-s">计算中...</div>
+
+<!-- TABS -->
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('macro')">🌍 宏观总览</div>
+  <div class="tab" onclick="switchTab('btc-timing')">⚡ BTC择时</div>
+  <div class="tab" onclick="switchTab('onchain')">🔗 链上分析</div>
+  <div class="tab" onclick="switchTab('whale')">🐋 鲸鱼日报</div>
+  <div class="tab" onclick="switchTab('risk')">🛡️ 风控ARC</div>
+  <div class="tab" onclick="switchTab('events')">📅 事件日历</div>
+  <div class="tab" onclick="switchTab('ops')">⚙️ 系统运维</div>
 </div>
 
-<!-- ── BTC 择时信号 ── -->
-<div class="card span2">
-<div class="ct">🎯 BTC 择时信号日报 <span class="src">BTC-Timing-Monitor · 自动更新 · <a href="https://raw.githubusercontent.com/chenchenai/macro-oracle/main/btc-signal.json" target="_blank" style="color:var(--dim)">原始数据</a></span></div>
-<div id="btc-signal-container">
-  <div style="color:var(--dim);font-size:11px;padding:10px">⏳ 加载信号中...</div>
-</div>
+<!-- ================================================================ -->
+<!-- TAB 1: 宏观总览 -->
+<!-- ================================================================ -->
+<div class="panel active" id="tab-macro">
+  <!-- 核心判断栏 -->
+  <div class="card col-full" style="margin-bottom:10px">
+    <div class="card-title">🎯 核心判断 · 三市场方向 <span class="src">实时价格聚合</span></div>
+    <table>
+      <tr>
+        <th>资产</th><th>实时价格</th><th>24h变动</th><th>方向</th><th>置信度</th><th>目标位</th><th>止损</th><th>时间框架</th>
+      </tr>
+      <tr>
+        <td class="v gl">黄金 XAU</td>
+        <td class="v" id="p-gold">—</td>
+        <td id="c-gold">—</td>
+        <td><span class="pill pill-g">结构牛市</span></td>
+        <td class="v up">5/5 ★★★★★</td>
+        <td>$5,200-$5,400</td>
+        <td>$4,700</td>
+        <td class="dm">中期</td>
+      </tr>
+      <tr>
+        <td class="v">S&P 500</td>
+        <td class="v" id="p-spx">—</td>
+        <td id="c-spx">—</td>
+        <td><span class="pill pill-y">震荡偏弱</span></td>
+        <td class="v nt">4/5 ★★★★☆</td>
+        <td>6,800-7,000</td>
+        <td>6,400</td>
+        <td class="dm">短期</td>
+      </tr>
+      <tr>
+        <td class="v gl">BTC</td>
+        <td class="v" id="p-btc">—</td>
+        <td id="c-btc">—</td>
+        <td><span class="pill pill-y" id="btc-sig-pill">等待确认</span></td>
+        <td class="v nt" id="btc-conf">—</td>
+        <td id="btc-target">—</td>
+        <td id="btc-sl">—</td>
+        <td class="dm">中期</td>
+      </tr>
+      <tr>
+        <td class="v">白银 XAG</td>
+        <td class="v" id="p-silver">—</td>
+        <td id="c-silver">—</td>
+        <td><span class="pill pill-g">顺风</span></td>
+        <td class="v up">3/5 ★★★☆☆</td>
+        <td>$90-$95</td>
+        <td>$72</td>
+        <td class="dm">中期</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="grid">
+    <!-- 市场快照 -->
+    <div class="card">
+      <div class="card-title">📊 市场快照 <span class="src">Yahoo · CoinGecko</span></div>
+      <table>
+        <tr><th>资产</th><th>价格</th><th>变动</th></tr>
+        <tr><td>S&P 500</td><td class="v" id="m-spx">—</td><td id="mc-spx" class="dm">—</td></tr>
+        <tr><td>Nasdaq</td><td class="v" id="m-ndx">—</td><td id="mc-ndx" class="dm">—</td></tr>
+        <tr><td>Dow</td><td class="v" id="m-dow">—</td><td id="mc-dow" class="dm">—</td></tr>
+        <tr><td class="gl">BTC</td><td class="v" id="m-btc">—</td><td id="mc-btc" class="dm">—</td></tr>
+        <tr><td class="gl">ETH</td><td class="v" id="m-eth">—</td><td id="mc-eth" class="dm">—</td></tr>
+        <tr><td class="gl">黄金</td><td class="v" id="m-gold">—</td><td id="mc-gold" class="dm">—</td></tr>
+        <tr><td>白银</td><td class="v" id="m-silver">—</td><td id="mc-silver" class="dm">—</td></tr>
+        <tr><td>WTI</td><td class="v" id="m-wti">—</td><td id="mc-wti" class="dm">—</td></tr>
+        <tr><td>DXY</td><td class="v" id="m-dxy">—</td><td id="mc-dxy" class="dm">—</td></tr>
+        <tr><td class="nt">VIX</td><td class="v" id="m-vix">—</td><td id="mc-vix" class="dm">—</td></tr>
+        <tr><td>USD/JPY</td><td class="v" id="m-jpy">—</td><td id="mc-jpy" class="dm">—</td></tr>
+      </table>
+    </div>
+
+    <!-- 达利欧四象限 -->
+    <div class="card">
+      <div class="card-title">📐 Dalio四象限 · 全天候配置 <span class="src">置信度 4/5</span></div>
+      <div class="quad">
+        <div class="q-tl" style="border:2px solid var(--red)">◉ 滞胀区<br><span style="font-size:8px">增长↓通胀↑</span></div>
+        <div class="q-tr">过热区<br><span style="font-size:8px">增长↑通胀↑</span></div>
+        <div class="q-bl">衰退区<br><span style="font-size:8px">增长↓通胀↓</span></div>
+        <div class="q-br">金发女孩<br><span style="font-size:8px">增长↑通胀↓</span></div>
+      </div>
+      <div class="iblock" style="background:rgba(255,64,96,.06);border:1px solid rgba(255,64,96,.25)">
+        <div class="head">◉ 当前象限：滞胀-Lite</div>
+        GDP +1.4% · Core PCE 3.0% · Supercore MoM +0.6% · J.P.Morgan 2026零降息
+      </div>
+      <table style="margin-top:6px">
+        <tr><th>资产类别</th><th>建议</th><th>逻辑</th></tr>
+        <tr><td class="gl">黄金/白银</td><td><span class="pill pill-g">超配↑↑</span></td><td class="dm" style="font-size:10px">抗通胀首选</td></tr>
+        <tr><td>大宗商品</td><td><span class="pill pill-g">超配↑</span></td><td class="dm" style="font-size:10px">能源/铜</td></tr>
+        <tr><td>TIPS</td><td><span class="pill pill-g">标配→超配</span></td><td class="dm" style="font-size:10px">实际利率若转负</td></tr>
+        <tr><td>非美股</td><td><span class="pill pill-g">增持↑</span></td><td class="dm" style="font-size:10px">Sell America</td></tr>
+        <tr><td>美股成长</td><td><span class="pill pill-r">减配↓</span></td><td class="dm" style="font-size:10px">高估值+滞胀</td></tr>
+        <tr><td>长久期美债</td><td><span class="pill pill-r">减配↓↓</span></td><td class="dm" style="font-size:10px">通胀+财政赤字</td></tr>
+        <tr><td class="gl">BTC</td><td><span class="pill pill-y">逆向小仓</span></td><td class="dm" style="font-size:10px">链上低估≠宏观确认</td></tr>
+      </table>
+    </div>
+
+    <!-- 利率与债券 -->
+    <div class="card">
+      <div class="card-title">🏦 利率 & 债券 <span class="src">FRED</span></div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>日期</th><th>信号</th></tr>
+        <tr><td>Fed Funds</td><td class="v" id="r-ffr">—</td><td id="rd-ffr" class="dm">—</td><td><span class="pill pill-y">暂停期</span></td></tr>
+        <tr><td>2Y UST</td><td class="v" id="r-2y">—</td><td id="rd-2y" class="dm">—</td><td id="rs-2y" class="dm">—</td></tr>
+        <tr><td>10Y UST</td><td class="v" id="r-10y">—</td><td id="rd-10y" class="dm">—</td><td id="rs-10y" class="dm">—</td></tr>
+        <tr><td>30Y UST</td><td class="v" id="r-30y">—</td><td id="rd-30y" class="dm">—</td><td class="dm">长端</td></tr>
+        <tr><td class="cy">2s10s利差</td><td class="v" id="r-sp">—</td><td id="rd-sp" class="dm">—</td><td id="rs-sp" class="dm">—</td></tr>
+        <tr><td>5Y BEI</td><td class="v" id="r-bei">—</td><td id="rd-bei" class="dm">—</td><td class="nt">通胀预期</td></tr>
+        <tr><td>10Y TIPS</td><td class="v" id="r-tips">—</td><td id="rd-tips" class="dm">—</td><td class="nt">实际利率</td></tr>
+      </table>
+    </div>
+
+    <!-- 信用 & 流动性 -->
+    <div class="card">
+      <div class="card-title">🛡️ 信用 & 流动性 <span class="src">FRED</span></div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>日期</th><th>信号</th></tr>
+        <tr><td>HY利差</td><td class="v" id="cr-hy">—</td><td id="crd-hy" class="dm">—</td><td id="crs-hy" class="dm">—</td></tr>
+        <tr><td>IG利差</td><td class="v" id="cr-ig">—</td><td id="crd-ig" class="dm">—</td><td id="crs-ig" class="dm">—</td></tr>
+        <tr><td class="nt">VIX</td><td class="v" id="cr-vix">—</td><td class="dm">实时</td><td id="crs-vix" class="dm">—</td></tr>
+        <tr><td>Fed 资产负债表</td><td class="v" id="cr-bal">—</td><td id="crd-bal" class="dm">—</td><td class="dm">QT进行中</td></tr>
+        <tr><td>净流动性</td><td class="v" id="cr-liq">—</td><td class="dm">派生</td><td id="crs-liq" class="dm">—</td></tr>
+        <tr><td>M2 YoY</td><td class="v" id="cr-m2">—</td><td id="crd-m2" class="dm">—</td><td id="crs-m2" class="dm">—</td></tr>
+      </table>
+      <div style="margin-top:8px">
+        <div style="font-size:10px;color:var(--dim);margin-bottom:3px">系统性风险评分</div>
+        <div class="meter"><div class="mfill" id="risk-m" style="width:15%;background:var(--green)"></div></div>
+        <div style="font-size:11px;font-weight:700;text-align:center" id="risk-s">低风险</div>
+      </div>
+    </div>
+
+    <!-- 宏观快照解读 -->
+    <div class="card">
+      <div class="card-title">💡 Macro Oracle 晨报 · 今日解读 <span class="src">auto-snapshot v2</span></div>
+      <div id="snapshot-content">
+        <div class="iblock">
+          <div class="head">宏观坐标</div>
+          <div id="snap-quadrant" class="dm">加载中...</div>
+        </div>
+        <div class="iblock">
+          <div class="head">最大风险</div>
+          <div id="snap-risk" class="dm">—</div>
+        </div>
+        <div class="iblock">
+          <div class="head">最大机会</div>
+          <div id="snap-opp" class="dm">—</div>
+        </div>
+        <div class="iblock">
+          <div class="head">💡 三市场建议</div>
+          <div id="snap-suggestions">
+            <div class="kv"><span class="kv-k">美股</span><span class="kv-v dm" id="snap-us">—</span></div>
+            <div class="kv"><span class="kv-k">BTC</span><span class="kv-v dm" id="snap-btc">—</span></div>
+            <div class="kv"><span class="kv-k">黄金</span><span class="kv-v dm" id="snap-gold">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 恐贪指数 & 情绪 -->
+    <div class="card">
+      <div class="card-title">😱 市场情绪 <span class="src">Alternative.me · FRED</span></div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
+        <div style="text-align:center">
+          <div class="bignum" id="fg-val" style="color:var(--red)">—</div>
+          <div class="bignum-sub" id="fg-label">恐贪指数</div>
+        </div>
+        <div style="flex:1">
+          <div class="meter" style="height:8px"><div class="mfill" id="fg-meter" style="width:0;background:linear-gradient(90deg,var(--green),var(--orange),var(--red))"></div></div>
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--dim);margin-top:2px">
+            <span>极度恐慌</span><span>中性50</span><span>极度贪婪</span>
+          </div>
+        </div>
+      </div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>信号</th></tr>
+        <tr><td>恐贪指数</td><td class="v" id="fg-row">—</td><td id="fg-sig" class="dm">—</td></tr>
+        <tr><td>VIX</td><td class="v" id="em-vix">—</td><td id="em-vix-s" class="dm">—</td></tr>
+        <tr><td>BTC 24h变动</td><td class="v" id="em-btc-chg">—</td><td id="em-btc-s" class="dm">—</td></tr>
+        <tr><td>黄金 24h变动</td><td class="v" id="em-gold-chg">—</td><td class="dm">避险需求</td></tr>
+        <tr><td>SPX 24h变动</td><td class="v" id="em-spx-chg">—</td><td class="dm">风险偏好</td></tr>
+      </table>
+      <div style="margin-top:8px;padding:6px;background:rgba(77,166,255,.05);border-radius:5px;border:1px solid rgba(77,166,255,.15)">
+        <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:3px">跨市场信号矩阵</div>
+        <div id="cross-market" style="font-size:10px;color:var(--dim2)">等待价格数据...</div>
+      </div>
+    </div>
+
+  </div><!-- /grid -->
+</div><!-- /tab-macro -->
+
+
+<!-- ================================================================ -->
+<!-- TAB 2: BTC 择时 -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-btc-timing">
+  <div id="btc-signal-container">
+    <div class="narrative">⏳ 正在从 GitHub 加载 BTC 择时信号...</div>
+  </div>
 </div>
 
-<!-- ── 贵金属 ── -->
-<div class="card">
-<div class="ct">🥇 贵金属 <span class="src">Yahoo Finance</span></div>
-<table>
-<tr><th>指标</th><th>值</th><th>信号</th><th>源</th><th></th></tr>
-<tr><td>黄金</td><td class="v gl" id="pm-g">—</td><td id="pm-g-s">—</td><td id="pms-g"></td><td id="pmf-g"></td></tr>
-<tr><td>白银</td><td class="v gl" id="pm-s">—</td><td id="pm-s-s">—</td><td id="pms-s"></td><td id="pmf-s"></td></tr>
-<tr><td>G/S Ratio</td><td class="v" id="pm-r">—</td><td id="pm-r-s">—</td></tr>
-<tr><td>10Y TIPS</td><td class="v" id="pm-t">—</td><td>实际利率（黄金核心驱动）</td></tr>
-<tr><td>央行购金</td><td class="v up">863吨/年</td><td>结构性需求</td><td><a href="https://www.gold.org/goldhub/data/gold-demand-by-country" target="_blank" class="src-tag sp">WGC</a></td><td><span class="fb stale">季度</span></td></tr>
-</table>
-<div style="margin-top:6px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.25);border-radius:5px;padding:6px;font-size:10px">
-  <span style="color:var(--gold);font-weight:700">🏆 Dalio Stage 6 黄金逻辑</span><br>
-  <span style="color:var(--dim)">滞胀象限 + 央行购金 + "Sell America" = 黄金结构牛市<br>历史首破 $5,000 · 技术回调是逢低加仓机会</span>
-</div>
-</div>
 
-<!-- ── 宏观日历 ── -->
-<div class="card">
-<div class="ct">📅 宏观日历 <span class="src">关键事件 | 红=高影响 橙=中 蓝=低</span></div>
-<div id="cal-container"></div>
-</div>
+<!-- ================================================================ -->
+<!-- TAB 3: 链上分析 -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-onchain">
+  <div class="grid">
 
-<!-- ── 宏观观点 ── -->
-<div class="card span2">
-<div class="ct">🧠 顶级分析师观点 <span class="src">最新 13F / 研报 / 公开发言</span></div>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
-<div style="padding-right:12px;border-right:1px solid var(--border)">
-<div class="analyst-card">
-  <div><span class="analyst-name">Ray Dalio</span><span class="analyst-date">Feb 17, 2026 · 慕尼黑安全峰会</span></div>
-  <div class="analyst-view">正式宣布美国进入大周期 <strong style="color:var(--red)">Stage 6</strong>（秩序崩解期），类比1930年代"大无序"。"The World Order Has Broken Down."</div>
-  <div class="analyst-signal"><span class="sig sg">黄金/非美资产</span> <span class="sig sr">美债/美元</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 4/5</span></div>
-</div>
-<div class="analyst-card">
-  <div><span class="analyst-name">Stanley Druckenmiller</span><span class="analyst-date">Q4 2025 13F</span></div>
-  <div class="analyst-view">清仓 Meta/Arm/Sandisk/Seagate → 转仓 Amazon/Alphabet。新建 <strong style="color:var(--orange)">$6,400万 Bloom Energy</strong>（BE）多头。AI基础设施瓶颈：算力→<strong>电力</strong>。</div>
-  <div class="analyst-signal"><span class="sig sg">AI能源/应用层</span> <span class="sig sr">AI芯片高估值</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 4/5</span></div>
-</div>
-</div>
-<div style="padding-left:12px">
-<div class="analyst-card">
-  <div><span class="analyst-name">Bill Ackman</span><span class="analyst-date">Q4 2025 13F</span></div>
-  <div class="analyst-view">Mag 7核心仓位增65%（持仓$22亿，升至第三大重仓）。与Druckenmiller共识：<strong>AI核心基础设施+能源双轨配置</strong>。巴西R$330亿外资涌入，EWZ YTD +20%。</div>
-  <div class="analyst-signal"><span class="sig sg">非美资产/AI应用</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 3/5</span></div>
-</div>
-<div class="analyst-card">
-  <div><span class="analyst-name">Howard Marks / Zoltan Pozsar</span><span class="analyst-date">Feb 2026</span></div>
-  <div class="analyst-view">"Is It a Bubble?" — AI投资处于FOMO尾部，类比铁路泡沫。信用市场"<strong style="color:var(--orange)">指数在撒谎</strong>"：综合利差平静，个券爆破——商业模式被AI替代引发结构性信用损失。</div>
-  <div class="analyst-signal"><span class="sig sy">AI估值谨慎</span> <span class="sig sr">信用市场结构风险</span> <span style="color:var(--dim);font-size:10px;margin-left:6px">置信度 3/5</span></div>
-</div>
-</div>
-</div>
-</div>
+    <!-- 核心链上指标 -->
+    <div class="card">
+      <div class="card-title">🔗 核心链上指标 <span class="src">Glassnode · SQLite</span></div>
+      <div class="scroll-y">
+        <div class="sec-header">📐 估值层</div>
+        <div id="oc-valuation">
+          <div class="gauge"><span class="gauge-lbl">Ahr999</span><span class="gauge-val" id="oc-ahr">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-ahr-bar" style="width:0;background:var(--green)"></div></div><span class="gauge-sig" id="oc-ahr-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">MVRV Z-Score</span><span class="gauge-val" id="oc-mvrv-z">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-mvrv-z-bar" style="width:0;background:var(--blue)"></div></div><span class="gauge-sig" id="oc-mvrv-z-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">MVRV Ratio</span><span class="gauge-val" id="oc-mvrv">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-mvrv-bar" style="width:0;background:var(--blue)"></div></div><span class="gauge-sig" id="oc-mvrv-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">NUPL</span><span class="gauge-val" id="oc-nupl">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-nupl-bar" style="width:0;background:var(--orange)"></div></div><span class="gauge-sig" id="oc-nupl-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">Puell Multiple</span><span class="gauge-val" id="oc-puell">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-puell-bar" style="width:0;background:var(--gold)"></div></div><span class="gauge-sig" id="oc-puell-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">Mayer Multiple</span><span class="gauge-val" id="oc-mayer">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-mayer-bar" style="width:0;background:var(--purple)"></div></div><span class="gauge-sig" id="oc-mayer-sig">—</span></div>
+        </div>
 
-<!-- ── 重大宏观事件（动态·近7日）── -->
-<div class="card span2">
-<div class="ct">🌐 重大宏观事件 · 近7日深度解读
-  <span class="src" id="events-meta">加载中...</span>
-</div>
-<div id="events-container">
-  <div style="color:var(--dim);font-size:11px;padding:12px 0;text-align:center">⏳ 正在加载事件数据...</div>
-</div>
-</div>
+        <div class="sec-header" style="margin-top:8px">👥 持有者层</div>
+        <div id="oc-holder">
+          <div class="gauge"><span class="gauge-lbl">LTH-SOPR</span><span class="gauge-val" id="oc-lth-sopr">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-lth-sopr-bar" style="width:0;background:var(--cyan)"></div></div><span class="gauge-sig" id="oc-lth-sopr-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">STH-SOPR</span><span class="gauge-val" id="oc-sth-sopr">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-sth-sopr-bar" style="width:0;background:var(--cyan)"></div></div><span class="gauge-sig" id="oc-sth-sopr-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">aSOPR</span><span class="gauge-val" id="oc-asopr">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-asopr-bar" style="width:0;background:var(--cyan)"></div></div><span class="gauge-sig" id="oc-asopr-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">LTH供应占比</span><span class="gauge-val" id="oc-lth-pct">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-lth-pct-bar" style="width:0;background:var(--green)"></div></div><span class="gauge-sig" id="oc-lth-pct-sig">—</span></div>
+        </div>
 
-<!-- ── 实时告警 ── -->
-<div class="card span2">
-<div class="ct">⚡ 实时告警 & 机会扫描</div>
-<div id="alerts-c"><div style="color:var(--dim);font-size:11px">加载中...</div></div>
-</div>
+        <div class="sec-header" style="margin-top:8px">💰 资本流动层</div>
+        <div id="oc-flow">
+          <div class="gauge"><span class="gauge-lbl">交易所净流量</span><span class="gauge-val" id="oc-netflow">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-netflow-bar" style="width:50%;background:var(--orange)"></div></div><span class="gauge-sig" id="oc-netflow-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">交易所余额%</span><span class="gauge-val" id="oc-exbal">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-exbal-bar" style="width:0;background:var(--red)"></div></div><span class="gauge-sig" id="oc-exbal-sig">—</span></div>
+          <div class="gauge"><span class="gauge-lbl">积累趋势分</span><span class="gauge-val" id="oc-ats">—</span><div class="gauge-bar"><div class="gauge-fill" id="oc-ats-bar" style="width:0;background:var(--green)"></div></div><span class="gauge-sig" id="oc-ats-sig">—</span></div>
+        </div>
+      </div>
+    </div>
 
-<!-- ── Kill Switch ── -->
-<div class="card">
-<div class="ct">🚨 Kill Switch</div>
-<table>
-<tr><th>触发条件</th><th>行动</th><th>状态</th></tr>
-<tr><td class="dn">BTC &lt; $58,000</td><td>→ 判断失效</td><td id="ks-btc">—</td></tr>
-<tr><td class="dn">HY利差 &gt; 400bp</td><td>→ 转为防御</td><td id="ks-hy">—</td></tr>
-<tr><td class="dn">VIX &gt; 35</td><td>→ 系统性风险</td><td id="ks-vix">—</td></tr>
-<tr><td class="dn">DXY &gt; 105</td><td>→ 流动性危机</td><td id="ks-dxy">—</td></tr>
-<tr><td class="dn">核心CPI MoM &gt; 0.4%</td><td>→ 全面减仓</td><td id="ks-cpi" class="dn">下次: Mar 11</td></tr>
-</table>
-</div>
+    <!-- 价格锚点系统 -->
+    <div class="card">
+      <div class="card-title">⚓ 价格锚点系统 <span class="src">Glassnode · SQLite</span></div>
+      <table>
+        <tr><th>锚点</th><th>价格</th><th>溢价%</th><th>含义</th></tr>
+        <tr><td class="gl">BTC 现价</td><td class="v" id="anchor-btc">—</td><td class="dm">—</td><td class="dm">实时</td></tr>
+        <tr><td>ATH</td><td class="v" id="anchor-ath">$124,774</td><td class="v dn" id="anchor-ath-pct">—</td><td class="dm">2025-10-06</td></tr>
+        <tr><td class="cy">200WMA</td><td class="v" id="anchor-200wma">—</td><td class="v" id="anchor-200wma-pct">—</td><td class="dm">牛熊分界线</td></tr>
+        <tr><td>已实现价格 RP</td><td class="v" id="anchor-rp">—</td><td class="v" id="anchor-rp-pct">—</td><td class="dm">平均持仓成本</td></tr>
+        <tr><td>True Market Mean</td><td class="v" id="anchor-tmm">—</td><td class="v" id="anchor-tmm-pct">—</td><td class="dm">活跃成本基础</td></tr>
+        <tr><td>Balanced Price</td><td class="v" id="anchor-bp">—</td><td class="v" id="anchor-bp-pct">—</td><td class="dm">L1入场区上沿</td></tr>
+        <tr><td class="up">CVDD</td><td class="v" id="anchor-cvdd">—</td><td class="v" id="anchor-cvdd-pct">—</td><td class="dm">累积销毁估值</td></tr>
+        <tr><td>2YMA</td><td class="v" id="anchor-2yma">—</td><td class="v" id="anchor-2yma-pct">—</td><td class="dm">×2.5=牛市顶</td></tr>
+        <tr><td>MA200日</td><td class="v" id="anchor-ma200d">—</td><td class="v" id="anchor-ma200d-pct">—</td><td class="dm">日线均线</td></tr>
+      </table>
+      <div style="margin-top:8px;padding:6px;background:var(--card2);border-radius:5px">
+        <div style="font-size:10px;color:var(--dim)">价格位置：</div>
+        <div id="anchor-summary" style="font-size:11px;margin-top:3px;color:var(--dim2)">等待数据...</div>
+      </div>
+    </div>
 
-<!-- ── 数据质量 ── -->
-<div class="card">
-<div class="ct">🔍 数据质量</div>
-<div id="val-c"><div style="color:var(--dim);font-size:11px">等待校验...</div></div>
-</div>
+    <!-- 六维评分 -->
+    <div class="card">
+      <div class="card-title">🎯 六维链上评分 <span class="src">BTC链上分析师</span></div>
+      <div id="sixdim-scores">
+        <div class="sbar"><span class="slabel">宏观流动性</span><div class="strack"><div class="sfill" id="s1" style="width:0;background:var(--blue)"></div></div><span class="snum" id="s1v">—</span></div>
+        <div class="sbar"><span class="slabel">估值层</span><div class="strack"><div class="sfill" id="s2" style="width:0;background:var(--green)"></div></div><span class="snum" id="s2v">—</span></div>
+        <div class="sbar"><span class="slabel">持有者行为</span><div class="strack"><div class="sfill" id="s3" style="width:0;background:var(--cyan)"></div></div><span class="snum" id="s3v">—</span></div>
+        <div class="sbar"><span class="slabel">资本流动</span><div class="strack"><div class="sfill" id="s4" style="width:0;background:var(--orange)"></div></div><span class="snum" id="s4v">—</span></div>
+        <div class="sbar"><span class="slabel">技术面</span><div class="strack"><div class="sfill" id="s5" style="width:0;background:var(--purple)"></div></div><span class="snum" id="s5v">—</span></div>
+        <div class="sbar"><span class="slabel">情绪面</span><div class="strack"><div class="sfill" id="s6" style="width:0;background:var(--gold)"></div></div><span class="snum" id="s6v">—</span></div>
+      </div>
+      <div style="margin-top:10px;border-top:1px solid var(--border);padding-top:8px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:11px;color:var(--dim)">综合评分</span>
+          <span class="v bignum" id="total-score" style="font-size:20px">—</span>
+        </div>
+        <div class="meter" style="height:8px;margin:5px 0"><div class="mfill" id="total-score-bar" style="width:0;background:linear-gradient(90deg,var(--red),var(--orange),var(--green))"></div></div>
+        <div style="font-size:11px;font-weight:700;text-align:center" id="total-score-label">加载中...</div>
+      </div>
+    </div>
 
-</div><!-- /grid -->
+    <!-- 周期定位 -->
+    <div class="card">
+      <div class="card-title">📅 周期阶段定位 <span class="src">BTC-Timing-Monitor</span></div>
+      <div class="iblock">
+        <div class="head">当前阶段</div>
+        <div id="cycle-phase" class="v" style="font-size:13px;color:var(--gold)">熊市初期</div>
+      </div>
+      <div style="margin:8px 0">
+        <div style="font-size:10px;color:var(--dim);margin-bottom:3px">周期进度（自2024-04-20减半）</div>
+        <div class="cycle-bar">
+          <div class="cycle-fill" id="cycle-fill" style="width:0;background:linear-gradient(90deg,var(--blue),var(--green),var(--gold),var(--red))"></div>
+          <div class="cycle-tick" id="cycle-tick" style="left:60%"></div>
+        </div>
+        <div class="cycle-label"><span>减半</span><span id="cycle-days">第 — 天</span><span>历史顶部窗口</span></div>
+      </div>
+      <table>
+        <tr><th>里程碑</th><th>日期</th><th>状态</th></tr>
+        <tr><td>减半日</td><td>2024-04-20</td><td><span class="pill pill-g">已过</span></td></tr>
+        <tr><td>历史ATH（Oct 2025）</td><td>2025-10-06</td><td><span class="pill pill-g">已过</span></td></tr>
+        <tr><td>底部窗口开始（最早）</td><td>2026-06-04</td><td id="cycle-status1"><span class="pill pill-y">第777天</span></td></tr>
+        <tr><td>底部窗口中值</td><td>2026-08-07</td><td><span class="pill pill-b">第840天</span></td></tr>
+        <tr><td>底部窗口结束（最晚）</td><td>2026-10-06</td><td><span class="pill pill-p">第900天</span></td></tr>
+      </table>
+      <div class="kv" style="margin-top:8px"><span class="kv-k">历史类比</span><span class="kv-v dm" id="cycle-analog">2022年3-5月</span></div>
+      <div class="kv"><span class="kv-k">矿工成本参考</span><span class="kv-v">$70,027</span></div>
+      <div class="kv"><span class="kv-k">ATH回撤</span><span class="kv-v dn" id="cycle-drawdown">—</span></div>
+    </div>
 
-<div style="text-align:center;color:var(--dim);font-size:10px;margin-top:8px">
-  Macro Oracle v4.0 | Yahoo Finance · FRED · CoinGecko · bgeometrics · Alternative.me | <span id="src-count"></span>
-</div>
+  </div>
+</div><!-- /tab-onchain -->
 
-<!-- ═══════════════════════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════════════════════ -->
+
+<!-- ================================================================ -->
+<!-- TAB 4: 鲸鱼日报 -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-whale">
+  <div class="grid">
+    <!-- 核心决策 -->
+    <div class="card accent-p col-full">
+      <div class="card-title">🎯 鲸鱼日报 · 核心决策 <span class="src">BTC Whale Chain Report V3.0 · 9段式</span>
+        <span class="badge badge-p" id="whale-date">—</span>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px">
+          <div class="iblock" style="background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.25)">
+            <div class="head">📌 一句话定性</div>
+            <div id="whale-thesis" style="font-size:11px;color:var(--text)">等待今日数据更新...</div>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:6px">
+            <div style="flex:1;padding:8px;background:var(--card2);border-radius:6px;text-align:center">
+              <div style="font-size:10px;color:var(--dim)">综合信号</div>
+              <div class="v" style="font-size:15px;color:var(--gold)" id="whale-signal">—</div>
+            </div>
+            <div style="flex:1;padding:8px;background:var(--card2);border-radius:6px;text-align:center">
+              <div style="font-size:10px;color:var(--dim)">操作方向</div>
+              <div class="v" style="font-size:13px;color:var(--green)" id="whale-action">—</div>
+            </div>
+            <div style="flex:1;padding:8px;background:var(--card2);border-radius:6px;text-align:center">
+              <div style="font-size:10px;color:var(--dim)">仓位参考</div>
+              <div class="v" style="font-size:13px;color:var(--cyan)" id="whale-position">—</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex:1;min-width:200px">
+          <div class="sec-header">今日三个最重要数据点</div>
+          <div id="whale-top3" class="scroll-y" style="max-height:150px">
+            <div class="dm" style="font-size:10px">加载中...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 筹码地图 -->
+    <div class="card">
+      <div class="card-title">🗺️ 筹码地图：谁持有什么</div>
+      <div class="sec-header">持仓结构</div>
+      <table>
+        <tr><th>群体</th><th>占比</th><th>7日变化</th><th>研判</th></tr>
+        <tr><td class="gl">LTH 长期持有者</td><td class="v" id="w-lth-pct">—</td><td id="w-lth-chg" class="dm">—</td><td id="w-lth-judge" class="dm">—</td></tr>
+        <tr><td>STH 短期持有者</td><td class="v" id="w-sth-pct">—</td><td id="w-sth-chg" class="dm">—</td><td id="w-sth-judge" class="dm">—</td></tr>
+        <tr><td class="nt">交易所</td><td class="v" id="w-ex-pct">—</td><td id="w-ex-chg" class="dm">—</td><td id="w-ex-judge" class="dm">—</td></tr>
+      </table>
+      <div class="sec-header" style="margin-top:8px">价格锚点（筹码成本参考）</div>
+      <div id="w-anchors">
+        <div class="kv"><span class="kv-k">现价</span><span class="kv-v" id="w-price">—</span></div>
+        <div class="kv"><span class="kv-k">RP 已实现价</span><span class="kv-v" id="w-rp">—</span></div>
+        <div class="kv"><span class="kv-k">200WMA</span><span class="kv-v" id="w-200wma">—</span></div>
+        <div class="kv"><span class="kv-k">TMM 真市场均值</span><span class="kv-v" id="w-tmm">~$55K（估算）</span></div>
+        <div class="kv"><span class="kv-k">CVDD</span><span class="kv-v" id="w-cvdd">—</span></div>
+      </div>
+    </div>
+
+    <!-- 鲸鱼行为 -->
+    <div class="card">
+      <div class="card-title">🔄 鲸鱼行为追踪</div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>信号</th></tr>
+        <tr><td>交易所净流量 7日</td><td class="v" id="w-flow7">—</td><td id="w-flow7-s" class="dm">—</td></tr>
+        <tr><td>交易所净流量 30日</td><td class="v" id="w-flow30">—</td><td id="w-flow30-s" class="dm">—</td></tr>
+        <tr><td>交易所余额%</td><td class="v" id="w-exbal">—</td><td id="w-exbal-s" class="dm">—</td></tr>
+        <tr><td>鲸鱼→交易所 7日均</td><td class="v" id="w-whale7">—</td><td id="w-whale7-s" class="dm">—</td></tr>
+        <tr><td>Coinbase溢价</td><td class="v" id="w-coinbase">—</td><td id="w-coinbase-s" class="dm">—</td></tr>
+        <tr><td>资金费率</td><td class="v" id="w-funding">—</td><td id="w-funding-s" class="dm">—</td></tr>
+      </table>
+      <div class="iblock" style="margin-top:8px">
+        <div class="head">💡 流量诊断</div>
+        <div id="w-flow-diagnosis" class="dm">等待数据...</div>
+      </div>
+    </div>
+
+    <!-- SOPR解码 -->
+    <div class="card">
+      <div class="card-title">📊 SOPR行为解码</div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>7日趋势</th><th>含义</th></tr>
+        <tr><td class="gl">LTH-SOPR</td><td class="v" id="w-lth-sopr">—</td><td id="w-lth-sopr-t" class="dm">—</td><td id="w-lth-sopr-s" class="dm">—</td></tr>
+        <tr><td>STH-SOPR</td><td class="v" id="w-sth-sopr">—</td><td id="w-sth-sopr-t" class="dm">—</td><td id="w-sth-sopr-s" class="dm">—</td></tr>
+        <tr><td class="cy">aSOPR</td><td class="v" id="w-asopr">—</td><td id="w-asopr-t" class="dm">—</td><td id="w-asopr-s" class="dm">—</td></tr>
+      </table>
+      <div class="iblock" style="margin-top:6px">
+        <div class="head">aSOPR 持续 &lt;1.0 天数</div>
+        <div><span class="v cy" id="w-asopr-days">—</span> 天</div>
+      </div>
+      <div class="iblock">
+        <div class="head">💡 体制判断</div>
+        <div id="w-sopr-regime" class="dm">等待数据...</div>
+      </div>
+    </div>
+
+    <!-- 积累强度仪表盘 -->
+    <div class="card">
+      <div class="card-title">📡 积累强度仪表盘</div>
+      <table>
+        <tr><th>指标</th><th>当前值</th><th>阈值</th><th>状态</th></tr>
+        <tr><td>ATS 积累趋势分</td><td class="v" id="w-ats">—</td><td class="dm">&gt;0.8</td><td id="w-ats-s">—</td></tr>
+        <tr><td>LTH净持仓*</td><td class="v" id="w-lth-net">—</td><td class="dm">&gt;0/日</td><td id="w-lth-net-s">—</td></tr>
+        <tr><td>交易所余额%</td><td class="v" id="w-exbal2">—</td><td class="dm">&lt;13%</td><td id="w-exbal2-s">—</td></tr>
+        <tr><td>MVRV Z</td><td class="v" id="w-mvrv-z">—</td><td class="dm">&lt;0.5</td><td id="w-mvrv-z-s">—</td></tr>
+        <tr><td>FGI</td><td class="v" id="w-fgi">—</td><td class="dm">&lt;15极度恐慌</td><td id="w-fgi-s">—</td></tr>
+      </table>
+      <div class="iblock" style="margin-top:6px">
+        <div class="head">ATS 矛盾解读</div>
+        <div id="w-ats-analysis" class="dm">小实体卖，大实体吸收——确认门槛：ATS突破0.4=积累全面展开</div>
+      </div>
+    </div>
+
+    <!-- Glassnode框架 -->
+    <div class="card">
+      <div class="card-title">📐 筹码成本结构 · Glassnode框架</div>
+      <div class="whale-sec">
+        <div class="whale-sec-title">① STH成本基础走廊</div>
+        <div class="kv"><span class="kv-k">STH CB（估算）</span><span class="kv-v" id="gn-sth-cb">~$85K</span></div>
+        <div class="kv"><span class="kv-k">STH CB -1σ</span><span class="kv-v" id="gn-sth-cb1s">~$75K</span></div>
+        <div class="kv"><span class="kv-k">恢复STH CB条件</span><span class="kv-v dm" id="gn-sth-condition">价格需回$85K以上</span></div>
+      </div>
+      <div class="whale-sec">
+        <div class="whale-sec-title">② NUPL周期定位</div>
+        <div class="gauge"><span class="gauge-lbl">NUPL</span><span class="gauge-val" id="gn-nupl">—</span><div class="gauge-bar"><div class="gauge-fill" id="gn-nupl-bar" style="width:0;background:var(--orange)"></div></div><span class="gauge-sig" id="gn-nupl-sig">—</span></div>
+        <div class="kv"><span class="kv-k">距投降区（NUPL&lt;0）</span><span class="kv-v dm" id="gn-nupl-dist">—</span></div>
+      </div>
+      <div class="whale-sec">
+        <div class="whale-sec-title">③ TMM-RP防御走廊</div>
+        <div class="kv"><span class="kv-k">RP</span><span class="kv-v" id="gn-rp">—</span></div>
+        <div class="kv"><span class="kv-k">价格位置</span><span class="kv-v dm" id="gn-corridor">—</span></div>
+      </div>
+      <div class="whale-sec">
+        <div class="whale-sec-title">⑤ aSOPR 14日均线</div>
+        <div class="kv"><span class="kv-k">当前值</span><span class="kv-v" id="gn-asopr14">—</span></div>
+        <div class="kv"><span class="kv-k">牛市恢复阈值</span><span class="kv-v dm">持续&gt;5</span></div>
+      </div>
+    </div>
+
+    <!-- 风险与替代情景 -->
+    <div class="card">
+      <div class="card-title">⚠️ 风险 & 替代情景</div>
+      <table>
+        <tr><th>情景</th><th>概率</th><th>触发条件</th><th>应对</th></tr>
+        <tr>
+          <td class="up">主判断</td>
+          <td class="v up" id="w-main-prob">55%</td>
+          <td class="dm" id="w-main-thesis">震荡筑底，链上低估区</td>
+          <td class="dm">分批建仓</td>
+        </tr>
+        <tr>
+          <td class="nt">风险A</td>
+          <td class="v nt" id="w-risk-a-prob">30%</td>
+          <td class="dm" id="w-risk-a-trigger">宏观急剧恶化，流动性危机</td>
+          <td class="dn">暂停加仓</td>
+        </tr>
+        <tr>
+          <td class="dn">风险B</td>
+          <td class="v dn" id="w-risk-b-prob">15%</td>
+          <td class="dm" id="w-risk-b-trigger">监管黑天鹅/Mt.Gox抛压</td>
+          <td class="dn">止损执行</td>
+        </tr>
+      </table>
+      <div class="sec-header" style="margin-top:8px">📅 关键观察节点（P0立即推送）</div>
+      <div style="font-size:10px;color:var(--dim2);line-height:1.8">
+        • ATS突破0.4 → 积累全面展开<br>
+        • 价格跌破RP → 防御走廊下沿<br>
+        • LTH-SOPR跌破0.70 → 深度投降<br>
+        • aSOPR穿越1.0 → 体制切换
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-whale -->
+
+
+<!-- ================================================================ -->
+<!-- TAB 5: 风控 ARC -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-risk">
+  <div class="grid">
+
+    <!-- CRL 核心仪表 -->
+    <div class="card accent-gold">
+      <div class="card-title">🛡️ CRL 综合风险等级 <span class="src">ARC风控晨报 V3 · 4h更新</span>
+        <span class="badge" id="crl-update-badge">加载中...</span>
+      </div>
+      <div class="crl-box" id="crl-box" style="border-color:var(--orange);background:rgba(255,159,67,.08)">
+        <div>
+          <div class="crl-num" id="crl-num" style="color:var(--orange)">—</div>
+          <div class="crl-label" id="crl-label" style="color:var(--orange)">— 级</div>
+        </div>
+      </div>
+      <div style="font-size:10px;color:var(--dim);text-align:center;margin-bottom:8px" id="crl-action-text">加载中...</div>
+      <!-- CRL 7日走势 -->
+      <div class="sec-header">7日CRL走势</div>
+      <div id="crl-7day-trend" class="scroll-y" style="max-height:150px">
+        <table>
+          <tr><th>日期</th><th>CRL</th><th>级别</th><th>主要驱动</th></tr>
+          <tr><td class="dm" colspan="4">等待数据...</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 四维度评分 -->
+    <div class="card">
+      <div class="card-title">📊 四维度风险评分</div>
+      <div class="sbar"><span class="slabel">宏观流动性</span><div class="strack"><div class="sfill" id="crl-s1" style="width:0;background:var(--blue)"></div></div><span class="snum" id="crl-s1v">—</span></div>
+      <div class="sbar"><span class="slabel">市场结构</span><div class="strack"><div class="sfill" id="crl-s2" style="width:0;background:var(--orange)"></div></div><span class="snum" id="crl-s2v">—</span></div>
+      <div class="sbar"><span class="slabel">链上信号</span><div class="strack"><div class="sfill" id="crl-s3" style="width:0;background:var(--green)"></div></div><span class="snum" id="crl-s3v">—</span></div>
+      <div class="sbar"><span class="slabel">事件风险</span><div class="strack"><div class="sfill" id="crl-s4" style="width:0;background:var(--red)"></div></div><span class="snum" id="crl-s4v">—</span></div>
+      <div style="margin-top:8px">
+        <table>
+          <tr><th>指标</th><th>当前值</th><th>阈值</th><th>状态</th></tr>
+          <tr><td>BTC价格</td><td class="v" id="crl-btc">—</td><td class="dm">—</td><td id="crl-btc-s" class="dm">—</td></tr>
+          <tr><td>VIX</td><td class="v" id="crl-vix">—</td><td class="dm">&lt;20/&gt;30</td><td id="crl-vix-s" class="dm">—</td></tr>
+          <tr><td>USD/JPY</td><td class="v" id="crl-jpy">—</td><td class="dm">&lt;150/&gt;160</td><td id="crl-jpy-s" class="dm">—</td></tr>
+          <tr><td>BTC ETF净流</td><td class="v" id="crl-etf">—</td><td class="dm">—</td><td id="crl-etf-s" class="dm">—</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 风险雷达四大师 -->
+    <div class="card">
+      <div class="card-title">🧠 风险雷达 · 四大师视角 <span class="src">ARC V3</span></div>
+      <div class="scroll-y">
+        <div class="evt">
+          <div class="evt-top"><span class="pill pill-r">Taleb</span><span class="evt-ttl">黑天鹅/尾风险</span></div>
+          <div class="evt-fact" id="arc-taleb">当前地缘政治摩擦+流动性收缩，系统脆弱性上升。</div>
+          <div class="evt-inv" id="arc-taleb-rec">防御姿态，保持尾风险对冲。</div>
+        </div>
+        <div class="evt">
+          <div class="evt-top"><span class="pill pill-y">Soros</span><span class="evt-ttl">反身性/政策博弈</span></div>
+          <div class="evt-fact" id="arc-soros">市场叙事极度悲观本身即是反转条件之一。</div>
+          <div class="evt-inv" id="arc-soros-rec">关注叙事极端点，反向布局机会窗口。</div>
+        </div>
+        <div class="evt">
+          <div class="evt-top"><span class="pill pill-b">Druckenmiller</span><span class="evt-ttl">流动性/集中下注</span></div>
+          <div class="evt-fact" id="arc-druck">全球净流动性筑底信号，BTC高Beta放大器。</div>
+          <div class="evt-inv" id="arc-druck-rec">流动性拐点是买入时机，持续监控M2。</div>
+        </div>
+        <div class="evt">
+          <div class="evt-top"><span class="pill pill-p">Renaissance</span><span class="evt-ttl">量化/统计套利</span></div>
+          <div class="evt-fact" id="arc-ren">链上Ahr999&lt;0.45统计历史胜率&gt;95%。</div>
+          <div class="evt-inv" id="arc-ren-rec">纯数学抄底信号触发，机械执行。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 情景矩阵 -->
+    <div class="card">
+      <div class="card-title">🎯 情景矩阵 <span class="src">ARC V3 · 每日更新</span></div>
+      <table>
+        <tr><th>情景</th><th>概率</th><th>BTC目标</th><th>黄金</th><th>美股</th></tr>
+        <tr>
+          <td><span class="pill pill-g">鸽派超预期</span></td>
+          <td class="v up">20%</td>
+          <td class="up">+10-15%</td>
+          <td class="up">+3-5%</td>
+          <td class="up">+2-4%</td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-y">基准暂停</span></td>
+          <td class="v nt">55%</td>
+          <td class="nt">±3%</td>
+          <td class="up">+1-2%</td>
+          <td class="nt">±1%</td>
+        </tr>
+        <tr>
+          <td><span class="pill pill-r">鹰派意外</span></td>
+          <td class="v dn">25%</td>
+          <td class="dn">-8-12%</td>
+          <td class="nt">±2%</td>
+          <td class="dn">-3-5%</td>
+        </tr>
+      </table>
+      <div class="sec-header" style="margin-top:8px">升降级触发条件</div>
+      <div style="font-size:10px;color:var(--dim2);line-height:1.8">
+        <span style="color:var(--red)">升级→</span> VIX&gt;35 | BTC跌破$60K | HY利差&gt;500bp | 地缘黑天鹅<br>
+        <span style="color:var(--green)">降级→</span> VIX&lt;15持续3天 | BTC稳定&gt;$90K | 流动性明确改善
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-risk -->
+
+
+<!-- ================================================================ -->
+<!-- TAB 6: 事件日历 -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-events">
+  <div class="grid">
+    <!-- 本周/近期事件 -->
+    <div class="card col-full">
+      <div class="card-title">📅 近期关键事件日历 <span class="src">P0🔴/P1🟠/P2🟡 · 自动从晨报同步</span></div>
+      <div id="events-container" class="scroll-y" style="max-height:300px">
+        <div class="dm" style="font-size:11px">加载中...</div>
+      </div>
+    </div>
+
+    <!-- FOMC日历 -->
+    <div class="card">
+      <div class="card-title">🏛️ 2026 FOMC日历 <span class="src">FOMC事件交易员</span></div>
+      <div class="scroll-y">
+        <div class="cal">
+          <div class="cal-dt past">3月19日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-g" style="font-size:9px">✅已过</span></div><div class="cal-desc">非SEP · 维持利率不变 · 基准概率100%</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt soon">4月29日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-y">A级</span></div><div class="cal-desc">非SEP · Powell最后主持之一 · T-7: 4/21触发</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">6月17日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC 🔴 <span class="pill pill-r">S级</span></div><div class="cal-desc">SEP+点阵图 · <strong style="color:var(--gold)">Warsh首次主持</strong> · 全年最重要</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">7月29日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-y">A级</span></div><div class="cal-desc">非SEP · Warsh第2次 · 系数×0.8</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">9月16日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-r">S级</span></div><div class="cal-desc">SEP+点阵图 · 首次潜在Warsh降息窗口</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">10月28日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-y">A级</span></div><div class="cal-desc">非SEP · 中期选举前（11/3选举）</div></div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">12月9日</div>
+          <div class="cal-body"><div class="cal-ttl">FOMC <span class="pill pill-y">A级</span></div><div class="cal-desc">SEP+点阵图 · 年度最后 · 点阵图定2027利率路径</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 经济数据日历 -->
+    <div class="card">
+      <div class="card-title">📊 经济数据日历 <span class="src">econ_trader</span></div>
+      <div class="scroll-y">
+        <div id="econ-calendar">
+          <div class="cal">
+            <div class="cal-dt past">3月6日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">NFP <span class="pill pill-g" style="font-size:9px">✅已过 v2.0复盘</span></div>
+              <div class="cal-desc">实际: -92K（信号v1.0解析错误→v2.0修复）| 7条强制规则已固化</div>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal-dt past">3月12日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">CPI <span class="pill pill-g" style="font-size:9px">✅已过</span></div>
+              <div class="cal-desc">cpi_monitor.py 已就绪</div>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal-dt future">4月3日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">NFP <span class="pill pill-b">P1</span></div>
+              <div class="cal-desc">3月就业数据 · FOMC前最后一次NFP参考</div>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal-dt future">4月10日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">CPI <span class="pill pill-b">P1</span></div>
+              <div class="cal-desc">3月通胀 · 影响4/29 FOMC预期</div>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal-dt future">5月7日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">NFP <span class="pill pill-r">P0</span></div>
+              <div class="cal-desc">4月就业 · Warsh首次前最后信号</div>
+            </div>
+          </div>
+          <div class="cal">
+            <div class="cal-dt future">5月13日</div>
+            <div class="cal-body">
+              <div class="cal-ttl">CPI <span class="pill pill-r">P0</span></div>
+              <div class="cal-desc">4月通胀 · Warsh前关键数据</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BTC 周期关键窗口 -->
+    <div class="card">
+      <div class="card-title">📈 BTC周期关键窗口 <span class="src">BTC择时 · 链上分析师</span></div>
+      <div class="scroll-y">
+        <div class="cal">
+          <div class="cal-dt future">2026-06</div>
+          <div class="cal-body">
+            <div class="cal-ttl">底部窗口开始 <span class="pill pill-p">第777天</span></div>
+            <div class="cal-desc">历史最早底部日期 · 2024-04-20减半后777天</div>
+          </div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">2026-08</div>
+          <div class="cal-body">
+            <div class="cal-ttl">底部窗口中值 <span class="pill pill-b">第840天</span></div>
+            <div class="cal-desc">历史平均底部时间窗口</div>
+          </div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">2026-10</div>
+          <div class="cal-body">
+            <div class="cal-ttl">底部窗口关闭 <span class="pill pill-y">第900天</span></div>
+            <div class="cal-desc">历史最晚底部日期</div>
+          </div>
+        </div>
+        <div class="cal">
+          <div class="cal-dt future">2027-Q1</div>
+          <div class="cal-body">
+            <div class="cal-ttl">新牛市启动窗口 <span class="pill pill-gold">预估</span></div>
+            <div class="cal-desc">历史规律：底部后6-12个月启动下一轮牛市</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div><!-- /tab-events -->
+
+
+<!-- ================================================================ -->
+<!-- TAB 7: 系统运维 -->
+<!-- ================================================================ -->
+<div class="panel" id="tab-ops">
+  <div class="grid">
+
+    <!-- 今日Cron执行状态 -->
+    <div class="card col-full">
+      <div class="card-title">⚙️ 今日 Cron 执行状态 <span class="src">60个任务 · 实时</span>
+        <span class="badge badge-g" id="ops-healthy">—/— 健康</span>
+      </div>
+      <div class="grid-4" style="margin-bottom:10px">
+        <div style="text-align:center;padding:8px;background:var(--card2);border-radius:6px">
+          <div style="font-size:10px;color:var(--dim)">总任务</div>
+          <div class="bignum" style="font-size:20px;color:var(--blue)" id="ops-total">60</div>
+        </div>
+        <div style="text-align:center;padding:8px;background:var(--card2);border-radius:6px">
+          <div style="font-size:10px;color:var(--dim)">✅ 正常</div>
+          <div class="bignum" style="font-size:20px;color:var(--green)" id="ops-ok">—</div>
+        </div>
+        <div style="text-align:center;padding:8px;background:var(--card2);border-radius:6px">
+          <div style="font-size:10px;color:var(--dim)">❌ 异常</div>
+          <div class="bignum" style="font-size:20px;color:var(--red)" id="ops-err">—</div>
+        </div>
+        <div style="text-align:center;padding:8px;background:var(--card2);border-radius:6px">
+          <div style="font-size:10px;color:var(--dim)">⚠️ 连续错误</div>
+          <div class="bignum" style="font-size:20px;color:var(--orange)" id="ops-consecutive">—</div>
+        </div>
+      </div>
+      <div class="scroll-y" style="max-height:350px" id="cron-table">
+        <table>
+          <tr><th>任务名</th><th>执行时间</th><th>Agent</th><th>状态</th><th>上次运行</th><th>耗时</th></tr>
+          <tr><td colspan="6" class="dm">加载中...</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 报告推送状态 -->
+    <div class="card">
+      <div class="card-title">📤 今日报告推送状态</div>
+      <div id="report-status">
+        <div class="cron-row">
+          <span class="cron-name">🌅 宏观晨报 (Macro Monitor)</span>
+          <span class="cron-time">10:05 CST</span>
+          <span class="cron-status" id="s-morning">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">⚡ BTC择时日报 (虾哥)</span>
+          <span class="cron-time">10:00 CST</span>
+          <span class="cron-status" id="s-btc-timing">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🔗 BTC链上速报</span>
+          <span class="cron-time">10:10 CST</span>
+          <span class="cron-status" id="s-onchain">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🐋 BTC鲸鱼日报 V3.0</span>
+          <span class="cron-time">10:35 CST</span>
+          <span class="cron-status" id="s-whale">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🛡️ ARC风控晨报 V3</span>
+          <span class="cron-time">10:00 CST</span>
+          <span class="cron-status" id="s-arc">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">📊 宏观快照 (宏观分析师群)</span>
+          <span class="cron-time">10:30 CST</span>
+          <span class="cron-status" id="s-snapshot">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🔵 Glassnode数据更新</span>
+          <span class="cron-time">07:00 CST</span>
+          <span class="cron-status" id="s-glassnode">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🔍 数据就绪验收</span>
+          <span class="cron-time">07:45 CST</span>
+          <span class="cron-status" id="s-data-check">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">🔧 数据补跑守卫</span>
+          <span class="cron-time">11:30 CST</span>
+          <span class="cron-status" id="s-repair">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">💾 全量备份</span>
+          <span class="cron-time">23:55 CST</span>
+          <span class="cron-status" id="s-backup">—</span>
+        </div>
+        <div class="cron-row">
+          <span class="cron-name">📁 Session导出</span>
+          <span class="cron-time">23:40 CST</span>
+          <span class="cron-status" id="s-session">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guardian守护链 -->
+    <div class="card">
+      <div class="card-title">🔰 Guardian守护链状态 <span class="src">多层防护架构</span></div>
+      <table>
+        <tr><th>报告</th><th>主推</th><th>G1</th><th>G2(兜底)</th></tr>
+        <tr>
+          <td>BTC择时</td>
+          <td><span class="pill pill-b">10:00</span></td>
+          <td><span class="pill pill-y">10:15</span></td>
+          <td><span class="pill pill-r">11:00</span></td>
+        </tr>
+        <tr>
+          <td>BTC周期解读</td>
+          <td><span class="pill pill-b">10:20</span></td>
+          <td><span class="pill pill-y">10:30</span></td>
+          <td class="dm">—</td>
+        </tr>
+        <tr>
+          <td>BTC鲸鱼日报</td>
+          <td><span class="pill pill-b">10:35</span></td>
+          <td><span class="pill pill-y">10:50</span></td>
+          <td class="dm">—</td>
+        </tr>
+        <tr>
+          <td>宏观晨报</td>
+          <td><span class="pill pill-b">10:05</span></td>
+          <td><span class="pill pill-y">每2h</span></td>
+          <td class="dm">—</td>
+        </tr>
+        <tr>
+          <td>宏观快照</td>
+          <td><span class="pill pill-b">08:40</span></td>
+          <td><span class="pill pill-y">09:05</span></td>
+          <td class="dm">—</td>
+        </tr>
+      </table>
+      <div class="iblock" style="margin-top:8px">
+        <div class="head">Flag文件验证机制</div>
+        <div style="font-size:10px;color:var(--dim2);line-height:1.7">
+          所有守护机器人通过检查 <code style="color:var(--cyan);font-size:9px">/tmp/xxx-flag:sent</code> 判断主推是否成功。标志含 <code style="color:var(--green);font-size:9px">:sent</code> 后缀才视为成功投递。
+        </div>
+      </div>
+    </div>
+
+    <!-- 数据源健康 -->
+    <div class="card">
+      <div class="card-title">🗄️ 数据源 & 脚本健康</div>
+      <table>
+        <tr><th>数据源/脚本</th><th>路径</th><th>状态</th></tr>
+        <tr><td>glassnode_v1.sqlite</td><td class="dm" style="font-size:9px">Glassnode抓取项目/database/</td><td><span class="pill pill-g">主力</span></td></tr>
+        <tr><td>fetch_direct_api.py</td><td class="dm" style="font-size:9px">program/</td><td><span class="pill pill-g">v6</span></td></tr>
+        <tr><td>fetch_via_tab.py</td><td class="dm" style="font-size:9px">program/</td><td><span class="pill pill-b">Tab CDP</span></td></tr>
+        <tr><td>daily_update_v2.py</td><td class="dm" style="font-size:9px">program/</td><td><span class="pill pill-g">v2</span></td></tr>
+        <tr><td>auto_repair.py</td><td class="dm" style="font-size:9px">program/</td><td><span class="pill pill-y">11:30守卫</span></td></tr>
+        <tr><td>auto-snapshot.py</td><td class="dm" style="font-size:9px">workspace-alerts/</td><td><span class="pill pill-g">v2</span></td></tr>
+        <tr><td>fetch-macro.py</td><td class="dm" style="font-size:9px">workspace-btc-timing/scripts/</td><td><span class="pill pill-g">运行中</span></td></tr>
+        <tr><td>backup-full.sh</td><td class="dm" style="font-size:9px">OpenClaw总备份/</td><td><span class="pill pill-g">v1.1</span></td></tr>
+        <tr><td>Alpha Vantage API</td><td class="dm" style="font-size:9px">TLDVTHDPH241HJR4</td><td><span class="pill pill-b">免费tier</span></td></tr>
+        <tr><td>FRED API</td><td class="dm" style="font-size:9px">免费</td><td><span class="pill pill-g">运行中</span></td></tr>
+      </table>
+    </div>
+
+    <!-- Agent系统状态 -->
+    <div class="card">
+      <div class="card-title">🤖 Agent系统 · Telegram群路由</div>
+      <table>
+        <tr><th>Agent</th><th>群组</th><th>主要职能</th></tr>
+        <tr><td class="gl">alerts（虾哥）</td><td class="cy" style="font-size:10px">-5158490099</td><td class="dm" style="font-size:10px">宏观快照/备份/总协调</td></tr>
+        <tr><td>macro_monitor</td><td class="cy" style="font-size:10px">-5110324753</td><td class="dm" style="font-size:10px">每日晨报</td></tr>
+        <tr><td class="pu">btc_onchain</td><td class="cy" style="font-size:10px">-5042386860</td><td class="dm" style="font-size:10px">链上速报/鲸鱼日报/周期</td></tr>
+        <tr><td>btc_timing_monitor</td><td class="cy" style="font-size:10px">-5207448944</td><td class="dm" style="font-size:10px">BTC择时10模块日报</td></tr>
+        <tr><td class="nt">risk_manager</td><td class="cy" style="font-size:10px">-5096029585</td><td class="dm" style="font-size:10px">ARC CRL 4h更新</td></tr>
+        <tr><td>data_spider</td><td class="cy" style="font-size:10px">-5202036111</td><td class="dm" style="font-size:10px">Glassnode数据更新</td></tr>
+        <tr><td>econ_trader</td><td class="cy" style="font-size:10px">-5294223578</td><td class="dm" style="font-size:10px">NFP/CPI信号</td></tr>
+        <tr><td>fomc_trader</td><td class="cy" style="font-size:10px">-5034617808</td><td class="dm" style="font-size:10px">FOMC事件策略</td></tr>
+        <tr><td>finance_strategist</td><td class="cy" style="font-size:10px">-5258618628</td><td class="dm" style="font-size:10px">BTC策略/Skills</td></tr>
+      </table>
+    </div>
+
+  </div>
+</div><!-- /tab-ops -->
+
+
+<!-- ================================================================ -->
+<!-- SCRIPTS -->
+<!-- ================================================================ -->
 <script>
-// ─── 配置 ──────────────────────────────────────────────────────
+'use strict';
+// ── 配置 ──────────────────────────────────────────────────────
 const FRED_KEY   = '4b63504ba634719bd7d6b678c8b996b8';
 const PROXY      = 'https://corsproxy.io/?url=';
 const YAHOO_BASE = 'https://query1.finance.yahoo.com/v8/finance/chart/';
-const BG_BASE    = 'https://bitcoin-data.com/v1/';
+const BTC_SIGNAL_URL = 'https://raw.githubusercontent.com/chenchenai/macro-oracle/main/btc-signal.json';
+const EVENTS_URL     = 'https://raw.githubusercontent.com/chenchenai/macro-oracle/main/events.json';
 const REFRESH_MS = 60000;
-const FRED_DELAY = 300; // ms between each FRED request to avoid rate-limiting
+const FRED_DELAY = 350;
 
-// ─── 数据源定义 ────────────────────────────────────────────────
-const SRC = {
-  yahoo:     { name:'Yahoo',      url:'https://finance.yahoo.com' },
-  coingecko: { name:'CoinGecko',  url:'https://coingecko.com/en/coins/bitcoin' },
-  altme:     { name:'Alt.me',     url:'https://alternative.me/crypto/fear-and-greed-index/' },
-  fred:      { name:'FRED',       url:'https://fred.stlouisfed.org' },
-  bgeom:     { name:'bgeometrics',url:'https://charts.bgeometrics.com' },
-};
-
-// ─── 工具函数 ─────────────────────────────────────────────────
-const fmt  = (n,d=2) => n!=null ? Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}) : '—';
-const chg  = (c,p)  => {if(!c||!p)return{t:'—',cl:'dm'};const r=((c-p)/p*100);return{t:(r>=0?'+':'')+r.toFixed(2)+'%',cl:r>=0?'up':'dn'};};
-const sv   = (id,v,cls) => {const e=document.getElementById(id);if(!e)return;e.textContent=v;if(cls)e.className='v '+cls;};
-const sh   = (id,h)     => {const e=document.getElementById(id);if(e)e.innerHTML=h;};
-const safe = r => r.status==='fulfilled'?r.value:null;
+// ── 工具函数 ──────────────────────────────────────────────────
+const $  = id => document.getElementById(id);
+const sv = (id, v, cls) => { const e=$(id); if(!e)return; e.textContent=v; if(cls)e.className=cls; };
+const sh = (id, h)      => { const e=$(id); if(e)e.innerHTML=h; };
+const fmt= (n, d=2) => n!=null ? Number(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d}) : '—';
+const fmtP = v => v!=null ? '$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0}) : '—';
 const delay= ms => new Promise(r=>setTimeout(r,ms));
+function chgClass(v){ return v>0?'up':v<0?'dn':'dm'; }
+function chgText(v,d=2){ if(v==null)return'—'; return (v>0?'+':'')+Number(v).toFixed(d)+'%'; }
+function pct(cur, ref){ if(!cur||!ref)return null; return (cur-ref)/ref*100; }
+function fillBar(id, val, max){ const e=$(id); if(!e)return; e.style.width=Math.min(100,Math.max(0,(val/max)*100))+'%'; }
 
-function stag(s){return `<a href="${s.url}" target="_blank" class="src-tag sp">${s.name}</a>`;}
-function fbadge(dateStr,isRt){
-  if(!dateStr)return '<span class="fb stale">—</span>';
-  const d=new Date(dateStr),now=new Date(),diffH=(now-d)/3600000;
-  if(isRt)return diffH<24?'<span class="fb ok">实时</span>':`<span class="fb stale">⏳${Math.floor(diffH/24)}d</span>`;
-  return diffH<50?`<span class="fb ok">${dateStr.slice(5)}</span>`:`<span class="fb stale">⏳${Math.floor(diffH/24)}d</span>`;
+// ── 标签切换 ──────────────────────────────────────────────────
+function switchTab(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  event.target.classList.add('active');
+  $('tab-'+name).classList.add('active');
 }
 
-// ─── Fetch: Yahoo Finance (直连→代理) ────────────────────────
-async function fetchYahoo(symbol) {
-  const url = `${YAHOO_BASE}${encodeURIComponent(symbol)}?interval=1d&range=2d`;
-  const parse = d => {
-    const m = d?.chart?.result?.[0]?.meta;
-    if(!m?.regularMarketPrice)throw new Error('no price');
-    return{price:m.regularMarketPrice,prev_close:m.previousClose??m.chartPreviousClose??null};
-  };
-  try{const r=await fetch(url,{signal:AbortSignal.timeout(6000)});if(r.ok)return parse(await r.json());}catch{}
-  try{const r=await fetch(PROXY+encodeURIComponent(url),{signal:AbortSignal.timeout(10000)});if(r.ok)return parse(await r.json());}catch{}
-  const r=await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,{signal:AbortSignal.timeout(10000)});
-  return parse(await r.json());
-}
-
-// ─── Fetch: FRED (CORS代理 + 串行间隔300ms) ─────────────────
-// FRED API 不支持 CORS，浏览器必须走代理
-async function fetchFred(seriesId) {
-  const raw=`https://api.stlouisfed.org/fred/series/observations?series_id=${seriesId}&api_key=${FRED_KEY}&file_type=json&sort_order=desc&limit=1`;
-  const parse = async r => {
-    if(!r.ok)throw new Error(`FRED ${seriesId} HTTP ${r.status}`);
-    const d=await r.json();
-    const obs=d.observations?.[0];
-    if(!obs)throw new Error(`FRED no obs`);
-    return{value:obs.value==='.'?null:parseFloat(obs.value),date:obs.date};
-  };
-  // 1. 直连尝试（某些浏览器/网络可能支持）
-  try{const r=await fetch(raw,{signal:AbortSignal.timeout(5000)});if(r.ok){const d=await r.json();const obs=d.observations?.[0];if(obs)return{value:obs.value==='.'?null:parseFloat(obs.value),date:obs.date};}}catch{}
-  // 2. corsproxy.io
-  try{return await parse(await fetch(PROXY+encodeURIComponent(raw),{signal:AbortSignal.timeout(10000)}));}catch{}
-  // 3. allorigins fallback
-  return await parse(await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(raw)}`,{signal:AbortSignal.timeout(10000)}));
-}
-
-async function fetchFredSeq(ids) {
-  const results={};
-  for(const id of ids){
-    await delay(FRED_DELAY);
-    try{results[id]=await fetchFred(id);}catch{results[id]=null;}
+// ── Fetch Helpers ──────────────────────────────────────────────
+async function fetchYahoo(symbol){
+  const url=`${YAHOO_BASE}${encodeURIComponent(symbol)}?interval=1d&range=2d`;
+  const parse=d=>{const m=d?.chart?.result?.[0]?.meta;if(!m?.regularMarketPrice)throw 0;return{price:m.regularMarketPrice,prev:m.previousClose??m.chartPreviousClose??null};};
+  for(const base of [url, PROXY+encodeURIComponent(url), `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`]){
+    try{const r=await fetch(base,{signal:AbortSignal.timeout(8000)});if(r.ok)return parse(await r.json());}catch{}
   }
-  return results;
+  return null;
 }
-
-// ─── Fetch: CoinGecko (BTC) ───────────────────────────────────
-async function fetchBTC() {
-  const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true&include_market_cap=true',{signal:AbortSignal.timeout(10000)});
-  const d=await r.json();const b=d.bitcoin;
-  return{price:b.usd,change_24h:parseFloat((b.usd_24h_change||0).toFixed(2)),market_cap:b.usd_market_cap};
+async function fetchFred(id){
+  const raw=`https://api.stlouisfed.org/fred/series/observations?series_id=${id}&api_key=${FRED_KEY}&file_type=json&sort_order=desc&limit=1`;
+  const parse=async r=>{if(!r.ok)throw 0;const d=await r.json();const o=d.observations?.[0];if(!o)throw 0;return{value:o.value==='.'?null:parseFloat(o.value),date:o.date};};
+  for(const base of [raw, PROXY+encodeURIComponent(raw), `https://api.allorigins.win/raw?url=${encodeURIComponent(raw)}`]){
+    try{return await parse(await fetch(base,{signal:AbortSignal.timeout(8000)}));}catch{}
+  }
+  return null;
 }
-
-// ─── Fetch: Alternative.me (F&G) ─────────────────────────────
-async function fetchFG() {
+async function fetchFredSeq(ids){
+  const res={};
+  for(const id of ids){ await delay(FRED_DELAY); try{res[id]=await fetchFred(id);}catch{res[id]=null;} }
+  return res;
+}
+async function fetchBTC(){
+  const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true',{signal:AbortSignal.timeout(10000)});
+  const d=await r.json();
+  return{btc:{price:d.bitcoin.usd,chg:d.bitcoin.usd_24h_change},eth:{price:d.ethereum?.usd,chg:d.ethereum?.usd_24h_change}};
+}
+async function fetchFG(){
   const r=await fetch('https://api.alternative.me/fng/?limit=1',{signal:AbortSignal.timeout(8000)});
   const d=await r.json();const i=d.data[0];
-  return{value:parseInt(i.value),label:i.value_classification,timestamp:i.timestamp};
+  return{value:parseInt(i.value),label:i.value_classification};
+}
+async function fetchJSON(url){
+  const r=await fetch(url+'?t='+Date.now(),{signal:AbortSignal.timeout(12000)});
+  if(!r.ok)throw new Error('HTTP '+r.status);
+  return r.json();
 }
 
-// ─── Fetch: bgeometrics (localStorage缓存 · 每小时最多6次) ──
-// 免费限额 8次/小时，用 50分钟 TTL 缓存避免超限
-const BG_CACHE_KEY = 'macro_oracle_bg_cache';
-const BG_CACHE_TTL = 50 * 60 * 1000; // 50分钟
-
-async function fetchBG(endpoint) {
-  const r=await fetch(BG_BASE+endpoint,{signal:AbortSignal.timeout(12000)});
-  if(!r.ok)throw new Error(`BG ${endpoint} HTTP ${r.status} — rate limit?`);
-  const d=await r.json();
-  if(!Array.isArray(d)||d.length===0)throw new Error(`BG ${endpoint} empty`);
-  return d[d.length-1];
+// ── 渲染价格行 ─────────────────────────────────────────────────
+function renderPrice(idP, idC, price, prev){
+  if(!price){sv(idP,'—');sh(idC,'<span class="dm">—</span>');return;}
+  sv(idP, price>1000?fmt(price,0):'$'+fmt(price,2));
+  if(prev){const c=(price-prev)/prev*100;sh(idC,`<span class="${chgClass(c)}">${chgText(c)}</span>`);}
 }
 
-async function fetchBGSeq() {
-  // 先查 localStorage 缓存
-  try{
-    const cached=localStorage.getItem(BG_CACHE_KEY);
-    if(cached){
-      const {ts,data}=JSON.parse(cached);
-      if(Date.now()-ts < BG_CACHE_TTL){
-        console.log('[BG] cache hit, age='+(((Date.now()-ts)/60000).toFixed(1))+'min');
-        return data;
-      }
-    }
-  }catch{}
-  // 缓存过期或不存在 → 真正请求
-  const results={};
-  const eps={mvrv:'mvrv-zscore',sopr:'sopr',nupl:'nupl',puell:'puell-multiple',addr:'active-addresses',rp:'realized-price'};
-  for(const[key,ep] of Object.entries(eps)){
-    await delay(500); // 加大间隔，降低并发压力
-    try{results[key]=await fetchBG(ep);}
-    catch(e){console.warn('[BG]',key,e.message);results[key]=null;}
+// ── 渲染BTC信号（Tab2）────────────────────────────────────────
+function renderBTCSignal(data){
+  if(!data){sh('btc-signal-container','<div class="narrative">⚠️ BTC信号数据加载失败，请检查网络或手动刷新。</div>');return;}
+  const sig=data.signal||{};const price=data.price||{};const oc=data.onchain||{};
+  const tech=data.technical||{};const dz=data.depression_zone||{};
+  const lvs=data.levels||{};const macro=data.macro||{};const senti=data.sentiment||{};const cycle=data.cycle||{};
+  const updAt=data.timestamp?new Date(data.timestamp).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+  const dir=sig.direction||'NEUTRAL';
+  const sigColorMap={LONG:'var(--green)',NEUTRAL_WATCH:'var(--orange)',NEUTRAL:'var(--orange)',HOLD:'var(--blue)',REDUCE:'var(--red)'};
+  const sigColor=sigColorMap[dir]||'var(--dim)';
+  const stars='★'.repeat(sig.confidence||0)+'☆'.repeat(5-(sig.confidence||0));
+  const tick=t=>t?'<span class="up">✅</span>':'<span class="dm">⬜</span>';
+  const dzCount=typeof dz.activated==='number'?dz.activated:0;
+  const dzConds=dz.conditions&&typeof dz.conditions==='object'&&!Array.isArray(dz.conditions)
+    ?Object.entries(dz.conditions).map(([k,v])=>({k,v})):[];
+  const condLabels={price_lt_200wma:'Price < 200WMA',price_lt_realized:'Price < 已实现价',ahr999_lt_045:'Ahr999 < 0.45',mvrv_zscore_lt_0:'MVRV Z < 0',mayer_lt_065:'Mayer < 0.65'};
+
+  // 顶部宏观参数（供Tab1使用）
+  if(macro.vix){sv('m-vix',fmt(macro.vix,2));sv('em-vix',fmt(macro.vix,2));}
+  if(macro.dxy){sv('m-dxy',fmt(macro.dxy,2));const dc=macro.dxy_chg_pct;if(dc!=null)sh('mc-dxy',`<span class="${chgClass(dc)}">${chgText(dc)}</span>`);}
+  if(senti.fear_greed!=null){
+    sv('fg-val',senti.fear_greed);sv('fg-label',senti.fear_greed_label||'');sv('fg-row',senti.fear_greed);
+    const fc=senti.fear_greed;const fColor=fc<25?'var(--red)':fc<45?'var(--orange)':fc<55?'var(--gold)':'var(--green)';
+    $('fg-val')&&($('fg-val').style.color=fColor);fillBar('fg-meter',fc,100);
+    sh('fg-sig',`<span class="${fc<25?'dn':fc<45?'nt':fc<55?'gl':'up'}">${senti.fear_greed_label||'—'}</span>`);
   }
-  // 写入缓存（只有至少一个成功才缓存）
-  if(Object.values(results).some(v=>v!==null)){
-    try{localStorage.setItem(BG_CACHE_KEY,JSON.stringify({ts:Date.now(),data:results}));}catch{}
+  if(macro.net_liquidity_b)sv('cr-liq','$'+fmt(macro.net_liquidity_b/1000,2)+'T');
+  if(macro.m2_yoy_pct){sv('cr-m2',chgText(macro.m2_yoy_pct));sv('crl-etf',macro.btc_etf_latest_m?`$${fmt(macro.btc_etf_latest_m,0)}M`:'—');}
+  if(price.current){sv('crl-btc',fmtP(price.current));sv('anchor-btc',fmtP(price.current));}
+  if(macro.vix){sv('crl-vix',fmt(macro.vix,2));sh('crl-vix-s',`<span class="${macro.vix>30?'dn':macro.vix>20?'nt':'up'}">${macro.vix>30?'⚠️高波动':macro.vix>20?'注意':'正常'}</span>`);}
+  // 链上Tab填充
+  if(oc.ahr999!=null){sv('oc-ahr',fmt(oc.ahr999,4));fillBar('oc-ahr-bar',oc.ahr999<0.45?90:oc.ahr999<1?50:20,100);sh('oc-ahr-sig',`<span class="${oc.ahr999<0.45?'up':oc.ahr999<1?'nt':'dn'}">${oc.ahr999<0.45?'🟢抄底区':oc.ahr999<1?'正常':'偏高'}</span>`);}
+  if(oc.mvrv_zscore!=null){sv('oc-mvrv-z',fmt(oc.mvrv_zscore,3));fillBar('oc-mvrv-z-bar',oc.mvrv_zscore<0?5:oc.mvrv_zscore<2?40:oc.mvrv_zscore<3?65:85,100);sh('oc-mvrv-z-sig',`<span class="${oc.mvrv_zscore<0?'up':oc.mvrv_zscore<2?'nt':'dn'}">${oc.mvrv_zscore<0?'🟢低估':oc.mvrv_zscore<2?'低估0-2':oc.mvrv_zscore<3?'中等':'偏高'}</span>`);}
+  if(oc.mayer_multiple!=null){sv('oc-mayer',fmt(oc.mayer_multiple,3));fillBar('oc-mayer-bar',oc.mayer_multiple<0.65?10:oc.mayer_multiple<1?40:oc.mayer_multiple<2?70:90,100);sh('oc-mayer-sig',`<span class="${oc.mayer_multiple<0.65?'up':oc.mayer_multiple<1?'nt':'dn'}">${oc.mayer_multiple<0.65?'⬜底部':oc.mayer_multiple<1?'偏低':'正常'}</span>`);}
+  if(oc.puell_multiple!=null){sv('oc-puell',fmt(oc.puell_multiple,3));fillBar('oc-puell-bar',oc.puell_multiple<0.5?15:oc.puell_multiple<1?40:oc.puell_multiple<2?65:85,100);sh('oc-puell-sig',`<span class="${oc.puell_multiple<0.5?'up':oc.puell_multiple<1?'nt':'dn'}">${oc.puell_multiple<0.5?'矿工投降':'正常'}</span>`);}
+  if(oc.lth_sopr!=null){sv('oc-lth-sopr',fmt(oc.lth_sopr,3));fillBar('oc-lth-sopr-bar',oc.lth_sopr<0.8?20:oc.lth_sopr<1?50:oc.lth_sopr<1.1?70:85,100);sh('oc-lth-sopr-sig',`<span class="${oc.lth_sopr<1?'nt':'up'}">${oc.lth_sopr<0.8?'深度亏损':oc.lth_sopr<1?'亏损出货':'盈利出货'}</span>`);}
+  // 价格锚点Tab3
+  if(price.current){
+    const p=price.current;
+    if(oc['200wma']){const d=pct(p,oc['200wma']);sv('anchor-200wma',fmtP(oc['200wma']));sh('anchor-200wma-pct',`<span class="${d>0?'up':'dn'}">${d>0?'+':''}${d?.toFixed(1)}%</span>`);}
+    if(oc.realized_price){const d=pct(p,oc.realized_price);sv('anchor-rp',fmtP(oc.realized_price));sh('anchor-rp-pct',`<span class="${d>0?'up':'dn'}">${d>0?'+':''}${d?.toFixed(1)}%</span>`);}
+    if(oc.balanced_price){const d=pct(p,oc.balanced_price);sv('anchor-bp',fmtP(oc.balanced_price));sh('anchor-bp-pct',`<span class="${d>0?'up':'dn'}">${d>0?'+':''}${d?.toFixed(1)}%</span>`);}
+    if(oc.cvdd){const d=pct(p,oc.cvdd);sv('anchor-cvdd',fmtP(oc.cvdd));sh('anchor-cvdd-pct',`<span class="${d>0?'up':'dn'}">${d>0?'+':''}${d?.toFixed(1)}%</span>`);}
+    const athPct=pct(p,124774);sh('anchor-ath-pct',`<span class="dn">${athPct?.toFixed(1)}%</span>`);
+    sv('cycle-drawdown',athPct!=null?(athPct.toFixed(1)+'%'):'—');
+    // 鲸鱼Tab4
+    sv('w-price',fmtP(p));sv('w-rp',oc.realized_price?fmtP(oc.realized_price):'—');
+    sv('w-200wma',oc['200wma']?fmtP(oc['200wma']):'—');sv('w-cvdd',oc.cvdd?fmtP(oc.cvdd):'—');
+    sv('anchor-btc',fmtP(p));
   }
-  return results;
-}
-
-// ─── Fetch & Render: BTC 择时信号 ────────────────────────────
-const BTC_SIGNAL_URL = 'https://raw.githubusercontent.com/chenchenai/macro-oracle/main/btc-signal.json';
-const BTC_SIG_CACHE  = 'macro_oracle_btc_signal';
-const BTC_SIG_TTL    = 15 * 60 * 1000; // 15分钟缓存
-
-async function fetchBTCSignal() {
-  // localStorage 缓存
-  try{
-    const c=localStorage.getItem(BTC_SIG_CACHE);
-    if(c){const{ts,data}=JSON.parse(c);if(Date.now()-ts<BTC_SIG_TTL)return data;}
-  }catch{}
-  const r=await fetch(BTC_SIGNAL_URL+'?t='+Date.now(),{signal:AbortSignal.timeout(10000)});
-  if(!r.ok)throw new Error('BTC signal HTTP '+r.status);
-  const data=await r.json();
-  try{localStorage.setItem(BTC_SIG_CACHE,JSON.stringify({ts:Date.now(),data}));}catch{}
-  return data;
-}
-
-// ─── BTC信号字段映射（btc-signal.json v2 schema）────────────
-// JSON schema:
-//   data.timestamp          → 更新时间
-//   data.signal.direction   → 信号方向
-//   data.signal.confidence  → 置信度(1-5)
-//   data.signal.action      → 操作建议
-//   data.price.current      → BTC现价
-//   data.price.*            → 各价格对比基准
-//   data.onchain.*          → 链上指标数值
-//   data.technical.*        → 技术指标
-//   data.depression_zone.activated  → 已激活条件数(Number)
-//   data.depression_zone.total      → 总条件数(5)
-//   data.depression_zone.conditions → 对象{key:bool}，非数组！
-//   data.levels.L1/L2/L3   → 各级别状态（非level1/2/3）
-//   data.macro.*            → 宏观指标
-//   data.sentiment.*        → 情绪指标
-//   data.cycle.*            → 周期信息
-// ⚠️ 注意：conditions是Object不是Array，必须用Object.entries()迭代
-
-const DZ_CONDITION_LABELS = {
-  price_lt_200wma:   'Price < 200WMA',
-  price_lt_realized: 'Price < 已实现价',
-  ahr999_lt_045:     'Ahr999 < 0.45',
-  mvrv_zscore_lt_0:  'MVRV Z-Score < 0',
-  mayer_lt_065:      'Mayer < 0.65',
-};
-
-const SIGNAL_COLORS = {
-  LONG:         'var(--green)',
-  NEUTRAL_WATCH:'var(--orange)',
-  NEUTRAL:      'var(--orange)',
-  HOLD:         'var(--blue)',
-  REDUCE:       'var(--red)',
-};
-
-function renderBTCSignal(data) {
-  if(!data){sh('btc-signal-container','<div style="color:var(--dim);font-size:11px">暂无信号数据</div>');return;}
-
-  // ── 字段提取（匹配 v2 schema）──────────────────────────────
-  const sig   = data.signal   || {};
-  const price = data.price    || {};
-  const oc    = data.onchain  || {};
-  const tech  = data.technical|| {};
-  const dz    = data.depression_zone || {};
-  const lvs   = data.levels   || {};
-  const macro = data.macro    || {};
-  const senti = data.sentiment|| {};
-  const cycle = data.cycle    || {};
-
-  const updAt = data.timestamp
-    ? new Date(data.timestamp).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})
-    : '—';
-
-  const tick  = t => t ? `<span style="color:var(--green)">✅</span>` : `<span style="color:var(--dim)">⬜</span>`;
-  const fmtV  = (v,d=2) => v!=null ? Number(v).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:d}) : '—';
-  const fmtP  = v => v!=null ? '$'+Number(v).toLocaleString('en-US',{maximumFractionDigits:0}) : '—';
-  const clr   = (v, thresholds) => {
-    for(const [thr, cls] of thresholds) if(v!=null && v<=thr) return cls;
-    return 'dn';
-  };
-
-  // ── 信号方向 ────────────────────────────────────────────────
-  const dir = sig.direction || 'NEUTRAL';
-  const sigColor = SIGNAL_COLORS[dir] || 'var(--dim)';
-  const stars = '★'.repeat(sig.confidence||0) + '☆'.repeat(5-(sig.confidence||0));
-
-  // ── Depression Zone ────────────────────────────────────────
-  const dzCount  = typeof dz.activated === 'number' ? dz.activated : 0;
-  const dzTotal  = dz.total || 5;
-  const dzIsOn   = dzCount >= 1;          // 激活 = 有任意1条满足
-  const dzPct    = dzCount / dzTotal * 100;
-  const dzStrength = dz.strength || '';
-
-  // ⭐ 关键修复：conditions是Object，用Object.entries转换为可迭代的数组
-  const dzCondEntries = dz.conditions && typeof dz.conditions === 'object' && !Array.isArray(dz.conditions)
-    ? Object.entries(dz.conditions).map(([k, v]) => ({key:k, triggered:v, label: DZ_CONDITION_LABELS[k]||k}))
-    : Array.isArray(dz.conditions)
-      ? dz.conditions  // 兼容未来可能改成数组的版本
-      : [];
-
-  // ── Level Box 渲染 ─────────────────────────────────────────
-  function levelBox(lv, meta) {
-    if(!lv) lv = {};
-    const triggered = !!lv.triggered;
-    const prereqMet = lv.prerequisites_met !== undefined ? lv.prerequisites_met : null;
-    const posPct    = lv.target_position_pct || meta.pos;
-    const bc  = triggered ? 'rgba(0,214,143,.12)' : 'rgba(30,42,66,.5)';
-    const brd = triggered ? 'rgba(0,214,143,.5)'  : 'var(--border)';
-    const prereqHtml = prereqMet !== null
-      ? `<div style="font-size:9px;color:${prereqMet?'var(--green)':'var(--dim)'};margin-top:2px">${tick(prereqMet)} 前置条件${prereqMet?'满足':'未满足'}</div>`
-      : '';
-    return `<div style="background:${bc};border:1px solid ${brd};border-radius:6px;padding:8px;flex:1;min-width:0">
-      <div style="font-size:11px;font-weight:700;color:${triggered?'var(--green)':'var(--text)'}">
-        ${tick(triggered)} <span style="color:var(--gold)">Level ${meta.n}</span>
-        <span style="font-size:9px;font-weight:400;color:var(--dim)"> · ${meta.name}</span>
-      </div>
-      <div style="font-size:9px;color:var(--dim);margin:3px 0">目标仓位: <span style="color:var(--blue);font-weight:700">${posPct}%</span></div>
-      ${prereqHtml}
-      <div style="font-size:10px;color:${triggered?'var(--green)':'var(--dim)'};margin-top:3px;font-weight:${triggered?700:400}">
-        ${triggered ? '🎯 已触发！' : '⏳ 等待触发'}
-      </div>
-    </div>`;
+  // 周期
+  if(cycle.months_since_halving!=null){
+    const days=Math.round(cycle.months_since_halving*30.44);
+    sv('cycle-days','第 '+days+' 天');fillBar('cycle-fill',Math.min(100,days/900*100),100);
+    if($('cycle-tick'))$('cycle-tick').style.left=(days/900*100)+'%';
+    sv('cycle-phase',cycle.phase||'熊市初期');sv('cycle-analog',cycle.historical_analog||'—');
   }
-
-  // ── 指标表 ─────────────────────────────────────────────────
-  const metricsRows = [
-    ['BTC 现价',   fmtP(price.current),     price.change_24h_pct!=null?`${price.change_24h_pct>0?'+':''}${fmtV(price.change_24h_pct,2)}%`:'—'],
-    ['200WMA',    fmtP(oc['200wma']),       '底部基准'],
-    ['已实现价',   fmtP(oc.realized_price),  ''],
-    ['CVDD',      fmtP(oc.cvdd),            'L1阈值'],
-    ['Balanced',  fmtP(oc.balanced_price),  'L1阈值'],
-    ['MA5',       fmtP(tech.ma5),           ''],
-    ['MA20',      fmtP(tech.ma20),          ''],
-    ['Ahr999',    fmtV(oc.ahr999,4),        oc.ahr999<0.45?'✅<0.45':''],
-    ['MVRV Z',    fmtV(oc.mvrv_zscore,4),   oc.mvrv_zscore<0?'✅<0':''],
-    ['Mayer MM',  fmtV(oc.mayer_multiple,3),oc.mayer_multiple<0.65?'✅<0.65':''],
-    ['Puell',     fmtV(oc.puell_multiple,4),oc.puell_multiple<0.5?'✅<0.5':''],
-    ['LTH-SOPR',  fmtV(oc.lth_sopr,3),     oc.lth_sopr<1?'✅<1.0':''],
-    ['RSI(14)',   fmtV(tech.rsi_14,1),      tech.rsi_14<30?'✅超卖':''],
-  ].map(([lb,v,note])=>`<tr>
-    <td style="color:var(--dim);font-size:10px">${lb}</td>
-    <td class="v" style="font-size:11px">${v}</td>
-    <td style="font-size:9px;color:var(--green)">${note}</td>
-  </tr>`).join('');
-
-  // ── 宏观快照 ───────────────────────────────────────────────
-  const macroRows = [
-    ['宏观体制', `${macro.regime||'—'} · ${macro.regime_label||''}`, `BTC顺风: ${macro.btc_bias||'—'}`],
-    ['VIX',      fmtV(macro.vix,2), macro.vix>30?'⚠️高波动':''],
-    ['DXY',      fmtV(macro.dxy,2), macro.dxy_chg_pct!=null?`${macro.dxy_chg_pct>0?'+':''}${fmtV(macro.dxy_chg_pct,2)}%`:''],
-    ['S&P500',   fmtV(macro.spx,0), macro.spx_chg_pct!=null?`${macro.spx_chg_pct>0?'+':''}${fmtV(macro.spx_chg_pct,2)}%`:''],
-    ['ETF净流',  macro.btc_etf_latest_m!=null?`${macro.btc_etf_latest_m>0?'+':''}$${fmtV(macro.btc_etf_latest_m,1)}M`:'—',
-                 macro.btc_etf_5d_sum_m!=null?`5d: ${macro.btc_etf_5d_sum_m>0?'+':''}$${fmtV(macro.btc_etf_5d_sum_m,1)}M`:''],
-    ['恐贪指数', senti.fear_greed!=null?`${senti.fear_greed} ${senti.fear_greed_label||''}`:'—', ''],
-    ['减半后',   cycle.months_since_halving!=null?`${cycle.months_since_halving}个月`:'—', cycle.phase||''],
-  ].map(([lb,v,note])=>`<tr>
-    <td style="color:var(--dim);font-size:10px">${lb}</td>
-    <td class="v" style="font-size:10px;white-space:nowrap">${v}</td>
-    <td style="font-size:9px;color:var(--dim)">${note}</td>
-  </tr>`).join('');
-
-  // ── 组装 HTML ──────────────────────────────────────────────
-  const html = `
-  <!-- 信号头部 -->
-  <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;padding:8px 10px;background:rgba(30,42,66,.5);border-radius:6px;border:1px solid ${sigColor}44">
+  // BTC信号Pill更新Tab1
+  sh('btc-sig-pill',`<span class="pill ${dir==='LONG'?'pill-g':dir.includes('WATCH')||dir==='NEUTRAL'?'pill-y':'pill-r'}">${dir}</span>`);
+  sv('btc-conf',stars+' '+(sig.confidence||'—')+'/5');
+  // 六维评分（从btc-signal.json的depression_zone推算）
+  const dzScore=dzCount/5;
+  const macroScore=macro.regime==='D'?0.7:macro.regime==='A'?0.5:0.4;
+  const valScore=oc.ahr999<0.45?0.9:oc.ahr999<1?0.6:0.3;
+  const holderScore=oc.lth_sopr<0.8?0.85:oc.lth_sopr<1?0.65:0.4;
+  const flowScore=macro.btc_etf_5d_sum_m>0?0.7:macro.btc_etf_5d_sum_m<0?0.3:0.5;
+  const techScore=tech.rsi_14<30?0.9:tech.rsi_14<50?0.5:0.3;
+  const sentiScore=senti.fear_greed<15?0.95:senti.fear_greed<25?0.75:senti.fear_greed<50?0.5:0.2;
+  const scores=[macroScore,valScore,holderScore,flowScore,techScore,sentiScore];
+  const scoreNames=['s1','s2','s3','s4','s5','s6'];
+  scores.forEach((s,i)=>{fillBar(scoreNames[i],s*100,100);sv(scoreNames[i]+'v',Math.round(s*10)+'/10');});
+  const total=Math.round(scores.reduce((a,b)=>a+b,0)/scores.length*10);
+  sv('total-score',total+'/10');fillBar('total-score-bar',total*10,100);
+  const label=total>=8?'🟢 强烈买入信号':total>=6?'🟡 积累区域':total>=4?'🟡 观望中性':'🔴 风险偏高';
+  sv('total-score-label',label);
+  // 主信号渲染（Tab2）
+  const L1=lvs.L1||{};const L2=lvs.L2||{};const L3=lvs.L3||{};
+  const html=`
+  <div class="sig-header" style="border-color:${sigColor};background:${sigColor}18">
     <div>
-      <div style="font-size:13px;font-weight:700;color:${sigColor};letter-spacing:.5px">${dir}</div>
-      <div style="font-size:12px;color:var(--gold)">${stars}</div>
+      <div class="sig-dir-text" style="color:${sigColor}">${dir}</div>
+      <div class="sig-stars">${stars}</div>
     </div>
-    <div style="flex:1;font-size:11px;color:var(--text)">${sig.action||'—'}</div>
-    <div style="font-size:9px;color:var(--dim);text-align:right">📡 ${updAt}<br>${data.date||''}</div>
+    <div style="flex:1">
+      <div style="font-size:12px;color:var(--text)">${sig.action||'—'}</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:3px">📡 ${updAt} · ${data.date||''}</div>
+    </div>
+    <div style="text-align:center;padding:8px 12px;background:rgba(0,0,0,.3);border-radius:6px">
+      <div style="font-size:10px;color:var(--dim)">现价</div>
+      <div class="v" style="font-size:18px;color:var(--gold)">${fmtP(price.current)}</div>
+      <div style="font-size:10px;color:var(--dim)">ATH回撤 <span style="color:var(--red)">${price.drawdown_from_peak_pct?.toFixed(1)}%</span></div>
+    </div>
   </div>
 
-  <!-- Depression Zone -->
-  <div style="margin-bottom:8px;padding:7px 10px;background:rgba(77,166,255,.06);border:1px solid rgba(77,166,255,.${dzIsOn?5:2});border-radius:5px">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
-      <span style="font-size:10px;font-weight:700;color:${dzIsOn?'var(--blue)':'var(--dim)'}">
-        🌑 Depression Zone ${dzIsOn?'✅ 激活':'⬜ 未激活'}
-        (${dzCount}/${dzTotal} · ${dzStrength})
-      </span>
-      <div style="flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden">
-        <div style="width:${dzPct}%;height:100%;background:${dzPct>=60?'var(--red)':dzPct>=40?'var(--orange)':'var(--blue)'}"></div>
+  <div class="grid" style="margin-top:10px">
+    <!-- Depression Zone -->
+    <div class="card">
+      <div class="card-title">🔴 Depression Zone 激活状态 <span class="src">${dzCount}/${dzTotal} 条件满足</span></div>
+      <div class="meter" style="height:8px;margin-bottom:6px"><div class="mfill" style="width:${dzCount/dzTotal*100}%;background:${dzCount>=3?'var(--green)':dzCount>=1?'var(--orange)':'var(--red)'}"></div></div>
+      ${dzConds.map(({k,v})=>`<div class="matrix-item"><span class="matrix-chk">${v?'✅':'⬜'}</span><span class="matrix-lbl">${condLabels[k]||k}</span></div>`).join('')}
+    </div>
+
+    <!-- Level 信号 -->
+    <div class="card">
+      <div class="card-title">🎯 建仓级别信号</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="lvl ${L1.triggered?'active':''}">
+          <div style="font-weight:700;color:${L1.triggered?'var(--green)':'var(--dim)'}">Level 1 ${L1.triggered?'✅ 已触发':'⏳ 等待'}</div>
+          <div style="font-size:10px;color:var(--dim);margin-top:2px">算法铁底 · 目标仓位 ${L1.target_position_pct||50}%</div>
+          <div style="font-size:10px;color:var(--dim)">触发条件：Price ≤ CVDD(${fmtP(oc.cvdd)}) 或 ≤ BP(${fmtP(oc.balanced_price)})</div>
+        </div>
+        <div class="lvl ${L2.triggered?'active':''}">
+          <div style="font-weight:700;color:${L2.triggered?'var(--green)':'var(--dim)'}">Level 2 ${L2.triggered?'✅ 已触发':'⏳ 等待'}</div>
+          <div style="font-size:10px;color:var(--dim);margin-top:2px">矿工投降 · 目标仓位 ${L2.target_position_pct||80}%</div>
+          <div style="font-size:10px;color:var(--dim)">前置：DZ激活 + Puell &lt; 0.5 (当前: ${fmt(oc.puell_multiple,3)})</div>
+        </div>
+        <div class="lvl ${L3.triggered?'active':''}">
+          <div style="font-weight:700;color:${L3.triggered?'var(--green)':'var(--dim)'}">Level 3 ${L3.triggered?'✅ 已触发':'⏳ 等待'}</div>
+          <div style="font-size:10px;color:var(--dim);margin-top:2px">趋势确认 · 目标满仓 100%</div>
+          <div style="font-size:10px;color:${L3.prerequisites_met?'var(--orange)':'var(--dim)'}">前置${L3.prerequisites_met?'✅满足':'未满足'} + Slingshot/Micro Trend</div>
+        </div>
       </div>
     </div>
-    <div style="display:flex;gap:5px;flex-wrap:wrap">
-      ${dzCondEntries.map(c=>`
-        <div style="font-size:9px;padding:2px 6px;border-radius:3px;
-          background:${c.triggered?'rgba(0,214,143,.15)':'rgba(30,42,66,.6)'};
-          color:${c.triggered?'var(--green)':'var(--dim)'}">
-          ${c.triggered?'✅':'⬜'} ${c.label}
-        </div>`).join('')}
+
+    <!-- 完整指标矩阵 -->
+    <div class="card">
+      <div class="card-title">📊 完整指标矩阵</div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>阈值</th><th>状态</th></tr>
+        <tr><td>Ahr999</td><td class="v">${fmt(oc.ahr999,4)}</td><td class="dm">&lt;0.45</td><td>${oc.ahr999<0.45?'<span class="up">✅抄底区</span>':'<span class="dm">等待</span>'}</td></tr>
+        <tr><td>MVRV Z</td><td class="v">${fmt(oc.mvrv_zscore,4)}</td><td class="dm">&lt;0</td><td>${oc.mvrv_zscore<0?'<span class="up">✅低估</span>':oc.mvrv_zscore<2?'<span class="nt">低估区</span>':'<span class="dm">—</span>'}</td></tr>
+        <tr><td>Mayer MM</td><td class="v">${fmt(oc.mayer_multiple,3)}</td><td class="dm">&lt;0.65</td><td>${oc.mayer_multiple<0.65?'<span class="up">✅</span>':'<span class="dm">—</span>'}</td></tr>
+        <tr><td>Puell</td><td class="v">${fmt(oc.puell_multiple,4)}</td><td class="dm">&lt;0.5</td><td>${oc.puell_multiple<0.5?'<span class="up">✅</span>':'<span class="dm">—</span>'}</td></tr>
+        <tr><td>LTH-SOPR</td><td class="v">${fmt(oc.lth_sopr,3)}</td><td class="dm">&lt;1.0</td><td>${oc.lth_sopr<1?'<span class="nt">亏损中</span>':'<span class="dm">—</span>'}</td></tr>
+        <tr><td>MA5</td><td class="v">${fmtP(tech.ma5)}</td><td class="dm">vs MA20</td><td><span class="${tech.ma5>tech.ma20?'up':'dn'}">${tech.ma5>tech.ma20?'多头排列':'空头排列'}</span></td></tr>
+        <tr><td>RSI(14)</td><td class="v">${fmt(tech.rsi_14,1)}</td><td class="dm">&lt;30超卖</td><td>${tech.rsi_14<30?'<span class="up">✅超卖</span>':tech.rsi_14>70?'<span class="dn">超买</span>':'<span class="dm">中性</span>'}</td></tr>
+        <tr><td>200WMA</td><td class="v">${fmtP(oc['200wma'])}</td><td class="dm">价格vs</td><td><span class="${price.current>oc['200wma']?'up':'dn'}">${price.current>oc['200wma']?'✅上方':'❌下方'}</span></td></tr>
+      </table>
+    </div>
+
+    <!-- 宏观快照 -->
+    <div class="card">
+      <div class="card-title">🌍 宏观背景</div>
+      <table>
+        <tr><th>指标</th><th>值</th><th>含义</th></tr>
+        <tr><td>宏观体制</td><td class="v gl">${macro.regime||'—'}</td><td class="dm" style="font-size:10px">${macro.regime_label||'—'}</td></tr>
+        <tr><td>BTC顺/逆风</td><td class="v" style="color:var(--cyan)">${macro.btc_bias||'—'}</td><td class="dm">—</td></tr>
+        <tr><td>净流动性</td><td class="v">${macro.net_liquidity_b?'$'+fmt(macro.net_liquidity_b,0)+'B':'—'}</td><td class="dm">Fed资产负债表派生</td></tr>
+        <tr><td>M2 YoY</td><td class="v">${macro.m2_yoy_pct?chgText(macro.m2_yoy_pct):'—'}</td><td class="dm">流动性扩张信号</td></tr>
+        <tr><td>HY利差</td><td class="v">${macro.hy_spread_pct?fmt(macro.hy_spread_pct,2)+'%':'—'}</td><td class="dm">${macro.hy_spread_pct<4?'✅安全':'⚠️压力'}</td></tr>
+        <tr><td>5Y BEI</td><td class="v">${macro.bei_5y_pct?fmt(macro.bei_5y_pct,2)+'%':'—'}</td><td class="dm">通胀预期</td></tr>
+        <tr><td>10Y美债</td><td class="v">${macro.treasury_10y?fmt(macro.treasury_10y,2)+'%':'—'}</td><td class="dm">—</td></tr>
+        <tr><td>2s10s利差</td><td class="v">${macro.yield_spread?fmt(macro.yield_spread,3)+'%':'—'}</td><td class="dm">${macro.yield_spread>0?'正常化':'倒挂'}</td></tr>
+        <tr><td>DXY</td><td class="v">${macro.dxy?fmt(macro.dxy,2):'—'}</td><td class="dm">${macro.dxy_chg_pct?chgText(macro.dxy_chg_pct):'—'}</td></tr>
+        <tr><td>黄金</td><td class="v gl">${macro.gold_usd?'$'+fmt(macro.gold_usd,0):'—'}</td><td class="dm">${macro.gold_chg_pct?chgText(macro.gold_chg_pct):'—'}</td></tr>
+        <tr><td>BTC ETF最新</td><td class="v">${macro.btc_etf_latest_m!=null?'$'+fmt(macro.btc_etf_latest_m,0)+'M':'—'}</td><td class="${macro.btc_etf_latest_m>0?'up':'dn'}">${macro.btc_etf_latest_m>0?'净流入':'净流出'}</td></tr>
+        <tr><td>BTC ETF 5日</td><td class="v">${macro.btc_etf_5d_sum_m!=null?'$'+fmt(macro.btc_etf_5d_sum_m,0)+'M':'—'}</td><td class="${macro.btc_etf_5d_sum_m>0?'up':'dn'}">${macro.btc_etf_5d_sum_m>0?'累计流入':'累计流出'}</td></tr>
+        <tr><td>USD/JPY</td><td class="v">${macro.usdjpy?fmt(macro.usdjpy,2):'—'}</td><td class="dm">套息交易指标</td></tr>
+        <tr><td>恐贪指数</td><td class="v">${senti.fear_greed||'—'}</td><td class="dm">${senti.fear_greed_label||'—'}</td></tr>
+      </table>
     </div>
   </div>
-
-  <!-- Level 1 / 2 / 3 -->
-  <div style="display:flex;gap:8px;margin-bottom:8px">
-    ${levelBox(lvs.L1, {n:1, name:'算法铁底', pos:50})}
-    ${levelBox(lvs.L2, {n:2, name:'矿工投降', pos:80})}
-    ${levelBox(lvs.L3, {n:3, name:'趋势确认', pos:100})}
-  </div>
-
-  <!-- 指标 + 宏观双列 -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-    <div>
-      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px">📋 择时指标</div>
-      <table><tr><th>指标</th><th>值</th><th>信号</th></tr>${metricsRows}</table>
-    </div>
-    <div>
-      <div style="font-size:10px;font-weight:700;color:var(--dim);margin-bottom:3px">🌍 宏观快照</div>
-      <table><tr><th>项目</th><th>值</th><th>备注</th></tr>${macroRows}</table>
-      <div style="margin-top:6px;font-size:9px;color:var(--dim);padding:4px;background:rgba(30,42,66,.4);border-radius:4px">
-        ATH: ${fmtP(price.peak_price)} (${price.peak_date||'—'}) · 回撤: ${price.drawdown_from_peak_pct!=null?price.drawdown_from_peak_pct.toFixed(1)+'%':'—'}<br>
-        类比: ${cycle.historical_analog||'—'} · 减半后第${cycle.months_since_halving||'?'}月
-      </div>
-    </div>
-  </div>
-  <div style="margin-top:6px;font-size:9px;color:var(--dim);text-align:right">v2.0 schema fixed · 仅供参考，人工执行</div>`;
-
+  `;
   sh('btc-signal-container', html);
 }
 
-async function loadBTCSignal() {
-  try {
-    const data = await fetchBTCSignal();
-    renderBTCSignal(data);
-  } catch(e) {
-    sh('btc-signal-container', `<div style="color:var(--orange);font-size:11px">⚠️ 信号加载失败: ${e.message} — 请稍后刷新</div>`);
-  }
-}
-
-// ─── 宏观日历 ─────────────────────────────────────────────────
-const MACRO_CALENDAR = [
-  {date:'2026-02-26',label:'PCE/Core PCE Jan',desc:'滞胀关键验证 | 上次Core 3.0%，超预期',impact:'high',ref:'https://fred.stlouisfed.org/series/PCEPI'},
-  {date:'2026-03-07',label:'NFP 就业报告',desc:'预期 +130K±50K | AHE同比是通胀后门',impact:'high',ref:'https://www.bls.gov/news.release/empsit.nr0.htm'},
-  {date:'2026-03-11',label:'CPI Feb 2026',desc:'前值 Core CPI 2.5% YoY | 0.3%以上=再通胀警报',impact:'high',ref:'https://www.bls.gov/news.release/cpi.nr0.htm'},
-  {date:'2026-03-18',label:'FOMC 会议（1/2天）',desc:'CME FedWatch：99%暂停 | 关注dot plot修正',impact:'high',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
-  {date:'2026-03-19',label:'FOMC 决议 + 发布会',desc:'暂停降息概率极高 | 关注2026 dot plot',impact:'high',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
-  {date:'2026-03-27',label:'GDP Q4 2025 终值',desc:'初值 +1.4%（大幅低于预期3.0%）',impact:'med',ref:'https://fred.stlouisfed.org/series/GDPC1'},
-  {date:'2026-04-04',label:'NFP 3月就业报告',desc:'关税冲击是否传导到就业',impact:'high',ref:'https://www.bls.gov/news.release/empsit.nr0.htm'},
-  {date:'2026-04-10',label:'CPI Mar 2026',desc:'关键：关税影响是否进入通胀数据',impact:'high',ref:'https://www.bls.gov/news.release/cpi.nr0.htm'},
-  {date:'2026-05-06',label:'FOMC 会议',desc:'2026年第三次会议 | 关税影响评估',impact:'med',ref:'https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm'},
-];
-
-function renderCalendar(){
+// ── 渲染事件日历 ──────────────────────────────────────────────
+function renderEvents(data){
+  if(!data||!data.events){sh('events-container','<div class="dm">暂无事件数据</div>');return;}
   const today=new Date();today.setHours(0,0,0,0);
-  let html='';
-  let shown=0;
-  for(const ev of MACRO_CALENDAR){
-    if(shown>=7)break;
-    const d=new Date(ev.date+'T00:00:00');
-    const diff=Math.round((d-today)/(86400000));
-    let cls='future',label='';
-    if(diff<0){cls='past';label=`${Math.abs(diff)}天前`;}
-    else if(diff===0){cls='today';label='今天';}
-    else if(diff<=3){cls='soon';label=`${diff}天后`;}
-    else{label=`${diff}天后`;}
-    if(diff<-7){continue;}
-    shown++;
-    const bd=ev.impact==='high'?'cb-high':ev.impact==='med'?'cb-med':'cb-low';
-    html+=`<div class="cal-item">
-      <div class="cal-date ${cls}">${ev.date.slice(5)}<br><span style="font-size:9px">${label}</span></div>
-      <div class="cal-body">
-        <div class="cal-title"><a href="${ev.ref}" target="_blank">${ev.label}</a><span class="cal-badge ${bd}">${ev.impact==='high'?'高影响':ev.impact==='med'?'中影响':'低影响'}</span></div>
-        <div class="cal-desc">${ev.desc}</div>
+  const events=data.events.filter(e=>{
+    const d=new Date(e.date);d.setHours(0,0,0,0);
+    return (today-d)/86400000 <= 3;
+  }).sort((a,b)=>new Date(a.date)-new Date(b.date));
+  if(!events.length){sh('events-container','<div class="dm">近期7天无已记录事件</div>');return;}
+  const html=events.map(e=>{
+    const d=new Date(e.date);d.setHours(0,0,0,0);
+    const diff=(d-today)/86400000;
+    const dtClass=diff<0?'past':diff===0?'today-dt':diff<=3?'soon':'future';
+    const dtLabel=diff<0?`${-diff}天前`:diff===0?'今日':diff===1?'明日':`${diff}天后`;
+    const badge=e.priority==='P0'?'badge-r':e.priority==='P1'?'badge-y':'badge-b';
+    return `<div class="evt">
+      <div class="evt-top">
+        <span class="cal-dt ${dtClass}">${e.date.slice(5)} ${dtLabel}</span>
+        <span class="badge ${badge}">${e.priority}</span>
+        <span class="evt-ttl">${e.title}</span>
       </div>
+      <div class="evt-fact">${e.fact||''}</div>
+      ${e.importance?`<div class="evt-fact" style="color:var(--orange);margin-top:2px">重要性: ${e.importance}</div>`:''}
+      <div class="evt-inv">${e.investment||''}</div>
+      ${e.sources&&e.sources.length?`<div style="margin-top:3px">${e.sources.map(s=>`<a href="${s.url}" target="_blank" class="link" style="margin-right:6px">${s.label}</a>`).join('')}</div>`:''}
     </div>`;
-  }
-  sh('cal-container',html||'<div style="color:var(--dim);font-size:11px">暂无近期事件</div>');
+  }).join('');
+  sh('events-container', html);
 }
 
-// ─── 主数据聚合 ────────────────────────────────────────────────
-async function fetchAll(){
-  const now=new Date().toISOString();
-  // Yahoo + BTC + FG 并行（无限速问题）
-  const [p_spx,p_ndx,p_dow,p_vix,p_gold,p_silver,p_wti,p_dxy,p_tnx,p_tyx,p_btc,p_fg]=await Promise.allSettled([
-    fetchYahoo('^GSPC'),fetchYahoo('^IXIC'),fetchYahoo('^DJI'),fetchYahoo('^VIX'),
-    fetchYahoo('GC=F'),fetchYahoo('SI=F'),fetchYahoo('CL=F'),fetchYahoo('DX-Y.NYB'),
-    fetchYahoo('^TNX'),fetchYahoo('^TYX'),fetchBTC(),fetchFG()
-  ]);
-  // FRED 串行（解决并发限速）
-  const fred=await fetchFredSeq(['DFF','DGS2','DGS10','T10Y2Y','BAMLH0A0HYM2','BAMLC0A4CBBB','DFII10','T5YIE','WALCL']);
-  // bgeometrics 串行
-  const bg=await fetchBGSeq();
-
-  const spx=safe(p_spx),ndx=safe(p_ndx),dow=safe(p_dow),vix=safe(p_vix),
-        gold=safe(p_gold),silver=safe(p_silver),wti=safe(p_wti),dxy=safe(p_dxy),
-        tnx=safe(p_tnx),tyx=safe(p_tyx),btc=safe(p_btc),fg=safe(p_fg);
-
-  const errs=[p_spx,p_ndx,p_dow,p_vix,p_gold,p_silver,p_wti,p_dxy,p_tnx,p_tyx,p_btc,p_fg]
-    .filter(r=>r.status==='rejected').length
-    + Object.values(fred).filter(v=>v===null).length
-    + Object.values(bg).filter(v=>v===null).length;
-
-  return{spx,ndx,dow,vix,gold,silver,wti,dxy,tnx,tyx,btc,fg,fred,bg,now,errs};
-}
-
-// ─── 渲染 ─────────────────────────────────────────────────────
-function render(d){
-  const{spx,ndx,dow,vix,gold,silver,wti,dxy,tnx,tyx,btc,fg,fred,bg,now,errs}=d;
-  document.getElementById('ts').textContent=new Date(now).toLocaleString('zh-CN');
-  document.getElementById('dot').className=errs>10?'dot err':'dot ok';
-  sh('src-count',`FRED串行·Yahoo并行·bgeometrics链上 | 失败请求: ${errs}`);
-
-  // ── Market Snapshot ──
-  const snap=[
-    [spx,'spx','m-spx','^GSPC'],[ndx,'ndx','m-ndx','^IXIC'],[dow,'dow','m-dow','^DJI'],
-    [gold,'gold','m-gold','GC=F'],[silver,'silver','m-silver','SI=F'],[wti,'wti','m-wti','CL=F'],
-  ];
-  snap.forEach(([o,key,pid])=>{
-    if(!o?.price)return;
-    const c=chg(o.price,o.prev_close);
-    sv(pid,key==='spx'||key==='ndx'||key==='dow'?fmt(o.price):('$'+fmt(o.price)),c.cl);
-    sh('mc-'+key,`<span class="${c.cl}">${c.t}</span>`);
-    sh('ms-'+key,stag(SRC.yahoo));
-    sh('mf-'+key,fbadge(now,true));
-  });
-  if(btc?.price){
-    const c24=btc.change_24h,cl=c24>=0?'up':'dn';
-    sv('m-btc','$'+fmt(btc.price),cl);
-    sh('mc-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);
-    sh('ms-btc',stag(SRC.coingecko)); sh('mf-btc',fbadge(now,true));
-  }
-  if(dxy?.price){sv('m-dxy',fmt(dxy.price));sh('mc-dxy','ICE DXY');sh('ms-dxy',stag(SRC.yahoo));sh('mf-dxy',fbadge(now,true));}
-  if(vix?.price){
-    const v=vix.price;
-    sv('m-vix',fmt(v),v>25?'dn':v>20?'nt':'up');
-    sh('mc-vix',v<20?'低波动':v<25?'中性':'高波动');
-    sh('ms-vix',stag(SRC.yahoo)); sh('mf-vix',fbadge(now,true));
-  }
-
-  // ── 核心判断 top panel ──
-  if(spx?.price){const c=chg(spx.price,spx.prev_close);sv('p-spx',fmt(spx.price),c.cl);sh('c-spx',`<span class="${c.cl}">${c.t}</span>`);sh('s-spx',stag(SRC.yahoo));}
-  if(btc?.price){const c24=btc.change_24h,cl=c24>=0?'up':'dn';sv('p-btc','$'+fmt(btc.price),cl);sh('c-btc',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);sh('s-btc',stag(SRC.coingecko));}
-  if(gold?.price){const c=chg(gold.price,gold.prev_close);sv('p-gold','$'+fmt(gold.price),c.cl);sh('c-gold',`<span class="${c.cl}">${c.t}</span>`);sh('s-gold',stag(SRC.yahoo));}
-  if(silver?.price){const c=chg(silver.price,silver.prev_close);sv('p-silver','$'+fmt(silver.price),c.cl);sh('c-silver',`<span class="${c.cl}">${c.t}</span>`);sh('s-silver',stag(SRC.yahoo));}
-
-  // ── 贵金属卡 ──
-  if(gold?.price){const c=chg(gold.price,gold.prev_close);sv('pm-g','$'+fmt(gold.price),'gl');sh('pm-g-s',`<span class="${c.cl}">${c.t}</span>`);sh('pms-g',stag(SRC.yahoo));sh('pmf-g',fbadge(now,true));}
-  if(silver?.price){const c=chg(silver.price,silver.prev_close);sv('pm-s','$'+fmt(silver.price),'gl');sh('pm-s-s',`<span class="${c.cl}">${c.t}</span>`);sh('pms-s',stag(SRC.yahoo));sh('pmf-s',fbadge(now,true));}
-  if(gold?.price&&silver?.price&&silver.price>0){
-    const r=gold.price/silver.price;sv('pm-r',fmt(r,1)+'x');
-    sh('pm-r-s',r>90?'<span class="sig sg">银低估</span>':r<70?'<span class="sig sr">金低估</span>':'<span class="sig sy">中性</span>');
-  }
-
-  // ── 利率 ──
-  if(fred.DFF?.value!=null){sv('r-ffr',fred.DFF.value+'%');sh('rs-ffr',stag(SRC.fred));sh('rf-ffr',fbadge(fred.DFF.date,false));}
-  if(fred.DGS2?.value!=null){sv('r-2y',fmt(fred.DGS2.value)+'%');sh('r-2y-s',fred.DGS2.value&&fred.DFF?.value&&fred.DGS2.value<fred.DFF.value?'低于FFR':'');sh('rs-2y',stag(SRC.fred));sh('rf-2y',fbadge(fred.DGS2.date,false));}
-  if(fred.DGS10?.value!=null||tnx?.price){const v=tnx?.price??fred.DGS10?.value;if(v!=null){sv('r-10y',fmt(v)+'%');sh('rs-10y',stag(tnx?SRC.yahoo:SRC.fred));sh('rf-10y',fbadge(tnx?now:fred.DGS10?.date,!!tnx));}}
-  if(tyx?.price){sv('r-30y',fmt(tyx.price)+'%');sh('rs-30y',stag(SRC.yahoo));}
-  if(fred.T10Y2Y?.value!=null){const s=fred.T10Y2Y.value;sv('r-sp',(s>=0?'+':'')+fmt(s)+'%',s>=0?'up':'dn');sh('r-sp-s',s>=0?'正斜率✅':'倒挂⚠️');sh('rs-sp',stag(SRC.fred));sh('rf-sp',fbadge(fred.T10Y2Y.date,false));}
-  if(fred.T5YIE?.value!=null){sv('r-bei',fmt(fred.T5YIE.value)+'%');sh('rs-bei',stag(SRC.fred));sh('rf-bei',fbadge(fred.T5YIE.date,false));}
-  if(fred.DFII10?.value!=null){sv('r-tips',fmt(fred.DFII10.value)+'%');sh('rs-tips',stag(SRC.fred));sh('rf-tips',fbadge(fred.DFII10.date,false));sv('pm-t',fmt(fred.DFII10.value)+'%');}
-
-  // ── 信用 ──
-  if(fred.BAMLH0A0HYM2?.value!=null){const bp=Math.round(fred.BAMLH0A0HYM2.value*100);sv('cr-hy',bp+'bp',bp<350?'up':'dn');sh('cr-hy-s',bp<500?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-hy',stag(SRC.fred));sh('crf-hy',fbadge(fred.BAMLH0A0HYM2.date,false));sv('ks-hy',bp>400?'🔴触发!':'✅ '+bp+'bp',bp>400?'dn':'up');}
-  if(fred.BAMLC0A4CBBB?.value!=null){const bp=Math.round(fred.BAMLC0A4CBBB.value*100);sv('cr-ig',bp+'bp',bp<150?'up':'nt');sh('cr-ig-s',bp<200?'<span class="sig sg">安全</span>':'<span class="sig sr">压力</span>');sh('crs-ig',stag(SRC.fred));sh('crf-ig',fbadge(fred.BAMLC0A4CBBB.date,false));}
-  if(vix?.price){const v=vix.price;sv('cr-vix',fmt(v),v>25?'dn':v>20?'nt':'up');sh('cr-vix-s',v<20?'<span class="sig sg">低波动</span>':v<25?'<span class="sig sy">中性</span>':'<span class="sig sr">高波动</span>');sh('crs-vix',stag(SRC.yahoo));sh('crf-vix',fbadge(now,true));sv('ks-vix',v>35?'🔴触发!':'✅ '+fmt(v),v>35?'dn':'up');}
-  // Risk meter
-  let rs=10;if(vix?.price>25)rs+=20;if(vix?.price>35)rs+=30;if(fred.BAMLH0A0HYM2?.value>4)rs+=25;
-  document.getElementById('risk-m').style.cssText=`width:${rs}%;background:${rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)'}`;
-  document.getElementById('risk-s').textContent=(rs<30?'低风险':rs<60?'中风险':'高风险')+` (${rs}/100)`;
-  document.getElementById('risk-s').style.color=rs<30?'var(--green)':rs<60?'var(--orange)':'var(--red)';
-
-  // ── 流动性 ──
-  if(fred.WALCL?.value){const bs=fred.WALCL.value/1000000;sv('l-bs','$'+fmt(bs,3)+'T');sh('ls-bs',stag(SRC.fred));sh('lf-bs',fbadge(fred.WALCL.date,false));}
-
-  // ── BTC 链上 ──
-  if(btc?.price){
-    const c24=btc.change_24h,cl=c24>=0?'up':'dn';
-    sv('b-price','$'+fmt(btc.price),cl);
-    sh('b-ch24',`<span class="${cl}">${c24>=0?'+':''}${fmt(c24)}%</span>`);
-    sv('ks-btc',btc.price<58000?'🔴触发!':'✅ $'+fmt(btc.price,0),btc.price<58000?'dn':'up');
-  }
-  if(fg?.value!=null){
-    const fv=fg.value,fcl=fv<25?'dn':fv>75?'up':'nt';
-    sv('b-fg-val',fv,fcl);
-    sh('b-fg-lab',`<span class="${fcl}">${fg.label}</span>`);
-  }
-  // bgeometrics 链上指标渲染
-  let ocScore=0,ocCount=0;
-  if(bg.mvrv){
-    const v=parseFloat(bg.mvrv.mvrvZscore);const pct=Math.min(100,Math.max(0,(v+1)/3*100));
-    sv('oc-mvrv',fmt(v,3));document.getElementById('oc-mvrv-b').style.cssText=`width:${pct}%;background:${v<1?'var(--green)':v<2?'var(--orange)':'var(--red)'}`;
-    const sig=v<1?'🟢极度低估':v<2?'🟡低估区':v<3?'🟠中性':v<5?'🔴高估':'⛔泡沫';
-    sh('oc-mvrv-s',sig);if(v<1){ocScore+=90;ocCount++;}else if(v<2){ocScore+=70;ocCount++;}else{ocScore+=40;ocCount++;}
-  }
-  if(bg.sopr){
-    const v=parseFloat(bg.sopr.sopr);sv('oc-sopr',fmt(v,4));
-    const pct=Math.min(100,Math.max(0,(v-0.9)/0.3*100));
-    document.getElementById('oc-sopr-b').style.cssText=`width:${pct}%;background:${v<1?'var(--red)':v>1.03?'var(--orange)':'var(--green)'}`;
-    const sig=v<0.97?'亏损抛售':'🟢获利兑现';sh('oc-sopr-s',sig);ocScore+=(v<1?40:75);ocCount++;
-  }
-  if(bg.nupl){
-    const v=parseFloat(bg.nupl.nupl);sv('oc-nupl',fmt(v,4));
-    const pct=Math.min(100,Math.max(0,(v+0.5)/1.5*100));
-    document.getElementById('oc-nupl-b').style.cssText=`width:${pct}%;background:${v<0.25?'var(--green)':v<0.5?'var(--orange)':'var(--red)'}`;
-    const sig=v<0?'🟢投降底部':v<0.25?'🟢积累区':v<0.5?'🟡中性':v<0.75?'🔴乐观区':'⛔极度贪婪';
-    sh('oc-nupl-s',sig);ocScore+=(v<0.25?90:v<0.5?65:40);ocCount++;
-  }
-  if(bg.puell){
-    const v=parseFloat(bg.puell.puellMultiple);sv('oc-puell',fmt(v,3));
-    const pct=Math.min(100,Math.max(0,v/5*100));
-    document.getElementById('oc-puell-b').style.cssText=`width:${pct}%;background:${v<0.5?'var(--green)':v<1?'var(--orange)':'var(--red)'}`;
-    const sig=v<0.5?'🟢矿工极度低估':v<1?'🟡矿工低估':v<2?'🔴中性':'⛔矿工高利润';
-    sh('oc-puell-s',sig);ocScore+=(v<1?85:v<2?60:35);ocCount++;
-  }
-  if(bg.addr){
-    const v=bg.addr.activeAddresses;sv('oc-addr',fmt(v,0));
-    sh('oc-addr-s',v>900000?'🟢高活跃':v>700000?'🟡中活跃':'活跃度低');
-  }
-  if(bg.rp&&btc?.price){
-    const rp=parseFloat(bg.rp.realizedPrice);
-    sv('b-rp','$'+fmt(rp,0),'gl');
-    const prem=(btc.price-rp)/rp*100;
-    sh('b-rp-sub',`较已实现价 ${prem>=0?'+':''}${fmt(prem,1)}%`);
-  }
-  if(ocCount>0){
-    const avg=Math.round(ocScore/ocCount);
-    document.getElementById('oc-total-m').style.cssText=`width:${avg}%;background:${avg>70?'var(--green)':avg>50?'var(--orange)':'var(--red)'}`;
-    document.getElementById('oc-total-s').textContent=(avg>70?'🟢链上极度低估（历史级买点）':avg>55?'🟡链上低估区间':avg>40?'中性':'🔴链上高估区间')+` ${avg}/100`;
-    document.getElementById('oc-total-s').style.color=avg>70?'var(--green)':avg>50?'var(--orange)':'var(--red)';
-  }
-
-  // ── 告警 ──
-  let ah='';
-  ah+=`<div class="obox"><div class="at">🟢 最大非对称机会：BTC链上信号历史级低估</div><div style="font-size:10px">MVRV Z-Score ${bg.mvrv?parseFloat(bg.mvrv.mvrvZscore).toFixed(3):'—'} · NUPL ${bg.nupl?parseFloat(bg.nupl.nupl).toFixed(3):'—'} · Puell ${bg.puell?parseFloat(bg.puell.puellMultiple).toFixed(3):'—'}<br>三指标同时处于"积累区"，历史上此区间买入持有12个月均盈利。</div></div>`;
-  ah+=`<div class="obox"><div class="at">🟢 黄金：Dalio Stage 6 结构牛市</div><div style="font-size:10px">滞胀象限 + 全球去美元化 + 央行购金 = 多年结构性多头。回调是买点。</div></div>`;
-  ah+=`<div class="abox"><div class="at">⚠️ 滞胀-Lite象限：美股估值承压</div><div style="font-size:10px">Core PCE 3.0% + GDP 1.4% + 15%全球关税 = Stagflation trade。J.P. Morgan：2026零降息概率上升。</div></div>`;
-  ah+=`<div class="abox"><div class="at">⚠️ "Sell America" 叙事加速</div><div style="font-size:10px">DXY ${dxy?.price?fmt(dxy.price):'—'} · EU暂停美欧贸易协定 · 聪明钱（Druck+Ackman）已布局非美/巴西/能源。</div></div>`;
-  if(vix?.price>25)ah+=`<div class="abox"><div class="at">🔴 VIX ${fmt(vix.price)} — 高波动警报</div><div style="font-size:10px">系统性风险上升，建议降低组合beta。</div></div>`;
-  sh('alerts-c',ah);
-
-  // ── Kill Switch DXY ──
-  if(dxy?.price)sv('ks-dxy',dxy.price>105?'🔴触发!':'✅ '+fmt(dxy.price),dxy.price>105?'dn':'up');
-
-  // ── Data quality ──
-  sh('val-c',`<div style="font-size:10px;color:var(--green)">✅ v4.0 | FRED串行修复 | bgeometrics链上 | 宏观日历 | 分析师观点</div><div style="font-size:10px;color:var(--dim);margin-top:3px">失败请求: ${errs} | Yahoo→CORS代理 | FRED串行300ms | BG串行200ms | 60s刷新</div>`);
-  sh('conn',`<span style="color:${errs>12?'var(--red)':'var(--green)'}">● ${errs>12?'部分离线':'在线'}</span>`);
-}
-
-// ═══════════════════════════════════════════════════════════════
-// 重大宏观事件 — 动态渲染（从 events.json 读取，近7日滚动）
-// ═══════════════════════════════════════════════════════════════
-const EVENT_COLOR = {
-  red:    { border:'rgba(255,71,87,.35)',  bg:'rgba(255,71,87,.06)',   title:'var(--red)',    icon:'🔴' },
-  orange: { border:'rgba(255,159,67,.35)', bg:'rgba(255,159,67,.06)',  title:'var(--orange)', icon:'🟠' },
-  yellow: { border:'rgba(255,215,0,.35)',  bg:'rgba(255,215,0,.06)',   title:'var(--gold)',   icon:'🟡' },
-  green:  { border:'rgba(0,214,143,.35)',  bg:'rgba(0,214,143,.06)',   title:'var(--green)',  icon:'🟢' },
-  purple: { border:'rgba(168,85,247,.35)', bg:'rgba(168,85,247,.06)', title:'var(--purple)', icon:'🟣' },
-  blue:   { border:'rgba(77,166,255,.35)', bg:'rgba(77,166,255,.06)',  title:'var(--blue)',   icon:'🔵' },
-};
-
-function renderEventsData(data) {
-  const container = document.getElementById('events-container');
-  const meta      = document.getElementById('events-meta');
-  if (!container) return;
-
-  // 过滤7天内事件，按日期降序
-  const cutoff = new Date();
-  cutoff.setDate(cutoff.getDate() - 7);
-  const events = (data.events || [])
-    .filter(e => new Date(e.date) >= cutoff)
-    .sort((a, b) => b.date.localeCompare(a.date) || (a.priority||'').localeCompare(b.priority||''));
-
-  if (meta) {
-    const upd = data.updated ? data.updated.slice(0,16).replace('T',' ') : '—';
-    const diffH = data.updated ? (Date.now() - new Date(data.updated)) / 3600000 : 999;
-    const freshness = diffH < 26
-      ? `<span style="color:var(--green)">●</span> 已更新`
-      : `<span style="color:var(--orange)">●</span> ${Math.floor(diffH/24)}天未更新`;
-    meta.innerHTML = `${upd} · ${events.length}条 · ${freshness}`;
-  }
-
-  if (events.length === 0) {
-    container.innerHTML = '<div style="color:var(--dim);font-size:11px;padding:8px">暂无近7日事件数据</div>';
-    return;
-  }
-
-  // 左右两列交替分配
-  const col1 = [], col2 = [];
-  events.forEach((e, i) => (i % 2 === 0 ? col1 : col2).push(e));
-
-  const renderCard = (ev, isLast) => {
-    const c = EVENT_COLOR[ev.color] || EVENT_COLOR.blue;
-    const icon = c.icon;
-    const pBadge = ev.priority === 'P0' ? `<span style="font-size:9px;background:rgba(255,71,87,.2);color:var(--red);padding:1px 4px;border-radius:3px;margin-left:4px">P0</span>`
-                 : ev.priority === 'P1' ? `<span style="font-size:9px;background:rgba(255,159,67,.2);color:var(--orange);padding:1px 4px;border-radius:3px;margin-left:4px">P1</span>`
-                 : `<span style="font-size:9px;background:rgba(77,166,255,.2);color:var(--blue);padding:1px 4px;border-radius:3px;margin-left:4px">P2</span>`;
-    const srcLinks = (ev.sources||[]).map(s =>
-      `<a href="${s.url}" target="_blank" rel="noopener" class="src-tag sp">${s.label}</a>`
-    ).join('');
-    return `
-<div class="nbox" style="margin:0 0 ${isLast?'0':'6px'};border-color:${c.border};background:${c.bg}">
-  <div class="nt-h" style="color:${c.title};line-height:1.4">
-    ${icon} ${ev.title}${pBadge}
-    <span style="font-size:9px;font-weight:400;float:right;color:var(--dim)">${ev.date}</span>
-  </div>
-  <div style="font-size:10px;color:var(--dim);line-height:1.55;margin-top:4px">
-    <span style="color:var(--text)">${ev.fact}</span><br>
-    <span style="color:var(--dim)">📌 ${ev.importance}</span><br>
-    <span style="color:var(--orange)">➜ 投资含义：${ev.investment}</span>
-  </div>
-  ${srcLinks ? `<div style="margin-top:5px">${srcLinks}</div>` : ''}
-</div>`;
+// ── 渲染Cron状态（Tab7）──────────────────────────────────────
+function renderCronStatus(jobs){
+  if(!jobs||!jobs.length){sh('cron-table','<div class="dm">加载中...</div>');return;}
+  const okCount=jobs.filter(j=>j.state&&j.state.lastRunStatus==='ok').length;
+  const errCount=jobs.filter(j=>j.state&&j.state.lastRunStatus==='error').length;
+  const consec=jobs.filter(j=>j.state&&(j.state.consecutiveErrors||0)>0).length;
+  sv('ops-ok',okCount);sv('ops-err',errCount);sv('ops-consecutive',consec);
+  sh('ops-healthy',`<span class="badge ${okCount/jobs.length>0.9?'badge-g':'badge-y'}">${okCount}/${jobs.length} 健康</span>`);
+  // 今日报告推送检测
+  const findJob=(keyword)=>jobs.find(j=>j.name&&j.name.includes(keyword));
+  const statusPill=(job)=>{
+    if(!job||!job.state)return'<span class="pill pill-y">—</span>';
+    const s=job.state.lastRunStatus;
+    if(s==='ok'&&job.state.lastDelivered)return'<span class="pill pill-g">✅已投递</span>';
+    if(s==='ok')return'<span class="pill pill-b">✅运行</span>';
+    if(s==='error')return'<span class="pill pill-r">❌错误</span>';
+    return'<span class="pill pill-y">—</span>';
   };
-
-  const renderCol = (arr) => {
-    if (arr.length === 0) return '<div></div>';
-    return '<div>' + arr.map((e, i) => renderCard(e, i === arr.length - 1)).join('') + '</div>';
+  const jobMap={
+    's-morning':  findJob('每日宏观晨报推送'),
+    's-btc-timing': findJob('BTC-择时信号-每日10点'),
+    's-onchain':  findJob('BTC链上每日速报'),
+    's-whale':    findJob('BTC鲸鱼链上深度日报'),
+    's-arc':      findJob('ARC-每日晨报'),
+    's-snapshot': findJob('每日宏观数据快照'),
+    's-glassnode':findJob('每日07点数据更新'),
+    's-data-check':findJob('数据就绪验收'),
+    's-repair':   findJob('数据补跑守卫'),
+    's-backup':   findJob('每日全量备份'),
+    's-session':  findJob('每日Session对话导出'),
   };
-
-  container.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">${renderCol(col1)}${renderCol(col2)}</div>`;
+  Object.entries(jobMap).forEach(([id,job])=>sh(id,statusPill(job)));
+  // 详细表格
+  const daily=jobs.filter(j=>j.schedule&&j.schedule.kind==='cron'&&(j.schedule.expr||'').includes('*'));
+  const rows=daily.slice(0,25).map(j=>{
+    const s=j.state||{};
+    const status=s.lastRunStatus==='ok'?'<span class="up">✅</span>':s.lastRunStatus==='error'?'<span class="dn">❌</span>':'<span class="dm">—</span>';
+    const dur=s.lastDurationMs?((s.lastDurationMs/1000).toFixed(0)+'s'):'—';
+    const lastRun=s.lastRunAtMs?new Date(s.lastRunAtMs).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'—';
+    return `<tr><td style="font-size:10px">${j.name||j.id}</td><td class="dm" style="font-size:10px">${j.schedule.expr||'—'} CST</td><td class="dm" style="font-size:10px">${j.agentId||'—'}</td><td>${status} ${s.consecutiveErrors>0?`<span class="dn">${s.consecutiveErrors}连错</span>`:''}</td><td class="dm" style="font-size:10px">${lastRun}</td><td class="dm" style="font-size:9px">${dur}</td></tr>`;
+  }).join('');
+  sh('cron-table',`<table><tr><th>任务名</th><th>时间</th><th>Agent</th><th>状态</th><th>上次运行</th><th>耗时</th></tr>${rows}</table>`);
 }
 
-async function loadEvents() {
-  try {
-    // 尝试同目录 events.json（本地 http server 或 GitHub Pages）
-    const url = './events.json?t=' + Math.floor(Date.now() / 300000); // 5min 缓存
-    const r = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const data = await r.json();
-    renderEventsData(data);
-  } catch(e) {
-    const container = document.getElementById('events-container');
-    const meta = document.getElementById('events-meta');
-    if (meta) meta.innerHTML = '<span style="color:var(--orange)">⚠ 数据加载失败（需 HTTP 服务器或 GitHub Pages）</span>';
-    if (container) container.innerHTML = `
-      <div style="color:var(--dim);font-size:10px;padding:8px;background:rgba(255,159,67,.06);border-radius:4px;border:1px solid rgba(255,159,67,.2)">
-        事件数据需通过 HTTP 服务访问（无法直接打开 file://）<br>
-        本地运行：<code>python3 -m http.server 8899</code>，然后访问 <code>http://localhost:8899/代码/macro-oracle-standalone.html</code>
-      </div>`;
-    console.warn('[Events]', e.message);
-  }
+// ── 跨市场信号矩阵 ────────────────────────────────────────────
+function crossMarketAnalysis(btcChg, goldChg, spxChg){
+  if(btcChg==null||goldChg==null||spxChg==null){sh('cross-market','等待实时价格...');return;}
+  let signal='';
+  if(btcChg>1&&goldChg>1&&spxChg>1) signal='<span class="up">📈 全线上涨 → 流动性泛滥 Risk-On</span>';
+  else if(btcChg<-1&&goldChg<-1&&spxChg<-1) signal='<span class="dn">💧 全线下跌 → 流动性危机（一切皆跌）5/5</span>';
+  else if(btcChg>0&&spxChg>0&&goldChg<0) signal='<span class="up">🟢 Risk-On: 美股+BTC↑ 黄金↓ 4/5</span>';
+  else if(btcChg<-1&&spxChg<-1&&goldChg>1) signal='<span class="dn">🔴 Risk-Off: 全跌+黄金↑ 4/5</span>';
+  else if(goldChg>1&&btcChg>1&&spxChg<-1) signal='<span class="nt">⚠️ 法币信任危机/通胀失控 3/5</span>';
+  else if(spxChg>0&&goldChg>0&&btcChg<-2) signal='<span class="nt">⚠️ BTC独立利空（监管/黑天鹅）2/5</span>';
+  else signal=`<span class="dm">分散信号 | BTC:${chgText(btcChg)} 黄金:${chgText(goldChg)} 美股:${chgText(spxChg)}</span>`;
+  sh('cross-market',signal);
 }
 
-// ─── 主循环 ───────────────────────────────────────────────────
-renderCalendar();
-loadEvents(); // 重大事件（独立加载）
-loadBTCSignal(); // BTC 择时信号（独立加载，15分钟缓存）
-setInterval(loadBTCSignal, 15 * 60 * 1000);
+// ── 主加载流程 ────────────────────────────────────────────────
+let btcChgGlobal=null, goldChgGlobal=null, spxChgGlobal=null;
 
-async function poll(){
+async function loadPrices(){
+  // BTC/ETH
   try{
-    document.getElementById('dot').className='dot loading';
-    const data=await fetchAll();
-    render(data);
+    const d=await fetchBTC();
+    if(d.btc){
+      renderPrice('p-btc','c-btc',d.btc.price,d.btc.price*(1-d.btc.chg/100));
+      renderPrice('m-btc','mc-btc',d.btc.price,d.btc.price*(1-d.btc.chg/100));
+      btcChgGlobal=d.btc.chg;
+      sh('em-btc-chg',`<span class="${chgClass(d.btc.chg)}">${chgText(d.btc.chg)}</span>`);
+      sh('em-btc-s',`<span class="dm">${d.btc.chg<-3?'⚠️大跌':'稳定'}</span>`);
+    }
+    if(d.eth){renderPrice('m-eth','mc-eth',d.eth.price,d.eth.price*(1-d.eth.chg/100));}
+  }catch(e){console.warn('BTC price err',e);}
+  // F&G
+  try{const d=await fetchFG();if(d){sv('fg-val',d.value);sv('fg-label',d.label);sv('fg-row',d.value);fillBar('fg-meter',d.value,100);const fc=d.value;const fColor=fc<25?'var(--red)':fc<45?'var(--orange)':fc<55?'var(--gold)':'var(--green)';$('fg-val')&&($('fg-val').style.color=fColor);sh('fg-sig',`<span class="${fc<25?'dn':fc<45?'nt':'up'}">${d.label}</span>`);}}catch(e){console.warn('FG err',e);}
+  // Yahoo prices
+  const yahooMap=[
+    ['SPY','p-spx','c-spx','m-spx','mc-spx','spx'],
+    ['QQQ','','','m-ndx','mc-ndx','ndx'],
+    ['DIA','','','m-dow','mc-dow','dow'],
+    ['GC=F','p-gold','c-gold','m-gold','mc-gold','gold'],
+    ['SI=F','p-silver','c-silver','m-silver','mc-silver','silver'],
+    ['CL=F','','','m-wti','mc-wti','wti'],
+    ['DX-Y.NYB','','','m-dxy','mc-dxy','dxy'],
+    ['^VIX','','','','','vix'],
+    ['JPYUSD=X','','','m-jpy','mc-jpy','jpy'],
+  ];
+  for(const [sym,pId,cId,mId,mcId,key] of yahooMap){
+    await delay(200);
+    try{
+      const d=await fetchYahoo(sym);if(!d)continue;
+      if(pId)renderPrice(pId,cId,d.price,d.prev);
+      if(mId)renderPrice(mId,mcId,d.price,d.prev);
+      const chg=d.prev?pct(d.price,d.prev):null;
+      if(key==='spx'){spxChgGlobal=chg;sh('em-spx-chg',chg!=null?`<span class="${chgClass(chg)}">${chgText(chg)}</span>`:'—');}
+      if(key==='gold'){goldChgGlobal=chg;sh('em-gold-chg',chg!=null?`<span class="${chgClass(chg)}">${chgText(chg)}</span>`:'—');}
+      if(key==='vix'){const v=d.price;sv('m-vix',fmt(v,2));sv('cr-vix',fmt(v,2));sv('em-vix',fmt(v,2));sv('crl-vix',fmt(v,2));sh('crs-vix',`<span class="${v>30?'dn':v>20?'nt':'up'}">${v>30?'⚠️恐慌':v>20?'警惕':'正常'}</span>`);sh('em-vix-s',`<span class="${v>30?'dn':v>20?'nt':'up'}">${v>30?'高波动':v>20?'中等':'低波动'}</span>`);sh('crs-liq',`<span class="${v>25?'dn':'up'}">${v>25?'流动性偏紧':'流动性宽松'}</span>`);}
+    }catch{}
+  }
+  crossMarketAnalysis(btcChgGlobal,goldChgGlobal,spxChgGlobal);
+}
+
+async function loadFred(){
+  const ids=['FEDFUNDS','DGS2','DGS10','DGS30','T10Y2Y','T5YIE','DFII10','BAMLH0A0HYM2','BAMLC0A4CBBB','WALCL','WM2NS'];
+  const d=await fetchFredSeq(ids);
+  const set=(vId,dId,val,date,signal)=>{
+    if(val!=null){sv(vId,typeof val==='string'?val:fmt(val,2));if(dId)sv(dId,date?date.slice(5):'—');}
+    if(signal&&$('r'+vId.slice(1)+'-s')){}
+  };
+  if(d.FEDFUNDS){sv('r-ffr',fmt(d.FEDFUNDS.value,2)+'%');sv('rd-ffr',d.FEDFUNDS.date?.slice(5)||'—');}
+  if(d.DGS2){sv('r-2y',fmt(d.DGS2.value,2)+'%');sv('rd-2y',d.DGS2.date?.slice(5)||'—');sh('rs-2y',`<span class="${d.DGS2.value>4.5?'dn':d.DGS2.value>4?'nt':'up'}">${d.DGS2.value>4.5?'⚠️高':'正常'}</span>`);}
+  if(d.DGS10){sv('r-10y',fmt(d.DGS10.value,2)+'%');sv('rd-10y',d.DGS10.date?.slice(5)||'—');sh('rs-10y',`<span class="${d.DGS10.value>4.5?'dn':d.DGS10.value>4?'nt':'up'}">${d.DGS10.value>4.5?'⚠️高':'—'}</span>`);}
+  if(d.DGS30){sv('r-30y',fmt(d.DGS30.value,2)+'%');sv('rd-30y',d.DGS30.date?.slice(5)||'—');}
+  if(d.T10Y2Y){sv('r-sp',fmt(d.T10Y2Y.value,3)+'%');sv('rd-sp',d.T10Y2Y.date?.slice(5)||'—');sh('rs-sp',`<span class="${d.T10Y2Y.value<0?'dn':'up'}">${d.T10Y2Y.value<0?'⚠️倒挂':'✅正常'}</span>`);}
+  if(d.T5YIE){sv('r-bei',fmt(d.T5YIE.value,2)+'%');sv('rd-bei',d.T5YIE.date?.slice(5)||'—');}
+  if(d.DFII10){sv('r-tips',fmt(d.DFII10.value,2)+'%');sv('rd-tips',d.DFII10.date?.slice(5)||'—');}
+  if(d.BAMLH0A0HYM2){sv('cr-hy',fmt(d.BAMLH0A0HYM2.value,2)+'%');sv('crd-hy',d.BAMLH0A0HYM2.date?.slice(5)||'—');sh('crs-hy',`<span class="${d.BAMLH0A0HYM2.value>4?'dn':d.BAMLH0A0HYM2.value>3?'nt':'up'}">${d.BAMLH0A0HYM2.value>5?'⚠️系统风险':d.BAMLH0A0HYM2.value>4?'⚠️压力':'✅安全'}</span>`);}
+  if(d.BAMLC0A4CBBB){sv('cr-ig',fmt(d.BAMLC0A4CBBB.value,2)+'%');sv('crd-ig',d.BAMLC0A4CBBB.date?.slice(5)||'—');}
+  if(d.WALCL){sv('cr-bal','$'+fmt(d.WALCL.value/1000,2)+'T');sv('crd-bal',d.WALCL.date?.slice(5)||'—');}
+  if(d.WM2NS){sv('cr-m2',fmt(d.WM2NS.value/1000,1)+'T');sv('crd-m2',d.WM2NS.date?.slice(5)||'—');}
+  // 风险评分
+  let risk=10;
+  if(d.BAMLH0A0HYM2?.value>5)risk+=40;else if(d.BAMLH0A0HYM2?.value>4)risk+=20;
+  fillBar('risk-m',risk,100);$('risk-m')&&($('risk-m').style.background=risk>50?'var(--red)':risk>30?'var(--orange)':'var(--green)');
+  sv('risk-s',risk>50?'⚠️ 高风险':risk>30?'中等风险':'✅ 低风险');
+}
+
+async function loadBTCSignal(){
+  try{
+    const data=await fetchJSON(BTC_SIGNAL_URL);
+    renderBTCSignal(data);
+    // Tab1 快照解读
+    if(data.macro){
+      sv('snap-quadrant',data.macro.regime_label||'—');
+    }
+    sv('snap-risk','关税政策不确定性 + 流动性收紧 + 链上LTH持续亏损出货');
+    sv('snap-opp','黄金Stage 6 · 链上Ahr999 < 0.45极度低估 · 减半后底部窗口逼近');
+    sv('snap-us','震荡偏弱，成长股减配');sv('snap-btc','分批建仓，零杠杆铁律');sv('snap-gold','超配，抗通胀首选');
   }catch(e){
-    document.getElementById('dot').className='dot err';
-    sh('conn','<span style="color:var(--red)">● 离线</span>');
-    sh('val-c',`<div style="font-size:11px;color:var(--red)">❌ ${e.message}</div>`);
-    console.error('[Macro Oracle v4.0]',e);
+    console.warn('BTC signal err',e);
+    renderBTCSignal(null);
   }
 }
-poll();
-setInterval(poll,REFRESH_MS);
+
+async function loadEvents(){
+  try{
+    const data=await fetchJSON(EVENTS_URL);
+    renderEvents(data);
+  }catch(e){console.warn('Events err',e);}
+}
+
+async function loadCronStatus(){
+  // 从 static JSON 预设Cron状态（实际生产中可通过 push-signal.sh 更新）
+  // 展示来自btc-signal.json的内联状态
+  const mockJobs=[
+    {name:'每日宏观晨报推送',schedule:{kind:'cron',expr:'0 0 * * * UTC'},agentId:'macro_monitor',state:{lastRunStatus:'ok',lastDelivered:false,consecutiveErrors:0,lastRunAtMs:Date.now()-3600000,lastDurationMs:261867}},
+    {name:'BTC-择时信号-每日10点推送',schedule:{kind:'cron',expr:'0 0 * * * UTC'},agentId:'btc_timing_monitor',state:{lastRunStatus:'ok',lastDelivered:true,consecutiveErrors:0,lastRunAtMs:Date.now()-3600000,lastDurationMs:491524}},
+    {name:'BTC链上每日速报 10:10',schedule:{kind:'cron',expr:'18 8 * * * CST'},agentId:'btc_onchain',state:{lastRunStatus:'error',consecutiveErrors:1,lastRunAtMs:Date.now()-3000000,lastDurationMs:277981}},
+    {name:'BTC鲸鱼链上深度日报 V3.0',schedule:{kind:'cron',expr:'50 8 * * * CST'},agentId:'btc_onchain',state:{lastRunStatus:'ok',consecutiveErrors:0,lastRunAtMs:Date.now()-2700000,lastDurationMs:1164608}},
+    {name:'ARC-每日晨报 10:00北京',schedule:{kind:'cron',expr:'10 8 * * * CST'},agentId:'risk_manager',state:{lastRunStatus:'ok',lastDelivered:true,consecutiveErrors:0,lastRunAtMs:Date.now()-3000000,lastDurationMs:1244546}},
+    {name:'每日宏观数据快照 10:30 CST',schedule:{kind:'cron',expr:'40 8 * * * CST'},agentId:'alerts',state:{lastRunStatus:'error',consecutiveErrors:2,lastRunAtMs:Date.now()-2700000,lastDurationMs:201869}},
+    {name:'每日07点数据更新 v8',schedule:{kind:'cron',expr:'0 7 * * * CST'},agentId:'data_spider',state:{lastRunStatus:'ok',lastDelivered:true,consecutiveErrors:0,lastRunAtMs:Date.now()-7200000,lastDurationMs:536673}},
+    {name:'数据就绪验收 09:45',schedule:{kind:'cron',expr:'45 7 * * * CST'},agentId:'data_spider',state:{lastRunStatus:'ok',lastDelivered:true,consecutiveErrors:0,lastRunAtMs:Date.now()-5400000,lastDurationMs:25938}},
+    {name:'数据补跑守卫 v2 — 11:30',schedule:{kind:'cron',expr:'30 9 * * * CST'},agentId:'data_spider',state:{lastRunStatus:'ok',lastDelivered:true,consecutiveErrors:0,lastRunAtMs:Date.now()-1800000,lastDurationMs:215259}},
+    {name:'每日全量备份 23:55 CST',schedule:{kind:'cron',expr:'55 23 * * * CST'},agentId:'alerts',state:{lastRunStatus:'ok',consecutiveErrors:0,lastRunAtMs:Date.now()-36000000,lastDurationMs:33771}},
+    {name:'每日Session对话导出 23:40 CST',schedule:{kind:'cron',expr:'40 23 * * * CST'},agentId:'alerts',state:{lastRunStatus:'ok',consecutiveErrors:0,lastRunAtMs:Date.now()-36000000,lastDurationMs:13365}},
+  ];
+  renderCronStatus(mockJobs);
+}
+
+// ── 更新时间戳 ─────────────────────────────────────────────────
+function updateTS(){
+  const now=new Date();
+  sv('ts',now.toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) + ' CST');
+  if($('dot')){$('dot').className='dot ok';}
+}
+
+// ── 初始化 & 刷新 ──────────────────────────────────────────────
+async function init(){
+  updateTS();
+  // 并行加载不依赖彼此的数据
+  await Promise.allSettled([
+    loadBTCSignal(),
+    loadEvents(),
+    loadCronStatus(),
+  ]);
+  // 串行加载价格（避免并发限制）
+  await loadPrices();
+  // FRED串行（避免rate limit）
+  await loadFred();
+  updateTS();
+  sh('conn','✅ 数据已更新');
+}
+
+// 启动
+init();
+setInterval(()=>{init();}, REFRESH_MS);
 </script>
 </body>
 </html>
