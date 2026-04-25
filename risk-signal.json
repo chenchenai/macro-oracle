@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-04-25T12:15:00+08:00",
+  "crl": 21,
+  "level": "YELLOW",
+  "previous_crl": 8,
+  "previous_level": "GREEN",
+  "change": 13,
+  "scores": {
+    "macro": 2.0,
+    "structure": 2.5,
+    "chain": 0,
+    "event": 20
+  },
+  "btcPrice": 77651,
+  "btcChange24h": -0.66,
+  "vix": 19.02,
+  "sp500": 7165.08,
+  "nasdaq": 24836.60,
+  "usdJpy": 159.62,
+  "fearGreed": 39,
+  "etfFlow": "连续5日净流入",
+  "activeAlerts": [
+    {
+      "id": "E-02",
+      "name": "Zonda交易所异常",
+      "severity": "YELLOW",
+      "status": "新增",
+      "detail": "私钥持有人失踪，BTC储备下降99.7%",
+      "action": "确认资产不在Zonda平台"
+    },
+    {
+      "id": "E-05",
+      "name": "KelpDAO/Aave救助",
+      "severity": "YELLOW",
+      "status": "Day6+进行中",
+      "detail": "未外溢至稳定币/CEX"
+    },
+    {
+      "id": "E-06",
+      "name": "Hormuz停火脆弱",
+      "severity": "YELLOW",
+      "status": "5艘/24h僵持",
+      "detail": "停火延长但封锁尾巴未清零"
+    },
+    {
+      "id": "S-07",
+      "name": "Put偏斜",
+      "severity": "YELLOW",
+      "status": "~8%",
+      "detail": "高于5%阈值"
+    }
+  ],
+  "positives": [
+    "VIX维持低位19.02",
+    "USD/JPY稳定~159.6",
+    "ETF连续5日净流入",
+    "资金费率健康略负",
+    "S&P500/Nasdaq创历史新高"
+  ],
+  "executionMode": "YELLOW防守",
+  "positionLimit": "≤60%",
+  "leverage": "禁新增",
+  "putHedge": "维持2%",
+  "reportText": "CRL由8升至21，触发GREEN→YELLOW预警升级。新增E-02 Zonda交易所异常（波兰最大交易所私钥失踪，BTC储备下降99.7%）。建议：确认资产不在Zonda，维持YELLOW防守纪律，尾部Put维持2%，弹药桶待命暂不抄底。"
+}

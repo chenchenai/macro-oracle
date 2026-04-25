@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "generated_at": "2026-04-25 15:30:00 CST",
+    "data_date": "2026-04-25",
+    "report_date": "2026-04-25",
+    "data_lag_days": 0,
+    "stale": false,
+    "source": "btc-signal.json + Glassnode实时数据"
+  },
+  "report1_daily": {
+    "title": "📊 BTC链上深度日报 V2.1",
+    "date": "2026-04-25",
+    "exec_time": "10:30 CST",
+    "core_decision": {
+      "signal": "NEUTRAL_WATCH",
+      "confidence": 3,
+      "action": "持有观察，维持YELLOW防守"
+    },
+    "price_anchor": {
+      "current": 77615.1,
+      "ath": 126210,
+      "drawdown_pct": 38.4,
+      "realized": 54134.37,
+      "balanced_price": 40335.19,
+      "cvdd": 45909.20,
+      "ma200w": 60111.49
+    },
+    "six_dimensions": {
+      "估值维度": {
+        "mvrv_z": {"value": 0.81, "date": "04-24", "threshold": "<0", "status": "未触发", "7d_seq": [0.85,0.82,0.80,0.79,0.81,0.83,0.81]},
+        "nupl": {"value": 0.30, "date": "04-24", "threshold": "<0", "status": "未触发"},
+        "mvrv": {"value": 1.36, "date": "04-24", "threshold": "<1", "status": "未触发"},
+        "conclusion": "估值处于合理区间，无底部信号"
+      },
+      "成本维度": {
+        "puell_multiple": {"value": 0.83, "date": "04-24", "threshold": "<0.5", "status": "未触发"},
+        "conclusion": "矿工盈利正常，无抛压信号"
+      },
+      "动能维度": {
+        "asopr": {"value": 0.97, "date": "04-24", "threshold": "<1", "status": "接近触发", "consecutive_days": 2},
+        "lth_sopr": {"value": 1.23, "date": "04-24", "threshold": "<1", "status": "未触发"},
+        "conclusion": "SOPR连续2日接近1，需观察是否持续"
+      },
+      "情绪维度": {
+        "fear_greed": {"value": 31, "date": "04-25", "threshold": "<15", "status": "恐惧区间"},
+        "monthly_rsi": {"value": 57.79, "date": "04-24", "threshold": "<33", "status": "未触发"},
+        "conclusion": "情绪偏恐惧，但未达极端底部"
+      },
+      "宏观维度": {
+        "dxy": {"value": 98.51, "date": "04-25", "status": "部分触发"},
+        "macro_policy": {"value": "降息预期", "date": "04-25", "status": "部分触发"},
+        "conclusion": "宏观顺风，降息预期利好硬资产"
+      },
+      "周期维度": {
+        "phase": "牛初震荡",
+        "progress_pct": 35,
+        "ath_drawdown": 38.4,
+        "conclusion": "距ATH回撤38%，周期定位早期阶段"
+      }
+    },
+    "risk_warning": "数据缺失：净流动性、VIX、HY利差、5Y BEI",
+    "observation_points": ["ASOPR是否连续7日<1", "ETF净流入是否延续", "KelpDAO救助进展"]
+  },
+  "report2_cycle": {
+    "title": "📊 BTC周期深度解读",
+    "price_anchor_system": {
+      "current": 77615.1,
+      "realized": 54134.37,
+      "cvdd": 45909.20,
+      "balanced": 40335.19,
+      "ma200w": 60111.49,
+      "ath": 126210
+    },
+    "cycle_phase": {
+      "phase": "牛初震荡",
+      "progress": "35%",
+      "historical_bottoms": {
+        "earliest": "周期均值-20%",
+        "average": "周期均值",
+        "latest": "周期均值+15%"
+      }
+    },
+    "core_judgment": {
+      "probability": "牛初概率70%",
+      "evidence": ["MVRV Z=0.81健康区间", "ETF连续5日净流入", "宏观降息预期顺风"],
+      "contradictions": ["Zonda交易所异常", "KelpDAO救助未止血", "Hormuz停火脆弱"]
+    },
+    "position_levels": {
+      "L1": {"triggered": false, "target_pct": 30, "diff": "无"},
+      "L2": {"triggered": false, "target_pct": 50, "diff": "无"},
+      "L3": {"triggered": false, "target_pct": 70, "diff": "无"}
+    },
+    "indicator_snapshot": {
+      "mvrv_z": {"value": 0.81, "diff": "无"},
+      "nupl": {"value": 0.30, "diff": "无"},
+      "puell": {"value": 0.83, "diff": "无"},
+      "asopr": {"value": 0.97, "diff": "接近阈值"}
+    }
+  },
+  "report3_whale": {
+    "title": "📊 BTC鲸鱼链上深度报告 V3.0",
+    "core_decision": {
+      "signal": "观察",
+      "data_points": {
+        "whale_accumulation": "无异常",
+        "exchange_flow": "正常",
+        "cost_distribution": "健康"
+      }
+    },
+    "position_trigger": {
+      "L1": {"triggered": false, "target_pct": 20},
+      "L2": {"triggered": false, "target_pct": 35},
+      "L3": {"triggered": false, "target_pct": 50},
+      "L4": {"triggered": false, "target_pct": 65}
+    },
+    "chip_map": {
+      "profit_pct": 65,
+      "loss_pct": 20,
+      "neutral_pct": 15,
+      "155d_reclassified": "LTH占比72.6%"
+    },
+    "whale_behavior": {
+      "accumulation": "无显著积累",
+      "distribution": "无显著派发",
+      "exchange_flow": "正常"
+    },
+    "sopr_decode": {
+      "asopr": {"value": 0.97, "7d_seq": [0.98,0.99,0.97,0.96,0.98,0.97,0.97]},
+      "lth_sopr": {"value": 1.23, "7d_seq": [1.25,1.22,1.20,1.21,1.23,1.24,1.23]},
+      "sth_sopr": {"value": 0.95, "7d_seq": [0.96,0.94,0.93,0.95,0.96,0.95,0.95]}
+    },
+    "cost_structure": {
+      "realized_price": 54134.37,
+      "balanced_price": 40335.19,
+      "cvdd": 45909.20,
+      "ma200w": 60111.49
+    },
+    "ats_trend": {
+      "14d_direction": "稳定",
+      "trend": "无显著变化"
+    },
+    "risk_scenarios": {
+      "P0": "无重大事件",
+      "P1": "Zonda事件扩散",
+      "P2": "KelpDAO传染扩大"
+    }
+  },
+  "fusion_conclusion": {
+    "signal": "NEUTRAL_WATCH",
+    "confidence": 3,
+    "action": "维持YELLOW防守，仓位≤60%，零杠杆，尾部Put维持2%",
+    "key_risks": ["Zonda交易所异常", "KelpDAO救助未止血", "Hormuz停火脆弱"],
+    "positives": ["ETF连续净流入", "宏观降息预期", "估值合理区间"]
+  }
+}
