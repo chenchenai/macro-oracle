@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "generated_at": "2026-04-26T02:20:00+08:00",
+    "data_date": null,
+    "report_date": null,
+    "stale": true,
+    "stale_reason": "最新宏观数据为 2026-03-22，距今超过一个月未更新。macro-monitor agent 可能未正常运行。",
+    "last_available_date": "2026-03-22"
+  },
+  "market_snapshot": {},
+  "rates": {},
+  "credit": {},
+  "dalio_quadrant": {},
+  "btc_signals": {},
+  "three_market_advice": {},
+  "key_events": [],
+  "full_report_text": "⚠️ 数据过期警告：最新宏观数据为 2026-03-22，距今超过一个月未更新。请检查 macro-monitor agent 是否正常运行。"
+}
