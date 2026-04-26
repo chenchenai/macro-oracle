@@ -1,103 +1,103 @@
 {
-  "timestamp": "2026-04-25T10:30:00+08:00",
-  "version": "2.0",
+  "_schema_version": "2.0",
+  "report_date": "2026-04-26",
+  "report_time": "10:30 CST",
+  "signal": {
+    "bottom_score": 0,
+    "bottom_max": 8,
+    "direction": "观望",
+    "confidence": "高",
+    "action": "维持观察，不建仓",
+    "position_pct": 0
+  },
   "price": {
-    "current": 77615.1,
-    "date": "2026-04-25",
-    "realized": 54134.37,
-    "balanced": 40335.19,
-    "cvdd": 45909.20,
-    "ma200w": 60111.49,
-    "source": "OKX + Glassnode"
+    "current": 77552,
+    "source": "OKX",
+    "timestamp": "2026-04-26T10:30:00+08:00",
+    "vs_200wma": 77552 - 60152,
+    "vs_realized": 77552 - 54135,
+    "vs_cvdd": 77552 - 45980,
+    "vs_balanced": 77552 - 40318
   },
-  "bottom_matrix": {
+  "onchain": {
+    "mvrv_z_score": {"value": 0.81, "date": "2026-04-25", "trigger": false},
+    "nupl": {"value": 0.30, "date": "2026-04-25", "trigger": false},
+    "puell_multiple": {"value": 0.78, "date": "2026-04-25", "trigger": false},
+    "ahr999": {"value": 0.459, "date": "2026-04-26", "trigger": false},
+    "lth_sopr": {"value": 0.887, "date": "2026-04-25"},
+    "sth_sopr": {"value": 0.999, "date": "2026-04-25"},
+    "sopr_adjusted": {"value": 0.997, "date": "2026-04-25"},
+    "mayer_multiple": {"value": 0.91, "date": "2026-04-25"},
+    "lth_supply_pct": {"value": 73.6, "date": "2026-04-25"},
+    "exchange_net_flow": {"value": -57137, "date": "2026-04-25"},
+    "exchange_balance_pct": {"value": 14.87, "date": "2026-04-25"}
+  },
+  "depression_zone": {
+    "activated": false,
     "score": 0,
-    "max_score": 8,
-    "status": "观察",
-    "metrics": {
-      "mvrv_z_score": {"value": 0.81, "threshold": "<0", "triggered": false, "date": "04-24"},
-      "nupl": {"value": 0.30, "threshold": "<0", "triggered": false, "date": "04-24"},
-      "puell_multiple": {"value": 0.83, "threshold": "<0.5", "triggered": false, "date": "04-24"},
-      "asopr": {"value": 0.97, "threshold": "连续7日<1", "triggered": false, "consecutive_days": 2, "date": "04-24"},
-      "monthly_rsi": {"value": 57.79, "threshold": "<33", "triggered": false, "date": "04-24"},
-      "fear_greed": {"value": 31, "threshold": "<15", "triggered": false, "date": "04-25"},
-      "dxy": {"value": 98.51, "threshold": "周期见顶回落", "triggered": "partial", "date": "04-25"},
-      "macro_policy": {"value": "降息预期", "threshold": "加息尾期/降息前夜", "triggered": "partial", "date": "04-25"}
+    "max": 5,
+    "conditions": {
+      "price_below_200wma": {"value": false, "current": 77552, "threshold": 60152},
+      "price_below_realized": {"value": false, "current": 77552, "threshold": 54135},
+      "ahr999_below_045": {"value": false, "current": 0.459, "threshold": 0.45},
+      "mvrv_z_below_0": {"value": false, "current": 0.81, "threshold": 0},
+      "mayer_below_065": {"value": false, "current": 0.91, "threshold": 0.65}
     }
   },
-  "l1_l2_l3": {
-    "dz_activated": false,
-    "dz_score": 0,
-    "dz_max": 5,
-    "l1_triggered": false,
-    "l2_triggered": false,
-    "l3_triggered": false,
-    "details": {
-      "price_below_200wma": false,
-      "price_below_realized": false,
-      "ahr999_below_045": false,
-      "mvrv_z_below_0": false,
-      "mayer_below_065": false
+  "levels": {
+    "L1": {"triggered": false, "condition_a": false, "condition_b": false},
+    "L2": {"triggered": false, "dz_required": false, "puell_condition": false},
+    "L3": {"triggered": false, "dz_required": false, "lth_sopr_ok": true, "signals": {"slingshot": false, "micro_trend": false, "rebound": false}}
+  },
+  "macro": {
+    "regime": "D",
+    "regime_label": "通胀/法币贬值",
+    "btc_bias": "强顺风",
+    "dxy": {"value": 98.51, "change_pct": -0.29, "date": "2026-04-26"},
+    "gold": {"value": 4722, "change_pct": 0.37, "date": "2026-04-26"},
+    "silver": {"value": 76.38, "date": "2026-04-26"},
+    "spx": {"value": 7165, "change_pct": 0.8, "date": "2026-04-26"},
+    "usdjpy": {"value": 159.33, "change_pct": -0.26, "date": "2026-04-26"},
+    "throughline": {
+      "main": "法币贬值交易驱动硬资产走强，Gold $4,722/BTC $77K同步受益",
+      "contradiction": "链上底部信号全未触发，价格远高于成本线，但宏观顺风提供支撑",
+      "tail_risk": "宏观数据缺失（净流动性/VIX/HY利差/BEI无法获取），可能遗漏重要预警信号"
     }
+  },
+  "sentiment": {
+    "fear_greed_index": {"value": 33, "label": "Fear", "date": "2026-04-26"},
+    "monthly_rsi": {"value": 57.86, "trigger": false},
+    "daily_rsi_14": {"value": 62.77, "date": "2026-04-25"},
+    "etf_flow": {
+      "latest_net_flow_m": 14.4,
+      "latest_date": "2026-04-24",
+      "flow_5d_sum_m": 823.7,
+      "trend": "inflow"
+    }
+  },
+  "cycle": {
+    "phase": "熊市中期调整",
+    "progress_pct": 20.5,
+    "bottom_time_window": "2026 Q3-Q4",
+    "distance_to_peak_est": "2-4个月"
   },
   "top_monitor": {
     "score": 0,
-    "max_score": 6,
-    "status": "安全区",
-    "metrics": {
-      "mvrv_z": {"value": 0.81, "warning": 2.5, "reduce": 3.0, "triggered": false},
-      "puell": {"value": 0.83, "warning": 2.5, "reduce": 3.0, "triggered": false},
-      "nupl": {"value": 0.30, "warning": 0.65, "reduce": 0.70, "triggered": false},
-      "monthly_rsi": {"value": 57.79, "warning": 75, "triggered": false},
-      "fear_greed": {"value": 31, "warning": 75, "triggered": false},
-      "lth_sopr": {"value": 1.23, "warning": 3.0, "triggered": false}
-    }
+    "max": 5,
+    "mvrv_z": {"current": 0.81, "warning": 2.5, "reduce": 3.0, "safe": true},
+    "puell": {"current": 0.78, "warning": 2.5, "reduce": 3.0, "safe": true},
+    "nupl": {"current": 0.30, "warning": 0.65, "reduce": 0.70, "safe": true},
+    "monthly_rsi": {"current": 57.86, "warning": 75, "safe": true},
+    "fear_greed": {"current": 33, "warning": 75, "safe": true}
   },
-  "macro_regime": {
-    "code": "D",
-    "label": "Inflationary/Debasement",
-    "btc_bias": "强顺风",
-    "confidence": 5,
-    "cross_market": {
-      "dxy": 98.51,
-      "dxy_chg": -0.29,
-      "gold": 4725.0,
-      "gold_chg": 0.43,
-      "silver": 75.68,
-      "spx": 7165.0,
-      "spx_chg": 0.8,
-      "usdjpy": 159.33,
-      "usdjpy_chg": -0.26
-    },
-    "throughline": {
-      "main": "硬资产叙事强势，DXY走弱+降息预期驱动",
-      "secondary": "SPX与硬资产同步走强，或反映通胀预期抬升",
-      "tail_risk": "宏观数据缺失导致判断盲区"
-    }
-  },
-  "etf_flow": {
-    "latest_net_flow_m": -8.5,
-    "date": "2026-04-24",
-    "flow_5d_sum_m": 800.8,
-    "trend": "inflow"
-  },
-  "position_recommendation": {
-    "score": 0,
-    "suggested_pct": 0,
-    "action": "持有观察，不追涨不加仓",
-    "zero_leverage": true,
-    "leverage_note": "零杠杆铁律"
-  },
-  "cycle_status": {
-    "phase": "牛初震荡",
-    "progress_pct": 35,
-    "bottom_progress": 0,
-    "time_to_next_halving": "约1年"
-  },
-  "risks": {
-    "data_missing": ["净流动性", "VIX", "HY利差", "5Y BEI"],
-    "price_deviation_pct": 43,
-    "key_risks": ["宏观数据缺失风险", "假突破风险", "ETF流向逆转"]
+  "risk": {
+    "failure_conditions": ["MVRV Z > 7", "宏观体制F", "DXY突破105", "监管黑天鹅"],
+    "current_risks": ["宏观数据缺失", "部分指标滞后"],
+    "stale_indicators": [
+      {"name": "lth_net_position_change", "date": "2026-04-20", "lag_days": 6},
+      {"name": "nvt_signal", "date": "2026-04-21", "lag_days": 5},
+      {"name": "true_market_mean", "date": "2026-04-05", "lag_days": 21}
+    ]
   },
   "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
 }
