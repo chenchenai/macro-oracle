@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated_at": "2026-04-27T02:20:00+08:00",
+    "generated_at": "2026-04-28T10:20:00+08:00",
     "data_date": "2026-03-22",
-    "report_date": "2026-04-27",
+    "report_date": "2026-04-28",
     "stale": true,
-    "stale_reason": "宏观分析师日报自 2026-03-22 起未更新，超过 36 天无新数据。需检查 macro-monitor agent 运行状态。"
+    "stale_reason": "宏观分析师日报自 2026-03-22 起未更新，超过 37 天无新数据。需检查 macro-monitor agent 运行状态。"
   },
   "market_snapshot": {
     "spx": { "price": null, "change": null, "note": "数据过期，需更新" },
@@ -57,10 +57,10 @@
     {
       "priority": "P0",
       "title": "⚠️ 宏观数据中断",
-      "fact": "宏观分析师日报自 2026-03-22 起未更新，超过 36 天无新数据",
+      "fact": "宏观分析师日报自 2026-03-22 起未更新，超过 37 天无新数据",
       "importance": "系统级问题，需检查 macro-monitor agent 运行状态及相关 cron 任务",
       "investment_implication": "Dashboard 数据已过期，所有信号不可用，请等待数据恢复"
     }
   ],
-  "full_report_text": "⚠️ 数据中断警告：宏观分析师日报自 2026-03-22 起未更新。\n\n最近日志内容（2026-03-22）为 FOMC 点阵图解读错误的质量事故复盘，非完整宏观日报。\n\n请检查：\n1. macro-monitor agent 是否正常运行\n2. 相关 cron 任务是否正常触发\n3. 数据采集流程是否有异常\n\n---\n以下为 2026-03-22 日志原文 ---\n\n# 2026-03-22 日志\n\n---\n\n## 事件1：晨报\"FOMC点阵图降息2次\"错误 — 深度复盘与机制修复\n- type: quality-incident + decision\n- time: 10:28-11:30 CST\n- severity: 🔴 高（误导性分析，已发布）\n\n[日志内容过长，已截断。完整内容请查看原始文件。]"
+  "full_report_text": "⚠️ 数据中断警告：宏观分析师日报自 2026-03-22 起未更新，已过期 37 天。\n\n最近日志内容（2026-03-22）为 FOMC 点阵图解读错误的质量事故复盘，非完整宏观日报。\n\n请检查：\n1. macro-monitor agent 是否正常运行\n2. 相关 cron 任务是否正常触发\n3. 数据采集流程是否有异常\n\n---\n以下为 2026-03-22 日志原文 ---\n\n# 2026-03-22 日志\n\n---\n\n## 事件1：晨报\"FOMC点阵图降息2次\"错误 — 深度复盘与机制修复\n- type: quality-incident + decision\n- time: 10:28-11:30 CST\n- severity: 🔴 高（误导性分析，已发布）\n\n[日志内容过长，已截断。完整内容请查看原始文件。]"
 }
