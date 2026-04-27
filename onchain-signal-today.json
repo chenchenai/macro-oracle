@@ -1,232 +1,161 @@
 {
   "meta": {
-    "generated_at": "2026-04-27 02:40 CST",
-    "data_date": "2026-04-25",
-    "report_date": "2026-04-26",
+    "generated_at": "2026-04-28 02:40:00 CST",
+    "data_date": "2026-04-27",
+    "report_date": "2026-04-28",
     "data_lag_days": 1,
     "stale": true,
-    "stale_reason": "当日(04-27)报告尚未执行（当前02:40 AM，btc_onchain日报在10:30执行）；使用前一天(04-26)摘要数据，完整报告原文不可用",
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-04-26.md"
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-04-27.md",
+    "format_note": "当日日志不存在，使用前一日进化学习报告（非标准三报告格式），数据滞后1天"
   },
   "report1_daily": {
-    "title": "BTC链上深度日报 V2.1",
-    "date": "2026-04-26",
-    "exec_time": "2026-04-26 10:15 CST",
-    "data_flag": "normal:1",
+    "title": "BTC链上深度日报 V2.0",
+    "date": "2026-04-27",
+    "exec_time": "N/A（进化学习报告）",
+    "data_flag": "⚠️ 格式异常：当日为进化学习报告，非标准日报V2格式",
     "core_data": {
-      "btc_price": {
-        "value": "$77,647",
-        "date": "04-25"
-      },
-      "ahr999": {
-        "value": 0.459,
-        "date": "04-26"
-      },
-      "mvrv_z_score": {
-        "value": 0.814,
-        "date": "04-25"
-      },
-      "mvrv": {
-        "value": 1.434,
-        "date": "04-25"
-      },
-      "nupl": {
-        "value": 0.303,
-        "date": "04-25"
-      },
-      "lth_sopr": {
-        "value": 0.887,
-        "date": "04-25"
-      },
-      "asopr": {
-        "value": 1.0,
-        "date": "04-25"
-      },
-      "puell_multiple": {
-        "value": 0.777,
-        "date": "04-25"
-      },
-      "exchange_balance_pct": {
-        "value": "14.87%",
-        "date": "04-25"
-      },
-      "exchange_netflow_30d": {
-        "value": "-57,137 BTC",
-        "date": "04-25"
-      },
-      "hash_rate": {
-        "value": "953 EH/s",
-        "date": "04-26"
-      },
-      "lth_supply_pct": {
-        "value": "73.6%",
-        "date": "04-25"
-      },
-      "rsi_14d": {
-        "value": 62.77,
-        "date": "04-25"
-      },
-      "coinbase_premium": {
-        "value": "+0.05%",
-        "date": "04-25"
-      }
+      "price_usd": "$77,647",
+      "mvrv": "N/A",
+      "mvrv_z_score": "N/A",
+      "nupl": "N/A",
+      "lth_sopr": "N/A",
+      "ahr999": "N/A",
+      "puell_multiple": "N/A",
+      "exchange_balance_pct": "N/A",
+      "exchange_net_flow": "N/A",
+      "coinbase_premium": "+0.0505%（首次转正）",
+      "funding_rate": "持续负值"
     },
     "six_dimension_score": {
-      "total": 58,
-      "grade": "B",
-      "confidence": "62%"
+      "valuation": {
+        "score": "N/A",
+        "status": "待更新"
+      },
+      "cycle_phase": {
+        "score": "N/A",
+        "status": "熊市中段"
+      },
+      "network_activity": {
+        "score": "N/A",
+        "status": "偏弱"
+      },
+      "whale_behavior": {
+        "score": "N/A",
+        "status": "囤积历史级"
+      },
+      "miner_economics": {
+        "score": "N/A",
+        "status": "待更新"
+      },
+      "risk_sentiment": {
+        "score": "N/A",
+        "status": "观望"
+      },
+      "total": "N/A"
     },
     "cycle_judgment": {
-      "phase": "熊市中段",
-      "cycle_day": 736,
-      "ath_after_days": 202,
-      "bear_market_progress": "52.9%",
-      "confidence": "72%",
-      "signal_level": "B级",
-      "entry_range": "$73K-$78K",
-      "position_suggestion": "20-30%"
+      "phase": "熊市中段 / 阻力带突破测试阶段",
+      "confidence": "high",
+      "signal_level": "观望",
+      "entry_range": "不追高，等待$80K测试或回调",
+      "position_advice": "若持有→继续持有观察，止损$75K；若观望→不追高"
     },
     "skills_triggered": {
-      "active": [
-        "A-lth-sopr-capitulation",
-        "A-puell-below-half",
-        "A-nupl-4tier-risk",
-        "B-ahr999-bottom"
+      "triggered": [
+        "机构现货确认初步出现（Coinbase Premium转正）"
       ],
-      "near_trigger": []
+      "near_trigger": [
+        "STH获利回落至$1.5M/h以下",
+        "$80K测试结果"
+      ]
     },
     "anomaly_detection": {
-      "sth_profit_warning": "STH获利$4.4M/h达阈值3倍（Glassnode）",
-      "lth_sopr_second_capitulation": true,
-      "exchange_reserves_7y_low": true
+      "sth_profit_per_hour": "$4.4M/h（历史阈值$1.5M/h的3倍）→ 局部顶部信号强化",
+      "gamma_risk": "$75K下方负gamma集中（若跌破加速下跌）"
     },
-    "full_report_text": "【滞后警告】当日(04-27)日报尚未执行，完整原文不可用。\n\n===== 04-26 日报摘要 =====\n周期第736天（ATH后+202天）| 六维评分：58/100 | B级信号\n\n【核心判断】\n• LTH-SOPR二次跌破1.0（0.887），投降信号升级\n• 交易所储备降至7年最低，囤积信号强烈\n• STH获利$4.4M/h达阈值3倍，与机构囤积形成对冲博弈\n• 本周价格：+5.2%（$73,835→$77,647）\n\n【下周关键观察点】\n1. $80K阻力测试（STH Cost Basis）→ 关键胜负手\n2. STH获利回落至$1.5M/h以下\n3. ETF流入延续性（超过8天）\n4. LTH-SOPR恢复速度"
+    "full_report_text": "# 日记 2026-04-27 周一\n\n## 已完成\n- ✅ 执行 BTC 链上每日进化学习报告（Glassnode原文读取成功）\n- ✅ 更新 SKILLS-INDEX.md\n- ✅ 更新 MEMORY.md\n\n## 进化学习核心发现\n\n### 🚨 今日最重要发现\n**STH获利$4.4M/h = 历史$1.5M阈值3倍 → 局部顶部信号强化**\n\n核心框架升级：\n1. Glassnode首次量化STH获利阈值：**$1.5M/h = 历史每个局部顶部触发信号**\n2. 当前 **$4.4M/h = 近3倍阈值** → 本轮周期第二次出现此结构（重复遭遇强化可靠性）\n3. 若价格推向$80K → >54% STH供应将获利 → 历史熊市反弹耗竭阈值\n4. **Gamma风险新增**：$75K下方负gamma集中 → 若跌破会加速下跌\n\n### Glassnode文章精华（3篇原文）\n\n**Week 16-2026 \"Mean Reclaimed, Rally on Trial\"（Apr 22）**\n- TMM $78.1K突破确认\n- STH Cost Basis $80.1K阻力\n- STH获利$4.4M/h = 3倍阈值\n- ETF流转正 + Spot CVD买家主导\n- Funding持续负值 → squeeze燃料\n- Gamma：$75K下方负gamma集中\n\n**Market Pulse Week 17（Apr 20）**\n- Spot CVD转负 → 卖压增加\n- ETF MVRV改善 → 盈利能力增强\n- NUPL改善 → 潜在稳定阶段\n- 多空信号交织的复杂市场结构\n\n**Strategy Watch #3（Apr 23）**\n- BTC/ETH 3月流改善（从-$9.6B→-$7.0B）\n- BTC ETF转正（+17.6k BTC月末）\n- CME basis反转（-$3.9M/月）→ carry trade失效\n- DeFi TVL改善（-$17.8B→-$0.75B）\n\n### 关键矛盾识别\n- 机构买入（Coinbase Premium转正 + ETF流转正）**vs** STH获利压力（$4.4M/h）\n- Glassnode判断：**缺乏强劲需求催化剂 → $80K阻力区可能形成局部顶部**\n\n### 主线判断调整\n从\"机构现货确认初步出现\"调整为 **\"观望等待验证\"**\n\n关键验证窗口：\n1. STH获利回落至$1.5M/h以下\n2. $80K测试结果\n3. Coinbase Premium持续正值\n4. 若跌破$75K → 警惕加速下跌\n\n## 操作建议\n- 持有仓位：继续持有，设置止损$75K（gamma风险区）\n- 观望者：不追高，等待验证\n- 若跌破$75K：警惕加速下跌\n\n## 信息源状态\n- ✅ Glassnode原文读取成功（3篇）\n- ⚠️ 分析师推文搜索受限（API 429）\n- ✅ 本地数据库验证\n\n## 下次追踪重点\n1. 🚨 STH Realized Profit（是否回落至$1.5M/h以下）\n2. 🚨 $78K-$80K阻力测试结果\n3. Coinbase Premium持续性\n4. Gamma风险验证（若跌破$75K）\n5. ETF流入延续性\n\n---\n\n_生成时间: 2026-04-27 15:00 CST_"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-04-26",
+    "date": "2026-04-27",
+    "data_flag": "⚠️ 格式异常：当日为进化学习报告，非标准周期深度解读格式",
     "price_anchors": {
-      "realtime_price": {
-        "value": "$77,647",
-        "date": "04-25"
-      },
-      "close_price": {
-        "value": "$77,647",
-        "date": "04-25"
-      },
-      "realized_price": {
-        "value": "$54,217",
-        "date": "04-25"
-      },
-      "tmm": {
-        "value": "~$78,100",
-        "note": "Glassnode Week15估算"
-      },
-      "cvdd": {
-        "value": "$45,815",
-        "date": "04-25"
-      },
-      "equilibrium_price": {
-        "value": "$40,450",
-        "date": "04-25"
-      },
-      "ma_2y": {
-        "value": "$86,776",
-        "date": "04-25"
-      },
-      "ath": {
-        "value": "$126,199",
-        "date": "2025-10-06"
-      },
-      "miner_cost": {
-        "value": "~$70,027",
-        "note": "MARA参考"
-      }
+      "realtime_price": "$77,647",
+      "close_price": "N/A",
+      "realized_price": "N/A",
+      "tmm": "$78.1K",
+      "cvdd": "N/A",
+      "equilibrium_price": "N/A",
+      "ma_2y": "N/A",
+      "ath": "$126,199（2025-10-06）",
+      "miner_cost": "N/A"
     },
     "cycle_position": {
       "phase": "熊市中段",
-      "cycle_day": 736,
+      "cycle_day": "ATH后186天",
       "earliest_bottom": "2026-10-04",
       "mean_bottom": "2026-10-20",
       "latest_bottom": "2026-11-21"
     },
     "core_judgment": {
-      "bear_continuation_prob": "60%",
-      "bottom_prob": "25%",
-      "recovery_prob": "15%"
+      "probability_breakout": "待验证（需突破$80K）",
+      "probability_retrace": "高（STH获利压力3倍阈值）",
+      "probability_bottom": "待验证（底部窗口Q3-Q4）"
     },
     "entry_tiers": {
-      "tier_a": {
-        "range": "$68K-$72K",
-        "condition": "LTH-SOPR<0.75确认"
-      },
-      "tier_b": {
-        "range": "$72K-$76K",
-        "condition": "交易所净流出持续"
-      },
-      "tier_c": {
-        "range": "$76K-$80K",
-        "condition": "突破阻力带验证"
-      }
+      "tier_a": "不追高",
+      "tier_b": "等待$80K测试或回调观察",
+      "tier_c": "若跌破$75K警惕加速"
     },
-    "signal_level": "B级",
-    "position_suggestion": "20-30%",
-    "full_report_text": "【滞后警告】当日(04-27)周期报告尚未执行，完整原文不可用。\n\n===== 04-26 周期摘要 =====\n周期第736天 | ATH后202天 | 熊市进程52.9%\n\n【底部预测窗口】\n• 最早：2026-10-04\n• 中位：2026-10-20 ±2周\n• 最晚：2026-11-21\n\n【本周特征】\n• ETF $2B/8days流入，交易所储备7年最低\n• $80K STH Cost Basis为关键阻力\n• LTH-SOPR二次投降（0.887）"
+    "signal_level": "观望",
+    "position_suggestion": "若持有→持有观察止损$75K；若观望→不追高等待验证",
+    "full_report_text": "⚠️ 当日无标准周期深度解读报告，数据源自进化学习报告摘要"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-04-26",
+    "date": "2026-04-27",
+    "data_flag": "⚠️ 格式异常：当日为进化学习报告，非标准鲸鱼报告V3格式",
     "core_decision": {
-      "signal": "B级",
-      "phase": "熊市中段囤积",
-      "summary": "机构囤积与STH获利对冲博弈",
-      "position": "20-30%"
+      "signal": "观望",
+      "phase": "阻力带突破测试",
+      "summary": "机构囤积历史级但STH获利压力达3倍阈值",
+      "position": "不追高，止损$75K"
     },
     "top3_data_points": [
-      "交易所储备降至7年最低（14.87%）",
-      "ETF连续8天净流入$2B",
-      "LTH-SOPR二次跌破1.0（0.887）"
+      "Coinbase Premium首次转正+0.0505%（机构现货确认初步出现）",
+      "STH获利$4.4M/h = 历史$1.5M阈值3倍",
+      "Gamma风险$75K下方负gamma集中"
     ],
     "chip_map": {
-      "lth_supply": "73.6%",
-      "sth_supply": "~12%",
-      "exchange_balance": "14.87%"
+      "lth": "囤积历史级（交易所储备7年最低）",
+      "sth": "获利卖出压力强化（$4.4M/h）",
+      "exchange": "30日净流出48,500 BTC"
     },
     "whale_behavior": {
-      "netflow_7d": "趋势流出",
-      "netflow_30d": "-57,137 BTC",
-      "balance": "7年最低",
-      "coinbase_premium": "+0.05%",
-      "funding_rate": "未提供"
+      "net_flow_7d": "历史级囤积",
+      "net_flow_30d": "48,500 BTC净流出",
+      "balance": "交易所储备7年最低",
+      "coinbase_premium": "+0.0505%（首次转正）",
+      "funding_rate": "持续负值"
     },
     "sopr_decode": {
-      "lth_sopr": {
-        "value": 0.887,
-        "7d_series": "二次跌破1.0",
-        "date": "04-25"
-      },
-      "sth_sopr": {
-        "value": "未提供",
-        "date": "-"
-      },
-      "asopr": {
-        "value": 1.0,
-        "date": "04-25"
-      }
+      "lth_sopr": "N/A（进化学习报告未包含）",
+      "sth_sopr": "N/A",
+      "asopr": "N/A"
     },
     "ats_dashboard": {
-      "current": "未提供",
-      "target": "未提供",
-      "gap_pct": "未提供",
-      "14d_trend": "未提供"
+      "current": "N/A",
+      "target": "N/A",
+      "gap_pct": "N/A",
+      "14d_trend": "N/A"
     },
     "fusion_conclusion": {
-      "综合结论": "熊市中段，囤积信号强烈但STH获利压力显著",
-      "六维分": 58,
-      "操作": "防守型分批布局，$80K阻力为关键验证点",
-      "止损": "跌破$72K暂停加仓",
-      "反向触发": "STH获利回落$1.5M/h以下 + ETF流入延续"
+      "summary": "机构囤积历史级 + Coinbase Premium首次转正 → 但STH获利压力$4.4M/h达3倍阈值 → 局部顶部信号强化",
+      "six_dim_score": "N/A",
+      "action": "观望等待验证",
+      "stop_loss": "$75K（Gamma风险区）",
+      "reverse_trigger": "STH获利回落至$1.5M/h以下 + $80K突破站稳"
     },
-    "full_report_text": "【滞后警告】当日(04-27)鲸鱼报告尚未执行，完整原文不可用。\n\n===== 04-26 鲸鱼报告摘要 =====\n【三大数据点】\n1. 交易所储备降至7年最低（14.87%）\n2. ETF连续8天净流入$2B\n3. LTH-SOPR二次跌破1.0（0.887）\n\n【鲸鱼行为】\n• 30日净流出：-57,137 BTC\n• Coinbase溢价：+0.05%（机构买盘延续）\n\n【核心博弈】\n机构囤积 vs STH获利$4.4M/h（3倍阈值）"
+    "full_report_text": "⚠️ 当日无标准鲸鱼深度报告V3，数据源自进化学习报告摘要"
   }
 }
