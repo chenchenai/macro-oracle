@@ -1,1 +1,30 @@
-{"crl":8,"level":"GREEN","macroScore":20,"structureScore":40,"chainScore":0,"eventScore":30,"btcPrice":"$77,648-$77,875","vix":"18.71-19.31","sp500":"7,165.08","nasdaq":"24,836.60","usdJpy":"~159.3","etfWeekly":"$823M-$1.2B","fgIndex":"46","timestamp":"2026-04-27T02:00Z","notes":"技术性GREEN，按YELLOW执行"}
+{
+  "timestamp": "2026-04-28T02:00:00Z",
+  "crl": 8,
+  "level": "GREEN",
+  "levelNote": "技术性GREEN，按YELLOW执行",
+  "scores": {
+    "macro": 2.0,
+    "structure": 4.0,
+    "chain": 0,
+    "event": 3.0
+  },
+  "activeSignals": [
+    {"id": "E-05", "name": "KelpDAO/Aave救助", "status": "YELLOW", "value": "Day14进行中", "threshold": "救助止血"},
+    {"id": "E-06", "name": "Hormuz停火僵持", "status": "YELLOW", "value": "仅3-5艘/24h", "threshold": "交通恢复"},
+    {"id": "S-07", "name": "Put偏斜", "status": "YELLOW", "value": "~8%", "threshold": ">5%"}
+  ],
+  "clearedSignals": [
+    {"id": "S-04", "name": "ETF净流入", "status": "GREEN", "value": "$996M周流入", "clearedDate": "2026-04-24"}
+  ],
+  "marketAnchors": {
+    "btcPrice": "$77,698-$79,032",
+    "vix": "18.71-19.31",
+    "sp500": "7,165+",
+    "nasdaq": "24,837",
+    "etfFlow": "$996M周流入",
+    "fearGreed": 46
+  },
+  "actions": ["维持YELLOW纪律", "监控救助止血", "盯海峡交通恢复", "Put维持2%"],
+  "nextUpdate": "2026-04-28T06:00:00Z"
+}
