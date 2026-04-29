@@ -1,23 +1,23 @@
 {
   "meta": {
-    "generated_at": "2026-04-28T10:20:00+08:00",
+    "generated_at": "2026-04-30T02:20:00+08:00",
     "data_date": "2026-03-22",
-    "report_date": "2026-04-28",
+    "report_date": "2026-04-30",
     "stale": true,
-    "stale_reason": "宏观分析师日报自 2026-03-22 起未更新，超过 37 天无新数据。需检查 macro-monitor agent 运行状态。"
+    "stale_reason": "宏观分析师日报自2026-03-22后未更新（距今39天），最新日志为FOMC点阵图解读错误复盘。需检查宏观分析师cron任务状态或agent运行情况。"
   },
   "market_snapshot": {
-    "spx": { "price": null, "change": null, "note": "数据过期，需更新" },
-    "nasdaq": { "price": null, "change": null },
-    "dow": { "price": null, "change": null },
-    "btc": { "price": null, "change": null },
-    "eth": { "price": null, "change": null },
-    "gold": { "price": null, "change": null },
-    "silver": { "price": null, "change": null },
-    "wti": { "price": null, "change": null },
-    "dxy": { "price": null, "change": null },
-    "vix": { "price": null, "change": null },
-    "usdjpy": { "price": null, "change": null }
+    "spx": { "price": null, "change_pct": null, "note": "数据过期，需重新获取" },
+    "nasdaq": { "price": null, "change_pct": null },
+    "dow": { "price": null, "change_pct": null },
+    "btc": { "price": null, "change_pct": null },
+    "eth": { "price": null, "change_pct": null },
+    "gold": { "price": null, "change_pct": null },
+    "silver": { "price": null, "change_pct": null },
+    "wti": { "price": null, "change_pct": null },
+    "dxy": { "price": null, "change_pct": null },
+    "vix": { "price": null, "change_pct": null },
+    "usdjpy": { "price": null, "change_pct": null }
   },
   "rates": {
     "ffr": null,
@@ -39,28 +39,25 @@
     "quadrant_name": "数据过期",
     "growth_signals": [],
     "inflation_signals": [],
-    "regime_label": "⚠️ 数据过期，无法判断"
+    "regime_label": "需重新分析"
   },
   "btc_signals": {
-    "direction": "数据过期",
-    "confidence": 0,
-    "action": "等待数据恢复",
+    "direction": null,
+    "confidence": null,
+    "action": "观望",
     "entry_zone": null,
-    "stop_loss": null
+    "stop_loss": null,
+    "note": "数据过期，需重新分析"
   },
   "three_market_advice": {
-    "gold": { "advice": "数据过期", "logic": "宏观分析师日报自 2026-03-22 起未更新" },
-    "spx": { "advice": "数据过期", "logic": "宏观分析师日报自 2026-03-22 起未更新" },
-    "btc": { "advice": "数据过期", "logic": "宏观分析师日报自 2026-03-22 起未更新" }
+    "gold": { "advice": "数据过期", "logic": "宏观日报自2026-03-22未更新（距今39天）" },
+    "spx": { "advice": "数据过期", "logic": "宏观日报自2026-03-22未更新（距今39天）" },
+    "btc": { "advice": "数据过期", "logic": "宏观日报自2026-03-22未更新（距今39天）" }
   },
-  "key_events": [
-    {
-      "priority": "P0",
-      "title": "⚠️ 宏观数据中断",
-      "fact": "宏观分析师日报自 2026-03-22 起未更新，超过 37 天无新数据",
-      "importance": "系统级问题，需检查 macro-monitor agent 运行状态及相关 cron 任务",
-      "investment_implication": "Dashboard 数据已过期，所有信号不可用，请等待数据恢复"
-    }
-  ],
-  "full_report_text": "⚠️ 数据中断警告：宏观分析师日报自 2026-03-22 起未更新，已过期 37 天。\n\n最近日志内容（2026-03-22）为 FOMC 点阵图解读错误的质量事故复盘，非完整宏观日报。\n\n请检查：\n1. macro-monitor agent 是否正常运行\n2. 相关 cron 任务是否正常触发\n3. 数据采集流程是否有异常\n\n---\n以下为 2026-03-22 日志原文 ---\n\n# 2026-03-22 日志\n\n---\n\n## 事件1：晨报\"FOMC点阵图降息2次\"错误 — 深度复盘与机制修复\n- type: quality-incident + decision\n- time: 10:28-11:30 CST\n- severity: 🔴 高（误导性分析，已发布）\n\n[日志内容过长，已截断。完整内容请查看原始文件。]"
+  "key_events": {
+    "p0_events": [],
+    "p1_events": [],
+    "note": "宏观分析师日报过期（39天），无最新事件数据"
+  },
+  "full_report_text": "# 宏观日报状态\n\n⚠️ **数据过期警告**\n\n最新宏观分析师日报日期：2026-03-22\n\n当前报告请求日期：2026-04-30\n\n过期天数：39天\n\n## 原因\n\n- `/Users/cc/.openclaw/workspace-macro-monitor/memory/` 目录下最新日志为 `2026-03-22.md`\n- 该日志内容为「FOMC点阵图解读错误复盘」，非标准宏观日报格式\n- 宏观分析师agent可能自2026-03-22后未正常运行\n\n## 建议操作\n\n1. 检查宏观分析师cron任务状态\n2. 确认agent是否正常运行\n3. 手动触发一次宏观日报生成\n\n---\n\n*此报告由macro-monitor Dashboard同步任务自动生成*\n*同步时间：2026-04-30 02:20 CST*"
 }
