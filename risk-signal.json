@@ -1,70 +1,52 @@
 {
-  "timestamp": "2026-04-29T10:00:00+08:00",
+  "timestamp": "2026-04-30T10:00:00+08:00",
   "crl": 8,
   "level": "GREEN",
-  "technical_note": "技术性GREEN，按YELLOW执行",
+  "level_note": "技术性GREEN，按YELLOW执行",
   "scores": {
     "macro": 2.0,
     "structure": 4.0,
     "chain": 0,
     "event": 3.0
   },
-  "market_anchors": {
-    "btc_price": 76342,
-    "btc_range": "76342-76472",
-    "vix": 19.02,
-    "vix_change": "+5.56%",
-    "sp500": 7138.80,
-    "sp500_change": "-0.49%",
-    "nasdaq_change": "-1%",
-    "usd_jpy": 159.68,
-    "usd_jpy_change": "+0.16%",
-    "etf_weekly_flow": "~$1B net inflow",
-    "fear_greed": 46
-  },
-  "active_alerts": [
+  "btc_price": 77160.91,
+  "vix": 19.02,
+  "usd_jpy": 159.82,
+  "etf_weekly_inflow": 996.4,
+  "etf_8week_total": 3700,
+  "fear_greed": 46,
+  "sp500": 7138.80,
+  "active_risks": [
     {
       "id": "E-05",
       "name": "Drift/KelpDAO DeFi事件",
-      "status": "YELLOW",
-      "day": "28+",
-      "note": "历史事件，传染等级低"
+      "day": 30,
+      "level": "YELLOW",
+      "status": "救助进行中，Aave $160M基金+DeFi United协调方案"
     },
     {
       "id": "E-06",
-      "name": "Hormuz海峡尾部风险",
-      "status": "YELLOW",
-      "note": "停火延长但交通停滞"
+      "name": "Hormuz海峡事件",
+      "day": 14,
+      "level": "YELLOW",
+      "status": "停火有进展但封锁僵持，Trump讨论延长封锁"
     },
     {
       "id": "S-07",
       "name": "Put偏斜",
-      "status": "YELLOW",
-      "value": "~8%",
-      "threshold": ">5%"
+      "value": 8,
+      "threshold": 5,
+      "level": "YELLOW"
     }
   ],
-  "cleared_alerts": [
-    {
-      "id": "S-04",
-      "name": "ETF净流",
-      "status": "GREEN",
-      "note": "上周约$1B净流入确认"
-    }
+  "positive_signals": [
+    "BTC稳定$77K+1%",
+    "ETF连续8周约$3.7B流入",
+    "VIX低位19",
+    "美股历史新高延续",
+    "资金费率负值健康"
   ],
-  "position_advice": {
-    "core_position": "60-80%",
-    "trend_position": "不新增",
-    "max_total": "≤60%",
-    "leverage": "零",
-    "tail_put": "净值2%",
-    "ammo_bucket": "20-35%待命"
-  },
-  "data_confidence": {
-    "btc_vix_stocks_usdjpy": "高",
-    "etf_fg_events": "中（API限流沿用）"
-  },
-  "report_version": "V3",
-  "next_4h_update": "2026-04-29T14:00:00+08:00",
-  "next_morning_report": "2026-04-30T10:00:00+08:00"
+  "action": "维持YELLOW纪律，零新增杠杆，Put维持2%",
+  "next_update": "2026-04-30T14:00:00+08:00",
+  "next_report": "2026-05-01T10:00:00+08:00"
 }
