@@ -1,52 +1,49 @@
 {
-  "timestamp": "2026-04-30T10:00:00+08:00",
-  "crl": 8,
+  "timestamp": "2026-05-01T10:00:00+08:00",
+  "crl": 13,
   "level": "GREEN",
-  "level_note": "技术性GREEN，按YELLOW执行",
+  "technical_note": "技术性GREEN，因USD/JPY急跌触发M-01黄灯，建议按YELLOW保守执行",
   "scores": {
-    "macro": 2.0,
-    "structure": 4.0,
+    "macro": 7.0,
+    "structure": 2.0,
     "chain": 0,
-    "event": 3.0
+    "event": 6.0
   },
-  "btc_price": 77160.91,
-  "vix": 19.02,
-  "usd_jpy": 159.82,
-  "etf_weekly_inflow": 996.4,
-  "etf_8week_total": 3700,
-  "fear_greed": 46,
-  "sp500": 7138.80,
-  "active_risks": [
+  "triggers": [
+    {
+      "id": "M-01",
+      "name": "USD/JPY 24h变动",
+      "value": "-2.38%",
+      "threshold": ">1.5%为橙灯",
+      "status": "YELLOW",
+      "source": "TradingEconomics Apr 30",
+      "confidence": "高"
+    },
     {
       "id": "E-05",
-      "name": "Drift/KelpDAO DeFi事件",
-      "day": 30,
-      "level": "YELLOW",
-      "status": "救助进行中，Aave $160M基金+DeFi United协调方案"
+      "name": "DeFi黑客月度损失",
+      "value": "$629.69M",
+      "threshold": ">$5亿",
+      "status": "YELLOW",
+      "source": "Crypto Times Apr 30",
+      "confidence": "高"
     },
     {
       "id": "E-06",
-      "name": "Hormuz海峡事件",
-      "day": 14,
-      "level": "YELLOW",
-      "status": "停火有进展但封锁僵持，Trump讨论延长封锁"
-    },
-    {
-      "id": "S-07",
-      "name": "Put偏斜",
-      "value": 8,
-      "threshold": 5,
-      "level": "YELLOW"
+      "name": "Hormuz海峡封锁",
+      "value": "停火延长但僵持",
+      "threshold": "封锁尾巴未清零",
+      "status": "YELLOW",
+      "source": "UK Parliament Library Apr 30",
+      "confidence": "高"
     }
   ],
-  "positive_signals": [
-    "BTC稳定$77K+1%",
-    "ETF连续8周约$3.7B流入",
-    "VIX低位19",
-    "美股历史新高延续",
-    "资金费率负值健康"
-  ],
-  "action": "维持YELLOW纪律，零新增杠杆，Put维持2%",
-  "next_update": "2026-04-30T14:00:00+08:00",
-  "next_report": "2026-05-01T10:00:00+08:00"
+  "market_anchor": {
+    "btc_price": "$76,528.4",
+    "vix": "18.81",
+    "usd_jpy": "156.5650",
+    "sp500": "7,209.01",
+    "nasdaq": "24,892.31",
+    "etf_april_inflow": "$2.44Bn"
+  }
 }
