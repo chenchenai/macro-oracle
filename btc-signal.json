@@ -1,191 +1,169 @@
 {
-  "_schema_version": "2.0",
-  "report_date": "2026-05-02",
-  "report_time": "10:34 CST",
-  "signal": {
-    "direction": "NEUTRAL_WATCH",
-    "bottom_score": 0,
-    "top_score": 0,
-    "confidence": 2,
-    "action": "观望等待，底部矩阵未触发，等待3/8信号再轻仓入场"
+  "schema_version": "2.0",
+  "timestamp": "2026-05-03T10:30:00+08:00",
+  "signal_summary": {
+    "bottom_score": "1/8",
+    "direction": "中性偏谨慎",
+    "action": "维持5%观察仓位",
+    "confidence": "低-中"
   },
-  "price": {
-    "current": 78302.8,
-    "change_24h_pct": 0.08,
-    "source": "OKX",
-    "timestamp": "2026-05-02T10:34:00+08:00"
+  "price_data": {
+    "current_price": 78115.2,
+    "price_change_24h_pct": -0.67,
+    "realized_price": 54135.94,
+    "cvdd": 46017.83,
+    "balanced_price": 40304.45,
+    "ma_200w": 60437.96,
+    "mayer_multiple": 0.9382
   },
-  "onchain": {
-    "ahr999": {"value": 0.4568, "status": "neutral", "date": "2026-05-01"},
-    "mvrv_z_score": {"value": 0.7682, "status": "neutral", "date": "2026-04-30"},
-    "mvrv": {"value": 1.4105, "status": "neutral", "date": "2026-04-30"},
-    "nupl": {"value": 0.2910, "status": "neutral", "date": "2026-04-30"},
-    "puell_multiple": {"value": 0.7659, "status": "neutral", "date": "2026-04-30"},
-    "lth_sopr": {"value": 0.7720, "status": "positive", "date": "2026-04-30"},
-    "sth_sopr": {"value": 1.0020, "status": "neutral", "date": "2026-04-30"},
-    "sopr_adjusted": {"value": 0.9950, "status": "neutral", "date": "2026-04-30", "days_below_1": 3},
-    "realized_price": {"value": 54105.89, "date": "2026-04-30"},
-    "balanced_price": {"value": 40290.18, "date": "2026-04-30"},
-    "cvdd": {"value": 45990.41, "date": "2026-04-30"},
-    "true_market_mean": {"value": 47273.82, "date": "2026-04-05"},
-    "two_year_ma": {"value": 86970.86, "date": "2026-05-01"},
-    "two_year_ma_x5": {"value": 434854.32, "date": "2026-05-01"},
-    "mayer_multiple": {"value": 0.9041, "status": "neutral", "date": "2026-04-30"},
-    "nvt_signal": {"value": 95.27, "status": "neutral", "date": "2026-04-21"},
-    "lth_supply_pct": {"value": 73.80, "status": "positive", "date": "2026-04-30"},
-    "exchange_net_flow": {"value": -51250.78, "status": "positive", "date": "2026-04-30"},
-    "exchange_balance_pct": {"value": 14.96, "date": "2026-04-30"}
-  },
-  "technical": {
-    "monthly_rsi": {"value": 57.35, "status": "neutral"},
-    "daily_rsi": {"value": 55.52, "status": "neutral", "date": "2026-04-30"},
-    "ma_200w": {"value": 60353.45, "date": "2026-04-30"},
-    "ma_5d": {"value": 76897.71, "date": "2026-04-30"},
-    "ma_20d": {"value": 75867.95, "date": "2026-04-30"}
-  },
-  "depression_zone": {
-    "price_below_200wma": {"triggered": false, "current": 78302.8, "threshold": 60353.45, "gap_pct": 30.0},
-    "price_below_realized": {"triggered": false, "current": 78302.8, "threshold": 54105.89, "gap_pct": 45.0},
-    "ahr999_below_045": {"triggered": false, "current": 0.4568, "threshold": 0.45, "gap": 0.007},
-    "mvrv_z_below_0": {"triggered": false, "current": 0.7682, "threshold": 0, "gap": 0.7682},
-    "mayer_below_065": {"triggered": false, "current": 0.9041, "threshold": 0.65, "gap": 0.2541},
-    "activation_score": 0,
-    "activation_status": "未激活"
-  },
-  "levels": {
-    "L1": {
-      "cvdd": {"triggered": false, "current": 78302.8, "threshold": 45990.41, "gap_pct": 71.0},
-      "balanced": {"triggered": false, "current": 78302.8, "threshold": 40290.18, "gap_pct": 95.0},
-      "status": "未触发",
-      "position_pct": 50
+  "onchain_metrics": {
+    "mvrv_z_score": {
+      "value": 0.85,
+      "threshold_bottom": "<0",
+      "threshold_top": ">2.5",
+      "status": "中性",
+      "date": "2026-05-02"
     },
-    "L2": {
-      "dz_required": false,
-      "puell_below_05": {"triggered": false, "current": 0.7659, "threshold": 0.5, "gap": 0.2659},
-      "status": "未触发",
-      "position_pct": 80
+    "nupl": {
+      "value": 0.31,
+      "threshold_bottom": "<0",
+      "threshold_top": ">0.65",
+      "status": "中性",
+      "date": "2026-05-02"
     },
-    "L3": {
-      "dz_required": false,
-      "lth_sopr_below_1": {"triggered": true, "current": 0.7720},
-      "slingshot": {"triggered": false, "current": 78302.8, "threshold": 60353.45},
-      "micro_trend": {"triggered": false, "mayer": 0.9041, "ma5_above_ma20": true},
-      "rebound": {"triggered": false, "rsi_from": 55.52},
-      "status": "未触发",
-      "position_pct": 100
+    "puell_multiple": {
+      "value": 0.77,
+      "threshold_bottom": "<0.5",
+      "threshold_top": ">2.5",
+      "status": "中性",
+      "date": "2026-05-02"
+    },
+    "ahr999": {
+      "value": 0.47,
+      "threshold": "<0.45",
+      "status": "接近抄底线",
+      "date": "2026-05-03"
+    },
+    "asopr": {
+      "value": 1.00,
+      "consecutive_days_below_1": 4,
+      "threshold": "≥7天<1",
+      "status": "未达投降阈值",
+      "date": "2026-05-02"
+    },
+    "lth_sopr": {
+      "value": 0.94,
+      "status": "长期持有者亏损",
+      "date": "2026-05-02"
+    },
+    "lth_supply_pct": {
+      "value": 73.84,
+      "status": "高信心持有",
+      "date": "2026-05-02"
     }
+  },
+  "technical_indicators": {
+    "monthly_rsi_14": {
+      "value": 74.33,
+      "threshold_bottom": "<33",
+      "threshold_top": ">75",
+      "status": "中性偏强"
+    },
+    "rsi_14d": {
+      "value": 62.19,
+      "threshold_bottom": "<30",
+      "status": "中性",
+      "date": "2026-05-02"
+    }
+  },
+  "sentiment": {
+    "fear_greed_index": {
+      "value": 47,
+      "label": "Neutral",
+      "threshold_bottom": "<15",
+      "threshold_top": ">75",
+      "status": "中性",
+      "date": "2026-05-02"
+    }
+  },
+  "macro_data": {
+    "dxy": {
+      "value": 98.21,
+      "change_pct": 0.13,
+      "status": "中性偏强",
+      "date": "2026-05-03"
+    },
+    "gold": {
+      "value": 4630.0,
+      "change_pct": 0.33,
+      "status": "通胀对冲强势",
+      "date": "2026-05-03"
+    },
+    "spx": {
+      "value": 7230.0,
+      "change_pct": 0.29,
+      "status": "风险资产健康",
+      "date": "2026-05-03"
+    },
+    "usd_jpy": {
+      "value": 157.03,
+      "change_pct": 0.04,
+      "status": "日元疲软",
+      "date": "2026-05-03"
+    },
+    "regime": {
+      "code": "D",
+      "label": "Inflationary/Debasement",
+      "btc_bias": "强顺风",
+      "confidence": 5
+    }
+  },
+  "btc_etf": {
+    "latest_date": "2026-05-01",
+    "latest_net_flow_m": 629.8,
+    "flow_5d_sum_m": 162.8,
+    "trend": "流入",
+    "source": "farside.co.uk"
   },
   "bottom_matrix": {
     "score": 0,
-    "max": 8,
+    "total": 8,
     "conditions": [
-      {"name": "MVRV Z-Score < 0", "triggered": false, "current": 0.7682},
-      {"name": "NUPL < 0", "triggered": false, "current": 0.2910},
-      {"name": "Puell Multiple < 0.5", "triggered": false, "current": 0.7659},
-      {"name": "aSOPR 7日+ < 1", "triggered": false, "current": 0.9950, "days": 3},
-      {"name": "月线RSI < 33", "triggered": false, "current": 57.35},
-      {"name": "Crypto F&G < 15", "triggered": false, "current": 39},
-      {"name": "DXY 周期见顶回落", "triggered": false, "current": 98.21, "note": "从高位回落但未确认"},
-      {"name": "宏观政策 降息前夜", "triggered": true, "current": "降息周期中"}
+      {"name": "MVRV Z-Score < 0", "triggered": false, "value": 0.85},
+      {"name": "NUPL < 0", "triggered": false, "value": 0.31},
+      {"name": "Puell Multiple < 0.5", "triggered": false, "value": 0.77},
+      {"name": "aSOPR 连续≥7天<1", "triggered": false, "value": "4天"},
+      {"name": "月线RSI < 33", "triggered": false, "value": 74.33},
+      {"name": "Crypto F&G < 15", "triggered": false, "value": 47},
+      {"name": "DXY 周期见顶", "triggered": false, "value": 98.21},
+      {"name": "宏观政策转向", "triggered": false, "value": "中性"}
     ]
   },
-  "top_matrix": {
-    "score": 0,
-    "max": 8,
-    "thresholds": {
-      "mvrv_z_warn": 2.5, "mvrv_z_reduce": 3.0,
-      "puell_warn": 2.5, "puell_reduce": 3.0,
-      "nupl_warn": 0.65, "nupl_reduce": 0.70,
-      "monthly_rsi_warn": 75, "monthly_rsi_reduce": 80,
-      "fear_greed_warn": 75
-    },
-    "conditions": [
-      {"name": "MVRV Z-Score", "triggered": false, "current": 0.77},
-      {"name": "Puell Multiple", "triggered": false, "current": 0.77},
-      {"name": "NUPL", "triggered": false, "current": 0.29},
-      {"name": "月线RSI", "triggered": false, "current": 57.4},
-      {"name": "Crypto F&G", "triggered": false, "current": 39},
-      {"name": "DXY方向", "triggered": false, "current": 98.2},
-      {"name": "宏观流动性拐点", "triggered": false, "current": "降息周期"},
-      {"name": "aSOPR/LTH分配", "triggered": false, "current": 0.995}
-    ],
-    "peak_price": 124774,
-    "current_drawdown_pct": 37.3
+  "top_monitoring": {
+    "risk_level": "安全区",
+    "alerts": [
+      {"name": "MVRV Z-Score", "value": 0.85, "warning": ">2.5", "status": "安全"},
+      {"name": "Puell Multiple", "value": 0.77, "warning": ">2.5", "status": "安全"},
+      {"name": "NUPL", "value": 0.31, "warning": ">0.65", "status": "安全"},
+      {"name": "月线RSI", "value": 74.33, "warning": ">75", "status": "接近预警"},
+      {"name": "Crypto F&G", "value": 47, "warning": ">75", "status": "安全"}
+    ]
   },
-  "macro": {
-    "regime": "D",
-    "regime_label": "Inflationary/Debasement",
-    "btc_bias": "顺风",
-    "confidence": 5,
-    "dxy": {"value": 98.21, "change_pct": 0.13, "date": "2026-05-02"},
-    "gold": {"value": 4626.0, "change_pct": 0.24, "date": "2026-05-02"},
-    "silver": {"value": 75.84, "date": "2026-05-02"},
-    "spx": {"value": 7230.0, "change_pct": 0.29, "date": "2026-05-02"},
-    "usdjpy": {"value": 157.03, "date": "2026-05-02"},
-    "vix": {"value": null, "note": "周末数据源未更新"},
-    "net_liquidity": {"value": null, "note": "周末数据源未更新"},
-    "hy_spread": {"value": null, "note": "周末数据源未更新"},
-    "yield_curve_10y2y": {"value": null, "note": "周末数据源未更新"},
-    "bei_5y": {"value": null, "note": "周末数据源未更新"},
-    "throughline": {
-      "main": "黄金创历史新高$4,626，DXY从高位回落，法币贬值交易主导，硬资产顺风",
-      "conflict": "BTC ETF 5日累计仍净流出-$121.6M，机构资金尚未大规模回流",
-      "tail_risk": "流动性危机（VIX飙升）或DXY重新走强突破100"
-    }
+  "position_recommendation": {
+    "current_position_pct": 5,
+    "strategy": "防御性观察",
+    "leverage_policy": "零杠杆铁律",
+    "entry_points": [
+      {"level": "第一加仓", "price": 65000, "condition": "DZ激活"},
+      {"level": "第二加仓", "price": 60000, "condition": "L1触发"},
+      {"level": "第三加仓", "price": 55000, "condition": "L2触发"}
+    ]
   },
-  "etf": {
-    "source": "farside.co.uk",
-    "latest_date": "2026-05-01",
-    "latest_net_flow_m": 345.4,
-    "flow_5d_sum_m": -121.6,
-    "trend": "单日流入转正，5日累计仍流出"
-  },
-  "sentiment": {
-    "fear_greed_index": {"value": 39, "label": "Fear", "date": "2026-05-02"},
-    "exchange_net_flow": {"value": -51250.78, "label": "囤积信号", "date": "2026-04-30"}
-  },
-  "cycle": {
-    "halving_date": "2024-04-20",
-    "days_since_halving": 743,
-    "peak_date": "2025-10-06",
-    "peak_price": 124774,
-    "months_since_peak": 7,
-    "current_drawdown_pct": 37.3,
-    "phase": "熊市中期调整",
-    "bottom_window": {
-      "earliest": "2026-06",
-      "average": "2026-09",
-      "latest": "2026-12"
-    },
-    "bottom_probability": {
-      "already_bottomed": 15,
-      "down_to_55_65k": 60,
-      "extreme_42_55k": 25
-    }
-  },
-  "strategy": {
-    "current_position_pct": 0,
-    "max_position_pct": 50,
-    "zero_leverage": true,
-    "entry_triggers": [
-      {"batch": 1, "position_pct": 5, "trigger": "底部矩阵3/8 或 DZ激活"},
-      {"batch": 2, "position_pct": 15, "trigger": "底部矩阵4/8 或 L2触发"},
-      {"batch": 3, "position_pct": 30, "trigger": "底部矩阵5/8"},
-      {"batch": 4, "position_pct": 50, "trigger": "底部矩阵6+/8 或 L1触发"}
-    ],
-    "stop_loss": 38000,
-    "targets": [95000, 120000]
-  },
-  "next_report": {
-    "scheduled": "2026-05-03 10:00 CST",
-    "trigger_conditions": ["价格±3%", "VIX跳升>5"]
+  "throughline": {
+    "main_line": "✅ Gold/BTC同步走强（通胀对冲交易），SPX健康，ETF持续流入",
+    "conflict": "🟡 DXY中性偏强 vs Gold强势，FRED数据缺失影响判断",
+    "tail_risk": "⚠️ 宏观流动性数据缺失无法判断真实风险，Fed政策不确定性"
   },
   "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
-  "data_sources": {
-    "onchain": "Glassnode SQLite",
-    "price": "OKX",
-    "macro": "Yahoo Finance + FRED",
-    "sentiment": "Alternative.me"
-  },
-  "notes": "底部矩阵0/8，观望等待。重点关注Puell和aSOPR变化。周末宏观数据源(VIX/流动性/HY利差)未更新，周一补齐。"
+  "next_update": "2026-05-04T10:00:00+08:00"
 }
