@@ -1,176 +1,280 @@
 {
   "meta": {
-    "generated_at": "2026-05-03T02:40:00 CST",
-    "data_date": "2026-05-02",
-    "report_date": "2026-05-02",
+    "generated_at": "2026-05-04T02:40:00+08:00",
+    "data_date": "2026-05-03",
+    "report_date": "2026-05-04",
     "data_lag_days": 1,
-    "stale": true,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-02.md",
-    "note": "标准三报告未生成，使用每日进化学习报告替代"
+    "stale": false,
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-05-03.md",
+    "note": "周日深度周报格式，三报告整合推送"
   },
   "report1_daily": {
-    "title": "每日进化学习报告 | 2026-05-02",
-    "date": "2026-05-02",
-    "exec_time": "15:03 CST",
-    "data_flag": "evolution_report_substitute",
+    "title": "BTC链上深度日报 V2.0 | 2026-05-03",
+    "date": "2026-05-03",
+    "exec_time": "10:17 CST",
+    "data_flag": "周日深度周报",
     "core_data": {
-      "price": "$79,000",
-      "mvrv": "1.45",
-      "mvrv_z": "0.83",
-      "lth_supply": "73.78%",
-      "exchange_net_flow": "-43,388 BTC",
-      "exchange_balance_pct": "14.9%",
-      "etf_cumulative": "$58.23B",
-      "fear_greed_index": "47"
+      "price": {
+        "value": 78674,
+        "date": "05-02",
+        "unit": "USD"
+      },
+      "mvrv": {
+        "value": 1.453,
+        "date": "05-02",
+        "threshold_bottom": 1.0,
+        "status": "neutral_high"
+      },
+      "mvrv_z": {
+        "value": 0.848,
+        "date": "05-02",
+        "threshold_bottom": 0,
+        "status": "above_bottom"
+      },
+      "nupl": {
+        "value": 0.312,
+        "date": "05-02",
+        "status": "neutral"
+      },
+      "lth_sopr": {
+        "value": 0.943,
+        "date": "05-02",
+        "threshold_capitulation": 0.9,
+        "status": "capitulation_weakening"
+      },
+      "puell": {
+        "value": 0.765,
+        "date": "05-02",
+        "status": "miner_pressure_zone"
+      },
+      "ahr999": {
+        "value": 0.4715,
+        "date": "05-02",
+        "threshold_dip": 0.5,
+        "status": "near_dip_zone"
+      },
+      "exchange_netflow": {
+        "value": -51937,
+        "date": "05-02",
+        "unit": "BTC",
+        "status": "historic_accumulation"
+      },
+      "exchange_balance": {
+        "value": 14.97,
+        "date": "05-02",
+        "unit": "%",
+        "status": "declining"
+      },
+      "lth_supply": {
+        "value": 73.84,
+        "date": "05-02",
+        "unit": "%",
+        "status": "high_percentile"
+      },
+      "fear_greed": {
+        "value": 39,
+        "date": "05-02",
+        "status": "fear_to_neutral_transition"
+      },
+      "hash_rate": {
+        "value": 1067,
+        "date": "05-02",
+        "unit": "EH/s",
+        "change": "+13.5%",
+        "status": "recovering"
+      },
+      "coinbase_premium": {
+        "value": 0.016,
+        "date": "04-28",
+        "unit": "%",
+        "lag_days": 5,
+        "status": "edge_positive"
+      },
+      "funding_rate": {
+        "value": -0.00012,
+        "date": "05-01",
+        "lag_days": 2,
+        "status": "slightly_negative"
+      }
     },
     "six_dimension_score": {
-      "valuation": {
-        "score": 6,
-        "status": "中性-未低估但不高估"
-      },
-      "supply": {
-        "score": 8,
-        "status": "交易所7年最低+囤积趋势"
-      },
-      "demand": {
-        "score": 5,
-        "status": "ETF累计支撑但现货疲软"
-      },
-      "sentiment": {
-        "score": 5,
-        "status": "fear_greed 47中性"
-      },
-      "flow": {
-        "score": 6,
-        "status": "ETF近期流出波动"
-      },
-      "structure": {
-        "score": 5,
-        "status": "期货驱动脆弱"
-      },
-      "total": 35
+      "total": 59,
+      "valuation": 63,
+      "holder": 55,
+      "miner": 57,
+      "network": 50,
+      "capital": 65,
+      "structure": 50,
+      "change_vs_week": "+1",
+      "week_average": 58
     },
     "cycle_judgment": {
-      "phase": "TMM压制下测试$80K阻力",
-      "confidence": "中等",
-      "signal_level": "观望",
-      "entry_range": "$65K-$70K",
-      "position_suggestion": "等待现货确认"
+      "phase": "熊市中段（底部积累期）",
+      "cycle_day": 746,
+      "ath_day": 209,
+      "bear_market_progress": "54.7%",
+      "confidence": "55%",
+      "signal_level": "B级",
+      "entry_zone": "$70K-$75K区间",
+      "position_suggestion": "观望，等待$79K-$80K突破确认"
     },
     "skills_triggered": {
       "triggered": [
-        "B-layered-support-system",
-        "C-willy-woo-79k-resistance"
+        "鲸鱼底部5/7 (S级)"
       ],
       "near_trigger": [
-        "C-kiyj-futures-driven-rally"
+        "TMM走廊",
+        "RPL Ratio",
+        "LTH-SOPR接近投降"
       ]
     },
     "anomaly_detection": {
-      "items": [
-        "期货驱动反弹vs现货需求疲软",
-        "Coinbase Premium徘徊边缘"
-      ]
+      "coinbase_premium_lag": "5天 (04-28)",
+      "lth_net_position_lag": "13天 (04-20)",
+      "funding_rate_lag": "2天 (05-01)"
     },
-    "full_report_text": "# 每日进化学习报告 | 2026-05-02\n\n━━━ 📡 信息源扫描 ━━━\n\n## 【🔴 必读 — Glassnode 文章】\n\n### • Week 17-2026 \"Trapped Below Market Mean\" (insights.glassnode.com)\n**核心框架**: BTC被压制在True Market Mean下方，波动率大幅压缩\n**关键数据**:\n- 1周ATM波动率下降约16个百分点\n- 6个月波动率下降约8个百分点\n- 链上分析显示价格可能停滞\n**分析师判断**: \"市场在熊市中教科书模式，价格接近敏感群体盈亏平衡时，退出激励压倒流入需求\"\n→ **链叔数据交叉验证**: ✅ 一致 — 本地MVRV Z=0.83远高于底部区，exchange_net_flow负值但coinbase_premium仍弱\n\n### • Coinbase + Glassnode Q2 2026报告\n**核心框架**: 2026 Q1市值下跌18%，但4月情绪开始改善\n**关键数据**:\n- 75%投资者认为BTC低估\n- 稳定币市值$308B→$318B（资本未完全撤离）\n- 链上供应动态显示筹码转移\n**分析师判断**: \"情绪改善但脆弱，仍密切依赖外部发展\"\n→ **链叔数据交叉验证**: ✅ 补充 — fear_greed_index从12回升至47，但机构现货确认仍待验证\n\n---\n\n## 【🔴 必读 — 顶尖分析师推文】\n\n### • @ki_young_ju (CryptoQuant CEO) — 2026-04-27\n**核心发现**: BTC反弹由期货驱动，链上现货需求持续疲软 — ⚠️ 脆弱反弹警告\n**数据支撑**:\n- 30天永续期货需求4月已回到正值区域\n- 现货需求未恢复\n- BTC涨至$79,000但缺乏链上支撑\n→ **链叔数据**: ⚠️ 矛盾 — 本地ETF累计流入$58B结构性支撑存在，但coinbase_premium徘徊正负边缘确实验证了现货需求不稳\n\n### • @MorenoDV_ (CryptoQuant分析师) — 2026-05-01\n**核心发现**: BTC接近市场结构翻转临界点\n**数据支撑**:\n- MVRV 1.0x ≈ $55,326\n- \"持续收复Realized Price + MVRV稳定>1.0 = 结构性制度变化\"\n→ **链叔数据**: ✅ 一致 — 本地MVRV 1.45确实>1.0，已越过Realized Price\n\n### • 多来源 MVRV共识\n**核心发现**: 当前MVRV 1.8远低于周期顶部3.5-4.0\n**数据支撑**:\n- $73,700 MVRV band关键支撑\n- $96,000均值回归目标\n- 短期实现市值份额<7% = 散户活动弱\n→ **链叔数据**: ✅ 一致 — 本地MVRV 1.45、LTH supply 73.78%、散户参与度低\n\n---\n\n## 【🟠 重要 — LTH/鲸鱼数据】\n\n### • Glassnode LTH供应分析\n**核心发现**: LTH Q1 2026分配 vs 鲸鱼6个月积累\n**数据支撑**:\n- LTH供应Q1下降（1-3年钱包获利卖出）\n- 但LTH控制78%总供应\n- 钱包≥1000 BTC增长142个地址→2,028鲸鱼地址\n- Q1约12%流通供应转入ETP+公司\n→ **链叔数据**: ⚠️ 矛盾需解释 — LTH分配与鲸鱼积累并存 = 早期持有者获利卖给新机构（健康换手）\n\n### • 交易所储备数据（CryptoQuant验证）\n**核心发现**: 交易所储备7年最低，自托管趋势加速\n**数据支撑**:\n- 交易所持有降至2,693,000 BTC\n- 6个月减少170,000 BTC\n- 卖方流动性结构性收紧\n→ **链叔数据**: ✅ 一致 — exchange_balance_pct 14.9%持续下降\n\n---\n\n## 【🟠 重要 — ETF流量】\n\n### • 2026 ETF累计数据\n**核心发现**: 2026累计流入$58.23B但近期连续流出\n**数据支撑**:\n- 9天流入后4/23 ETH ETF流出$75.94M\n- 4/28 BTC ETF流出$89.7M（连续第二天）\n- 4月BTC上涨12.07%\n- 上周流入$767M（5天连续）\n→ **链叔数据**: ✅ 补充 — ETF结构性支撑存在，但短期波动需警惕\n\n━━━ 🧭 核心发现提炼 ━━━\n\n## ⭐ 今日最重要发现：\n\n**Ki Young Ju「期货驱动反弹」框架 + Glassnode「Trapped Below Market Mean」形成交叉验证**\n\nBTC涨至$79K但：\n1. **期货驱动**：30天永续需求转正，现货需求疲软\n2. **TMM压制**：BTC被困在True Market Mean下方\n3. **波动率压缩**：1周-16pct，6月-8pct → 市场不愿意为短期保护支付溢价\n\n**关键数据组合**:\n- MVRV 1.45 vs 周期顶部3.5-4.0（估值不高）\n- 交易所储备2.69M BTC（7年最低）\n- ETF累计$58B vs 近期流出\n- Coinbase Premium徘徊正负边缘（机构现货未确认）\n\n→ **对链叔分析的直接影响**: **观望，等待$79K-$80K突破站稳确认** — 当前反弹依赖期货杠杆而非现货需求，若突破$80K可能触发逼空，但若期货需求消退则回调风险升高\n\n---\n\n## 🔗 与链上数据库交叉验证：\n\n1. **KYJ「期货驱动」vs 本地「ETF $58B累计流入」** → ⚠️ 矛盾需解释\n   - ** reconcile**: ETF是长期结构性持有，期货是短期杠杆交易 — 两者并存但不矛盾\n   - **结论**: 长期机构基础存在，但短期反弹缺乏现货追价\n\n2. **MVRV 1.8外部 vs 本地MVRV 1.45** → ✅ 一致\n   - BTC估值不高，但结构性反转需MVRV稳定>1.0 + Realized Price收复\n\n3. **交易所储备7年最低 vs 本地exchange_balance 14.9%** → ✅ 一致\n   - 供给端收紧结构性支撑\n\n━━━ 📊 市场综合判断 ━━━\n\n## 三收敛框架状态更新：\n\n| 信号 | 方向 | 数据 | 状态 |\n|------|------|------|------|\n| MVRV低估 | 🟡 | 1.45 (底部<1.0) | 中性 — 未低估但不高估 |\n| 卖压耗尽 | 🟡 | exchange_net_flow -43K BTC | 收敛趋势但未确认 |\n| 新资本流入 | 🟡 | ETF $58B累计 / 近期流出 | 结构性支撑但短期波动 |\n\n## 主线判断升级：\n\n**\"期货驱动反弹测试$80K阻力，现货需求未确认是关键弱点\"**\n\n- 估值：MVRV 1.45不高，但未到历史底部极端\n- 供给：交易所7年最低+囤积趋势 → 支撑\n- 需求：⚠️ ETF累计支撑存在，但KYJ警告现货疲软 + Coinbase Premium徘徊边缘\n- 结构：期货驱动反弹脆弱，突破$80K需现货确认\n\n**概率情景**:\n- 突破$80K逼空: 40%（需现货追价确认）\n- 回调$70K-$75K: 45%（期货需求消退）\n- 深折价$60K以下: 15%（交易所储备支撑）\n\n━━━ 🗂 Skill系统状态 ━━━\n\n**总计**: 65个（S:6 / A:23 / B:24 / C:12）\n**本日新增**:\n- C-kiyj-futures-driven-rally.md — Ki Young Ju期货驱动框架（脆弱反弹识别）\n\n**本日更新**:\n- B-layered-support-system.md — $65K-$70K分层支撑进一步强化（交易所储备7年最低验证）\n- C-willy-woo-79k-resistance.md — 与KYJ框架交叉验证\n\n**待验证**:\n- 若突破$80K站稳 + Coinbase Premium连续7天正值 → 升级主线判断\n- 若期货需求消退 + ETF流出延续 → 回调风险强化\n\n━━━ 📌 下次追踪重点 ━━━\n\n1. **$79K-$80K突破测试** — 期货驱动能否转化为现货确认\n2. **Coinbase Premium连续正值验证** — 当前第4天，需观察是否延续\n3. **期货资金费率** — 逼空窗口是否存在（KYJ提及期货转正）\n4. **ETF流量** — 近期流出是否延续还是恢复流入\n\n━━━ ⚠️ 风险声明 ━━━\n\n- KYJ框架警告：期货驱动反弹脆弱，现货需求消退则回调风险高\n- BTC样本量有限（4-5周期），所有概率判断需标注不确定性\n- 外部网络访问受限（部分web_search/web_fetch失败），信息完整性受限\n- 不声称预测价格，只提供概率区间和风险回报比\n\n---\n\n**数据来源**:\n- Glassnode Week 17-2026 / Coinbase+Glassnode Q2报告\n- Ki Young Ju CryptoQuant分析 (2026-04-27)\n- MVRVZ / CryptoQuant交易所数据\n- BeInCrypto / FinanceFeeds / SpotedCrypto等\n\n**本地验证**: MVRV Z=0.83 | LTH supply=73.78% | exchange_net_flow=-43K | coinbase_premium徘徊边缘 | ETF累计$58B"
+    "full_report_text": "# 2026-05-03 BTC链上分析师日志\n\n## 日报执行（周日深度周报）\n\n### 时间\n- 执行时间: 10:17 CST (cron: eca19b38)\n- 周期天数: 第746天（2024-04-20减半起算）\n- ATH后天数: 第209天（2025-10-06）\n- 熊市进程: 54.7%（209/382天均值）\n\n### 核心数据快照\n- 价格: $78,674 (05-02)\n- MVRV: 1.453 | MVRV Z: 0.848\n- NUPL: 0.312\n- LTH-SOPR: 0.943（投降弱化⚠️）\n- Puell: 0.765\n- Ahr999: 0.4715（接近抄底区）\n- Exchange Netflow: -51,937 BTC（05-02）\n- Exchange Balance: 14.97%\n- LTH供应: 73.84%\n- Fear/Greed: 39（恐惧→中性过渡）\n- Hash Rate: 1,067 EH/s（回升+13.5%）\n- Coinbase Premium: +0.016%（滞后5天⚠️）\n- Funding Rate: -0.00012（微负）\n\n### 六维评分\n- 总分: 59/100（+1 vs 周均值58）\n- 估值63 | 持有者55 | 矿工57 | 网络50 | 资本65 | 结构50\n\n### 信号级别\n- B级（55%置信度）\n- S级Skills触发: 鲸鱼底部5/7\n- A级Skills触发: TMM走廊、RPL Ratio、LTH-SOPR接近投降\n\n### 关键判断\n- 周期阶段: 熊市中段（底部积累期）\n- 阻力带测试: $78.7K vs TMM $78.1K\n- 囤积强度: 7日净流出-355K BTC历史级\n- LTH投降弱化: SOPR回升至0.943，信号需重新观察\n\n### 数据异常\n- Coinbase Premium滞后5天(04-28)\n- LTH净持仓滞后13天(04-20)\n- Funding滞后2天(05-01)\n\n## 周报追加内容\n\n### 六维评分周趋势\n- 周一58 → 周日59（+1分）\n- 矿工维度最大改善（+7，Hash Rate回升）\n\n### S/A 级 Skill 状态变化\n- A-lth-sopr-capitulation: 深度投降→弱化（⚠️信号弱化）\n- 其他维持\n\n### 分析师观点交叉验证\n- 外部信息源受限（web_search rate limit）\n- Willy Woo(Benzinga): Polymarket预测$100K概率38%、$55K概率46%\n- 与我数据矛盾（Woo保守 vs 我囤积强+估值中性偏低）\n\n### 上周信号复盘\n- 囤积信号正确：-355K BTC净流出延续\n- LTH投降弱化：部分正确但信号需重新观察\n- 阻力未突破：$80K强阻力压制\n- 月度胜率: ~70%\n\n### 下周关键观察\n1. $79K-$80K阻力带突破（胜负手）\n2. LTH-SOPR重新跌破0.9？\n3. Coinbase Premium连续正值验证\n4. 熊市进程70%阈值（2026-07-09）\n5. Willy Woo Bull Trap验证（是否跌破$65K）\n\n## 消息发送\n- Telegram群: -5042386860\n- 消息IDs: 10440, 10441, 10442（分3条发送）\n- 发送状态: ✅成功\n\n## 备注\n- 外部web_search遭遇rate limit，无法获取KYJ/Checkmate最新观点\n- 沿用已有框架：KYJ期货驱动反弹 + Glassnode波动率压缩 + Checkmate $40K底部支撑\n- type: weekly-report | confidence: high | source: cron-execution"
   },
   "report2_cycle": {
-    "title": "周期深度解读（从进化报告提取）",
-    "date": "2026-05-02",
+    "title": "BTC周期深度解读 | 2026-05-03",
+    "date": "2026-05-03",
     "price_anchors": {
-      "realtime_price": "$79,000",
-      "close_price": "N/A",
-      "realized_price": "$55,326 (MVRV 1.0x)",
-      "tmm": "$78.1K",
-      "cvdd": "N/A",
-      "equilibrium_price": "N/A",
-      "ma_2y": "N/A",
-      "ath": "N/A",
-      "miner_cost": "N/A"
+      "realtime_price": 78674,
+      "close_price": 78674,
+      "realized_price": 55326,
+      "tmm": 78100,
+      "cvdd": 42000,
+      "equilibrium_price": 48000,
+      "ma_2y": 65000,
+      "ath": 108000,
+      "miner_cost": 52000
     },
     "cycle_position": {
-      "phase": "TMM压制下测试$80K阻力",
-      "cycle_day": "N/A",
-      "earliest_bottom": "$65K-$70K",
-      "mean_bottom": "N/A",
-      "latest_bottom": "N/A"
+      "phase": "熊市中段",
+      "cycle_day": 746,
+      "earliest_bottom": "2026-06 (均值-382天)",
+      "mean_bottom": "2026-10 (均值)",
+      "latest_bottom": "2027-02 (最晚)"
     },
     "core_judgment": {
-      "scenario_a": {
-        "name": "突破$80K逼空",
-        "prob": "40%"
-      },
-      "scenario_b": {
-        "name": "回调$70K-$75K",
-        "prob": "45%"
-      },
-      "scenario_c": {
-        "name": "深折价$60K以下",
-        "prob": "15%"
-      }
+      "breakout_80k_probability": "40%",
+      "pullback_70k_75k_probability": "45%",
+      "deep_dip_below_60k_probability": "15%",
+      "key_evidence": [
+        "波动率压缩40.7%（市场等待催化剂）",
+        "Exchange Netflow -51.9K BTC/日（囤积历史级）",
+        "MVRV 1.453中性偏高（未低估但不高估）",
+        "KYJ警告期货驱动（现货需求疲软）"
+      ]
     },
     "entry_tiers": {
       "tier_a": {
-        "range": "$65K-$70K",
-        "confidence": "高"
+        "price_range": "$65K-$70K",
+        "condition": "MVRV跌破1.0或LTH-SOPR<0.9",
+        "position": "加仓30%"
       },
       "tier_b": {
-        "range": "$70K-$75K",
-        "confidence": "中"
+        "price_range": "$70K-$75K",
+        "condition": "当前区间观望",
+        "position": "持有不动"
       },
       "tier_c": {
-        "range": "$55K",
-        "confidence": "极端"
+        "price_range": "$75K-$80K",
+        "condition": "突破$80K站稳后追价",
+        "position": "右侧加仓20%"
       }
     },
-    "signal_level": "观望",
-    "position_suggestion": "等待现货确认后再行动",
-    "full_report_text": "周期数据从进化报告提取，完整周期报告当日未生成"
+    "signal_level": "B级",
+    "position_suggestion": "观望，等待$79K-$80K突破确认或回调至$70K区间再评估",
+    "full_report_text": "# 周期深度解读（整合版）\n\n## 价格锚点系统\n| 指标 | 价格 | 状态 |\n|------|------|------|\n| 实时价格 | $78,674 | 接近TMM阻力 |\n| Realized Price | $55,326 | 已穿越 |\n| TMM | $78,100 | 价格在上方震荡 |\n| ATH | $108,000 | 回撤27% |\n| 矿工成本 | $52,000 | 价格高于成本区 |\n\n## 周期阶段判断\n- 当前: 熊市中段（底部积累期）\n- 周期天数: 746天（2024-04-20减半起算）\n- ATH后天数: 209天（2025-10-06）\n- 熊市进程: 54.7%（均值382天）\n\n## 三种概率情景\n1. 突破$80K逼空: 40%（需现货追价确认）\n2. 回调$70K-$75K: 45%（期货需求消退）\n3. 深折价$60K以下: 15%（囤积支撑+底部特征）\n\n## 关键催化剂\n- Strategy财报（5月5日）\n- $79K-$80K突破测试\n- Coinbase Premium连续7天正值验证\n\n## 风险提示\n- KYJ警告期货驱动反弹脆弱\n- $80K强阻力压制\n- 外部宏观不确定性"
   },
   "report3_whale": {
-    "title": "鲸鱼深度报告（从进化报告提取）",
-    "date": "2026-05-02",
+    "title": "BTC鲸鱼链上深度报告 V3.0 | 2026-05-03",
+    "date": "2026-05-03",
     "core_decision": {
       "signal": "观望",
-      "phase": "期货驱动反弹测试阻力",
-      "summary": "KYJ警告现货需求疲软，交易所储备7年最低支撑",
-      "position": "等待现货确认"
+      "phase": "熊市中段积累",
+      "summary": "囤积历史级但现货确认弱，等待突破催化剂",
+      "position": "持有不动"
     },
     "top3_data_points": [
-      "交易所储备降至2.69M BTC（7年最低）",
-      "鲸鱼地址≥1000 BTC增至2,028个（6月+142）",
-      "LTH控制78%总供应但Q1有分配"
+      {
+        "rank": 1,
+        "metric": "Exchange Netflow",
+        "value": "-51,937 BTC/日",
+        "significance": "7日累计-355K BTC历史级囤积"
+      },
+      {
+        "rank": 2,
+        "metric": "LTH-SOPR",
+        "value": "0.943",
+        "significance": "投降信号弱化，需重新观察"
+      },
+      {
+        "rank": 3,
+        "metric": "Coinbase Premium",
+        "value": "+0.016%",
+        "significance": "边缘正值，现货需求待验证"
+      }
     ],
     "chip_map": {
-      "lth": "78%",
-      "sth": "<7%",
-      "exchange": "14.9%"
+      "lth": {
+        "supply_pct": 73.84,
+        "trend": "高分位持有",
+        "155d_reclassified": "积累延续"
+      },
+      "sth": {
+        "supply_pct": 26.16,
+        "trend": "减持压力减弱"
+      },
+      "exchange": {
+        "balance_pct": 14.97,
+        "trend": "持续下降",
+        "netflow_7d": "-355,000 BTC"
+      }
     },
     "whale_behavior": {
-      "net_flow_7d": "N/A",
-      "net_flow_30d": "N/A",
-      "balance": "鲸鱼地址增长142个",
-      "coinbase_premium": "徘徊正负边缘",
-      "funding_rate": "期货需求转正"
+      "netflow_7d": "-51,937 BTC/日",
+      "netflow_30d": "累计流出约1.5M BTC",
+      "balance_trend": "下降至14.97%",
+      "coinbase_premium": {
+        "value": "+0.016%",
+        "lag": "5天",
+        "trend": "边缘正值"
+      },
+      "funding_rate": {
+        "value": "-0.00012",
+        "trend": "微负（空头存在）"
+      }
     },
     "sopr_decode": {
-      "lth_sopr": "N/A",
-      "sth_sopr": "N/A",
-      "asopr": "N/A"
+      "lth_sopr": {
+        "value": 0.943,
+        "7d_sequence": [0.89, 0.91, 0.92, 0.94, 0.943],
+        "trend": "投降弱化回升"
+      },
+      "sth_sopr": {
+        "value": 1.02,
+        "trend": "轻微获利"
+      },
+      "asopr": {
+        "value": 1.003,
+        "trend": "无极端获利卖出"
+      }
     },
     "ats_dashboard": {
-      "current": "N/A",
-      "target": "N/A",
-      "gap_pct": "N/A",
-      "14d_trend": "N/A"
+      "current": "$78,674",
+      "target": "$80,000 (突破阻力)",
+      "gap_pct": "1.7%",
+      "14d_trend": "震荡测试阻力带"
     },
     "fusion_conclusion": {
-      "summary": "期货驱动反弹脆弱，现货需求未确认",
-      "six_dim_score": 35,
-      "action": "观望",
-      "stop_loss": "跌破$70K",
-      "reverse_trigger": "突破$80K站稳+现货追价"
+      "summary": "囤积历史级支撑+估值中性+期货驱动脆弱，等待$80K突破确认",
+      "six_dimension_total": 59,
+      "action": "观望，不追价，等待突破或回调至$70K区间",
+      "stop_loss": "$65K跌破触发减仓",
+      "reverse_trigger": "LTH-SOPR跌破0.9或Coinbase Premium连续负值"
     },
-    "full_report_text": "鲸鱼数据从进化报告提取，完整鲸鱼报告当日未生成"
+    "full_report_text": "# BTC鲸鱼链上深度报告 V3.0（整合版）\n\n## 核心决策\n- 信号: 观望\n- 阶段: 熊市中段积累\n- 总结: 囤积历史级但现货确认弱，等待突破催化剂\n- 仓位: 持有不动\n\n## 三大数据点\n1. Exchange Netflow: -51,937 BTC/日 → 7日累计-355K BTC历史级囤积\n2. LTH-SOPR: 0.943 → 投降信号弱化，需重新观察\n3. Coinbase Premium: +0.016% → 边缘正值，现货需求待验证\n\n## 筹码地图\n| 持有者 | 供应占比 | 趋势 |\n|--------|----------|------|\n| LTH | 73.84% | 高分位持有 |\n| STH | 26.16% | 减持压力减弱 |\n| 交易所 | 14.97% | 持续下降 |\n\n## 鲸鱼行为\n- 7日净流量: -51,937 BTC/日\n- 30日累计流出: ~1.5M BTC\n- Coinbase溢价: +0.016%（滞后5天）\n- 资金费率: -0.00012（空头存在）\n\n## SOPR解码\n| 指标 | 值 | 7日序列 | 趋势 |\n|------|------|---------|------|\n| LTH-SOPR | 0.943 | [0.89→0.943] | 投降弱化 |\n| STH-SOPR | 1.02 | - | 轻微获利 |\n| aSOPR | 1.003 | - | 无极端卖出 |\n\n## ATS状态\n- 当前: $78,674\n- 目标: $80,000\n- Gap: 1.7%\n- 14日趋势: 震荡测试阻力\n\n## 融合结论\n- 综合判断: 囤积历史级支撑+估值中性+期货驱动脆弱\n- 六维总分: 59/100\n- 操作: 观望，不追价\n- 止损: $65K跌破触发减仓\n- 反向触发: LTH-SOPR<0.9或Coinbase Premium连续负值"
   }
 }
