@@ -1,46 +1,46 @@
 {
-  "timestamp": "2026-05-02T02:00:00Z",
+  "timestamp": "2026-05-03T10:00:00+08:00",
   "crl": 10,
   "level": "GREEN",
-  "levelNote": "技术性GREEN，按YELLOW执行",
-  "macroScore": 10.0,
-  "structureScore": 2.0,
-  "chainScore": 0.0,
-  "eventScore": 6.0,
-  "btcPrice": 78334,
-  "vix": 16.78,
-  "usdjpy": 157.03,
-  "sp500": 7230.12,
-  "fearGreed": 43,
-  "activeAlerts": [
+  "level_note": "技术性GREEN，按YELLOW执行",
+  "scores": {
+    "macro": 10,
+    "structure": 6,
+    "chain": 0,
+    "event": 5
+  },
+  "btc_price": 78370,
+  "vix": 16.88,
+  "usd_jpy": 157.07,
+  "sp500_change": "+0.8%",
+  "nasdaq_change": "+0.8%",
+  "fear_greed": 26,
+  "etf_weekly_flow": -651900000,
+  "etf_april_flow": 2440000000,
+  "etf_cumulative": 58500000000,
+  "active_alerts": [
     {
-      "id": "M-01",
-      "name": "USD/JPY周内波动",
+      "id": "S-04",
+      "name": "ETF周净流",
       "status": "YELLOW",
-      "value": "157.03 (周内-2.9%触及红灯阈值后回升)",
-      "threshold": "<155或跌幅>2.5%"
+      "value": "$651.9M流出",
+      "threshold": "连续3日流出>$1B"
     },
     {
       "id": "M-03",
       "name": "BOJ鹰派分歧",
       "status": "YELLOW",
-      "value": "通胀预期上调至2.8%",
-      "threshold": "鹰派立场强化"
+      "value": "3/9委员加息",
+      "threshold": "鹰派超预期"
     },
     {
       "id": "E-06",
       "name": "Hormuz谈判僵局",
       "status": "YELLOW",
-      "value": "Trump不满意伊朗提案",
+      "value": "伊朗提案审查中",
       "threshold": "谈判破裂"
-    },
-    {
-      "id": "E-05",
-      "name": "April DeFi黑客",
-      "status": "YELLOW",
-      "value": "$629.69M救助80%",
-      "threshold": "外溢稳定币/CEX"
     }
   ],
-  "nextUpdate": "2026-05-02T06:00:00Z"
+  "next_check": "2026-05-03T14:00:00+08:00",
+  "next_morning_report": "2026-05-04T10:00:00+08:00"
 }
