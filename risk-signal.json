@@ -1,46 +1,52 @@
 {
-  "timestamp": "2026-05-03T10:00:00+08:00",
+  "timestamp": "2026-05-04T02:40:00Z",
   "crl": 10,
   "level": "GREEN",
-  "level_note": "技术性GREEN，按YELLOW执行",
+  "levelNote": "技术性GREEN，按YELLOW执行",
   "scores": {
     "macro": 10,
-    "structure": 6,
+    "structure": 20,
     "chain": 0,
     "event": 5
   },
-  "btc_price": 78370,
-  "vix": 16.88,
-  "usd_jpy": 157.07,
-  "sp500_change": "+0.8%",
-  "nasdaq_change": "+0.8%",
-  "fear_greed": 26,
-  "etf_weekly_flow": -651900000,
-  "etf_april_flow": 2440000000,
-  "etf_cumulative": 58500000000,
-  "active_alerts": [
+  "triggers": [
     {
       "id": "S-04",
-      "name": "ETF周净流",
+      "name": "ETF周净流出",
+      "value": "-651.9M USD",
+      "threshold": "首次3个月净流出",
       "status": "YELLOW",
-      "value": "$651.9M流出",
-      "threshold": "连续3日流出>$1B"
+      "confidence": "high"
     },
     {
       "id": "M-03",
       "name": "BOJ鹰派分歧",
+      "value": "0.75%/通胀2.8%",
+      "threshold": "鹰派分歧",
       "status": "YELLOW",
-      "value": "3/9委员加息",
-      "threshold": "鹰派超预期"
+      "confidence": "high"
     },
     {
       "id": "E-06",
-      "name": "Hormuz谈判僵局",
+      "name": "Hormuz僵局",
+      "value": "Trump审查中",
+      "threshold": "谈判僵局",
       "status": "YELLOW",
-      "value": "伊朗提案审查中",
-      "threshold": "谈判破裂"
+      "confidence": "high"
     }
   ],
-  "next_check": "2026-05-03T14:00:00+08:00",
-  "next_morning_report": "2026-05-04T10:00:00+08:00"
+  "anchors": {
+    "btcPrice": 78178,
+    "btcRange": [78178, 79530],
+    "vix": 16.78,
+    "usdjpy": 156.88,
+    "sp500": 7230.12,
+    "nasdaqChange": 1.13,
+    "btcETFDayFlow": 630000000,
+    "btcETFWeekFlow": -651900000,
+    "fearGreed": 45,
+    "brentOil": 107
+  },
+  "nextUpdate": "2026-05-04T06:00:00Z",
+  "source": "ARC晨报V3"
 }
