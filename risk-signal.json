@@ -1,58 +1,61 @@
 {
-  "timestamp": "2026-05-05T10:00:00+08:00",
-  "crl": 25,
+  "timestamp": "2026-05-06T10:00:00+08:00",
+  "crl": 33,
   "level": "YELLOW",
-  "level_note": "Hormuz军事升级驱动",
-  "scores": {
-    "macro": 7,
-    "structure": 7,
-    "chain": 0,
-    "event": 20
-  },
-  "btc_price": 80000,
-  "vix": 18.24,
-  "usd_jpy": 157.02,
-  "brent_oil": 114,
-  "fear_greed": 48,
-  "etf_weekly_flow_m": 153,
-  "active_alerts": [
+  "macroScore": 7,
+  "structureScore": 7,
+  "chainScore": 0,
+  "eventScore": 40,
+  "btcPrice": 81286,
+  "vix": 17.45,
+  "usdJpy": 157.86,
+  "brentOil": 113,
+  "fearGreed": 49,
+  "etfWeeklyFlow": 153.87,
+  "etfCumulative": 58.72,
+  "activeAlerts": [
     {
       "id": "E-06",
       "name": "Hormuz军事升级",
       "status": "YELLOW",
-      "value": "US-Iran交火+Trump极端威胁",
-      "threshold": "僵局→升级触发黄灯"
-    },
-    {
-      "id": "M-03",
-      "name": "BOJ鹰派分歧",
-      "status": "YELLOW",
-      "value": "0.75%维持+通胀上调2.8%",
-      "threshold": "鹰派分歧触发黄灯"
+      "description": "US-Iran交火+美军击沉6船+UAE遭攻击"
     },
     {
       "id": "S-07",
       "name": "Put偏斜",
       "status": "YELLOW",
-      "value": "~8%",
-      "threshold": ">5%触发黄灯"
+      "description": "~8%保护需求延续"
     }
   ],
-  "resolved_alerts": [
+  "resolvedAlerts": [
     {
       "id": "S-04",
-      "name": "ETF周净流",
+      "name": "ETF净流出",
+      "status": "RESOLVED",
+      "description": "$153.87M本周净流入确认"
+    },
+    {
+      "id": "M-04",
+      "name": "VIX",
       "status": "GREEN",
-      "value": "$153M净流入",
-      "resolved_at": "2026-05-05T10:00:00+08:00"
+      "description": "降至17.45改善"
     }
   ],
-  "position_guidance": {
-    "core_position_pct": 40,
-    "trend_position_pct": 0,
-    "total_max_pct": 60,
-    "leverage": 0,
-    "put_allocation_pct": 2,
-    "ammo_bucket_pct": 25
+  "nextCheckpoints": [
+    {
+      "date": "2026-05-08",
+      "event": "Hormuz局势关键评估节点"
+    },
+    {
+      "date": "2026-05-17",
+      "event": "Put期权Roll执行"
+    }
+  ],
+  "positionRecommendation": {
+    "corePosition": "<=60%",
+    "trendPosition": "不新增",
+    "leverage": "零",
+    "tailPut": "净值2%",
+    "ammoBucket": "25-35%待命"
   }
 }
