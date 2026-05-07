@@ -1,61 +1,46 @@
 {
-  "timestamp": "2026-05-06T10:00:00+08:00",
-  "crl": 33,
-  "level": "YELLOW",
-  "macroScore": 7,
-  "structureScore": 7,
-  "chainScore": 0,
-  "eventScore": 40,
-  "btcPrice": 81286,
+  "timestamp": "2026-05-07T02:40:00Z",
+  "crl": 5,
+  "level": "GREEN",
+  "scores": {
+    "macro": 5,
+    "structure": 7,
+    "chain": 0,
+    "event": 15
+  },
+  "btc_price": 82320,
   "vix": 17.45,
-  "usdJpy": 157.86,
-  "brentOil": 113,
-  "fearGreed": 49,
-  "etfWeeklyFlow": 153.87,
-  "etfCumulative": 58.72,
-  "activeAlerts": [
-    {
-      "id": "E-06",
-      "name": "Hormuz军事升级",
-      "status": "YELLOW",
-      "description": "US-Iran交火+美军击沉6船+UAE遭攻击"
-    },
+  "usd_jpy": 156.38,
+  "brent_oil": 102.22,
+  "fear_greed": 50,
+  "etf_weekly_flow_m": 153.87,
+  "etf_cumulative_b": 58.72,
+  "sp500": 7365.12,
+  "nasdaq": 25838.94,
+  "active_alerts": [
     {
       "id": "S-07",
       "name": "Put偏斜",
-      "status": "YELLOW",
-      "description": "~8%保护需求延续"
+      "value": "8%",
+      "threshold": ">5%",
+      "status": "YELLOW"
     }
   ],
-  "resolvedAlerts": [
+  "resolved_alerts": [
     {
-      "id": "S-04",
-      "name": "ETF净流出",
-      "status": "RESOLVED",
-      "description": "$153.87M本周净流入确认"
-    },
-    {
-      "id": "M-04",
-      "name": "VIX",
-      "status": "GREEN",
-      "description": "降至17.45改善"
+      "id": "E-06",
+      "name": "Hormuz局势",
+      "previous_status": "YELLOW",
+      "resolved_at": "2026-05-06T12:15:00Z",
+      "reason": "Trump暂停+谈判进展+原油暴跌"
     }
   ],
-  "nextCheckpoints": [
+  "key_events": [
     {
-      "date": "2026-05-08",
-      "event": "Hormuz局势关键评估节点"
-    },
-    {
-      "date": "2026-05-17",
-      "event": "Put期权Roll执行"
+      "name": "Hormuz谈判进展",
+      "status": "缓解",
+      "impact": "原油暴跌$114→$102"
     }
   ],
-  "positionRecommendation": {
-    "corePosition": "<=60%",
-    "trendPosition": "不新增",
-    "leverage": "零",
-    "tailPut": "净值2%",
-    "ammoBucket": "25-35%待命"
-  }
+  "next_update": "2026-05-07T06:00:00Z"
 }
