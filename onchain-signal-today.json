@@ -6,10 +6,10 @@
     "data_lag_days": 1,
     "stale": false,
     "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-07.md",
-    "note": "btc_onchain agent 当前使用每日进化学习报告格式，非传统三报告格式。数据来源于最新可用报告。"
+    "note": "btc_onchain agent 当前使用每日进化学习报告格式，非传统三报告格式。完整原文保存于 report_evolution_full 字段。"
   },
   "report1_daily": {
-    "title": "BTC链上深度日报 V2 - 每日进化学习报告格式",
+    "title": "BTC链上深度日报 - 每日进化学习报告格式",
     "date": "2026-05-07",
     "exec_time": "15:00 CST",
     "data_flag": {
@@ -26,7 +26,7 @@
       },
       "realized_price": null,
       "mvrv": {
-        "value": 1.50,
+        "value": 1.5,
         "date": "05-06",
         "change": "+0.01"
       },
@@ -100,7 +100,7 @@
         "status": "微幅改善"
       },
       "funding_rate": {
-        "value": -0.000013,
+        "value": -1.3e-05,
         "date": "05-07",
         "status": "负值"
       },
@@ -224,7 +224,7 @@
     "full_report_text": null
   },
   "report3_whale": {
-    "title": "BTC鲸鱼链上深度报告 V3 - 基于进化报告数据",
+    "title": "BTC鲸鱼链上深度报告 - 基于进化报告数据",
     "date": "2026-05-07",
     "core_decision": {
       "signal": "假突破风险强化",
@@ -273,7 +273,7 @@
         "status": "负值延续"
       },
       "funding_rate": {
-        "value": -0.000013,
+        "value": -1.3e-05,
         "date": "05-07",
         "status": "负值，逼空窗口存在"
       }
@@ -316,7 +316,8 @@
     "full_report_text": null
   },
   "report_evolution_full": {
-    "note": "由于btc_onchain agent使用每日进化学习报告格式，以下保存完整原文",
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-07.md"
+    "note": "btc_onchain agent 使用每日进化学习报告格式，以下为完整原文（一字不差）",
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-07.md",
+    "full_text": "# 每日进化学习报告 | 2026-05-07\n\n━━━ 📡 信息源扫描 ━━━\n\n## 【🔴 必读 — Glassnode 文章】\n\n### ⚠️ 外部网络访问状态（持续受限）\n- **web_search**: API 429 rate limit（搜索配额耗尽）— **连续第2天受限**\n- **web_fetch**: Glassnode insights域名被blocked（IP限制）\n- **信息完整性**: 仅依赖本地数据库 + 历史记忆框架 + 已验证的分析师框架\n- **cc配合需求**: 手动访问Glassnode/CryptoQuant获取最新Week文章，如有重要框架更新告知链叔\n\n### • 历史框架延续（基于MEMORY.md）\n\n#### Glassnode Week 19-2026（历史摘要）\n**核心框架**: 网络活跃度改善但大额转账下降 → 混合信号结构\n**关键数据**:\n- 活跃地址日增长: **+6.4%**\n- 实体调整转账量: **-7.4%**（大额交易减少）\n**分析师判断**: \"链上活动趋于平衡，散户参与增加但机构/鲸鱼活动减弱\"\n→ **链叔数据交叉验证**: ⚠️ 部分矛盾 — 本地coinbase_premium=-0.014%验证机构减弱\n\n#### Glassnode Week 16-2026 \"Mean Reclaimed, Rally on Trial\"（历史摘要）\n**核心框架**: BTC收复$78K，ETF流入恢复，空头积累 → 逼空窗口并存\n**关键数据**:\n- BTC reclaim: **$78,000**\n- Spot demand + ETF inflows: **恢复正流入**\n- Shorts build with negative funding: **空头仓位积累**\n- Upside resistance near: **$80,000**\n→ **链叔数据交叉验证**: ✅ 一致 — 本地funding_rate=-0.000013验证负值\n\n---\n\n## 【🔴 必读 — 顶尖分析师推文】\n\n### ⚠️ 信息源状态说明\n**外部网络访问受限**（web_search API 429 rate limit + web_fetch blocked），无法获取最新48小时推文内容。以下基于：\n1. 历史记忆中的分析师框架（MEMORY.md）\n2. 已验证的量化阈值\n3. 本地数据库交叉验证\n\n### • @Willy_Woo (Willy Woo) — 框架延续验证\n**核心框架**: BTC关键阻力$79K，生死线$65K，底部区间$46K-$54K（Q3-Q4）\n**历史量化**:\n- 近期投资者成本基础: **$79,000**（关键阻力）\n- 生死线: **$65,000**（跌破则熊市延续）\n- 底部区间预测: **$46K-$54K**（Q3-Q4，2026周期底部）\n→ **链叔数据**: 🚨 price=$81,444已突破$79K阻力至$81K+\n→ **验证状态**: ⚠️ 突破$80K → 逼空可能触发；但LTH-SOPR仍=0.993（投降未结束）\n\n### • @ki_young_ju (Ki Young Ju) — 框架延续验证\n**核心框架**: BTC反弹由期货驱动，现货需求疲软 — 脆弱反弹警告\n**历史量化**:\n- 30天永续期货需求: **已回到正值区域**\n- **现货需求未恢复**（关键弱点）\n→ **链叔数据**: ⚠️ 一致 — coinbase_premium=-0.014%验证现货需求仍弱\n→ **验证状态**: 突破$81K但现货追价未出现 → 脆弱突破风险强化\n\n### • @_Checkmate_ (James Check) — 框架延续验证\n**核心框架**: $40K统计学极为罕见，底部支撑量化\n**历史量化**:\n- BTC跌至$40K(ATH下跌70%)在统计学上**极为罕见**\n- \"Selling Satoshi's Stack\": **2.3M BTC**于$60K-$80K区间完成换手\n→ **链叔数据**: ✅ 补充 — 底部支撑确认增强（交易所储备下降趋势延续）\n\n### • @100trillionUSD (PlanB) — 框架延续验证\n**核心框架**: 质疑传统四年周期有效性，ETF/机构化可能改变周期结构\n→ **链叔数据**: ⚠️ 验证窗口 — 当前price=$81,444需观察周期结构变化\n\n### • @dpuell (David Puell) — 未检测到实质新内容\n→ **链叔数据**: 无足够稳定新推文，暂不据此升级判断\n\n---\n\n## 【🟠 重要 — 选读】\n\n### • 本地数据库验证强化\n**核心发现**: 囤积历史级延续 + LTH-SOPR仍投降 + 机构现货仍弱\n→ **链叔数据**: exchange_net_flow=-59,830 BTC | LTH-SOPR=0.993 | coinbase_premium=-0.014%\n\n---\n\n━━━ 🧭 栅心发现提炼 ━━━\n\n## ⭐ 今日最重要发现：\n\n**🚨 BTC突破$81K（$81,444）+ 囤积历史级加强，但LTH-SOPR仍=0.993投降 + Coinbase Premium仍负 + 无现货放量 = 假突破风险持续强化**\n\nBTC当前状态（$81,444）：\n1. **🚨突破$80K至$81K**: price=$81,444 → Willy Woo精确阻力$79K已突破，逼空窗口激活\n2. **⚠️ LTH-SOPR仍=0.993**: 投降信号延续（未回升>1.5）→ **假突破核心风险因子**\n3. **囤积历史级加强**: exchange_net_flow = **-59,830 BTC** → 供给端收紧延续（vs昨日-58,970）\n4. **情绪微幅改善**: Fear/Greed 46→47 → 回升1点但仍在中性偏低\n5. **机构现货仍弱**: Coinbase Premium = **-0.014%** → 负值延续，机构现货追价未出现\n6. **现货波动率极低**: spot_rvol_30d = **0.06** → 突破缺乏放量确认\n7. **Funding负值**: funding_rate = **-0.000013** → 逼空窗口存在\n\n**关键数据组合**:\n| 指标 | 值 | 变化(vs 05-06) | 状态 |\n|------|------|------|------|\n| price | **$81,444** | +$546 | 🚨突破$81K延续 |\n| MVRV | 1.50 | +0.01 | 中性偏高 |\n| MVRV Z-Score | 0.94 | +0.02 | 远高于底部区 |\n| NUPL | 0.33 | 持平 | 中性 |\n| LTH Supply | 73.99% | +0.03% | 🟢高分位加强 |\n| **LTH-SOPR** | **0.993** | **持平** | ⚠️仍投降 |\n| Exchange Balance | 14.94% | -0.01% | 🟢下降趋势 |\n| Exchange Net Flow | -59,830 BTC | -860 | 🚨囤积加强 |\n| Puell Multiple | 0.83 | -0.04 | 矿工压力缓解 |\n| Funding Rate | -0.000013 | 持平 | 空头存在 |\n| Coinbase Premium | -0.014% | -0.006% | ⚠️机构现货弱 |\n| Fear/Greed | **47** | **+1** | 微幅改善 |\n| STH-SOPR | 1.029 | 持平 | 微幅获利 |\n| aSOPR | 1.009 | 持平 | 接近成本线 |\n| Hash Rate | 937 EH/s | -48 | ⚠️下降 |\n| Ahr999 | 0.51 | +0.01 | 抄底区上方 |\n| spot_rvol_30d | 0.06 | 极低 | ⚠️无放量确认 |\n\n→ **对链叔分析的直接影响**: **观望，假突破风险强化** — 突破$81K但LTH-SOPR仍投降+Coinbase Premium负值+无现货放量=脆弱突破延续\n\n---\n\n## 🔗 与链上数据库交叉验证：\n\n1. **BTC突破$81K vs Willy Woo$79K阻力** → ✅ 已突破\n   - price=$81,444 > $79K阻力 → **突破确认**\n   - 但需观察站稳 + LTH-SOPR稳定性\n\n2. **LTH-SOPR 仍=0.993（投降）vs $81K突破** → ⚠️ 假突破核心矛盾\n   - 从\"投降结束\"（2.027）骤降回\"投降中\"（0.993）→ **信号反转**\n   - 历史经验：假突破常伴随LTH-SOPR持续<1\n   - **reconcile**: 可能是突破后LTH小额获利抛售，但需观察是否回升>1.5\n\n3. **囤积-59,830 BTC vs KYJ「现货疲软」** → ⚠️ 矛盾延续\n   - 囤积历史级加强（供给端收紧）\n   - 但现货需求未恢复（Coinbase Premium=-0.014%）\n   - **解释**: ETF是长期持有，期货是短期杠杆 → 突破可能由期货逼空驱动，现货未追价\n\n4. **Fear/Greed 47微幅改善 vs $81K突破** → ⚠️ 仍背离\n   - 价格突破$81K但情绪仅47（中性偏低）→ **背离延续**\n   - 可能是\"突破后怀疑\"情绪\n\n5. **spot_rvol_30d = 0.06 vs $81K突破** → ⚠️ 无放量确认\n   - 突破缺乏现货放量 → **脆弱突破延续**\n   - 历史强突破通常伴随波动率放大（>1）\n\n6. **Hash Rate 937 EH/s vs 985 EH/s（05-06）** → ⚠️ 下降48 EH/s\n   - 矿工算力下降 → 可能是矿工投降压力\n   - Puell Multiple=0.83缓解但仍需观察\n\n━━━ 📊 市场综合判断 ━━━\n\n## 三收敛框架状态更新：\n\n| 信号 | 方向 | 数据 | 状态 |\n|------|------|------|------|\n| $81K突破 | 🟢 | $81,444 > $80K | **突破确认** — 但需站稳验证 |\n| 囤积强度 | 🟢 | -59,830 BTC/日 | **收敛加强** — 供给端收紧 |\n| LTH-SOPR | 🔴 | 0.993持续 | **发散警报** — 投降延续 |\n| 机构现货 | 🔴 | Premium -0.014% | **发散警报** — 负值延续 |\n| 现货波动率 | 🔴 | 0.06极低 | **发散警报** — 无放量 |\n| 情绪指标 | 🟡 | 46→47 | **中性** — 微幅改善但仍背离 |\n| 空头仓位 | 🟡 | Funding负值 | **中性** — 逼空窗口 |\n| 算力 | 🟡 | 937 EH/s | **中性** — 下降需观察 |\n\n## 主线判断升级：\n\n**\"🚨 BTC突破$81K延续但LTH-SOPR仍投降+机构现货负值+无现货放量 = 假突破风险持续强化（连续第2天）\"**\n\n- **突破**: price=$81,444 → $79K/$80K双阻力突破确认，逼空窗口激活\n- **投降**: ⚠️ LTH-SOPR=0.993延续 → 投降信号未结束（核心风险）\n- **囤积**: exchange_net_flow=-59,830 BTC → 供给端收紧加强\n- **需求**: ⚠️ Coinbase Premium=-0.014% → 机构现货买入未改善（连续负值）\n- **放量**: ⚠️ spot_rvol_30d=0.06 → 突破无现货放量确认\n- **情绪**: ⚠️ Fear/Greed=47 → 价格突破但情绪仅中性偏低（背离）\n- **算力**: ⚠️ Hash Rate下降48 EH/s → 矿工压力需观察\n\n**概率情景更新**:\n| 情景 | 概率 | 变化 | 条件 |\n|------|------|------|------|\n| 真突破站稳$80K+ | 30% | ↓5% | 需LTH-SOPR回升>1.5+现货放量+Coinbase Premium转正 |\n| 假突破回调 | 55% | ↑5% | LTH-SOPR<1延续+现货追价不出现 |\n| 回调至$70K-$75K | 40% | 持平 | 期货逼空消退后回落 |\n| 深折价$60K以下 | 15% | 持平 | 跌破$65K生死线 |\n| Woo底部$46K-$54K | 10% | 持平 | Q3-Q4周期底部时间窗口 |\n\n**关键假突破识别信号**（当前触发3/4）:\n1. ⚠️ LTH-SOPR仍<1（已触发）\n2. ⚠️ Fear/Greed背离（已触发）\n3. ⚠️ Coinbase Premium负值延续（已触发）\n4. ⚠️ spot_rvol_30d极低（已触发）\n\n**假突破风险强化结论**:\n- 连续第2天LTH-SOPR仍=0.993（投降未结束）\n- Coinbase Premium连续负值（机构现货未追价）\n- spot_rvol_30d极低（无现货放量）\n- 价格突破$81K但以上3个核心验证信号均未改善 → **假突破风险强化**\n\n**若后续3天**:\n- LTH-SOPR回升至>1.5 → 投降结束确认 → 升级为真突破\n- Coinbase Premium转正 → 机构现货追价 → 升级为真突破\n- spot_rvol_30d回升至>1 → 现货放量 → 升级为真突破\n- 若以上均不出现 → 假突破风险持续强化\n\n━━━ 🗂 Skill系统状态 ━━━\n\n**总计**: 66个（S:6 / A:23 / B:24 / C:13）\n**本日新增**: 无（网络访问受限）\n**本日更新**:\n- **C-short-squeeze-window.md** → 突破$81K，逼空窗口激活验证\n- **C-willy-woo-79k-resistance.md** → 阻力已突破至$81K，状态更新\n- **A-whale-bottom-7b5t.md** → 囤积-59,830强化验证B5条件\n\n**待验证**:\n- ⚠️ 若LTH-SOPR回升>1.5连续3天 → 投降结束确认（当前仍=0.993）\n- ⚠️ 若Coinbase Premium转正 → 机构现货追价确认（当前-0.014%）\n- ⚠️ 若spot_rvol_30d回升>1 → 现货放量确认（当前0.06）\n- ⚠️ 若以上均不出现 → 假突破风险持续强化（连续第2天）\n\n━━━ 📌 下次追踪重点 ━━━\n\n1. **LTH-SOPR回升验证** — 当前仍0.993，观察是否回升>1.5\n2. **$80K站稳测试** — 突破后是否稳定在$80K以上（当前$81K）\n3. **Coinbase Premium转正验证** — 当前负值延续，需观察机构现货\n4. **现货波动率回升** — spot_rvol_30d是否放大（当前0.06极低）\n5. **Hash Rate恢复** — 下降48 EH/s，观察矿工压力\n6. **Fear/Greed回升** — 情绪是否跟随价格改善（当前47）\n\n━━━ ⚠️ 风险声明 ━━━\n\n- **外部网络访问受限**: web_search API rate limit + web_fetch blocked，信息完整性需标注\n- **假突破风险强化**: LTH-SOPR仍投降+机构现货负值+无现货放量 = 脆弱突破信号（连续第2天）\n- KYJ框架警告：期货驱动反弹脆弱，现货需求消退则回调风险高\n- Willy Woo警告：若跌破$65K则底部或在Q3-Q4的$46K-$54K区间\n- Hash Rate下降48 EH/s → 矿工压力需观察\n- BTC样本量有限（4-5周期），所有概率判断需标注不确定性\n- 不声称预测价格，只提供概率区间和风险回报比\n\n---\n\n## 📊 本地数据库最新快照（2026-05-06/07）\n\n| 指标 | 值 | 时间戳 | 变化(vs 05-06) |\n|------|------|------|------|\n| price | **$81,444** | 05-06T00:00 | 🚨+$546突破$81K |\n| MVRV | 1.50 | 05-06T00:00 | +0.01 |\n| MVRV Z-Score | 0.94 | 05-06T00:00 | +0.02 |\n| NUPL | 0.33 | 05-06T00:00 | 持平 |\n| LTH Supply | 73.99% | 05-06T00:00 | +0.03% |\n| **LTH-SOPR** | **0.993** | 05-05T00:00 | ⚠️持平投降 |\n| Exchange Balance | 14.94% | 05-06T00:00 | -0.01% |\n| Exchange Net Flow | -59,830 BTC | 05-06T00:00 | 加强 |\n| Puell Multiple | 0.83 | 05-06T00:00 | -0.04 |\n| SOPR | 1.005 | 05-06T00:00 | 持平 |\n| aSOPR | 1.009 | 05-06T00:00 | 持平 |\n| STH-SOPR | 1.029 | 05-05T00:00 | 持平 |\n| Hash Rate | 937 EH/s | 05-07T00:00 | ⚠️-48 |\n| Funding Rate | -0.000013 | 05-07T01:46 | 持平负值 |\n| Coinbase Premium | -0.014% | 05-07T01:46 | ⚠️负值延续 |\n| Fear/Greed | **47** | 05-07T00:00 | +1微幅改善 |\n| Ahr999 | 0.51 | 05-07T01:46 | +0.01 |\n| spot_rvol_30d | 0.06 | 05-07T00:00 | ⚠️极低 |\n\n**关键变化（vs 05-06）**:\n- price: $80,898 → $81,444（🚨突破$81K延续）\n- **LTH-SOPR: 仍=0.993（⚠️投降未结束）**\n- **Coinbase Premium: -0.0078% → -0.014%（⚠️负值加剧）**\n- Exchange Net Flow: -58,970 → -59,830（囤积加强）\n- Hash Rate: 985 → 937（⚠️下降48 EH/s）\n- Fear/Greed: 46 → 47（微幅改善）\n\n---\n\n**数据来源**:\n- 本地SQLite数据库: ~/Desktop/Glassnode抓取项目/database/glassnode_v1.sqlite\n- Glassnode BTC Market Pulse Week 19-2026 (历史摘要)\n- Glassnode Week 16-2026 \"Mean Reclaimed, Rally on Trial\" (历史摘要)\n\n**历史框架参考**（MEMORY.md）:\n- Willy Woo $79K/$65K精确量化 → 已突破$79K至$81K\n- Ki Young Ju期货驱动脆弱反弹 → 现货追价未出现验证\n- James Check $40K统计学罕见 → 底部支撑增强\n\n**本地验证**: \n- MVRV Z=0.94 | LTH supply=73.99% | **LTH-SOPR=0.993投降** | exchange_net_flow=-59,830 | coinbase_premium=-0.014% | funding_rate=-0.000013 | fear_greed=47 | price=$81,444 | hash_rate=937\n\n---\n\n**报告生成时间**: 2026-05-07 15:00 CST (cron: 5a441b35)\n**执行状态**: ⚠️ 外部网络访问受限（web_search API 429 + web_fetch blocked）— 连续第2天\n**信息完整性标注**: 仅依赖本地数据库+历史记忆框架，无法获取分析师最新推文/Glassnode新文章\n**下次建议**: cc手动访问Glassnode/CryptoQuant获取最新框架，如有重要更新告知链叔"
   }
 }
