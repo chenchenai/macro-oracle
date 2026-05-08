@@ -1,46 +1,36 @@
 {
-  "timestamp": "2026-05-07T02:40:00Z",
-  "crl": 5,
+  "timestamp": "2026-05-08T10:00:00+08:00",
+  "crl": 8,
   "level": "GREEN",
-  "scores": {
-    "macro": 5,
-    "structure": 7,
-    "chain": 0,
-    "event": 15
-  },
-  "btc_price": 82320,
-  "vix": 17.45,
-  "usd_jpy": 156.38,
-  "brent_oil": 102.22,
-  "fear_greed": 50,
-  "etf_weekly_flow_m": 153.87,
-  "etf_cumulative_b": 58.72,
-  "sp500": 7365.12,
-  "nasdaq": 25838.94,
-  "active_alerts": [
+  "macroScore": 8,
+  "structureScore": 10,
+  "chainScore": 0,
+  "eventScore": 25,
+  "btcPrice": 79776,
+  "vix": 17.5,
+  "usdJpy": 156.4,
+  "oilPrice": 100.45,
+  "spyPrice": 7337.11,
+  "nasdaqPrice": 25806.20,
+  "etfFlowWeekly": 2700000000,
+  "etfCumulative": 58720000000,
+  "fearGreedIndex": 50,
+  "activeAlerts": [
+    {
+      "id": "E-06",
+      "name": "Hormuz交火事件",
+      "status": "YELLOW",
+      "value": "交火但停火有效",
+      "threshold": "谈判破裂或封锁升级"
+    },
     {
       "id": "S-07",
       "name": "Put偏斜",
-      "value": "8%",
-      "threshold": ">5%",
-      "status": "YELLOW"
+      "status": "YELLOW",
+      "value": "~8%",
+      "threshold": ">5%"
     }
   ],
-  "resolved_alerts": [
-    {
-      "id": "E-06",
-      "name": "Hormuz局势",
-      "previous_status": "YELLOW",
-      "resolved_at": "2026-05-06T12:15:00Z",
-      "reason": "Trump暂停+谈判进展+原油暴跌"
-    }
-  ],
-  "key_events": [
-    {
-      "name": "Hormuz谈判进展",
-      "status": "缓解",
-      "impact": "原油暴跌$114→$102"
-    }
-  ],
-  "next_update": "2026-05-07T06:00:00Z"
+  "coreAction": "维持GREEN纪律，监控Hormuz协议确认",
+  "nextUpdate": "2026-05-08T14:00:00+08:00"
 }
