@@ -1,514 +1,133 @@
 {
-  "_schema_version": "2.0",
-  "meta": {
-    "version": "4.0",
-    "description": "BTC择时信号日报 by BTC-Timing-Monitor (虾哥)",
-    "format": "v4.0 十模块结构化推送",
-    "generated_at": "2026-05-08T10:31:00+08:00"
-  },
+  "schema_version": "2.0",
+  "generated_at": "2026-05-09T10:30:00+08:00",
   "signal": {
-    "direction": "NEUTRAL",
-    "direction_cn": "观望",
-    "bottom_matrix_score": 0,
-    "bottom_matrix_total": 8,
-    "top_matrix_score": 1,
-    "top_matrix_total": 8,
-    "confidence": 2,
-    "confidence_total": 5,
-    "operation": "无底部信号触发，保持空仓观望，等待底部矩阵≥3/8或L1/L2/L3信号激活",
-    "signal_triggered": false
+    "direction": "HOLD",
+    "confidence": "HIGH",
+    "bottom_score": 0,
+    "top_score": 0,
+    "action": "观望，维持0%仓位",
+    "leverage_policy": "零杠杆铁律"
   },
   "price": {
-    "current": 79472,
-    "source": "OKX实时",
-    "close": 80011,
-    "close_date": "2026-05-07",
-    "change_24h_pct": -0.6,
-    "drawdown_from_peak_pct": -36.3,
-    "peak_price": 124774,
-    "peak_date": "2025-10-06"
+    "current": 80467,
+    "source": "OKX",
+    "timestamp": "2026-05-09T10:30:00+08:00"
   },
-  "onchain": {
-    "ahr999": {
-      "value": 0.4934,
-      "date": "2026-05-08",
-      "threshold_bottom": 0.45,
-      "status": "🟡"
-    },
-    "mvrv_z_score": {
-      "value": 0.8887,
-      "date": "2026-05-07",
-      "threshold_bottom": 0,
-      "threshold_top_warning": 2.5,
-      "threshold_top_reduce": 3.0,
-      "status": "❌"
-    },
-    "nupl": {
-      "value": 0.3222,
-      "date": "2026-05-07",
-      "threshold_bottom": 0,
-      "threshold_top_warning": 0.65,
-      "threshold_top_reduce": 0.70,
-      "status": "❌"
-    },
-    "puell_multiple": {
-      "value": 0.8190,
-      "date": "2026-05-07",
-      "threshold_bottom": 0.5,
-      "threshold_top_warning": 2.5,
-      "threshold_top_reduce": 3.0,
-      "status": "❌"
-    },
-    "lth_sopr": {
-      "value": 0.9930,
-      "date": "2026-05-05",
-      "threshold_bottom": 1.0,
-      "status": "🟡",
-      "lag_days": 3
-    },
-    "sopr_adjusted": {
-      "value": 1.0008,
-      "date": "2026-05-07",
-      "threshold_bottom": 1.0,
-      "continuous_days_below_1": 0,
-      "status": "❌"
-    },
-    "realized_price": {
-      "value": 54248,
-      "date": "2026-05-07"
-    },
-    "cvdd": {
-      "value": 46082,
-      "date": "2026-05-07"
-    },
-    "balanced_price": {
-      "value": 40406,
-      "date": "2026-05-07"
-    },
-    "mayer_multiple": {
-      "value": 0.9622,
-      "date": "2026-05-07",
-      "threshold_bottom": 0.65,
-      "status": "🟡"
-    },
-    "ma_200w": {
-      "value": 60651,
-      "date": "2026-05-07"
-    },
-    "lth_supply_pct": {
-      "value": 73.99,
-      "date": "2026-05-06",
-      "status": "🟢"
-    },
-    "exchange_net_flow": {
-      "value": -61589,
-      "date": "2026-05-07",
-      "status": "🟢"
-    }
+  "cycle_stage": {
+    "phase": "牛市中期",
+    "maturity": "持有者获利区",
+    "distance_to_bottom": "远",
+    "distance_to_top": "中等"
   },
-  "depression_zone": {
-    "activated_count": 0,
-    "total_conditions": 5,
-    "activated": false,
-    "conditions": [
-      {
-        "triggered": false,
-        "label": "Price < 200WMA",
-        "current": 79472,
-        "threshold": 60651,
-        "diff_pct": 31
-      },
-      {
-        "triggered": false,
-        "label": "Price < Realized Price",
-        "current": 79472,
-        "threshold": 54248,
-        "diff_pct": 46
-      },
-      {
-        "triggered": false,
-        "label": "Ahr999 < 0.45",
-        "current": 0.4934,
-        "threshold": 0.45,
-        "diff": 0.04
-      },
-      {
-        "triggered": false,
-        "label": "MVRV Z-Score < 0",
-        "current": 0.8887,
-        "threshold": 0,
-        "diff": 0.89
-      },
-      {
-        "triggered": false,
-        "label": "Mayer Multiple < 0.65",
-        "current": 0.9622,
-        "threshold": 0.65,
-        "diff": 0.31
-      }
-    ]
-  },
-  "levels": {
-    "level1": {
-      "triggered": false,
-      "name": "算法铁底",
-      "target_position": "50%",
-      "pre_conditions": [],
-      "conditions": [
-        {
-          "triggered": false,
-          "label": "Price ≤ CVDD",
-          "current": 79472,
-          "threshold": 46082,
-          "diff_pct": 73
-        },
-        {
-          "triggered": false,
-          "label": "Price ≤ Balanced Price",
-          "current": 79472,
-          "threshold": 40406,
-          "diff_pct": 97
-        }
-      ]
-    },
-    "level2": {
-      "triggered": false,
-      "name": "矿工投降",
-      "target_position": "80%",
-      "pre_conditions": [
-        {
-          "triggered": false,
-          "label": "Depression Zone 已激活",
-          "current": "0/5"
-        }
-      ],
-      "conditions": [
-        {
-          "triggered": false,
-          "label": "Puell Multiple < 0.5",
-          "current": 0.8190,
-          "threshold": 0.5,
-          "diff": 0.32
-        }
-      ]
-    },
-    "level3": {
-      "triggered": false,
-      "name": "趋势确认",
-      "target_position": "100%",
-      "pre_conditions": [
-        {
-          "triggered": false,
-          "label": "Depression Zone 已激活",
-          "current": "0/5"
-        },
-        {
-          "triggered": false,
-          "label": "LTH-SOPR < 1.0",
-          "current": 0.9930,
-          "threshold": 1.0,
-          "lag_days": 3
-        }
-      ],
-      "conditions": [],
-      "confirmation_signals": [
-        {
-          "triggered": false,
-          "label": "Slingshot（价格收复200WMA）",
-          "note": "价格已在200WMA上方，但非底部后反弹"
-        },
-        {
-          "triggered": false,
-          "label": "Micro Trend（Mayer<0.6 且 MA5上穿MA20）",
-          "mayer": 0.9622,
-          "ma5": 80150,
-          "ma20": 77774,
-          "note": "MA5已上穿MA20，但Mayer>0.6"
-        },
-        {
-          "triggered": false,
-          "label": "Rebound（RSI从超卖区<30回升至>50）",
-          "rsi_current": 62.05,
-          "note": "RSI>50但非从<30回升"
-        }
-      ]
-    }
-  },
-  "macro": {
-    "regime": "B",
-    "regime_cn": "Neutral/Cooling",
-    "btc_bias": "🟡 中性",
-    "confidence": 3,
-    "fed_rate": "3.5%-3.75%",
-    "fed_stance": "暂停加息",
-    "fed_meeting": "2026-04 FOMC",
-    "vix": {
-      "value": 23.6,
-      "date": "2026-05-06",
-      "status": "🟡",
-      "tactical_buy_signal": false
-    },
-    "dalio_quadrant": "增长中性 × 通胀中性",
-    "throughline_primary": "Fed暂停加息，流动性环境稳定，无强顺风但无逆风压力",
-    "throughline_conflict": "宏观数据采集受限（脚本执行超时），无法形成完整四象限判断",
-    "throughline_tail_risk": "宏观流动性突发收紧（如通胀反弹触发加息重启）",
-    "macro_bias_summary": "中性，待宏观数据完整更新后修正判断",
-    "data_status": "部分缺失（宏观数据脚本超时）"
-  },
-  "sentiment": {
-    "fear_greed": {
-      "value": 38,
-      "date": "2026-05-08",
-      "label": "Fear",
-      "threshold_bottom": 15,
-      "threshold_top_warning": 75,
-      "status": "🔴"
-    }
-  },
-  "technical": {
-    "monthly_rsi": {
-      "value": 74.53,
-      "date": "2026-05-07",
-      "threshold_bottom": 33,
-      "threshold_top_warning": 75,
-      "threshold_top_reduce": 80,
-      "status": "🔴",
-      "note": "距顶部预警线差0.47，临近触发"
-    },
-    "daily_rsi": {
-      "value": 62.05,
-      "date": "2026-05-07",
-      "status": "🟡"
-    },
-    "ma5": {
-      "value": 80150,
-      "date": "2026-05-07",
-      "trend": "↑"
-    },
-    "ma20": {
-      "value": 77774,
-      "date": "2026-05-07"
-    },
-    "ma5_cross_ma20": true
-  },
-  "cycle": {
-    "halving_date": "2024-04-20",
-    "halving_months_elapsed": 24,
-    "peak_price": 124774,
-    "peak_date": "2025-10-06",
-    "months_post_peak": 6,
-    "drawdown_from_peak_pct": -36.3,
-    "phase_label": "牛市后中期调整",
-    "phase_cn": "价格回撤36.3%，但无底部特征",
-    "historical_analog": "2022年4月（峰值后6月，-35%，尚未触底）",
-    "current_cycle_days": 753,
-    "bottom_window_prediction": "2026年Q3-Q4（约2026-06至2026-12）",
-    "days_to_bottom_window": "30-210天（约1-7个月）",
-    "bottom_probability": {
-      "already_bottom": 0,
-      "continue_down_55_65k": 70,
-      "extreme_down_42_55k": 30
-    },
-    "cycle_phase_summary": "减半后第24个月，本轮峰值后第6个月，历史同期需待第11-14月见底"
-  },
-  "strategy": {
-    "action": "空仓观望",
-    "first_batch_position": "0%",
-    "first_batch_trigger": "底部矩阵≥3/8 或 L3触发",
-    "second_batch_position": "15-25%",
-    "second_batch_trigger": "底部矩阵4-5/8 或 L2触发",
-    "third_batch_position": "40-50%",
-    "third_batch_trigger": "底部矩阵≥6/8 或 L1触发",
-    "stop_loss": 42000,
-    "target_1": "85-95K（50%止盈）",
-    "target_2": "110K+（余量持有）",
-    "max_position": "40-50% 总资金",
-    "leverage": "零杠杆（铁律）",
-    "entry_window": "$42,000 - $55,000"
+  "entry_window": {
+    "l1_triggered": false,
+    "l2_triggered": false,
+    "l3_triggered": false,
+    "dz_activated": false,
+    "dz_score": 0
   },
   "bottom_matrix": {
-    "score": 0,
     "total": 8,
-    "conditions": [
-      {
-        "triggered": false,
-        "index": 1,
-        "label": "MVRV Z-Score < 0",
-        "current": 0.8887,
-        "threshold": 0,
-        "diff": 0.89,
-        "date": "2026-05-07"
-      },
-      {
-        "triggered": false,
-        "index": 2,
-        "label": "NUPL < 0",
-        "current": 0.3222,
-        "threshold": 0,
-        "diff": 0.32,
-        "date": "2026-05-07"
-      },
-      {
-        "triggered": false,
-        "index": 3,
-        "label": "Puell Multiple < 0.5",
-        "current": 0.8190,
-        "threshold": 0.5,
-        "diff": 0.32,
-        "date": "2026-05-07"
-      },
-      {
-        "triggered": false,
-        "index": 4,
-        "label": "aSOPR 持续7日+ < 1",
-        "current": 1.0008,
-        "continuous_days": 0,
-        "date": "2026-05-07"
-      },
-      {
-        "triggered": false,
-        "index": 5,
-        "label": "月线RSI < 33",
-        "current": 74.53,
-        "threshold": 33,
-        "diff": 41.5,
-        "date": "2026-05-07"
-      },
-      {
-        "triggered": false,
-        "index": 6,
-        "label": "Crypto F&G < 15",
-        "current": 38,
-        "threshold": 15,
-        "diff": 23,
-        "date": "2026-05-08"
-      },
-      {
-        "triggered": false,
-        "index": 7,
-        "label": "DXY 周期见顶回落",
-        "status": "🟡",
-        "note": "数据缺失（待确认）"
-      },
-      {
-        "triggered": false,
-        "index": 8,
-        "label": "宏观政策 加息尾期/降息前夜",
-        "current": "Fed暂停加息",
-        "threshold": "加息尾期或降息信号",
-        "status": "🟡",
-        "note": "3.5%-3.75%，非加息尾期"
-      }
+    "score": 0,
+    "metrics": [
+      {"name": "MVRV Z-Score", "threshold": "<0", "value": 0.8955, "status": "❌", "date": "2026-05-08"},
+      {"name": "NUPL", "threshold": "<0", "value": 0.3235, "status": "❌", "date": "2026-05-08"},
+      {"name": "Puell Multiple", "threshold": "<0.5", "value": 0.8462, "status": "❌", "date": "2026-05-08"},
+      {"name": "aSOPR连续<1天数", "threshold": "≥7日", "value": 1, "status": "❌", "date": "2026-05-08"},
+      {"name": "月线RSI", "threshold": "<33", "value": 74.55, "status": "❌", "date": "实时计算"},
+      {"name": "Crypto F&G", "threshold": "<15", "value": 38, "status": "❌", "date": "2026-05-08"},
+      {"name": "DXY回落", "threshold": "周期见顶后", "value": 97.84, "status": "✅", "date": "2026-05-08"},
+      {"name": "宏观政策", "threshold": "降息前夜", "value": "降息周期", "status": "✅", "date": "2026-05"}
     ]
   },
-  "top_matrix": {
-    "score": 1,
-    "total": 8,
-    "conditions": [
-      {
-        "triggered": false,
-        "index": 1,
-        "label": "MVRV Z-Score > 2.5预警",
-        "current": 0.8887,
-        "threshold_warning": 2.5,
-        "threshold_reduce": 3.0,
-        "status": "❌安全"
-      },
-      {
-        "triggered": false,
-        "index": 2,
-        "label": "Puell Multiple > 2.5预警",
-        "current": 0.8190,
-        "threshold_warning": 2.5,
-        "threshold_reduce": 3.0,
-        "status": "❌安全"
-      },
-      {
-        "triggered": false,
-        "index": 3,
-        "label": "NUPL > 0.65预警",
-        "current": 0.3222,
-        "threshold_warning": 0.65,
-        "threshold_reduce": 0.70,
-        "status": "❌安全"
-      },
-      {
-        "triggered": true,
-        "index": 4,
-        "label": "月线RSI > 75预警",
-        "current": 74.53,
-        "threshold_warning": 75,
-        "threshold_reduce": 80,
-        "status": "✅预警",
-        "note": "差0.47，临近触发"
-      },
-      {
-        "triggered": false,
-        "index": 5,
-        "label": "Crypto F&G > 75预警",
-        "current": 38,
-        "threshold_warning": 75,
-        "status": "❌安全"
-      },
-      {
-        "triggered": false,
-        "index": 6,
-        "label": "DXY 从低位反弹",
-        "status": "❌安全",
-        "note": "数据缺失"
-      },
-      {
-        "triggered": false,
-        "index": 7,
-        "label": "宏观流动性拐点",
-        "status": "❌安全",
-        "note": "Fed暂停加息，无收紧信号"
-      },
-      {
-        "triggered": false,
-        "index": 8,
-        "label": "aSOPR持续>1.1+LTH分配",
-        "current": 1.0008,
-        "threshold": 1.1,
-        "status": "❌安全"
-      }
-    ],
-    "summary": "1/8 — 需关注（月线RSI接近预警）",
-    "drawdown_from_peak_pct": -36.3
+  "top_monitor": {
+    "total": 5,
+    "score": 0,
+    "metrics": [
+      {"name": "MVRV Z-Score", "threshold": ">2.5预警", "value": 0.8955, "status": "🟢"},
+      {"name": "Puell Multiple", "threshold": ">2.5预警", "value": 0.8462, "status": "🟢"},
+      {"name": "NUPL", "threshold": ">0.65预警", "value": 0.3235, "status": "🟢"},
+      {"name": "月线RSI", "threshold": ">75预警", "value": 74.55, "status": "🟡"},
+      {"name": "Crypto F&G", "threshold": ">75预警", "value": 38, "status": "🟢"}
+    ]
   },
-  "data_quality": {
-    "overall_status": "部分滞后",
-    "warnings": [
-      {
-        "metric": "lth_sopr",
-        "date": "2026-05-05",
-        "lag_days": 3
-      },
-      {
-        "metric": "lth_net_position_change",
-        "date": "2026-04-20",
-        "lag_days": 18
-      },
-      {
-        "metric": "nvt_signal",
-        "date": "2026-04-21",
-        "lag_days": 17
-      },
-      {
-        "metric": "true_market_mean",
-        "date": "2026-04-05",
-        "lag_days": 33
-      }
-    ],
-    "macro_status": "部分缺失（fetch-macro.py超时）"
+  "on_chain_metrics": {
+    "ahr999": {"value": 0.5008, "date": "2026-05-09"},
+    "mvrv_z_score": {"value": 0.8955, "date": "2026-05-08"},
+    "nupl": {"value": 0.3235, "date": "2026-05-08"},
+    "puell_multiple": {"value": 0.8462, "date": "2026-05-08"},
+    "sopr_adjusted": {"value": 1.0010, "date": "2026-05-08"},
+    "lth_sopr": {"value": 0.9930, "date": "2026-05-05", "warning": "滞后4天"},
+    "mayer_multiple": {"value": 0.9662, "date": "2026-05-08"},
+    "realized_price": {"value": 54250, "date": "2026-05-08"},
+    "cvdd": {"value": 46092, "date": "2026-05-08"},
+    "balanced_price": {"value": 40400, "date": "2026-05-08"},
+    "ma_200w": {"value": 60693, "date": "2026-05-08"},
+    "exchange_net_flow": {"value": -49618, "date": "2026-05-08"},
+    "lth_supply_pct": {"value": 73.97, "date": "2026-05-08"}
   },
-  "next_steps": {
-    "observations_24_48h": [
-      "价格跌破$75K技术支撑",
-      "月线RSI突破75顶部预警线",
-      "宏观数据完整更新（等待脚本修复）"
+  "technical": {
+    "monthly_rsi": 74.55,
+    "daily_rsi": 62.56,
+    "date": "2026-05-08"
+  },
+  "macro": {
+    "vix": {"value": 17.08, "date": "2026-05-07"},
+    "dxy": {"value": 97.84, "date": "2026-05-08"},
+    "gold": {"value": 4725, "date": "2026-05-07"},
+    "spx": {"value": 7399, "date": "2026-05-08"},
+    "hy_spread": {"value": 3.05, "date": "2026-05-04"},
+    "yield_curve_10y2y": {"value": 48, "date": "2026-05-07"},
+    "bei_5y": {"value": 2.62, "date": "2026-05-08"},
+    "sahm_rule": {"value": 0.20, "date": "2026-03"},
+    "usdjpy": {"value": 156.84, "date": "2026-05-08"},
+    "btc_etf_flow": {"value": -97.9, "unit": "M", "date": "2026-05-07", "month_cumulative": 600}
+  },
+  "sentiment": {
+    "fear_greed_index": {"value": 38, "label": "Fear", "date": "2026-05-08"}
+  },
+  "dalio_quadrant": {
+    "growth": "↑",
+    "inflation": "↑",
+    "regime": "B/D过渡",
+    "btc_bias": "🟡 中性",
+    "data_support": {
+      "growth_signals": ["Sahm Rule 0.20", "SPX 7399"],
+      "inflation_signals": ["5Y BEI 2.62%", "Gold $4725"]
+    }
+  },
+  "throughline": {
+    "primary": "DXY走弱+Gold强势→美元贬值叙事，BTC长期顺风",
+    "secondary": "月线RSI 74.55接近顶部 vs 底部信号全未触发→技术面冲突",
+    "tail_risk": "月线RSI突破75触发顶部预警→可能10-20%回调"
+  },
+  "allocation_plan": {
+    "current": 0,
+    "max": 50,
+    "steps": [
+      {"trigger": "3/8", "allocation": 5},
+      {"trigger": "4/8", "allocation": 15},
+      {"trigger": "5/8", "allocation": 30},
+      {"trigger": "6-8/8", "allocation": 40}
+    ]
+  },
+  "risk_conditions": {
+    "invalidation": [
+      "底部触发后价格继续下跌>30%",
+      "VIX突破40进入流动性危机",
+      "HY利差突破5%"
     ],
-    "next_push": "10:00 CST 固定日报",
-    "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
+    "current_risks": [
+      "月线RSI 74.55接近顶部警戒",
+      "5Y BEI 2.62%略高于锚定区间",
+      "ETF单日流出>500M风险"
+    ]
+  },
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
+  "data_freshness_warning": {
+    "metric": "lth_sopr",
+    "last_date": "2026-05-05",
+    "lag_days": 4
   }
 }
