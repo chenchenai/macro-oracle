@@ -1,36 +1,39 @@
 {
-  "timestamp": "2026-05-08T10:00:00+08:00",
-  "crl": 8,
+  "timestamp": "2026-05-09T10:00:00+08:00",
+  "crl": 6,
   "level": "GREEN",
-  "macroScore": 8,
-  "structureScore": 10,
-  "chainScore": 0,
-  "eventScore": 25,
-  "btcPrice": 79776,
-  "vix": 17.5,
-  "usdJpy": 156.4,
-  "oilPrice": 100.45,
-  "spyPrice": 7337.11,
-  "nasdaqPrice": 25806.20,
-  "etfFlowWeekly": 2700000000,
-  "etfCumulative": 58720000000,
-  "fearGreedIndex": 50,
-  "activeAlerts": [
+  "scores": {
+    "macro": 5,
+    "structure": 7,
+    "chain": 0,
+    "event": 18
+  },
+  "btc_price": 80000,
+  "vix": 17.0,
+  "usd_jpy": 156.68,
+  "brent_crude": 85,
+  "fear_greed": 50,
+  "etf_flow_may5": 467380000,
+  "etf_flow_april": 2440000000,
+  "key_events": [
     {
       "id": "E-06",
-      "name": "Hormuz交火事件",
+      "name": "Hormuz停火延续",
       "status": "YELLOW",
-      "value": "交火但停火有效",
-      "threshold": "谈判破裂或封锁升级"
+      "description": "Iran审查提案+Trump威胁但明确战争可能结束"
+    }
+  ],
+  "active_alerts": [
+    {
+      "id": "E-06",
+      "level": "YELLOW"
     },
     {
       "id": "S-07",
-      "name": "Put偏斜",
-      "status": "YELLOW",
-      "value": "~8%",
-      "threshold": ">5%"
+      "level": "YELLOW"
     }
   ],
-  "coreAction": "维持GREEN纪律，监控Hormuz协议确认",
-  "nextUpdate": "2026-05-08T14:00:00+08:00"
+  "trend": "DOWN",
+  "change": -2,
+  "recommendation": "维持GREEN纪律，监控协议最终确认"
 }
