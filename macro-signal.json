@@ -1,265 +1,117 @@
 {
   "meta": {
-    "generated_at": "2026-05-09T02:20:00+08:00",
-    "data_date": "2026-05-08",
-    "report_date": "2026-05-08",
+    "generated_at": "2026-05-10T02:20:00+08:00",
+    "data_date": "2026-05-09",
+    "report_date": "2026-05-10",
     "stale": true,
-    "stale_note": "宏观分析师日报自2026-03-22未更新，数据来源于ARC CRL Report"
+    "stale_reason": "宏观分析师日报自2026-03-22未更新。本次数据来源于ARC风控日志（workspace-risk-manager/memory/2026-05-09.md + 2026-05-10.md），部分市场数据缺失（SPX/Nasdaq/DOW具体价格、ETH/Gold/Silver/WTI/DXY、利率/信用/流动性数据）。"
   },
   "market_snapshot": {
-    "spx": {
-      "price": 7337.11,
-      "change_pct": -0.38,
-      "note": "从历史新高小幅回撤",
-      "source": "CNBC May 6",
-      "confidence": "high"
-    },
-    "nasdaq": {
-      "price": 25806.20,
-      "change_pct": -0.13,
-      "note": "从历史新高小幅回撤",
-      "source": "CNBC May 6",
-      "confidence": "high"
-    },
-    "dow": {
-      "price": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "btc": {
-      "price": 80936,
-      "range_low": 79776,
-      "range_high": 80936,
-      "change_pct": -1.7,
-      "note": "高位区间维持，从$82K小幅回调",
-      "source": "CoinDesk May 7 / Yahoo May 7",
-      "confidence": "high"
-    },
-    "eth": {
-      "price": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "gold": {
-      "price": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "silver": {
-      "price": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "wti": {
-      "price": 100.45,
-      "range_low": 100.45,
-      "range_high": 101.96,
-      "change_pct": -13.4,
-      "note": "从$116暴跌至$100，Hormuz局势缓解预期",
-      "source": "Fortune May 7 8:45am / TradingEconomics May 7",
-      "confidence": "high"
-    },
-    "dxy": {
-      "price": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "vix": {
-      "price": 17.03,
-      "change_pct_24h": 0.41,
-      "note": "低位维持，远低于25黄灯阈值",
-      "source": "TradingView/YCharts/Business Insider",
-      "confidence": "high"
-    },
-    "usdjpy": {
-      "price": 156.88,
-      "range_low": 156.81,
-      "range_high": 156.91,
-      "change_pct_24h": -0.02,
-      "note": "稳定156区间",
-      "source": "TradingView/Investing.com",
-      "confidence": "high"
-    }
+    "spx": { "price": null, "change_pct": null, "note": "历史新高延续（ARC日志确认），具体价格缺失" },
+    "nasdaq": { "price": null, "change_pct": null, "note": "历史新高延续（ARC日志确认），具体价格缺失" },
+    "dow": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "btc": { "price": 80320, "change_pct": 0.21, "range": "$80,320-$80,391", "note": "高位维持，24h +0.21%~+0.93%" },
+    "eth": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "gold": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "silver": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "wti": { "price": null, "change_pct": null, "note": "Brent原油$85-90（从$114暴跌），WTI具体价格缺失" },
+    "dxy": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "vix": { "price": 17.45, "change_pct": 2.17, "note": "低位维持，远低于25黄灯阈值" },
+    "usdjpy": { "price": 156.12, "change_pct": -0.18, "range": "156.12-156.67", "note": "稳定156区间" }
   },
   "rates": {
-    "ffr": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "usy2": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "usy10": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "usy30": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "spread_2s10s": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "bei_5y": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "tips_10y": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    }
+    "ffr": null,
+    "usy2": null,
+    "usy10": null,
+    "usy30": null,
+    "spread_2s10s": null,
+    "bei_5y": null,
+    "tips_10y": null,
+    "boj_rate": 0.75,
+    "boj_note": "预期6月加息至1.0%"
   },
   "credit": {
-    "hy_spread": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "ig_spread": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "fed_balance_sheet_t": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    },
-    "m2_yoy": {
-      "value": null,
-      "note": "数据源缺失",
-      "confidence": "low"
-    }
+    "hy_spread": null,
+    "ig_spread": null,
+    "fed_balance_sheet_t": null,
+    "net_liquidity_b": null,
+    "m2_yoy": null,
+    "etf_flow_may5": { "value": 467.38, "unit": "M", "note": "$467.38M净流入（MEXC）" },
+    "etf_flow_april": { "value": 2.44, "unit": "B", "note": "$2.44B流入，年度最强月份" },
+    "etf_flow_may1": { "value": 1, "unit": "B", "note": "~$1B流入，单日峰值" }
   },
   "dalio_quadrant": {
-    "quadrant_name": "Goldilocks（推测）",
-    "confidence": "medium",
+    "quadrant_name": "数据不足",
     "growth_signals": [
-      "S&P/Nasdaq从历史新高小幅回撤，仍处高位",
-      "ETF连续9日流入约$2.7B，机构回流强劲"
+      "VIX 17低位（远低于25阈值）",
+      "S&P/Nasdaq历史新高延续"
     ],
     "inflation_signals": [
-      "原油从$116暴跌至$100，通胀压力大幅缓解",
-      "VIX维持17低位，市场情绪稳定"
+      "Brent原油暴跌$114→$85-90",
+      "Hormuz停火延续降低通胀预期"
     ],
-    "regime_label": "温和增长+通胀缓解",
-    "note": "数据有限，利率数据缺失，为推测判断"
+    "regime_label": "疑似「温和增长+通胀回落」，需补充利率数据确认"
   },
   "btc_signals": {
-    "direction": "横盘整理",
-    "confidence": "medium",
-    "action": "HOLD",
-    "entry_zone": "$77K-$80K",
-    "stop_loss": "$72K",
-    "rationale": [
-      "BTC在$79K-$82K区间横盘",
-      "ETF连续9日流入$2.7B支撑",
-      "资金费率健康（-0.0004%至0.0039%）",
-      "Fear & Greed Index 50中性"
-    ],
-    "risks": [
-      "Hormuz局势不确定性",
-      "Put偏斜~8%黄灯延续"
-    ]
+    "direction": "高位维持",
+    "confidence": "高",
+    "action": "GREEN纪律执行",
+    "entry_zone": null,
+    "stop_loss": null,
+    "funding_rate": "<0.01%",
+    "funding_note": "资金费率健康，无杠杆过热",
+    "fg_index": 50,
+    "fg_note": "Fear & Greed 50 Neutral，108天恐惧后首回中性"
   },
   "three_market_advice": {
     "gold": {
-      "advice": "观望",
-      "confidence": "low",
-      "logic": "数据源缺失，无法判断黄金走势"
+      "advice": "数据缺失，建议观望",
+      "logic": "宏观日报过期，无法获取Gold价格及相关分析"
     },
     "spx": {
-      "advice": "持有",
-      "confidence": "high",
-      "logic": "S&P 7337从历史新高小幅回撤-0.38%，VIX 17低位，ETF流入强劲，整体环境仍有利，但需关注Hormuz协议确认"
+      "advice": "历史新高延续，谨慎追高",
+      "logic": "S&P/Nasdaq历史新高（ARC日志确认），VIX 17低位显示市场情绪稳定，但缺乏具体价格点位和估值分析"
     },
     "btc": {
-      "advice": "持有",
-      "confidence": "medium",
-      "logic": "BTC $80K高位维持，ETF连续9日流入$2.7B支撑，资金费率健康，但Put偏斜8%黄灯延续，建议设止损$72K"
+      "advice": "GREEN纪律：核心60-80%+趋势20-40%+谨慎≤1x杠杆+Put维持2%",
+      "logic": "BTC $80K高位维持，CRL=9 GREEN，资金费率健康，ETF连续流入恢复，F&G 50 Neutral，建议按GREEN纪律执行"
     }
   },
-  "key_events": [
-    {
-      "id": "E-06",
-      "title": "Hormuz交火事件",
-      "facts": "Guardian/NYT报道周四美伊在Hormuz有交火，但Trump坚持停火\"in effect\"，谈判仍在推进，Pakistan斡旋有望突破",
-      "importance": "P0",
-      "investment_implication": "原油从$116暴跌至$100反映市场预期缓和，但仍需监控协议最终确认",
-      "status": "YELLOW",
-      "source": "Guardian/NYT May 7"
-    },
-    {
-      "id": "M-01",
-      "title": "ETF连续9日流入",
-      "facts": "BTC ETF连续9日流入约$2.7B，累计持仓$58.72Bn",
-      "importance": "P1",
-      "investment_implication": "机构回流强劲，支撑BTC高位",
-      "status": "GREEN",
-      "source": "Phemex May 7 / CoinDesk May 4"
-    },
-    {
-      "id": "M-02",
-      "title": "原油暴跌至$100",
-      "facts": "Brent原油从$116暴跌至$100.45-$101.96，市场预期Hormuz局势缓解",
-      "importance": "P1",
-      "investment_implication": "通胀压力大幅解除，利好风险资产",
-      "status": "GREEN",
-      "source": "Fortune May 7 8:45am"
-    },
-    {
-      "id": "S-07",
-      "title": "Put偏斜~8%黄灯延续",
-      "facts": "BTC期权Put偏斜维持~8%，高于历史均值",
-      "importance": "P2",
-      "investment_implication": "下行保护需求增加，需监控回落",
-      "status": "YELLOW",
-      "source": "推断数据"
-    }
-  ],
-  "crl": {
-    "score": 8,
+  "key_events": {
+    "p0_events": [],
+    "p1_events": [
+      {
+        "id": "E-06",
+        "title": "Hormuz局势停火延续",
+        "fact": "Iran审查美国提案，Trump威胁bombing但明确'战争可能很快结束'，核谈判僵持但停火维持",
+        "importance": "P1",
+        "investment_impact": "原油$114→$85-90暴跌，通胀压力大幅解除；停火最终确认后原油可能进一步回落",
+        "status": "🟡 黄灯延续",
+        "resolution_condition": "协议最终确认"
+      },
+      {
+        "id": "S-07",
+        "title": "BTC Put偏斜~8%",
+        "fact": "BTC期权Put偏斜维持在~8%水平",
+        "importance": "P1",
+        "investment_impact": "市场存在一定对冲需求，需监控IV回落至历史均值",
+        "status": "🟡 黄灯延续",
+        "resolution_condition": "IV回落至历史均值"
+      }
+    ],
+    "note": "宏观分析师日报过期，事件数据来源于ARC风控日志"
+  },
+  "crl_snapshot": {
+    "crl": 9,
     "level": "GREEN",
-    "components": {
+    "four_dim_scores": {
       "macro": 8,
       "structure": 10,
       "chain": 0,
       "event": 25
     },
-    "formula": "CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 7.15 → 8",
-    "summary": "风险整体处于GREEN区间：原油改善+ETF流入+链上健康，但需监控Hormuz协议最终确认"
+    "formula": "CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 9.15 → 9",
+    "source": "ARC风控日志 2026-05-09 20:15 CST + 2026-05-10 00:15 CST"
   },
-  "etf_flow": {
-    "consecutive_days": 9,
-    "total_inflow": 2700000000,
-    "total_inflow_formatted": "$2.7B",
-    "cumulative_holdings": 58720000000,
-    "cumulative_holdings_formatted": "$58.72Bn",
-    "source": "Phemex May 7 / CoinDesk May 4",
-    "confidence": "high"
-  },
-  "fear_greed": {
-    "value": 50,
-    "label": "Fear",
-    "previous": 73,
-    "previous_label": "Greed",
-    "change": -23,
-    "source": "CoinStats May 6",
-    "confidence": "high"
-  },
-  "full_report_text": "# ARC 风控日志 — 2026-05-08（周五）\n\n> 基线继承自 memory/2026-05-07.md\n> CRL基线: 6 🟢 GREEN（04:15 CST May 8上次更新）\n\n---\n\n## 晨报 V3 — 10:00 CST\n\n### CRL: 8 🟢 GREEN（Hormuz交火但缓解）\n\n**Telegram推送记录**\n- (1/3) messageId: 11607 ✅\n- (2/3) messageId: 11608 ✅\n- (3/3) messageId: 11609 ✅\n- 目标群组: -5096029585\n\n**四维评分**\n- Macro: **8**（原油$100大幅改善 + S&P 7,337/Nasdaq 25,806从历史新高小幅回撤-0.38%/-0.13% + VIX假设17.5低位 + USD/JPY假设156.4稳定）\n- Structure: **10**（ETF连续9日流入约$2.7B强劲 + BTC ~$80K高位维持 + S-07 Put偏斜~8%黄灯延续 + 资金费率假设健康）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **25**（🟡 E-06 Hormuz交火事件：Guardian/NYT报道周四美伊有交火，但Trump坚持停火\"in effect\"，谈判仍在推进，原油$100反映缓解预期）\n- **CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 7.15 → 8** 🟢 GREEN\n\n**关键数据锚点**\n- BTC: **$79,776-$80,936**（CoinDesk May 7/Yahoo May 7）/ Fortune May 6: $82,320 → 高位区间维持；置信度高\n- VIX: **~17.5**（假设维持上次值，web_search限流）→ GREEN，远低于25阈值；置信度低\n- USD/JPY: **~156.4**（假设维持上次值，web_search限流）→ GREEN，稳定156区间；置信度低\n- S&P500: **7,337.11** -0.38%（CNBC May 6）→ 从历史新高小幅回撤；置信度高\n- Nasdaq: **25,806.20** -0.13%（CNBC May 6）→ 从历史新高小幅回撤；置信度高\n- Brent原油: **$100.45-$101.96**（Fortune May 7 8:45am/TradingEconomics May 7）→ 从$116暴跌至$100，大幅改善；置信度高\n- ETF: **9天连续流入约$2.7B**（Phemex May 7）/ May 1 $629M + May 4 $532M（CoinDesk）→ 连续流入强劲；置信度高\n- ETF累计: **$58.72Bn**（CoinDesk May 4）→ 置信度高\n- F&G: **50 Fear**（CoinStats May 6）→ 从上周73 Greed下降；置信度高\n- Hormuz: **交火但停火有效**（Guardian/NYT May 7报道周四美伊在Hormuz有交火，但Trump坚持停火\"in effect\"，谈判仍在推进，Pakistan斡旋有望突破）→ 黄灯状态；置信度高\n\n**V3合规检查**\n- ✅ 执行摘要在最顶部\n- ✅ 7日CRL走势表完整（8行含今日）\n- ✅ 情景矩阵每日必有（宏观基准矩阵）\n- ✅ 触发指标表含置信度列\n- ✅ YELLOW+事件含完整三维评估+传染链路图（E-06 Hormuz交火）\n- ✅ 行动Checkbox清单（模块E）\n- ✅ 升降级触发表（模块F）\n- ✅ 风险雷达四大师含深度解读+投资建议\n\n**关键变化**\n- 🟡 **E-06 Hormuz交火事件**：Guardian/NYT报道周四美伊在Hormuz有交火，但Trump坚持停火\"in effect\"，谈判仍在推进\n- 🟢 **原油$100**：从$116暴跌至$100（Fortune May 7 8:45am），市场预期缓和，通胀压力大幅解除\n- 🟢 **ETF连续9日流入约$2.7B**：May 1 $629M + May 4 $532M，机构回流强劲\n- 🟢 **BTC ~$80K高位维持**：从$82K小幅回调约-2%，仍在三个月高位区间\n- 🟢 **S&P/Nasdaq从历史新高小幅回撤**：-0.38%/-0.13%，仍在历史高位附近\n- 🟡 **S-07 Put偏斜~8%延续**：黄灯维持，需监控回落\n\n**结论**\n- CRL从5/6升至8 GREEN，主因**E-06 Hormuz交火事件（+25分）**，但原油暴跌+ETF流入压制综合风险至8分\n- 风险整体处于GREEN区间：原油改善+ETF流入+链上健康，但需监控Hormuz协议最终确认\n- 执行：GREEN纪律（核心60-80%+趋势20-40%+谨慎≤1x杠杆+Put维持2%），监控协议确认\n\n---\n\n## 行动记录\n\n- 10:00 CST | 晨报V3发送完成（三段送达Telegram群-5096029585）\n- 10:00 CST | CRL升至8 GREEN（↑3），E-06 Hormuz交火事件+原油改善+ETF流入\n- 10:00 CST | V3合规检查通过（8项全部满足）\n- 10:00 CST | 关键变化：Hormuz交火但停火有效+原油$100+ETF 9日流入$2.7B\n\n---\n\n## 4h CRL更新 — 04:15 CST\n\n### CRL: 6 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$80,936.01**（Yahoo Finance May 7 7:09am ET）/ $80,947.11（Yahoo实时）→ 较上次$82,320回调约-1.7%，无触发阈值\n- ✅ USD/JPY: **156.35**（Investing.com实时）→ 稳定156区间，与上次156.38几乎无变化，无触发阈值\n- ⚠️ VIX: web_search限流（429），假设维持上次17.45低位\n- ⚠️ 资金费率: CoinGlass数据源限流，假设维持健康状态\n- ✅ 交易所异常: 无今日新事件（Binance Withdraw Protection为安全功能发布，非异常）\n\n**四维评分（维持）**\n- Macro: **5**（VIX假设17.45低位 + USD/JPY 156.35稳定 + 原油无新数据）\n- Structure: **7**（BTC $80,936高位维持 + S-07 Put偏斜~8%黄灯延续假设 + ETF假设连续流入）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **15**（Hormuz谈判进展延续，无新负面事件）\n- **CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×15 = 6** 🟢 GREEN\n\n**变化判断**\n- CRL变化: 0（<5）\n- 等级变化: 无（GREEN → GREEN）\n- 结论: **静默处理，无需预警推送**\n\n**置信度标注**\n- BTC价格: 高（Yahoo Finance成功获取，时间戳明确）\n- USD/JPY: 高（Investing.com成功获取实时数据）\n- VIX/资金费率: 低（web_search限流，假设维持上次值）\n- 交易所异常: 高（web_search成功确认无新事件）\n\n---\n\n## 4h CRL更新 — 08:15 CST\n\n### CRL: 6 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$80,897.53**（CoinDesk May 7 7:32am ET）→ 较上次$82,320约-1.7%，无触发阈值\n- ✅ VIX: **17.32** -0.40%（Yahoo Finance实时）→ 维持低位，远低于25黄灯阈值\n- ⚠️ USD/JPY: web_search限流（429），假设维持156区间稳定\n- ⚠️ 资金费率: 数据源限流，假设维持健康状态\n- ✅ 交易所异常: 无今日新事件\n\n**四维评分（维持）**\n- Macro: **5**（VIX 17.32 GREEN + USD/JPY假设稳定156 + 原油$102延续）\n- Structure: **7**（BTC $80,897高位维持 + S-07 Put偏斜~8%黄灯延续假设 + ETF假设连续流入）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **15**（Hormuz谈判进展延续，无新负面事件）\n- **CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×15 = 6** 🟢 GREEN\n\n---\n\n## 4h CRL更新 — 12:15 CST\n\n### CRL: 8 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$80,918.50** -0.71%（The Block May 7, 2026 6:57AM EDT）→ 较上次晨报$79,776-$80,936区间内，小幅波动，无触发阈值\n- ⚠️ VIX: web_search限流（429），假设维持上次17.5低位；web_fetch封锁\n- ⚠️ USD/JPY: web_search限流（429），假设维持156区间稳定\n- ⚠️ 资金费率: -0.0019%（Phemex earlier search）→ 微负，健康状态，无触发阈值\n- ✅ 交易所异常: 无暂停提款事件；DeFi exploit $5.87M（1inch Trusted Volumes，低于$100M阈值）→ 不触发\n- ✅ Coinbase裁员14%: 企业重组，非系统性风险\n\n**四维评分（维持）**\n- Macro: **8**（原油$100大幅改善 + VIX假设17.5 GREEN + USD/JPY假设156稳定）\n- Structure: **10**（ETF连续9日流入$2.7B + BTC $80K高位 + S-07 Put偏斜~8%黄灯延续）\n- Chain: **0**（无稳定币脱锚/交易所暂停；DeFi exploit $5.87M低于阈值）\n- Event: **25**（E-06 Hormuz交火事件维持黄灯）\n- **CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 7.15 → 8** 🟢 GREEN\n\n---\n\n## 4h CRL更新 — 16:15 CST\n\n### CRL: 8 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$81,170**（Phemex May 6）/ 预测市场$77-80K区间 → 较上周小幅回调，无触发阈值\n- ✅ VIX: **17.08**（YCharts实时）/ 17.39（Business Insider）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **156.88-156.91**（TradingView/Investing.com）→ 稳定156区间，24h变化<0.1%，无触发阈值\n- ✅ ETF流入: 连续$2B/月 + $767M近期流入 → 强劲机构回流，GREEN\n- ✅ 交易所异常: 无暂停提款事件（Binance Withdrawal Lock为安全功能，非异常）\n\n**四维评分（维持）**\n- Macro: **8**（VIX 17.08 GREEN + USD/JPY 156.88稳定 + 原油$100改善延续）\n- Structure: **10**（ETF连续流入强劲 + BTC $80K高位 + S-07 Put偏斜~8%黄灯延续）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **25**（E-06 Hormuz交火事件延续黄灯）\n- **CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 7.15 → 8** 🟢 GREEN\n\n---\n\n## 4h CRL更新 — 20:15 CST\n\n### CRL: 8 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ VIX: **17.03** +0.41% 24h（TradingView/YCharts/Business Insider三源验证）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **156.81-156.91**（Investing.com/TradingView）→ 稳定156区间，24h变化-0.02%，GREEN\n- ✅ BTC资金费率: **-0.0004%** OI-Weighted / **0.0039%** Volume-Weighted（CoinGlass成功）→ 远低于0.05%黄灯阈值，GREEN\n- ✅ BTC价格: ~$78K-$81K区间维持 → 无异常波动\n- ✅ 交易所异常: 无暂停提款事件\n\n**四维评分（维持）**\n- Macro: **8**（VIX 17低位 + USD/JPY 156稳定 + 原油改善延续）\n- Structure: **10**（资金费率健康 + ETF流入延续 + S-07 Put偏斜~8%黄灯延续）\n- Chain: **0**（无稳定币脱锚/交易所异常）\n- Event: **25**（E-06 Hormuz交火事件延续黄灯）\n- **CRL = 0.30×8 + 0.30×10 + 0.25×0 + 0.15×25 = 7.15 → 8** 🟢 GREEN\n\n**置信度标注**\n- VIX: 高（TradingView/YCharts/Business Insider三源验证）\n- USD/JPY: 高（Investing.com/TradingView双源验证）\n- BTC资金费率: 高（CoinGlass成功获取实时数据）\n- 交易所异常: 高（tavily_search确认无新事件）\n\n**数据源状态记录**\n- tavily_search: 全部成功（BTC价格/VIX/USD/JPY/交易所）\n- tavily_extract: CoinGlass成功获取资金费率，alternative.me成功获取API结构\n- web_search(web_fetch): 全部封锁\n- 建议: 下次更新优先解决web_search API配置或依赖tavily_search/extract\n\n---\n\n## 活跃黄灯追踪\n\n| ID | 指标 | 状态 | 解除条件 |\n|----|------|------|---------|\n| E-06 | Hormuz局势 | 🟡交火 | 协议最终确认 |\n| S-07 | Put偏斜~8% | 🟡延续 | IV回落至历史均值 |\n\n---\n\n## 日初状态\n- CRL开盘: 6 GREEN\n- 主要关注: Hormuz协议最终确认 + 原油<$100 + S-07 Put偏斜回落 + VIX实时数据"
+  "full_report_text": "# 宏观日报状态 — 2026-05-10\n\n⚠️ **数据过期警告**\n\n最新宏观分析师日报日期：2026-03-22\n\n当前报告请求日期：2026-05-10\n\n过期天数：49天\n\n## 数据来源\n\n本次macro-signal.json数据来源于 **ARC风控日志**（workspace-risk-manager），而非原始宏观分析师日报。\n\n主要数据源：\n- `/Users/cc/.openclaw/workspace-risk-manager/memory/2026-05-09.md`\n- `/Users/cc/.openclaw/workspace-risk-manager/memory/2026-05-10.md`\n\n## 已获取数据（来源ARC日志）\n\n### 市场快照\n- **BTC**: $80,320-$80,391（高位维持，24h +0.21%~+0.93%）\n- **VIX**: 17.45（低位维持，+2.17%，远低于25黄灯阈值）\n- **USD/JPY**: 156.12-156.67（稳定156区间，24h -0.18%）\n- **S&P/Nasdaq**: 历史新高延续（Tech领涨）\n- **Brent原油**: $85-90（从$114暴跌，大幅改善）\n\n### ETF资金流\n- **May 5**: $467.38M净流入\n- **May 1**: ~$1B流入（单日峰值）\n- **April**: $2.44B流入（年度最强月份）\n\n### 情绪指标\n- **Fear & Greed**: 50 Neutral（108天恐惧后首次回到中性）\n- **BTC资金费率**: <0.01%（健康，无杠杆过热）\n\n### CRL风险等级\n- **CRL**: 9 🟢 GREEN\n- **Macro**: 8（VIX低位 + USD/JPY稳定 + 原油改善）\n- **Structure**: 10（资金费率健康 + ETF流入恢复）\n- **Chain**: 0（无稳定币脱锚/交易所异常）\n- **Event**: 25（E-06 Hormuz黄灯延续）\n\n### 活跃事件\n- **E-06 Hormuz**: 🟡停火延续，协议最终确认待定\n- **S-07 Put偏斜**: 🟡~8%延续，需监控IV回落\n\n## 缺失数据（需补充）\n\n以下数据在ARC日志中未采集，需从其他来源获取：\n\n- SPX/Nasdaq/DOW具体价格\n- ETH价格\n- Gold/Silver价格\n- WTI原油价格\n- DXY美元指数\n- 利率数据（FFR, US2Y, US10Y, US30Y, spread, BEI, TIPS）\n- 信用数据（HY spread, IG spread）\n- 流动性数据（Fed Balance Sheet, Net Liquidity, M2 YoY）\n\n## 建议\n\n1. 恢复宏观分析师日报生成流程\n2. 补充缺失市场数据源\n3. 手动触发一次完整宏观日报生成\n\n---\n\n*此报告由macro-monitor Dashboard同步任务自动生成*\n*数据时间：2026-05-09 20:15 CST（ARC最后更新）*"
 }
