@@ -1,139 +1,145 @@
 {
   "meta": {
-    "generated_at": "2026-05-10T02:40:00+08:00",
+    "generated_at": "2026-05-11 02:42:49 CST",
     "data_date": "2026-05-09",
-    "report_date": "2026-05-09",
+    "report_date": "2026-05-10",
     "data_lag_days": 1,
     "stale": false,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-09.md + /tmp/btc-signal-2026-05-09.json",
-    "notes": "完整报告原文未本地存储，使用 evolution 摘要 + btc-signal JSON 构建"
+    "source_file": "evolution/2026-05-10.md + heartbeat-state.json",
+    "completeness_warning": "⚠️ 三报告完整原文缺失：memory 目录日志滞后至 2026-05-03，本次 JSON 从 evolution 进化摘要和 heartbeat-state.json 重构。full_report_text 字段仅包含进化摘要，非原始报告全文。"
   },
   "report1_daily": {
-    "title": "BTC链上深度日报 V2.1",
-    "date": "2026-05-09",
-    "exec_time": "10:17 CST",
-    "data_flag": "ready",
+    "title": "BTC链上深度日报 V2.0",
+    "date": "2026-05-10",
+    "exec_time": "10:12 CST",
+    "data_flag": "normal:1",
     "core_data": {
-      "price": {
-        "value": 80467,
+      "price_usd_close": {
+        "value": 80679,
+        "date": "2026-05-09"
+      },
+      "mvrv": {
+        "value": 1.487,
         "date": "2026-05-09"
       },
       "mvrv_z_score": {
-        "value": 0.8955,
-        "date": "2026-05-08"
-      },
-      "mvrv": {
-        "value": 1.443,
-        "date": "2026-05-08"
+        "value": 0.912,
+        "date": "2026-05-09"
       },
       "nupl": {
-        "value": 0.3235,
-        "date": "2026-05-08"
-      },
-      "lth_sopr": {
-        "value": 0.993,
-        "date": "2026-05-05",
-        "lag_warning": "滞后4天"
-      },
-      "sth_sopr": {
-        "value": null,
-        "date": null
-      },
-      "sopr_adjusted": {
-        "value": 1.001,
-        "date": "2026-05-08"
+        "value": 0.327,
+        "date": "2026-05-09"
       },
       "puell_multiple": {
-        "value": 0.8462,
-        "date": "2026-05-08"
+        "value": 0.992,
+        "date": "2026-05-09"
+      },
+      "lth_sopr": {
+        "value": 0.883,
+        "date": "2026-05-09"
+      },
+      "sth_sopr": {
+        "value": 1.01,
+        "date": "2026-05-09"
       },
       "ahr999": {
-        "value": 0.5008,
+        "value": 0.498,
         "date": "2026-05-09"
       },
       "exchange_net_flow": {
-        "value": -49618,
-        "date": "2026-05-08",
-        "unit": "BTC"
+        "value": -50051,
+        "date": "2026-05-09"
       },
       "exchange_balance_pct": {
-        "value": null,
-        "date": null
+        "value": 14.97,
+        "date": "2026-05-09"
       },
       "lth_supply_pct": {
-        "value": 73.97,
-        "date": "2026-05-08"
+        "value": 74.02,
+        "date": "2026-05-09"
       },
       "fear_greed_index": {
         "value": 38,
-        "label": "Fear",
-        "date": "2026-05-08"
+        "date": "2026-05-09"
+      },
+      "hash_rate": {
+        "value": 987,
+        "date": "2026-05-09"
+      },
+      "funding_rate": {
+        "value": -9.2e-06,
+        "date": "2026-05-09"
       }
     },
     "six_dimension_score": {
-      "valuation": 63,
-      "holder": 55,
-      "miner": 57,
-      "network": 50,
-      "capital": 65,
-      "structure": 50,
-      "total": 59
+      "total": 60,
+      "valuation": null,
+      "holder": null,
+      "miner": null,
+      "network": null,
+      "capital": null,
+      "structure": null,
+      "note": "六维分项值未在 evolution 摘要中记录"
     },
     "cycle_judgment": {
       "phase": "熊市中段（底部积累期）",
-      "confidence": 55,
-      "signal_level": "B级",
-      "entry_range": "观望，维持0%仓位",
-      "position_suggestion": "零杠杆铁律"
+      "confidence": "55%",
+      "signal_level": "A",
+      "entry_zone": "TMM突破区$78.2K-$85.2K",
+      "position_suggestion": "分批建仓，观望$85K阻力测试"
     },
     "skills_triggered": {
       "triggered": [
-        "S-鲸鱼底部5/7"
+        "S-whale-bottom-5/7",
+        "A-tmm-rp-corridor"
       ],
-      "near_trigger": [
-        "A-TMM走廊",
-        "A-RPL Ratio",
-        "A-LTH-SOPR接近投降"
-      ]
+      "approaching": [
+        "A-lth-sopr-capitulation",
+        "B-ahr999-bottom"
+      ],
+      "note": "基于 heartbeat-state.json weeklyReportW17"
     },
     "anomaly_detection": {
-      "coinbase_premium_lag": "滞后5天(04-28)",
-      "lth_net_position_lag": "滞后13天(04-20)",
-      "funding_lag": "滞后2天(05-01)"
+      "status": "无重大异动",
+      "items": []
     },
-    "full_report_text": "⚠️ 报告原文未本地存储。请查阅 Telegram 群 -5042386860 的历史消息获取完整报告。\n\n替代数据来源：\n- evolution 摘要: /Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-05-09.md\n- btc-signal JSON: /tmp/btc-signal-2026-05-09.json\n\n建议：改进报告存储机制，在发送 Telegram 后同步写入本地文件。"
+    "full_report_text": "[缺失] 三报告原文未写入 memory/2026-05-10.md，仅能从 evolution 摘要重构。进化摘要见 report3_whale.full_report_text。"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-05-09",
+    "date": "2026-05-10",
     "price_anchors": {
       "realtime_price": {
-        "value": 80467,
-        "date": "2026-05-09"
+        "value": 80679,
+        "source": "OKX实时"
       },
       "close_price": {
-        "value": 80467,
-        "date": "2026-05-08"
+        "value": 80679,
+        "date": "2026-05-09"
       },
       "realized_price": {
-        "value": 54250,
-        "date": "2026-05-08"
+        "value": null,
+        "date": null,
+        "note": "未在摘要中记录具体值"
       },
       "tmm": {
         "value": 78200,
-        "date": "派生"
+        "source": "Glassnode Week 18"
       },
       "cvdd": {
-        "value": 46092,
-        "date": "2026-05-08"
+        "value": null,
+        "date": null,
+        "note": "未在摘要中记录"
       },
       "equilibrium_price": {
-        "value": 40400,
-        "date": "2026-05-08"
+        "value": null,
+        "date": null,
+        "note": "未在摘要中记录"
       },
       "ma_2y": {
-        "value": 60693,
-        "date": "2026-05-08"
+        "value": null,
+        "date": null,
+        "note": "two_year_ma_730未在摘要中记录具体值"
       },
       "ath": {
         "value": null,
@@ -141,126 +147,135 @@
       },
       "miner_cost": {
         "value": null,
-        "date": null
+        "date": null,
+        "note": "需从Glassnode获取"
+      },
+      "active_realized_price": {
+        "value": 85200,
+        "source": "Glassnode Week 18",
+        "note": "下一个关键阻力"
+      },
+      "sth_cost_basis": {
+        "value": 79100,
+        "source": "Glassnode Week 18"
       }
     },
     "cycle_position": {
-      "phase": "熊市中段",
-      "cycle_day": 746,
-      "earliest_bottom": "第777天(2026-06-04)",
+      "phase": "熊市中段 → Phase 1-2突破完成",
+      "cycle_day": 750,
+      "earliest_bottom": null,
       "mean_bottom": null,
-      "latest_bottom": null
+      "latest_bottom": null,
+      "ath_days": 209,
+      "bear_progress": "54.7%"
     },
     "core_judgment": {
-      "prob_bottom": 35,
-      "prob_oscillation": 40,
-      "prob_correction": 20
+      "probabilities": {
+        "breakout_85k": "40%",
+        "range_80_85k": "35%",
+        "pullback_70_75k": "20%",
+        "deep_drop_below_60k": "5%"
+      },
+      "evidence": "突破TMM $78.2K + STH CB $79.1K确认；鲸鱼囤积270K BTC历史级；ETF流入恢复；但LTH-SOPR仍投降0.883 + Realized Loss仍高$479M/day"
     },
     "entry_tiers": {
-      "tier_a": {
-        "trigger": "价格≤CVDD $46,092",
-        "status": "未触发",
-        "gap_pct": 74.6
+      "tier_A": {
+        "condition": "价格≤CVDD/BP",
+        "status": "❌未触发"
       },
-      "tier_b": {
-        "trigger": "Depression Zone激活(5/5)",
-        "status": "0/5激活",
-        "gap": "5条件均未触发"
+      "tier_B": {
+        "condition": "Depression Zone激活+Puell<0.5",
+        "status": "⏳观察区"
       },
-      "tier_c": {
-        "trigger": "LTH-SOPR<1.0+ATS>0.5",
-        "status": "LTH-SOPR接近但未确认"
+      "tier_C": {
+        "condition": "趋势确认+LTH-SOPR回升>1.5",
+        "status": "❌未触发"
       }
     },
-    "signal_level": "B级",
-    "position_suggestion": "0%仓位，观望",
-    "full_report_text": "⚠️ 报告原文未本地存储。请查阅 Telegram 群 -5207448944 的历史消息获取完整周期解读报告。"
+    "signal_level": "A",
+    "position_suggestion": "分批建仓，关注$85K阻力测试；止损条件：跌破$78K（TMM失守）",
+    "full_report_text": "[缺失] 原文未记录于 memory/2026-05-10.md"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-05-09",
+    "date": "2026-05-10",
     "core_decision": {
-      "signal": "观望",
-      "phase": "熊市中段",
-      "summary": "突破TMM+STH CB，Phase 1-2完成，但需验证$85K阻力",
-      "position": "0%"
+      "signal": "A级（55%置信度）",
+      "phase": "Phase 1-2突破完成",
+      "summary": "突破确认+鲸鱼囤积历史级270K BTC+交易所储备7年最低+ETF流入恢复 → 供给端结构性收紧强化；但LTH-SOPR仍投降0.883 + Realized Loss仍高$479M/day = $85K突破需进一步验证",
+      "position": "分批建仓，观望$85K阻力测试"
     },
     "top3_data_points": [
-      "交易所净流量 -49,618 BTC（囤积延续）",
-      "LTH-SOPR 0.993（投降延续第3天）",
-      "突破TMM $78.2K + STH CB $79.1K 确认"
+      "鲸鱼囤积270K BTC/30日（2013年以来最大）",
+      "交易所储备2.21M BTC（2017年12月以来最低）",
+      "RHODL Ratio 4.5（历史第三高底部信号）"
     ],
     "chip_map": {
-      "lth": {
-        "pct": 73.97,
-        "btc": "约1479万BTC",
-        "7d_change": "+0.15pp"
-      },
-      "sth": {
-        "pct": null,
-        "btc": null,
+      "lth_supply": {
+        "pct": 74.02,
+        "raw": null,
         "7d_change": null
       },
-      "exchange": {
+      "sth_supply": {
         "pct": null,
-        "btc": null,
-        "30d_flow": -49618
-      }
-    },
-    "whale_behavior": {
-      "netflow_7d": {
-        "value": null,
-        "unit": "BTC"
-      },
-      "netflow_30d": {
-        "value": null,
-        "unit": "BTC"
+        "raw": null,
+        "7d_change": null
       },
       "exchange_balance": {
-        "value": null,
-        "pct": null
+        "pct": 14.97,
+        "7d_change": null
+      },
+      "note": "详细筹码变化未在摘要中完整记录"
+    },
+    "whale_behavior": {
+      "netflow_7d": -350557,
+      "netflow_30d": null,
+      "whale_accumulation": {
+        "value": 270000,
+        "period": "30日",
+        "source": "CryptoQuant"
       },
       "coinbase_premium": {
-        "value": -0.014,
-        "date": "滞后"
+        "value": null,
+        "date": null,
+        "note": "滞后5天"
       },
       "funding_rate": {
-        "value": -0.00012,
-        "date": "05-01"
+        "value": -9.2e-06,
+        "date": "2026-05-09"
       }
     },
     "sopr_decode": {
       "lth_sopr": {
-        "value": 0.993,
-        "date": "2026-05-05",
-        "7d_sequence": [
-          0.993,
-          0.992,
-          0.991
-        ]
+        "current": 0.883,
+        "7d_series": [
+          "0.887→0.943→0.883"
+        ],
+        "status": "投降延续（从1.016回落）"
       },
       "sth_sopr": {
-        "value": null,
-        "date": null
+        "current": 1.01,
+        "status": "微盈利"
       },
       "a_sopr": {
-        "value": 1.001,
-        "date": "2026-05-08"
+        "current": null,
+        "consecutive_below_1": null
       }
     },
     "ats_dashboard": {
       "current": null,
-      "target": 0.5,
+      "target": 0.4,
       "gap_pct": null,
-      "14d_trend": null
+      "14d_trend": null,
+      "note": "ATS具体值未在摘要中记录"
     },
     "fusion_conclusion": {
-      "summary": "突破Phase 1-2完成，$85K是下一个关键验证点",
-      "six_dim_score": 59,
-      "action": "观望，等待$85K突破确认或回调验证",
-      "stop_loss": "跌破$70K重新评估",
-      "reverse_trigger": "LTH获利>$500M/天 或 aSOPR持续>1.05"
+      "summary": "供给端结构性收紧强化（鲸鱼囤积历史级+交易所储备7年最低），但需求端仍需验证（LTH-SOPR投降+Realized Loss高）",
+      "six_dim_score": 60,
+      "action": "分批建仓，关注$85K阻力测试结果",
+      "stop_loss": "跌破TMM $78.2K → 暂停建仓",
+      "reverse_trigger": "ATS突破0.4 + LTH-SOPR回升>1.5 → 加速建仓"
     },
-    "full_report_text": "⚠️ 报告原文未本地存储。请查阅 Telegram 群 -5042386860 的历史消息获取完整鲸鱼深度报告V3。\n\n关键发现（来自 evolution 摘要）：\n- Glassnode Week 18确认BTC突破TMM $78.2K + STH Cost Basis $79.1K\n- LTH获利仅$180M/天（18%峰值）未过热\n- Net Realized P/L首次转正+0.003%市值\n- 下一关键阻力$85.2K (Active Realized Price)"
+    "full_report_text": "# 🔗 每日进化学习摘要 | 2026-05-10\n\n━━━ 📡 信息源扫描 ━━━\n\n## 【🔴 必读 — Glassnode 文章】\n\n### Week 18-2026: \"Bulls Approach the Ceiling\"\n- **核心框架**: BTC突破True Market Mean + STH Cost Basis双重阻力 → Phase 1-2完成 → 下一个关键阻力$85.2K\n- **关键数据**:\n  - True Market Mean: $78.2K ✅ 已突破\n  - STH Cost Basis: $79.1K ✅ 已突破\n  - 下一个关键阻力: $85.2K (Active Realized Price)\n  - Net Realized P/L: 30天SMA转正 0.003% 市值\n  - LTH获利抛售: $180M/天 vs 周期峰值 >$1B/天 (仅18%峰值)\n  - Realized Loss仍高: $479M/天 (140%高于$200M基线)\n  - ETF 30日流入: 转正 → 机构需求恢复\n  - Perp funding: 负值 → 空头压力持续 → 逼空窗口并存\n\n### @ki_young_ju (CryptoQuant CEO)\n- **核心发现**: 鲸鱼30天积累270,000 BTC（2013年以来最大规模）\n- 交易所储备降至2.21M BTC（2017年12月以来最低）\n- RHODL Ratio 4.5（历史第三高）\n\n━━━ 📊 市场综合判断 ━━━\n\n## 主线判断升级：\n「突破Phase 1-2完成 + 鲸鱼囤积历史级270K BTC + 交易所储备7年最低 + ETF流入恢复 → 供给端结构性收紧强化；但LTH-SOPR仍投降0.883 + Realized Loss仍高$479M/day + 动能弱 = $85K突破需进一步验证」\n\n### 概率情景:\n- 突破$85K站稳: 40%\n- $80K-$85K震荡: 35%\n- 回调$70K-$75K: 20%\n- 深折价<$60K: 5%\n\n━━━ 📝 数据快照 ━━━\n\n**本地库最新(2026-05-09/10)**:\n- price = $80,679\n- MVRV = 1.487 / Z = 0.912\n- NUPL = 0.327\n- Puell = 0.992\n- LTH-SOPR = 0.883 (投降延续)\n- exchange_net_flow = -50,051 BTC\n- exchange_balance = 14.97%\n- LTH supply = 74.02%\n- fear_greed = 38-47\n- hash_rate = 987-1126 EH/s\n- Ahr999 = 0.498-0.504\n\n━━━ 🔧 执行状态 ━━━\n\n✅ tavily_search成功（Glassnode Week 18+CryptoQuant鲸鱼数据）\n✅ 本地数据库查询成功\n\n---\n\n*报告生成时间: 2026-05-10 15:00 CST*\n*来源: evolution/2026-05-10.md 进化学习摘要（非原始三报告全文）*"
   }
 }
