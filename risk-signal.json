@@ -1,39 +1,47 @@
 {
-  "timestamp": "2026-05-09T10:00:00+08:00",
-  "crl": 6,
+  "timestamp": "2026-05-10T10:00:00+08:00",
+  "crl": 9,
   "level": "GREEN",
+  "levelEmoji": "🟢",
   "scores": {
     "macro": 5,
     "structure": 7,
     "chain": 0,
     "event": 18
   },
-  "btc_price": 80000,
-  "vix": 17.0,
-  "usd_jpy": 156.68,
-  "brent_crude": 85,
-  "fear_greed": 50,
-  "etf_flow_may5": 467380000,
-  "etf_flow_april": 2440000000,
-  "key_events": [
-    {
-      "id": "E-06",
-      "name": "Hormuz停火延续",
-      "status": "YELLOW",
-      "description": "Iran审查提案+Trump威胁但明确战争可能结束"
-    }
+  "anchorData": {
+    "btcPrice": "79,581-80,065",
+    "btcAth": 126210,
+    "btcDrawdown": 37,
+    "vix": 17.19,
+    "usdJpy": 156.68,
+    "sp500": "~7,230",
+    "nasdaq": "~25,114",
+    "brentOil": "95-96",
+    "fgIndex": 50,
+    "etfApril": "2.44B流入",
+    "etfMay1": "~1B峰值",
+    "etfMay6_7": "流出$544M"
+  },
+  "activeSignals": [
+    {"id": "E-06", "name": "Hormuz停火延续", "status": "黄灯", "value": "Trump: still in effect"},
+    {"id": "S-07", "name": "Put偏斜~8%", "status": "黄灯", "value": "~8%"},
+    {"id": "ETF流出", "name": "May6-7流出$544M", "status": "监控", "value": "未触发阈值"}
   ],
-  "active_alerts": [
-    {
-      "id": "E-06",
-      "level": "YELLOW"
-    },
-    {
-      "id": "S-07",
-      "level": "YELLOW"
-    }
-  ],
-  "trend": "DOWN",
-  "change": -2,
-  "recommendation": "维持GREEN纪律，监控协议最终确认"
+  "keyDrivers": ["停火延续", "S&P新高", "ETF流出$544M", "VIX低位"],
+  "recommendation": {
+    "corePosition": "60-80%",
+    "trendPosition": "谨慎20-40%",
+    "leverage": "≤1x",
+    "putHedge": "净值2%",
+    "action": "监控ETF流出趋势与协议签署"
+  },
+  "nextUpdate": "2026-05-10T14:00:00+08:00",
+  "nextMorningReport": "2026-05-11T10:00:00+08:00",
+  "reportVersion": "V3",
+  "telegramDelivery": {
+    "success": true,
+    "messageIds": [12224, 12225, 12226],
+    "chatId": "-5096029585"
+  }
 }
