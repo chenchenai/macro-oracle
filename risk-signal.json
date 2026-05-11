@@ -1,47 +1,50 @@
 {
-  "timestamp": "2026-05-10T10:00:00+08:00",
-  "crl": 9,
+  "timestamp": "2026-05-11T10:00:00+08:00",
+  "crl": 8,
   "level": "GREEN",
-  "levelEmoji": "🟢",
   "scores": {
     "macro": 5,
     "structure": 7,
     "chain": 0,
     "event": 18
   },
-  "anchorData": {
-    "btcPrice": "79,581-80,065",
-    "btcAth": 126210,
-    "btcDrawdown": 37,
-    "vix": 17.19,
-    "usdJpy": 156.68,
-    "sp500": "~7,230",
-    "nasdaq": "~25,114",
-    "brentOil": "95-96",
-    "fgIndex": 50,
-    "etfApril": "2.44B流入",
-    "etfMay1": "~1B峰值",
-    "etfMay6_7": "流出$544M"
-  },
-  "activeSignals": [
-    {"id": "E-06", "name": "Hormuz停火延续", "status": "黄灯", "value": "Trump: still in effect"},
-    {"id": "S-07", "name": "Put偏斜~8%", "status": "黄灯", "value": "~8%"},
-    {"id": "ETF流出", "name": "May6-7流出$544M", "status": "监控", "value": "未触发阈值"}
+  "activeIndicators": [
+    {
+      "id": "E-06",
+      "name": "Hormuz停火延续",
+      "status": "YELLOW",
+      "value": "Trump周一启动船只引导+谈判持续",
+      "threshold": "协议签署"
+    },
+    {
+      "id": "S-07",
+      "name": "Put偏斜",
+      "status": "YELLOW",
+      "value": "~8%",
+      "threshold": ">5%"
+    },
+    {
+      "id": "S-04",
+      "name": "ETF流出趋势",
+      "status": "MONITOR",
+      "value": "-$352M",
+      "threshold": "连续3日>$500M触发黄灯"
+    }
   ],
-  "keyDrivers": ["停火延续", "S&P新高", "ETF流出$544M", "VIX低位"],
-  "recommendation": {
-    "corePosition": "60-80%",
-    "trendPosition": "谨慎20-40%",
-    "leverage": "≤1x",
-    "putHedge": "净值2%",
-    "action": "监控ETF流出趋势与协议签署"
+  "marketAnchor": {
+    "btcPrice": "$79,743-$81,459",
+    "vix": 17.18,
+    "usdJpy": 156.68,
+    "brentOil": "$101-103",
+    "sp500": "~7,400新高",
+    "nasdaq": "~26,300新高"
   },
-  "nextUpdate": "2026-05-10T14:00:00+08:00",
-  "nextMorningReport": "2026-05-11T10:00:00+08:00",
-  "reportVersion": "V3",
-  "telegramDelivery": {
-    "success": true,
-    "messageIds": [12224, 12225, 12226],
-    "chatId": "-5096029585"
-  }
+  "positionAdvice": {
+    "corePosition": "60-80%",
+    "trendPosition": "20-40%谨慎",
+    "leverage": "≤1x建议",
+    "tailPut": "净值2%",
+    "action": "监控ETF流出趋势与Hormuz船只引导进展"
+  },
+  "nextUpdate": "2026-05-11T14:00:00+08:00"
 }
