@@ -1,23 +1,25 @@
 {
   "meta": {
-    "generated_at": "2026-05-11T02:20:00+08:00",
-    "data_date": "2026-05-10",
-    "report_date": "2026-05-11",
+    "generated_at": "2026-05-12T02:20:00+08:00",
+    "data_date": "2026-05-11",
+    "report_date": "2026-05-12",
     "stale": true,
-    "stale_reason": "宏观分析师日报自2026-03-22后未更新，本次数据来源于ARC风控日志（2026-05-10 20:15 CST晨报V3）作为替代数据源"
+    "stale_reason": "宏观分析师日报自2026-03-22后未更新，本次使用ARC风控日志（2026-05-11/12）作为替代数据源。利率、信用、流动性、ETH/Gold/Silver/DXY数据缺失。",
+    "data_source": "workspace-risk-manager/memory/2026-05-11.md + 2026-05-12.md (ARC CRL Reports)"
   },
   "market_snapshot": {
-    "spx": { "price": 7230, "change_pct": 0.29, "note": "历史新高，Tech领涨" },
-    "nasdaq": { "price": 25114, "change_pct": 0.89, "note": "历史新高" },
-    "dow": { "price": null, "change_pct": null },
-    "btc": { "price": 80000, "change_pct": null, "note": "$79,581-$80,065高位区间" },
-    "eth": { "price": null, "change_pct": null },
-    "gold": { "price": null, "change_pct": null },
-    "silver": { "price": null, "change_pct": null },
-    "wti": { "price": 95, "change_pct": null, "note": "Brent $95-96，Hormuz停火延续" },
-    "dxy": { "price": null, "change_pct": null },
-    "vix": { "price": 17.19, "change_pct": null, "note": "远低于25黄灯阈值" },
-    "usdjpy": { "price": 156.68, "change_pct": -0.19, "note": "稳定156区间" }
+    "spx": { "price": 7398.93, "change_pct": null, "note": "历史新高（May 8），数据源TradingView" },
+    "nasdaq": { "price": 26247.08, "change_pct": null, "note": "历史新高（May 8），数据源TradingView" },
+    "dow": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "btc": { "price": 80708, "change_pct": "<1%", "range": "$80,000-82,320", "note": "高位区间维持，24h变化<1%，数据源Binance/Fortune/Yahoo Finance/CME" },
+    "eth": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "gold": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "silver": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "wti": { "price": null, "change_pct": null, "note": "数据缺失（仅Brent原油$100-107）" },
+    "brent": { "price": 101, "change_pct": "改善", "range": "$100-107", "note": "从$116峰值回落，通胀压力缓解" },
+    "dxy": { "price": null, "change_pct": null, "note": "数据缺失" },
+    "vix": { "price": 17.18, "change_pct": "+0.64%", "note": "远低于25黄灯阈值，GREEN，数据源TradingView/Cboe/FRED" },
+    "usdjpy": { "price": 156.68, "change_pct": "+0.28%", "range": "156-157", "note": "稳定156区间，美元微强，无触发M-01阈值" }
   },
   "rates": {
     "ffr": null,
@@ -27,7 +29,7 @@
     "spread_2s10s": null,
     "bei_5y": null,
     "tips_10y": null,
-    "note": "利率数据缺失，需补充数据源"
+    "note": "利率数据缺失，需从宏观分析师日报补充"
   },
   "credit": {
     "hy_spread": null,
@@ -35,40 +37,53 @@
     "fed_balance_sheet_t": null,
     "net_liquidity_b": null,
     "m2_yoy": null,
-    "note": "信用数据缺失，需补充数据源"
+    "note": "信用/流动性数据缺失，需从宏观分析师日报补充"
   },
   "dalio_quadrant": {
-    "quadrant_name": "Goldilocks复苏期",
+    "quadrant_name": "金发姑娘（推断）",
     "growth_signals": [
-      "S&P500/Nasdaq双历史新高",
-      "VIX维持17低位（远低于25阈值）"
+      "VIX 17低位 → 股市风险溢价低，增长预期健康",
+      "S&P/Nasdaq历史新高 → 企业盈利预期强劲"
     ],
     "inflation_signals": [
-      "Brent原油回落至$95-96（Hormuz停火延续）",
-      "USD/JPY稳定156区间"
+      "Brent原油$100-107改善 → 从$116峰值回落，通胀压力缓解",
+      "USD/JPY稳定156 → 无日元升值触发，美元维持强势"
     ],
-    "regime_label": "增长改善+通胀回落 → 风险资产友好环境"
+    "regime_label": "GREEN（低风险）",
+    "note": "基于ARC报告推断，非完整Dalio框架分析"
   },
   "btc_signals": {
-    "direction": "震荡偏强",
-    "confidence": "中",
-    "action": "持有/谨慎加仓",
-    "entry_zone": "$78,000-$80,000",
-    "stop_loss": "$75,000",
-    "note": "ETF连续2日流出$544M需监控，资金费率健康，Put偏斜~8%黄灯延续"
+    "direction": "高位震荡",
+    "confidence": "高",
+    "action": "观望/核心持仓维持",
+    "entry_zone": null,
+    "stop_loss": null,
+    "structure_signals": {
+      "funding_rate": "0.0005%",
+      "funding_status": "远低于0.05%阈值，无杠杆过热",
+      "put_skew": "~8%",
+      "put_skew_status": "黄灯延续，保护性需求"
+    },
+    "etf_flow": {
+      "may6": "-$276M",
+      "may7": "-$268M",
+      "total_2d": "-$544M",
+      "status": "连续流出需监控，单日<$500M阈值未触发"
+    },
+    "note": "BTC $80K高位维持，资金费率健康，ETF流出趋势需监控"
   },
   "three_market_advice": {
-    "gold": { 
-      "advice": "轻仓持有", 
-      "logic": "Hormuz停火延续降低避险需求，但地缘风险未完全解除" 
+    "gold": {
+      "advice": "数据缺失",
+      "logic": "Gold/Silver价格数据缺失，无法给出建议"
     },
-    "spx": { 
-      "advice": "持有+逢低加仓", 
-      "logic": "历史新高+VIX低位+宏观环境结构性改善，Tech领涨" 
+    "spx": {
+      "advice": "持有核心仓位",
+      "logic": "S&P/Nasdaq历史新高，VIX 17低位，宏观环境健康。建议持有核心仓位，趋势跟踪谨慎加仓。"
     },
-    "btc": { 
-      "advice": "持有+监控ETF流出", 
-      "logic": "$80K高位维持+资金费率健康，但ETF连续流出需关注持续性" 
+    "btc": {
+      "advice": "核心60-80% + 谨慎趋势20-40% + ≤1x杠杆 + Put维持2%",
+      "logic": "BTC $80K高位维持，资金费率健康（0.0005%），ETF流出-$544M需监控但未触发阈值。CRL=8 GREEN，执行GREEN纪律。"
     }
   },
   "key_events": {
@@ -76,51 +91,47 @@
     "p1_events": [
       {
         "title": "E-06 Hormuz停火延续",
-        "fact": "Trump明确停火"still in effect"，警告Iran签署协议",
-        "importance": "P1黄灯",
-        "investment_implication": "地缘风险溢价消退，原油回落，风险资产受益"
+        "fact": "Trump周一启动船只引导行动，谈判持续中，停火延续",
+        "importance": "P1",
+        "investment_impact": "原油从$116峰值回落至$100-107，通胀压力缓解。风险消退但未完全解除，黄灯延续。",
+        "status": "🟡 黄灯延续",
+        "confidence": "高"
       },
       {
-        "title": "S&P500/Nasdaq历史新高",
-        "fact": "S&P ~7,230 / Nasdaq ~25,114，Tech领涨",
-        "importance": "P1结构性改善",
-        "investment_implication": "宏观环境改善，风险偏好提升"
+        "title": "S&P/Nasdaq历史新高",
+        "fact": "S&P 7398.93 / Nasdaq 26247.08（May 8）",
+        "importance": "P1",
+        "investment_impact": "美股强势，增长预期健康。VIX 17低位验证风险溢价低。",
+        "status": "🟢 GREEN",
+        "confidence": "高"
       },
       {
-        "title": "ETF连续流出$544M（May 6-7）",
-        "fact": "May 6流出$275.80M，May 7流出$268.46M，但单日未触发$500M阈值",
-        "importance": "P1需监控",
-        "investment_implication": "机构资金短期流出，需关注连续性和规模变化"
+        "title": "ETF连续流出-$544M（May 6-7）",
+        "fact": "May 6流出-$276M + May 7流出-$268M",
+        "importance": "P1",
+        "investment_impact": "单日<$500M阈值未触发，但连续流出趋势需监控。若连续3日>$500M触发S-04黄灯。",
+        "status": "🟡 监控",
+        "confidence": "高"
       }
+    ],
+    "monitor_items": [
+      "🟡 ETF连续流出：若连续3日>$500M触发S-04黄灯",
+      "🟡 E-06 Hormuz停火：Trump船只引导进行中，谈判持续",
+      "🟡 S-07 Put偏斜~8%：黄灯延续",
+      "🟢 原油$100-107：从$116峰值改善"
     ]
   },
-  "crl_summary": {
-    "score": 9,
+  "crl_status": {
+    "current_crl": 8,
     "level": "GREEN",
+    "change": "0（8 → 8）",
     "quadrant_scores": {
       "macro": 5,
       "structure": 7,
       "chain": 0,
       "event": 18
     },
-    "formula": "0.30×5 + 0.30×7 + 0.25×0 + 0.15×18 = 6.3 → 9",
-    "yellow_alerts": [
-      { "id": "E-06", "name": "Hormuz局势", "status": "停火延续" },
-      { "id": "S-07", "name": "Put偏斜~8%", "status": "延续" }
-    ]
+    "calculation": "CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×18 = 8"
   },
-  "etf_flow": {
-    "april_inflow": "$2.44B（年度最强）",
-    "may_1_peak": "~$1B",
-    "may_6_outflow": "-$275.80M",
-    "may_7_outflow": "-$268.46M",
-    "may_8_outflow": "-$145.65M",
-    "trend": "连续3日流出，但单日规模未触发黄灯阈值（<$500M）"
-  },
-  "fear_greed_index": {
-    "value": 50,
-    "label": "Neutral",
-    "note": "108天恐惧后首回中性"
-  },
-  "full_report_text": "# ARC风控晨报 V3 — 2026-05-10\n\n## CRL: 9 🟢 GREEN（停火延续+ETF流出+S&P新高）\n\n### 四维评分\n- Macro: **5**（VIX 17.19低位 + USD/JPY 156.68稳定 + S&P/Nasdaq历史新高 + Brent原油$95-96改善）\n- Structure: **7**（ETF连续2日流出$544M但未触发阈值 + BTC ~$80K高位 + 资金费率负值健康 + S-07 Put偏斜~8%黄灯延续）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **18**（🟡 E-06 Hormuz停火延续）\n- **CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×18 = 6.3 → 9** 🟢 GREEN\n\n### 关键数据锚点\n- BTC: **$79,581-$80,065**（Coinbase/Yahoo Finance）→ 高位区间维持\n- VIX: **17.19-17.55** → GREEN，远低于25阈值\n- USD/JPY: **156.68** → 稳定156区间\n- S&P500: **~7,230** → 历史新高\n- Nasdaq: **~25,114** → 历史新高\n- Brent原油: **$95-96** → 改善区间\n- ETF: **April $2.44B流入（年度最强） + May1 ~$1B峰值 + May6-7流出$544M**\n- F&G: **50 Neutral** → 108天恐惧后首回中性\n- Hormuz: **停火延续** → Iran审查提案，Trump警告签字\n\n### 关键变化\n- 🟢 **S&P/Nasdaq历史新高**：+0.29%/+0.89%，Tech领涨，宏观环境结构性改善\n- 🟢 **VIX维持17低位**：远低于25黄灯阈值\n- 🟢 **USD/JPY稳定156区间**：无日元升值触发\n- 🟡 **ETF May6-7连续流出$544M**：单日未触发阈值，需监控连续流出趋势\n- 🟡 **E-06 Hormuz停火延续**：Trump明确停火"still in effect"，警告Iran签字\n- 🟡 **S-07 Put偏斜~8%延续**：黄灯维持\n\n### 结论\n- CRL维持9 GREEN，主因**停火延续+S&P新高+VIX低位+原油改善**，但ETF连续流出需监控\n- 风险整体消退：E-06黄灯延续但谈判窗口开启，宏观环境改善\n- 执行：GREEN纪律（核心60-80%+谨慎趋势20-40%+≤1x杠杆+Put维持2%）\n\n---\n\n*数据来源：ARC风控日志 2026-05-10 10:00 CST*\n*宏观分析师日报自2026-03-22后未更新，本报告为替代数据源*"
+  "full_report_text": "# ARC 风控日志 — 2026-05-12（周二）\n\n> 基线继承自 memory/2026-05-11.md\n> CRL基线: 8 🟢 GREEN（May 11晨报）\n\n---\n\n## 日初状态\n- CRL开盘: 8 GREEN\n- 主要关注: Hormuz协议签署监控 + ETF流出趋势 + S-07 Put偏斜回落\n\n---\n\n## 4h CRL更新 — 00:15 CST\n\n### CRL: 8 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$80,000-82,320**（Fortune May 6/Yahoo Finance期货/CME/Binance预测）→ 高位区间维持，24h变化<1%，无触发阈值\n- ✅ VIX: **17.08-18.17**（TradingEconomics/FRED/Cboe验证）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **156-157**（ExchangeRates/MUFG/Macrotrends验证）→ 24h变化<0.5%，稳定156-157区间，无触发M-01阈值（日元升值需>1%）\n- ✅ BTC资金费率: **-0.0030%或接近0**（Coinbase/CoinDesk验证）→ 远低于0.05%黄灯阈值，无杠杆过热，机构做空期货对冲而非看跌情绪\n- ✅ 交易所异常: **无一线交易所暂停提款**（Drift $285M hack为Solana DeFi，非Top-3交易所，事件已消化）→ GREEN\n- ✅ 稳定币: **USDT/USDC无脱锚** → GREEN\n- ✅ Hormuz局势: **停火延续**（上次日志记录延续）→ 🟡 黄灯延续\n- ✅ ETF流量: **May 6-7流出约$544M** → 单日<$500M阈值未触发，连续流出需监控\n\n**四维评分（维持）**\n- Macro: **5**（VIX 17低位 + USD/JPY 156-157稳定 + S&P/Nasdaq新高 + 原油$100-107改善）\n- Structure: **7**（资金费率健康 + ETF流出趋势需监控 + S-07 Put偏斜~8%黄灯延续）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **18**（E-06 Hormuz停火延续黄灯）\n- **CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×18 = 8** 🟢 GREEN\n\n**变化判断**\n- CRL变化: 0（8 → 8，<5）\n- 等级变化: 无（GREEN → GREEN）\n- 结论: **静默处理，无需预警推送**\n\n**置信度标注**\n- BTC价格: 高（Fortune/Yahoo Finance/CME/Binance四源验证）\n- VIX: 高（TradingEconomics/FRED/Cboe三源验证）\n- USD/JPY: 高（ExchangeRates/MUFG/Macrotrends三源验证）\n- BTC资金费率: 高（Coinbase/CoinDesk实时数据）\n- ETF流量: 高（Farside/CoinGlass/KuCoin历史延续）\n- 交易所异常/稳定币: 高（tavily_search确认无新重大事件）\n\n**数据源状态记录**\n- tavily_search: 全部成功（BTC价格/VIX/USD/JPY/资金费率/交易所异常）\n- web_search(gemini): API key缺失，已切换至tavily\n- 结论: 数据采集完整，四维度评分可靠\n\n**关键监控项延续**\n- 🟡 ETF连续流出：May 6-7流出约$544M，若连续3日>$500M触发S-04黄灯\n- 🟡 E-06 Hormuz停火：Trump船只引导进行中，谈判持续\n- 🟡 S-07 Put偏斜~8%：黄灯延续\n- 🟢 原油$100-107：从$116峰值改善\n- 🟢 Drift $285M hack：Solana DeFi，非Top-3交易所，已消化\n\n**行动记录**\n- 00:15 CST | 4h心跳执行完成，CRL维持8 GREEN\n- 00:15 CST | BTC $80K高位维持，资金费率健康，无杠杆过热\n- 00:15 CST | USD/JPY 156-157稳定，无日元升值触发\n- 00:15 CST | VIX 17低位，宏观健康\n- 00:15 CST | Hormuz停火延续，谈判持续\n- 00:15 CST | Drift $285M hack确认为Solana DeFi，非一线交易所，已消化\n\n---\n\n# ARC 风控日志 — 2026-05-11（周一）晨报摘要\n\n**CRL: 8 🟢 GREEN（停火延续+原油改善+BTC $80K）**\n\n**四维评分**\n- Macro: **5**（VIX 17.18 GREEN + USD/JPY 156.68稳定 + Brent原油$101-103改善 + S&P/Nasdaq历史新高延续）\n- Structure: **7**（ETF流出-$352M需监控 + BTC ~$80K高位维持 + S-07 Put偏斜~8%黄灯延续 + 资金费率健康）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **18**（🟡 E-06 Hormuz停火延续：Trump周一启动船只引导+谈判持续）\n- **CRL = 0.30×5 + 0.30×7 + 0.25×0 + 0.15×18 = 8** 🟢 GREEN\n\n**关键数据锚点（晨报时间点）**\n- BTC: **$79,743-$81,459**（Fortune May 8/Yahoo Finance/CoinGlass）→ 高位区间维持；置信度高\n- VIX: **17.18** +0.64% 24h（TradingView）→ GREEN，远低于25阈值；置信度高\n- USD/JPY: **156.68**（Wise实时）→ 稳定156区间；置信度高\n- Brent原油: **$101-103**（TradingEconomics/MarketWatch）→ 从$116峰值大幅改善；置信度高\n- ETF: **流出-$352M（TradingView/Ecoinometrics）** → 连续流出趋势需监控；置信度高\n- Hormuz: **停火延续**（AP News/NPR/Wikipedia）→ Trump周一启动船只引导行动；置信度高\n\n**关键变化**\n- 🟢 **原油$101-103改善**：从$116峰值回落至$101区间，通胀压力大幅缓解\n- 🟢 **VIX维持17低位**：+0.64%但仍远低于25黄灯阈值\n- 🟢 **USD/JPY稳定156区间**：无日元升值触发\n- 🟢 **BTC维持$80K高位**：高位区间稳定\n- 🟡 **ETF流出-$352M**：连续流出趋势需监控，若连续3日>$500M触发S-04黄灯\n- 🟡 **E-06 Hormuz停火延续**：Trump周一启动船只引导，谈判持续但未签署\n- 🟡 **S-07 Put偏斜~8%延续**：黄灯维持\n\n**结论**\n- CRL从9降至8 GREEN（↓1），主因**原油改善+停火延续+BTC稳定**，但ETF流出趋势需监控\n- 风险整体消退：E-06黄灯延续但谈判窗口开启，原油改善+VIX低位+链上健康\n- 执行：GREEN纪律（核心60-80%+谨慎趋势20-40%+≤1x杠杆+Put维持2%）\n\n---\n\n*此报告由ARC风控日志自动提取，替代宏观分析师日报（2026-03-22后未更新）*"
 }
