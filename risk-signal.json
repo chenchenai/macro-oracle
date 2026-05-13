@@ -1,13 +1,23 @@
 {
-  "timestamp": "2026-05-12T10:00:00+08:00",
-  "crl": 7,
+  "timestamp": "2026-05-13T10:00:00+08:00",
+  "crl": 15,
   "level": "GREEN",
-  "scores": { "macro": 5, "structure": 7, "chain": 0, "event": 20 },
-  "anchors": {
-    "btc": 81772, "vix": 17.19, "usdjpy": 157.12,
-    "sp500": 7420.65, "brent": 111.10, "fng": 47
-  },
-  "triggers": ["E-06 Hormuz停火life support"],
-  "qualitative_divergence": true,
-  "divergence_note": "量化CRL=7(GREEN)但Hormuz停火降级为life support，按YELLOW保守执行"
+  "macro": 20,
+  "structure": 20,
+  "chain": 0,
+  "event": 20,
+  "btc_price": 80488,
+  "vix": 17.99,
+  "sp500": 7400.96,
+  "nasdaq": 26088.20,
+  "usdjpy": 156.91,
+  "dxy": 95.10,
+  "brent": 107.42,
+  "fgi": 47,
+  "etf_flow_9d": 2700,
+  "funding_rate": -0.0015,
+  "oi_usd": 57621,
+  "put_skew": 11,
+  "key_events": ["Hormuz ceasefire life support", "Trump-Xi Beijing summit this week", "CPI hot 10Y yields 1yr high"],
+  "note": "CRL 15 GREEN but qualitative divergence: Hormuz + Beijing summit risk elevated"
 }
