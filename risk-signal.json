@@ -1,23 +1,61 @@
 {
-  "timestamp": "2026-05-13T10:00:00+08:00",
+  "timestamp": "2026-05-14T10:00:00+08:00",
   "crl": 15,
   "level": "GREEN",
-  "macro": 20,
-  "structure": 20,
-  "chain": 0,
-  "event": 20,
-  "btc_price": 80488,
-  "vix": 17.99,
-  "sp500": 7400.96,
-  "nasdaq": 26088.20,
-  "usdjpy": 156.91,
-  "dxy": 95.10,
-  "brent": 107.42,
-  "fgi": 47,
-  "etf_flow_9d": 2700,
-  "funding_rate": -0.0015,
-  "oi_usd": 57621,
-  "put_skew": 11,
-  "key_events": ["Hormuz ceasefire life support", "Trump-Xi Beijing summit this week", "CPI hot 10Y yields 1yr high"],
-  "note": "CRL 15 GREEN but qualitative divergence: Hormuz + Beijing summit risk elevated"
+  "qualitative_level": "YELLOW",
+  "scores": {
+    "macro": 20,
+    "structure": 20,
+    "chain": 0,
+    "event": 20
+  },
+  "market": {
+    "btc_price": 80949,
+    "btc_ath": 126210,
+    "btc_drawdown_pct": 36,
+    "vix": 17.79,
+    "sp500": 7444.25,
+    "nasdaq": 26402.34,
+    "usd_jpy": 157.82,
+    "brent": 106,
+    "fng": 34,
+    "etf_net_flow_24h": -233,
+    "oi": 57.6,
+    "funding_rate": 0.005
+  },
+  "active_signals": [
+    {"id": "E-06", "name": "Hormuz停火恶化", "level": "YELLOW"},
+    {"id": "M-10", "name": "北京峰会Day3", "level": "YELLOW"},
+    {"id": "S-04", "name": "ETF -$233M", "level": "YELLOW"},
+    {"id": "S-02", "name": "OI $57.6B新高", "level": "YELLOW"},
+    {"id": "S-07", "name": "Put偏斜~11%", "level": "YELLOW"},
+    {"id": "M-05", "name": "Brent $106", "level": "YELLOW"},
+    {"id": "M-09", "name": "10Y收益率4.457%", "level": "YELLOW"}
+  ],
+  "risk_events": [
+    {"name": "北京峰会Day3", "severity": 7, "contagion": "中", "status": "进行中"},
+    {"name": "Hormuz停火life support", "severity": 6, "contagion": "中", "status": "跟踪中"}
+  ],
+  "scenario_matrix": {
+    "base": {"prob": 50, "btc": 80, "crl_impact": "维持15"},
+    "bull": {"prob": 20, "btc": 85, "crl_impact": "→10"},
+    "bear": {"prob": 20, "btc": 72, "crl_impact": "→40+"},
+    "crash": {"prob": 10, "btc": 65, "crl_impact": "Hard Trigger"}
+  },
+  "crl_history_7d": [
+    {"date": "05/08", "crl": 9, "level": "GREEN"},
+    {"date": "05/09", "crl": 6, "level": "GREEN"},
+    {"date": "05/10", "crl": 9, "level": "GREEN"},
+    {"date": "05/11", "crl": 8, "level": "GREEN"},
+    {"date": "05/12", "crl": 7, "level": "GREEN"},
+    {"date": "05/13", "crl": 15, "level": "GREEN"},
+    {"date": "05/14", "crl": 15, "level": "GREEN"}
+  ],
+  "put_options": {
+    "strike": "48-52K",
+    "expiry": "2026-06",
+    "roll_date": "2026-05-17",
+    "premium_pct": 2
+  },
+  "version": "V3"
 }
