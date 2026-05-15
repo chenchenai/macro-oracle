@@ -1,125 +1,181 @@
 {
   "meta": {
-    "generated_at": "2026-05-14T02:20:00+08:00",
-    "data_date": "2026-05-13",
-    "report_date": "2026-05-14",
-    "stale": false,
-    "stale_reason": "宏观分析师日报自2026-03-22未更新，本次使用ARC风控日志(workspace-risk-manager)作为替代数据源。数据覆盖BTC/VIX/USD/JPY/S&P/Nasdaq/Brent原油/ETF/资金费率/Hormuz局势/北京峰会等关键指标。"
+    "generated_at": "2026-05-16 02:20 CST",
+    "data_date": "2026-05-14",
+    "report_date": "2026-05-15",
+    "stale": true,
+    "note": "数据来源于 2026-05-15 宏观晨报（发送失败备份），今日日志缺失，标注滞后"
   },
   "market_snapshot": {
-    "spx": { "price": 7400.96, "change_pct": -0.16, "note": "从ATH 7412.97小幅回落，仍接近历史高点" },
-    "nasdaq": { "price": 26088.20, "change_pct": -0.71, "note": "科技股回调" },
-    "dow": { "price": null, "change_pct": null, "note": "ARC日志未采集Dow数据" },
-    "btc": { "price": 80488, "change_pct": -2.0, "note": "较May 11 $82,139跌-2%，测试$80K支撑，距ATH $126,210约36%" },
-    "eth": { "price": null, "change_pct": null, "note": "ARC日志未采集ETH数据" },
-    "gold": { "price": null, "change_pct": null, "note": "ARC日志未采集Gold数据" },
-    "silver": { "price": null, "change_pct": null, "note": "ARC日志未采集Silver数据" },
-    "wti": { "price": null, "change_pct": null, "note": "ARC日志未采集WTI数据，仅有Brent $107" },
-    "dxy": { "price": 95.10, "change_pct": 0, "note": "基本持平" },
-    "vix": { "price": 17.99, "change_pct": -4.14, "note": "从18.77略降，远低于25黄灯阈值" },
-    "usdjpy": { "price": 156.91, "change_pct": -0.28, "note": "稳定157区间" }
+    "spx": {
+      "price": 7444,
+      "change": "+0.6%"
+    },
+    "nasdaq": {
+      "price": null,
+      "note": "晨报标注暂无更新"
+    },
+    "dow": {
+      "price": null,
+      "note": "晨报标注暂无更新"
+    },
+    "btc": {
+      "price": 79602,
+      "change": "-1.75%"
+    },
+    "eth": {
+      "price": 2264,
+      "change": "-1.12%"
+    },
+    "gold": {
+      "price": 4697
+    },
+    "silver": {
+      "price": 87.86
+    },
+    "wti": {
+      "price": null,
+      "note": "晨报标注暂无更新"
+    },
+    "dxy": {
+      "price": 98.49
+    },
+    "vix": {
+      "price": 17.87
+    },
+    "usdjpy": {
+      "price": 157.92
+    }
   },
   "rates": {
-    "ffr": null,
-    "usy2": null,
-    "usy10": 4.457,
-    "usy30": null,
-    "spread_2s10s": null,
-    "bei_5y": null,
-    "tips_10y": null,
-    "note": "10Y收益率升至1年新高4.457%（CPI超预期）。ARC日志未采集FFR/2Y/30Y/BEI/TIPS数据"
+    "ffr": {
+      "value": 3.63,
+      "note": "Fed Funds Rate"
+    },
+    "usy2": {
+      "value": 4.00
+    },
+    "usy10": {
+      "value": 4.46
+    },
+    "usy30": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "spread_2s10s": {
+      "value": 0.46,
+      "note": "计算值：10Y-2Y"
+    },
+    "bei_5y": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "tips_10y": {
+      "value": null,
+      "note": "数据暂缺"
+    }
   },
   "credit": {
-    "hy_spread": null,
-    "ig_spread": null,
-    "fed_balance_sheet_t": null,
-    "net_liquidity_b": null,
-    "m2_yoy": null,
-    "note": "ARC日志未采集信用/流动性数据"
+    "hy_spread": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "ig_spread": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "fed_balance_sheet_t": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "net_liquidity_b": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "m2_yoy": {
+      "value": null,
+      "note": "数据暂缺"
+    }
   },
   "dalio_quadrant": {
-    "quadrant_name": "Goldilocks转向Reflation压力",
+    "quadrant_name": "Stagflation Edge",
     "growth_signals": [
-      "S&P/Nasdaq接近ATH → 增长强劲",
-      "Tech领涨6周连续上涨 → 结构性增长"
+      "宏观坐标：滞胀边缘（增长↓ × 通胀↑）",
+      "市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌"
     ],
     "inflation_signals": [
-      "CPI超预期 → 通胀压力上升",
-      "10Y收益率升至4.457%（1年新高） → 通胀预期上升"
+      "最大机会：硬资产（黄金$4,697）通胀对冲叙事",
+      "通胀压力持续，利率上行风险存在"
     ],
-    "regime_label": "增长强劲+通胀压力上升 → 从Goldilocks转向Reflation边缘"
+    "regime_label": "滞胀边缘 · 高通胀+延后降息"
   },
   "btc_signals": {
-    "direction": "震荡偏空",
+    "direction": "neutral",
     "confidence": "medium",
-    "action": "观望/轻仓测试支撑",
-    "entry_zone": "$80,000-82,000",
-    "stop_loss": "$78,000",
-    "note": "BTC测试$80K支撑，距ATH约36%回撤。资金费率-0.003%健康无过热。Put偏斜~11%显示期权市场偏空。CRL=15 GREEN但质性按YELLOW执行。"
+    "action": "观望",
+    "entry_zone": "$78K以下分批建仓",
+    "stop_loss": "$75K有效跌破则趋势转空",
+    "onchain": {
+      "mvrv_z": 0.86,
+      "lth_sopr": 0.917,
+      "ahr999": 0.49
+    }
   },
   "three_market_advice": {
     "gold": {
-      "advice": "数据缺失",
-      "logic": "ARC日志未采集Gold价格数据。建议手动查询Gold现货价格后评估。通胀压力上升环境下Gold通常受益，但需结合实际价格确认。"
+      "advice": "超配",
+      "logic": "滞胀+地缘双支撑"
     },
     "spx": {
-      "advice": "高位观望/轻仓",
-      "logic": "S&P 7400接近ATH，但从7412回落-0.16%。Tech领涨6周但出现回调。CPI超预期+北京峰会不确定性 → 建议轻仓观望，等待峰会结果确认方向。"
+      "advice": "偏防守，降低追价冲动",
+      "logic": "若零售销售>预期，利率上行压力大"
     },
     "btc": {
-      "advice": "测试支撑/轻仓",
-      "logic": "BTC $80K支撑测试，距ATH约36%。资金费率健康，OI +5.92%杠杆重新积累。Hormuz恶化+CPI超预期+北京峰会叠加 → 建议轻仓测试$80K支撑，止损$78K，等待峰会结果。"
+      "advice": "观望，底部矩阵0/8未激活",
+      "logic": "$80K附近横盘，避免追高；$78K以下分批建仓"
     }
   },
-  "key_events": {
-    "p0_events": [
-      {
-        "title": "Trump北京峰会 May 13-15",
-        "fact": "Trump本周赴北京进行三天峰会，议题包括关税、AI、Hormuz",
-        "importance": "P0",
-        "investment_impact": "关税政策可能影响中美贸易格局 → 科技股/BTC敏感。Hormuz议题结果影响原油/Brent → 能源相关资产波动。峰会结果可能成为市场方向决定变量。"
-      },
-      {
-        "title": "Hormuz停火恶化",
-        "fact": "Trump称停火处于'life support'，拒绝伊朗最新反提议为'stupid/totally unacceptable'，伊朗反拒美方",
-        "importance": "P0",
-        "investment_impact": "停火恶化 → Brent原油从$85回升至$107，接近$115橙灯阈值。地缘风险上升 → BTC可能受避险情绪影响。建议监控原油价格，若突破$115触发E升级。"
-      }
-    ],
-    "p1_events": [
-      {
-        "title": "CPI超预期",
-        "fact": "May 12 CPI数据超预期，10Y收益率升至1年新高4.457%",
-        "importance": "P1",
-        "investment_impact": "通胀压力上升 → Fed降息预期可能推迟 → 利率敏感资产承压。BTC作为抗通胀资产可能受益，但短期受利率压力影响。建议关注后续通胀数据及Fed表态。"
-      },
-      {
-        "title": "S-07 Put偏斜~11%",
-        "fact": "Deribit BTC期权Put偏斜约11%，高于5%黄灯阈值",
-        "importance": "P1",
-        "investment_impact": "期权市场偏空 → 对冲需求上升。但资金费率健康无恐慌。建议结合OI变化判断，当前OI +5.92%显示杠杆重新积累而非大规模撤退。"
-      }
-    ]
-  },
-  "arc_crl": {
-    "score": 15,
-    "level": "GREEN",
-    "qualitative_override": "YELLOW",
-    "override_reason": "Hormuz停火恶化+北京峰会不确定性+CPI超预期 → 质性风险叠加，建议按YELLOW保守执行（零杠杆+总仓≤60%）",
-    "four_dim_scores": {
-      "macro": 20,
-      "structure": 20,
-      "chain": 0,
-      "event": 20
+  "key_events": [
+    {
+      "priority": "P0",
+      "title": "Powell任期届满 → Warsh接任Fed主席",
+      "date": "2026-05-15",
+      "fact": "Powell任期届满，Warsh接任过渡",
+      "importance": "Fed政策过渡风险",
+      "implication": "超预期 → Warsh鹰派表态→美元涨；不及预期 → 政策模糊→市场波动"
     },
-    "formula": "CRL = 0.30×20 + 0.30×20 + 0.25×0 + 0.15×20 = 15"
-  },
-  "data_source_status": {
-    "primary_source": "workspace-risk-manager/memory/2026-05-13.md (ARC风控日志)",
-    "macro_analyst_report": "缺失（最后更新2026-03-22）",
-    "coverage": "BTC/VIX/USD/JPY/S&P/Nasdaq/DXY/Brent原油/ETF/资金费率/Hormuz/北京峰会/CPI",
-    "missing": "Dow/ETH/Gold/Silver/WTI/FFR/2Y/30Y/信用/流动性数据",
-    "confidence": "高（tavily_search多源验证）"
-  },
-  "full_report_text": "# ARC 风控日志 — 2026-05-13（周三）\n\n> 基线继承自 memory/2026-05-12.md\n> CRL基线: 7 🟢 GREEN（May 12晨报）\n\n---\n\n## 日初状态\n- CRL开盘: 7 GREEN\n- 主要关注: Hormuz停火监控 + ETF流量趋势 + 美股ATH维持\n\n---\n\n## 晨报 V3 — 10:00 CST\n\n### CRL: 15 🟢 GREEN（质性按YELLOW执行）\n\n**数据采集（10:00 CST）**\n- ✅ BTC: **$80,488**（WSJ May 12 close）→ 较May 11 $82,139跌-2.0%，测试$80K支撑\n- ✅ VIX: **17.99**（WSJ May 12 close）→ 较前日18.77略降，远低于25黄灯\n- ✅ S&P500: **7,400.96**（-0.16%）→ 从ATH 7,412回落，仍接近历史高点\n- ✅ Nasdaq: **26,088.20**（-0.71%）→ 科技股回调\n- ✅ USD/JPY: **156.91**（OFX May 11）→ 稳定157区间\n- ✅ DXY: **95.10**（WSJ）→ 基本持平\n- ✅ Brent: **$107.42**（Yahoo May 12, +3.08%）→ 从$85低位回升，接近$115橙灯\n- ✅ Fear & Greed: **47 Neutral**（MEXC May 9）→ 远离极贪阈值\n- ✅ ETF: **9日连入+$2.7B**（Phemex/Cointribune）→ S-04未触发\n- ✅ 资金费率: **-0.0015%**（CoinGlass）→ 空头主导但OI上升\n- ✅ BTC OI: **$57.6B**（+5.92% 24h）→ 杠杆重新积累\n- ✅ Put偏斜: **~11%**（Deribit via Gate）→ S-07黄灯\n- ✅ 24h清算: **$267M**（92,371交易者，CoinGlass）\n- 🟡 Hormuz: **停火\"life support\"恶化**（Bloomberg/CNBC/AP May 12）→ Trump拒绝伊朗反提议，伊朗反拒\n- 🟡 北京峰会: **Trump本周赴北京**（AP/WaPo/NPR）→ 关税/AI/Hormuz三议题\n- 🟡 CPI: **超预期**（WSJ May 12）→ 10Y收益率至1年新高4.457%\n- ✅ 链上: **无异常**（稳定币/交易所/巨鲸均平稳）\n\n**四维评分**\n- Macro: **20**（VIX 17.99低位🟢 + USD/JPY稳定🟢 + S&P/Nasdaq高位🟢 + DXY稳定🟢 + 但Brent $107回升🟡 + 通胀超预期10Y新高🟡 + 北京峰会不确定性🟡）\n- Structure: **20**（资金费率-0.0015%健康🟢 + ETF 9日连入改善🟢 + OI +5.92%未触发🟢 + 但Put偏斜11%🟡）\n- Chain: **0**（无稳定币脱锚/交易所异常/链上系统性压力）\n- Event: **20**（🟡 E-06 Hormuz停火\"life support\"恶化 + 🟡 M-10北京峰会关税不确定性）\n- **CRL = 0.30×20 + 0.30×20 + 0.25×0 + 0.15×20 = 15** 🟢 GREEN\n\n**质性背离**\n- 量化CRL=15(GREEN)，但Hormuz停火恶化+北京峰会关税不确定性+通胀超预期→质性风险叠加\n- 建议按YELLOW保守标准执行：零杠杆+总仓≤60%\n\n**置信度标注**\n- BTC价格: 高（WSJ实时数据）\n- VIX/S&P/Nasdaq: 高（WSJ实时数据）\n- USD/JPY: 中（OFX May 11数据，非实时）\n- Brent: 高（Yahoo Finance实时）\n- ETF: 高（Phemex/Cointribune多源）\n- Hormuz: 高（Bloomberg/CNBC/AP多源）\n- 北京峰会: 高（AP/WaPo/NPR多源）\n- CPI: 高（WSJ实时）\n\n---\n\n## 4h CRL更新 — 12:15 CST\n\n### CRL: 15 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$81,224**（Fortune May 11/Yahoo Finance验证）→ 24h变化<1%，距ATH ~36%，无触发阈值\n- ✅ VIX: **~17.99**（WSJ May 12 close）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **157区间**（Wise/X-Rates验证）→ May均值157.07，稳定，无触发M-01阈值\n- ✅ BTC资金费率: **-0.0030%**（Coinbase验证）→ 远低于0.05%黄灯阈值，GREEN\n- ✅ S&P500: **7,400.96**（WSJ May 12, -0.16%）→ 接近ATH 7,428.97，无M-06触发\n- ✅ ETF流量: May 7流出$268M + May 8流出$146M → 未触发S-04连续3日>$500M阈值，整体改善（近2月+$3.29B）\n- ✅ 交易所异常: **无一线交易所暂停提款**（tavily搜索验证）→ GREEN\n- 🟡 Hormuz停火: **\"life support\"延续**（Guardian/Bloomberg May 12）→ Trump拒绝伊朗提议，黄灯延续\n- 🟡 北京峰会: **May 13-15进行中**（AP/WaPo/Guardian验证）→ 关税/AI/Hormuz议题，黄灯延续\n\n**变化判断**\n- CRL变化: 0（15 → 15，<5）\n- 等级变化: 无（GREEN → GREEN）\n- 结论: **静默处理，无需预警推送**\n\n---\n\n## 4h CRL更新 — 16:15 CST\n\n### CRL: 15 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$81,000-82,000**（Fortune May 11/Macrotrends $81,734.25验证）→ 24h变化<1%，距ATH $126,210约36%，无触发阈值\n- ✅ VIX: **17-18**（Macrotrends 17.43/CBOE Spot $18.81验证）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **157.25**（Macrotrends May 12验证）→ 24h变化~0.02%，日元稳定，无触发M-01阈值\n- ✅ BTC资金费率: **~0.0054%**（MacroMicro May 11验证）→ 远低于0.05%黄灯阈值（需连续3期），无杠杆过热，GREEN\n- ✅ 交易所异常: **无一线交易所暂停提款** → GREEN\n- 🟡 Hormuz停火: **\"life support\"延续** → 黄灯延续\n- 🟡 北京峰会: **May 13-15进行中，Day1** → 黄灯延续\n- 🟡 S-07 Put偏斜: **~11%** → 黄灯延续\n- 🟡 Brent原油: **$107** → 接近$115橙灯阈值\n- 🟡 CPI超预期: **10Y收益率至4.457%** → 通胀压力延续\n\n---\n\n## 4h CRL更新 — 20:15 CST\n\n### CRL: 15 🟢 GREEN（维持）\n\n**数据采集状态**\n- ✅ BTC价格: **$80,860-81,224**（Fortune/Robinhood验证）→ 24h变化<1%，距ATH约36%，无触发阈值\n- ✅ VIX: **17.08**（TradingEconomics May 2026验证）→ 远低于25黄灯阈值，GREEN\n- ✅ USD/JPY: **157.25**（Macrotrends May 12验证）→ 24h变化~0.22%，日元稳定，无触发M-01阈值\n- ✅ BTC资金费率: **-0.0030%**（Coinbase验证）→ 远低于0.05%黄灯阈值，GREEN\n- ✅ 交易所异常: **无一线交易所暂停提款** → GREEN\n- 🟡 Hormuz停火: **\"life support\"延续** → 黄灯延续\n- 🟡 北京峰会: **May 13-15进行中，Day1晚间** → 黄灯延续\n- 🟡 S-07 Put偏斜: **~11%** → 黄灯延续\n- 🟡 Brent原油: **$107** → 接近$115橙灯阈值\n\n---\n\n## 备注\n- CRL从7升至15（+8），主因CPI超预期+Hormuz恶化+北京峰会\n- 质性背离：量化GREEN但建议按YELLOW保守执行\n- 数据采集渠道稳定，tavily搜索替代web_search正常工作\n- 晨报V3 3段全部成功发送至Telegram群\n\n---\n\n*此报告由ARC风控日志生成，数据来源：workspace-risk-manager/memory/2026-05-13.md*\n*宏观分析师日报缺失（最后更新2026-03-22），本次使用替代数据源*"
+    {
+      "priority": "P0",
+      "title": "FOMC决议（Warsh首次主持）",
+      "date": "2026-06-17",
+      "fact": "Warsh首次主持FOMC",
+      "importance": "新主席政策信号关键锚点",
+      "implication": "关注鹰鸽倾向"
+    },
+    {
+      "priority": "P1",
+      "title": "CPI 5月数据",
+      "date": "2026-06-11",
+      "fact": "5月CPI数据公布",
+      "importance": "通胀趋势验证",
+      "implication": "影响降息预期"
+    },
+    {
+      "priority": "P1",
+      "title": "初请失业金",
+      "date": "2026-05-16",
+      "fact": "预期：稳定",
+      "importance": "劳动力市场信号",
+      "implication": "验证就业韧性"
+    },
+    {
+      "priority": "P1",
+      "title": "Nvidia财报",
+      "date": "2026-05-20",
+      "fact": "Nvidia财报公布",
+      "importance": "AI主线风险偏好关键锚点",
+      "implication": "Mag7增仓65%（Ackman）"
+    }
+  ],
+  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n---\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
 }
