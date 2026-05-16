@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-14T10:00:00+08:00",
+  "timestamp": "2026-05-16T09:41:00+08:00",
   "crl": 15,
   "level": "GREEN",
   "qualitative_level": "YELLOW",
@@ -9,53 +9,41 @@
     "chain": 0,
     "event": 20
   },
-  "market": {
-    "btc_price": 80949,
+  "market_anchors": {
+    "btc_price": 80600,
     "btc_ath": 126210,
     "btc_drawdown_pct": 36,
-    "vix": 17.79,
-    "sp500": 7444.25,
-    "nasdaq": 26402.34,
-    "usd_jpy": 157.82,
-    "brent": 106,
-    "fng": 34,
-    "etf_net_flow_24h": -233,
-    "oi": 57.6,
-    "funding_rate": 0.005
+    "vix": 17.26,
+    "sp500": 6700,
+    "sp500_ath": 7165,
+    "sp500_drawdown_pct": 6.5,
+    "nasdaq_drawdown_pct": 6,
+    "usdjpy": 158.0,
+    "brent": 98,
+    "treasury_10y": 4.39,
+    "fear_greed": 43,
+    "etf_flow_status": "recovered_inflow"
   },
-  "active_signals": [
-    {"id": "E-06", "name": "Hormuz停火恶化", "level": "YELLOW"},
-    {"id": "M-10", "name": "北京峰会Day3", "level": "YELLOW"},
-    {"id": "S-04", "name": "ETF -$233M", "level": "YELLOW"},
-    {"id": "S-02", "name": "OI $57.6B新高", "level": "YELLOW"},
-    {"id": "S-07", "name": "Put偏斜~11%", "level": "YELLOW"},
-    {"id": "M-05", "name": "Brent $106", "level": "YELLOW"},
-    {"id": "M-09", "name": "10Y收益率4.457%", "level": "YELLOW"}
+  "active_alerts": [
+    {"id": "S&P500-M-06", "level": "YELLOW", "desc": "S&P500距ATH-6.5%，6700 vs ATH 7165"},
+    {"id": "E-06-Hormuz", "level": "YELLOW", "desc": "Hormuz停火life support脆弱维持"},
+    {"id": "S-07-PutSkew", "level": "YELLOW", "desc": "Put偏斜~11%高于5%阈值"},
+    {"id": "Brent", "level": "YELLOW", "desc": "Brent $96-100高位"},
+    {"id": "10Y", "level": "YELLOW", "desc": "10Y收益率~4.39%高位"}
   ],
-  "risk_events": [
-    {"name": "北京峰会Day3", "severity": 7, "contagion": "中", "status": "进行中"},
-    {"name": "Hormuz停火life support", "severity": 6, "contagion": "中", "status": "跟踪中"}
+  "key_actions": [
+    "零杠杆",
+    "维持尾部Put（Strike $48-52K，Roll 5/17）",
+    "监控周一S&P500开盘",
+    "Hormuz P0监控"
   ],
-  "scenario_matrix": {
-    "base": {"prob": 50, "btc": 80, "crl_impact": "维持15"},
-    "bull": {"prob": 20, "btc": 85, "crl_impact": "→10"},
-    "bear": {"prob": 20, "btc": 72, "crl_impact": "→40+"},
-    "crash": {"prob": 10, "btc": 65, "crl_impact": "Hard Trigger"}
-  },
   "crl_history_7d": [
-    {"date": "05/08", "crl": 9, "level": "GREEN"},
-    {"date": "05/09", "crl": 6, "level": "GREEN"},
     {"date": "05/10", "crl": 9, "level": "GREEN"},
     {"date": "05/11", "crl": 8, "level": "GREEN"},
     {"date": "05/12", "crl": 7, "level": "GREEN"},
     {"date": "05/13", "crl": 15, "level": "GREEN"},
-    {"date": "05/14", "crl": 15, "level": "GREEN"}
-  ],
-  "put_options": {
-    "strike": "48-52K",
-    "expiry": "2026-06",
-    "roll_date": "2026-05-17",
-    "premium_pct": 2
-  },
-  "version": "V3"
+    {"date": "05/14", "crl": 15, "level": "GREEN"},
+    {"date": "05/15", "crl": 15, "level": "GREEN"},
+    {"date": "05/16", "crl": 15, "level": "GREEN"}
+  ]
 }
