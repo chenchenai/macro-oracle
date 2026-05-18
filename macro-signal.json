@@ -1,37 +1,38 @@
 {
   "meta": {
-    "generated_at": "2026-05-18 02:20 CST",
-    "data_date": "2026-05-14",
-    "report_date": "2026-05-15",
+    "generated_at": "2026-05-19 02:20 CST",
+    "data_date": "2026-05-16",
+    "report_date": "2026-05-18",
     "stale": true,
-    "note": "数据来源于 2026-05-15 发送失败备份，macro-monitor agent 无更新日志"
+    "note": "数据来源于 2026-05-18 晨报备份（网络故障导致发送失败），市场快照截至 05-16"
   },
   "market_snapshot": {
     "spx": {
-      "price": 7444.25,
-      "change": "+0.6%"
+      "price": 7444,
+      "change": null,
+      "note": "数据截至 05-16"
     },
     "nasdaq": {
-      "price": 26088.20,
-      "change": "+1.2%"
+      "price": null,
+      "note": "数据暂缺"
     },
     "dow": {
-      "price": 49693.20,
-      "change": "-0.1%"
+      "price": null,
+      "note": "数据暂缺"
     },
     "btc": {
-      "price": 79602,
-      "change": "-1.75%"
+      "price": 79102
     },
     "eth": {
-      "price": 2264,
-      "change": "-1.12%"
+      "price": null,
+      "note": "数据暂缺"
     },
     "gold": {
       "price": 4697
     },
     "silver": {
-      "price": 87.86
+      "price": null,
+      "note": "数据暂缺"
     },
     "wti": {
       "price": null,
@@ -41,7 +42,8 @@
       "price": 98.49
     },
     "vix": {
-      "price": 17.87
+      "price": null,
+      "note": "数据暂缺"
     },
     "usdjpy": {
       "price": 157.92
@@ -97,16 +99,16 @@
     }
   },
   "dalio_quadrant": {
-    "quadrant_name": "Reflation",
+    "quadrant_name": "Stagflation Edge",
     "growth_signals": [
-      "增长暂未失速 - 经济韧性仍存",
-      "Nasdaq强 +1.2%，AI主线情绪强劲"
+      "滞胀边缘：增长下行压力 + 通胀上行",
+      "成长股承压，等待CPI/PCE数据指引"
     ],
     "inflation_signals": [
-      "CPI年增速升至3.8%（近三年高位区间）",
-      "油价维持高位，通胀二次上行风险未解除"
+      "地缘冲突持续（美以对伊行动）→ 能源通胀中枢抬升",
+      "油价中枢维持高位"
     ],
-    "regime_label": "滞胀边缘（增长↓ × 通胀↑）"
+    "regime_label": "滞胀风险+底部观察"
   },
   "btc_signals": {
     "direction": "neutral",
@@ -114,60 +116,51 @@
     "action": "观望",
     "entry_zone": "$78K以下分批建仓",
     "stop_loss": "$75K有效跌破则趋势转空",
-    "onchain": {
-      "mvrv_z": 0.86,
-      "lth_sopr": 0.917,
-      "ahr999": 0.49
-    },
-    "etf_flow_5d": "-$965.9M"
+    "onchain_metrics": {
+      "mvrv_z": 0.85,
+      "lth_sopr": 0.865,
+      "ahr999": 0.49,
+      "fear_greed": 31,
+      "bottom_matrix": "2/8激活"
+    }
   },
   "three_market_advice": {
     "gold": {
       "advice": "超配",
-      "logic": "滞胀+地缘双支撑，硬资产通胀对冲叙事"
+      "logic": "地缘风险+通胀对冲双支撑，维持硬资产仓位"
     },
     "spx": {
-      "advice": "偏防守，降低追价冲动",
-      "logic": "Powell任期届满→Warsh接任过渡风险，利率上行压力大"
+      "advice": "谨慎",
+      "logic": "滞胀信号增强，成长股承压，等待CPI/PCE数据指引"
     },
     "btc": {
-      "advice": "$78K以下分批建仓",
-      "logic": "底部矩阵0/8未激活，$80K附近横盘避免追高"
+      "advice": "观望，等待更多底部信号",
+      "logic": "底部矩阵2/8激活，LTH-SOPR<1部分触发，等待Puell<0.7, F&G<25"
     }
   },
   "key_events": {
     "P0": [
       {
-        "title": "Powell任期届满 → Warsh接任Fed主席",
-        "fact": "2026-05-15 Powell任期届满，Warsh接任过渡",
-        "importance": "Fed政策过渡风险，市场波动加大",
-        "investment_implication": "鹰派表态→美元涨；政策模糊→市场波动"
+        "title": "地缘冲突持续",
+        "fact": "美以对伊军事行动持续，霍尔木兹海峡中断风险",
+        "importance": "能源通胀中枢抬升",
+        "investment_implication": "硬资产对冲"
       }
     ],
     "P1": [
       {
-        "title": "美国4月CPI高于预期",
-        "fact": "CPI年增速升至3.8%，高于预期3.7%",
-        "importance": "全资产定价锚点",
-        "investment_implication": "通胀二次上行风险未解除"
+        "title": "FOMC纪要发布",
+        "fact": "05-20发布",
+        "importance": "利率路径指引",
+        "investment_implication": "关注降息预期调整"
       },
       {
-        "title": "FOMC决议（Warsh首次主持）",
-        "fact": "2026-06-17",
-        "importance": "新主席政策立场关键锚点",
-        "investment_implication": "关注鹰鸽表态"
-      }
-    ],
-    "upcoming": [
-      {
-        "date": "2026-05-20",
-        "event": "FOMC纪要发布"
-      },
-      {
-        "date": "2026-05-28",
-        "event": "PCE通胀数据"
+        "title": "PCE通胀数据",
+        "fact": "05-28发布",
+        "importance": "通胀趋势验证",
+        "investment_implication": "影响美联储政策路径"
       }
     ]
   },
-  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n---\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
+  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-18（周一）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：地缘冲突持续（美以对伊行动）→ 能源通胀中枢抬升\n最大机会：硬资产（黄金）通胀对冲叙事 + BTC底部建仓窗口\n市场情绪：Fear 31 + 底部矩阵 2/8 → 谨慎但接近底部区域\n\n📊 市场快照（数据截至05-16）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,102 | ETH 暂无更新\n商品：黄金 $4,697 | WTI 暂无更新 | Silver 暂无更新\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.85 | LTH-SOPR 0.865 | Ahr999 0.49\n\n🔥 重大事件（历史参考）\n[P0] 03-03 美以对伊军事打击 → 霍尔木兹海峡中断风险\n[P0] 03-08 最高法院裁定IEEPA关税违宪 → 贸易政策重建\n[P1] 堪萨斯城联储：服务通胀顽固，降息路径收窄\n注：事件数据过期（03月），今日搜索不可用，待更新\n\n🧭 投资决策\n1. BTC观望：底部矩阵2/8激活，LTH-SOPR<1部分触发，等待更多底部信号（Puell<0.7, F&G<25）\n2. 黄金超配：地缘风险+通胀对冲双支撑，维持硬资产仓位\n3. 美股谨慎：滞胀信号增强，成长股承压，等待CPI/PCE数据指引\n\n📅 本周关键日历\n· 05-18[P2]本周开盘 | 关注：BTC底部信号\n· 05-20[P1]FOMC纪要发布 | 影响：利率路径指引\n· 05-22[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
 }
