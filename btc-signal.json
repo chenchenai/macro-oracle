@@ -1,98 +1,105 @@
 {
-  "schema_version": "2.0",
-  "generated_at": "2026-05-16T10:37:00+08:00",
-  "signal_type": "daily_report",
-  "btc": {
-    "price": 79102,
-    "price_source": "okx",
-    "price_timestamp": "2026-05-16T10:37:00+08:00"
+  "version": "2.0",
+  "generated_at": "2026-05-18T10:36:00+08:00",
+  "signal": {
+    "price_usd": 77023,
+    "price_date": "2026-05-17",
+    "direction": "hold",
+    "confidence": "high",
+    "bottom_score": 0,
+    "top_score": 0,
+    "action": "maintain_position_no_add"
   },
-  "bottom_matrix": {
-    "score": 2,
-    "max_score": 8,
-    "triggered": ["lth_sopr_below_1_partial", "fear_greed_close"],
-    "closest_to_trigger": "puell_multiple",
-    "gap_percent": 34
+  "cycle": {
+    "phase": "bull_mid",
+    "progress_pct": 55,
+    "vs_200wma": 26,
+    "vs_realized": 42,
+    "vs_cvdd": 67
   },
-  "l_system": {
-    "dz_activated": false,
-    "dz_conditions_met": 0,
-    "dz_max": 5,
+  "entry_window": {
     "l1_triggered": false,
     "l2_triggered": false,
     "l3_triggered": false,
-    "l3_preconditions": {
-      "dz": false,
-      "lth_sopr_below_1": true
-    }
+    "dz_activated": false,
+    "dz_score": 0,
+    "window_status": "non_bottom"
   },
-  "top_matrix": {
-    "score": 1,
-    "max_score": 8,
-    "status": "safe_zone"
+  "indicators": {
+    "mvrv_z_score": {"value": 0.8542, "date": "2026-05-15", "stale": true},
+    "nupl": {"value": 0.3040, "date": "2026-05-16", "stale": true},
+    "puell_multiple": {"value": 0.8539, "date": "2026-05-16", "stale": true},
+    "ahr999": {"value": 0.4878, "date": "2026-05-16"},
+    "sopr_adjusted": {"value": 0.9990, "date": "2026-05-17"},
+    "lth_sopr": {"value": 0.8650, "date": "2026-05-15", "stale": true},
+    "sth_sopr": {"value": 0.9840, "date": "2026-05-15", "stale": true},
+    "rsi_14d": {"value": 46.6385, "date": "2026-05-17"},
+    "monthly_rsi": {"value": 74.14, "computed": true},
+    "mayer_multiple": {"value": 0.9492, "date": "2026-05-17"},
+    "ma_200w": {"value": 61074.98, "date": "2026-05-17"},
+    "fear_greed": {"value": 28, "classification": "Fear", "date": "2026-05-18"}
   },
-  "macro_regime": {
-    "code": "unknown",
-    "label": "数据不足待确认",
-    "btc_bias": "neutral"
+  "macro": {
+    "dxy": 99.34,
+    "vix": 18.43,
+    "spx": 7408.50,
+    "gold": 4539.60,
+    "silver": 75.58,
+    "usd_jpy": 158.91,
+    "10y_yield": 4.59,
+    "2y_yield": 3.59,
+    "yield_curve_spread": 100
   },
-  "onchain_metrics": {
-    "ahr999": 0.4878,
-    "mvrv_z_score": 0.8542,
-    "nupl": 0.3135,
-    "puell_multiple": 0.8401,
-    "lth_sopr": 0.865,
-    "sth_sopr": 0.984,
-    "asopr": 0.98,
-    "asopr_consecutive_days_below_1": 1,
-    "fear_greed_index": 31,
-    "monthly_rsi": 74.38,
-    "daily_rsi": 52.08,
-    "mayer_multiple": 0.9649,
-    "realized_price": 54277,
-    "cvdd": 46129,
-    "balanced_price": 40421,
-    "exchange_net_flow": -24139,
-    "lth_supply_pct": 74.17,
-    "data_freshness": "2026-05-15"
+  "bottom_matrix": {
+    "score": 0,
+    "max": 8,
+    "checks": [
+      {"id": 1, "name": "MVRV Z-Score < 0", "triggered": false, "value": 0.85},
+      {"id": 2, "name": "NUPL < 0", "triggered": false, "value": 0.30},
+      {"id": 3, "name": "Puell < 0.5", "triggered": false, "value": 0.85},
+      {"id": 4, "name": "aSOPR 7d+ < 1", "triggered": false, "value": "~5d"},
+      {"id": 5, "name": "Monthly RSI < 33", "triggered": false, "value": 74.14},
+      {"id": 6, "name": "F&G < 15", "triggered": false, "value": 28},
+      {"id": 7, "name": "DXY peak + decline", "triggered": false, "status": "caution"},
+      {"id": 8, "name": "Fed policy pivot", "triggered": false, "status": "caution"}
+    ]
   },
-  "recommendation": {
-    "action": "watch",
-    "direction": "NEUTRAL_WATCH",
-    "confidence": 2,
-    "confidence_max": 5,
-    "position_suggested_pct": 0,
-    "target_entry_range": [55000, 65000],
-    "stop_loss": 40000,
-    "target_1": 90000,
-    "target_2": 120000,
-    "max_position_pct": 50,
-    "leverage_rule": "zero_leverage_required"
+  "top_monitor": {
+    "score": 0,
+    "max": 5,
+    "thresholds": {
+      "mvrv_z_warning": 2.5,
+      "mvrv_z_reduce": 3.0,
+      "puell_warning": 2.5,
+      "nupl_warning": 0.65,
+      "monthly_rsi_warning": 75,
+      "fg_warning": 75
+    },
+    "checks": [
+      {"id": 1, "name": "MVRV Z > 2.5", "triggered": false, "value": 0.85},
+      {"id": 2, "name": "Puell > 2.5", "triggered": false, "value": 0.85},
+      {"id": 3, "name": "NUPL > 0.65", "triggered": false, "value": 0.30},
+      {"id": 4, "name": "Monthly RSI > 75", "triggered": false, "value": 74.14},
+      {"id": 5, "name": "F&G > 75", "triggered": false, "value": 28}
+    ]
   },
-  "cycle_status": {
-    "phase": "bear_mid_cycle",
-    "days_since_halving": 756,
-    "months_since_peak": 7,
-    "peak_price": 124774,
-    "peak_date": "2025-10-06",
-    "drawdown_from_peak_pct": 37,
-    "bottom_probability_pct": 30
+  "throughline": {
+    "main": "流动性宽松预期支撑风险资产",
+    "conflict": "DXY偏强vs降息预期",
+    "tail_risk": "高利率维持更久、地缘冲突升级"
   },
-  "risks": {
-    "clear_condition": "price_below_40000",
-    "degrade_condition": "matrix_no_new_triggers_7d",
-    "macro_warning": "vix_above_40_or_hy_spread_above_530bp"
+  "dalio_quadrant": {
+    "position": "B/D_boundary",
+    "growth_evidence": ["SPX 7408", "VIX 18.43"],
+    "inflation_evidence": ["10Y 4.59%", "Gold $4539"],
+    "btc_bias": "neutral_slightly_favorable"
   },
-  "next_watch_points": [
-    {"condition": "price_below_75000", "trigger": "mayer_close_to_0.65"},
-    {"condition": "puell_below_0.7", "trigger": "miner_capitulation_accelerating"},
-    {"condition": "fear_greed_below_25", "trigger": "bottom_threshold_accelerating"}
-  ],
+  "strategy": {
+    "position_pct": 0,
+    "leverage": "zero",
+    "stop_loss_pct": null,
+    "next_threshold": "3/8 bottom"
+  },
   "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
-  "data_status": {
-    "onchain_freshness": "2026-05-15",
-    "onchain_lag_days": 1,
-    "macro_status": "timeout",
-    "macro_note": "部分数据采集超时，标注暂无更新"
-  }
+  "data_freshness_warning": ["MVRV Z [05-15] lag 2d", "NUPL [05-16] lag 1d", "Puell [05-16] lag 1d", "LTH-SOPR [05-15] lag 2d"]
 }
