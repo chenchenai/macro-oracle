@@ -1,16 +1,19 @@
 {
   "meta": {
-    "generated_at": "2026-05-19 02:20 CST",
-    "data_date": "2026-05-16",
-    "report_date": "2026-05-18",
+    "generated_at": "2026-05-20 02:20 CST",
+    "data_date": "2026-05-19",
+    "report_date": "2026-05-20",
     "stale": true,
-    "note": "数据来源于 2026-05-18 晨报备份（网络故障导致发送失败），市场快照截至 05-16"
+    "note": "宏观日报缺失（日报生成链路异常），使用SQLite替代数据源构建，数据截至2026-05-19",
+    "report_status": "今日宏观日报未生成，workspace-macro-monitor/memory/2026-05-20.md不存在",
+    "alternative_source": "Glassnode SQLite + IPS数据库"
   },
   "market_snapshot": {
     "spx": {
-      "price": 7444,
-      "change": null,
-      "note": "数据截至 05-16"
+      "price": 7403.05,
+      "change": "-0.1%",
+      "date": "2026-05-18",
+      "note": "SPX收盘价（美股周五收盘）"
     },
     "nasdaq": {
       "price": null,
@@ -21,69 +24,98 @@
       "note": "数据暂缺"
     },
     "btc": {
-      "price": 79102
+      "price": 77752.66,
+      "date": "2026-05-18",
+      "change": null,
+      "note": "BTC收盘价"
     },
     "eth": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 2130.09,
+      "date": "2026-05-18",
+      "change": null
     },
     "gold": {
-      "price": 4697
+      "price": 4570.20,
+      "date": "2026-05-19",
+      "change": null,
+      "note": "金价高位运行"
     },
     "silver": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 77.72,
+      "date": "2026-05-19",
+      "change": null
     },
     "wti": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 102.52,
+      "date": "2026-05-19",
+      "change": null,
+      "note": "油价维持100+高位"
     },
     "dxy": {
-      "price": 98.49
+      "price": 99.056,
+      "date": "2026-05-19",
+      "change": null,
+      "note": "美元指数偏弱"
     },
     "vix": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 17.82,
+      "date": "2026-05-18",
+      "change": null,
+      "note": "恐慌指数低位"
     },
     "usdjpy": {
-      "price": 157.92
+      "price": 158.99,
+      "date": "2026-05-19",
+      "change": null,
+      "note": "日元持续弱势"
     }
   },
   "rates": {
     "ffr": {
-      "value": 3.63
+      "value": 3.63,
+      "date": "2026-05-15",
+      "note": "Fed有效利率，维持高位"
     },
     "usy2": {
-      "value": 4.00
+      "value": 4.09,
+      "date": "2026-05-15"
     },
     "usy10": {
-      "value": 4.46
+      "value": 4.59,
+      "date": "2026-05-15",
+      "note": "10Y收益率高位"
     },
     "usy30": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 5.12,
+      "date": "2026-05-14",
+      "note": "30Y收益率突破5%"
     },
     "spread_2s10s": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 0.50,
+      "date": "2026-05-15",
+      "note": "期限利差正常化，倒挂结束"
     },
     "bei_5y": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 2.69,
+      "date": "2026-05-18",
+      "note": "5年盈亏平衡通胀预期"
     },
     "tips_10y": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 2.0,
+      "date": "2026-05-14",
+      "note": "10Y TIPS实际收益率"
     }
   },
   "credit": {
     "hy_spread": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 2.80,
+      "date": "2026-05-15",
+      "note": "高收益债利差（%）"
     },
     "ig_spread": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 0.94,
+      "date": "2026-05-15",
+      "note": "投资级债利差（%）"
     },
     "fed_balance_sheet_t": {
       "value": null,
@@ -98,69 +130,108 @@
       "note": "数据暂缺"
     }
   },
+  "ips_snapshot": {
+    "ips_total": 59,
+    "ips_status": "粘性通胀",
+    "inflation_type": "工资-物价螺旋",
+    "p_score": 58,
+    "e_score": 52,
+    "d_score": 68,
+    "f_score": 74,
+    "n_score": 65,
+    "persistence": 9,
+    "gold_conf": 72,
+    "bond_conf": 66,
+    "equity_conf": 52,
+    "dollar_conf": 48,
+    "hawk_dove_ma5": 0.8,
+    "date": "2026-05-19"
+  },
+  "btc_onchain": {
+    "price_btc": 77752.66,
+    "price_eth": 2130.09,
+    "mvrv": 1.418,
+    "mvrv_z_score": 0.782,
+    "nupl": 0.298,
+    "ahr999": 0.465,
+    "fear_greed": 25,
+    "funding_rate": 4.068e-05,
+    "hash_rate": 946.05,
+    "exchange_balance": 3004771.94,
+    "200w_ma": 61113.93,
+    "price_realized": 54257.39,
+    "coinbase_premium": -0.029,
+    "date": "2026-05-18/19",
+    "note": "链上数据混合日期"
+  },
   "dalio_quadrant": {
-    "quadrant_name": "Stagflation Edge",
+    "quadrant_name": "Reflation",
     "growth_signals": [
-      "滞胀边缘：增长下行压力 + 通胀上行",
-      "成长股承压，等待CPI/PCE数据指引"
+      "VIX低位17.82 - 市场恐慌情绪消退",
+      "SPX微跌-0.1% - 市场震荡但不失速",
+      "NUPL 0.298 - BTC处于希望阶段"
     ],
     "inflation_signals": [
-      "地缘冲突持续（美以对伊行动）→ 能源通胀中枢抬升",
-      "油价中枢维持高位"
+      "IPS 59分 - 粘性通胀持续",
+      "BEI 5Y 2.69% - 通胀预期维持高位",
+      "WTI 102.52 - 油价维持100+，通胀二次上行风险未解除",
+      "工资-物价螺旋42%概率 - 结构性通胀压力"
     ],
-    "regime_label": "滞胀风险+底部观察"
+    "regime_label": "高通胀+延后降息+市场震荡",
+    "confidence": "medium",
+    "note": "基于替代数据源推断"
   },
   "btc_signals": {
     "direction": "neutral",
     "confidence": "medium",
     "action": "观望",
-    "entry_zone": "$78K以下分批建仓",
-    "stop_loss": "$75K有效跌破则趋势转空",
-    "onchain_metrics": {
-      "mvrv_z": 0.85,
-      "lth_sopr": 0.865,
-      "ahr999": 0.49,
-      "fear_greed": 31,
-      "bottom_matrix": "2/8激活"
-    }
+    "entry_zone": "$75K以下分批建仓",
+    "stop_loss": "$61K（200W MA）有效跌破则趋势转空",
+    "rationale": [
+      "MVRV 1.418 - 偏中性，非极端高位",
+      "AHR999 0.465 - 定投区间",
+      "NUPL 0.298 - 希望阶段，非贪婪",
+      "Fear & Greed 25 - 恐慌情绪",
+      "200W MA支撑 $61K"
+    ]
   },
   "three_market_advice": {
     "gold": {
-      "advice": "超配",
-      "logic": "地缘风险+通胀对冲双支撑，维持硬资产仓位"
+      "advice": "维持观察，高位不追",
+      "logic": "IPS粘性通胀59分 + 油价100+ + 黄金置信度72%，但金价已至4570高位，等待回调机会"
     },
     "spx": {
-      "advice": "谨慎",
-      "logic": "滞胀信号增强，成长股承压，等待CPI/PCE数据指引"
+      "advice": "偏防守，降低追价冲动",
+      "logic": "期限利差正常化但利率高位，VIX低位可能低估风险，IPS equity置信度仅52%"
     },
     "btc": {
-      "advice": "观望，等待更多底部信号",
-      "logic": "底部矩阵2/8激活，LTH-SOPR<1部分触发，等待Puell<0.7, F&G<25"
+      "advice": "$75K以下分批建仓",
+      "logic": "链上指标中性偏悲观（Fear 25），AHR999处于定投区间，等待市场情绪回暖"
     }
   },
   "key_events": {
-    "P0": [
-      {
-        "title": "地缘冲突持续",
-        "fact": "美以对伊军事行动持续，霍尔木兹海峡中断风险",
-        "importance": "能源通胀中枢抬升",
-        "investment_implication": "硬资产对冲"
-      }
-    ],
+    "P0": [],
     "P1": [
       {
-        "title": "FOMC纪要发布",
-        "fact": "05-20发布",
-        "importance": "利率路径指引",
-        "investment_implication": "关注降息预期调整"
+        "title": "FOMC会议纪要（April会议）",
+        "fact": "05/20发布",
+        "importance": "Fed政策路径关键信号",
+        "investment_meaning": "关注降息预期修正"
       },
       {
-        "title": "PCE通胀数据",
-        "fact": "05-28发布",
-        "importance": "通胀趋势验证",
-        "investment_implication": "影响美联储政策路径"
+        "title": "初请失业金",
+        "fact": "05/21发布，预期约210K",
+        "importance": "劳动力市场信号",
+        "investment_meaning": "若高于预期，降息预期升温"
+      },
+      {
+        "title": "Gov. Barr讲话",
+        "fact": "05/22 EMERGE会议",
+        "importance": "监管层表态",
+        "investment_meaning": "关注金融稳定风险提示"
       }
-    ]
+    ],
+    "note": "日历来自2026-05-19修复后的权威核查"
   },
-  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-18（周一）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：地缘冲突持续（美以对伊行动）→ 能源通胀中枢抬升\n最大机会：硬资产（黄金）通胀对冲叙事 + BTC底部建仓窗口\n市场情绪：Fear 31 + 底部矩阵 2/8 → 谨慎但接近底部区域\n\n📊 市场快照（数据截至05-16）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,102 | ETH 暂无更新\n商品：黄金 $4,697 | WTI 暂无更新 | Silver 暂无更新\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.85 | LTH-SOPR 0.865 | Ahr999 0.49\n\n🔥 重大事件（历史参考）\n[P0] 03-03 美以对伊军事打击 → 霍尔木兹海峡中断风险\n[P0] 03-08 最高法院裁定IEEPA关税违宪 → 贸易政策重建\n[P1] 堪萨斯城联储：服务通胀顽固，降息路径收窄\n注：事件数据过期（03月），今日搜索不可用，待更新\n\n🧭 投资决策\n1. BTC观望：底部矩阵2/8激活，LTH-SOPR<1部分触发，等待更多底部信号（Puell<0.7, F&G<25）\n2. 黄金超配：地缘风险+通胀对冲双支撑，维持硬资产仓位\n3. 美股谨慎：滞胀信号增强，成长股承压，等待CPI/PCE数据指引\n\n📅 本周关键日历\n· 05-18[P2]本周开盘 | 关注：BTC底部信号\n· 05-20[P1]FOMC纪要发布 | 影响：利率路径指引\n· 05-22[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
+  "full_report_text": "⚠️ 今日宏观日报缺失 - 日报生成链路异常\n\n替代数据来源：Glassnode SQLite + IPS数据库\n数据时间：截至 2026-05-19\n\n=== IPS通胀监控 ===\nIPS总分：59分（粘性通胀）\n通胀类型：工资-物价螺旋（42%概率）\n五分项：P58/E52/D68/F74/N65\n四资产置信度：黄金72%/美债66%/美股52%/美元48%\n\n=== 市场快照 ===\nSPX: 7403 (-0.1%) | VIX: 17.82\nBTC: $77,752 | ETH: $2130\nGold: $4570 | WTI: $102.52\nDXY: 99.06 | USDJPY: 158.99\n\n=== 利率结构 ===\nFFR: 3.63% | US2Y: 4.09% | US10Y: 4.59% | US30Y: 5.12%\n2s10s Spread: 0.50（倒挂结束）\nBEI 5Y: 2.69% | TIPS 10Y: 2.00%\n\n=== BTC链上 ===\nMVRV: 1.418 | Z-Score: 0.782\nNUPL: 0.298（希望阶段）\nAHR999: 0.465（定投区间）\nFear & Greed: 25（恐慌）\n200W MA: $61,114\n\n=== 本周事件 ===\n05/20 FOMC纪要（P1）\n05/21 初请失业金（P2）\n05/22 Gov. Barr讲话（P1）\n\n=== 建议 ===\n黄金：高位不追，等待回调\n美股：偏防守，利率高压制估值\nBTC：$75K以下分批建仓\n\n⚠️ 数据滞后提醒：部分利率/信用数据来自05/14-05/15，Fed资产负债表/M2数据缺失\n\n---\n生成时间：2026-05-20 02:20 CST\n数据状态：stale=true"
 }
