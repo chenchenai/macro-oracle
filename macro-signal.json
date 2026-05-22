@@ -1,246 +1,192 @@
 {
   "meta": {
-    "generated_at": "2026-05-22 02:20 CST",
-    "data_date": "2026-05-21",
+    "generated_at": "2026-05-23 02:20 CST",
+    "data_date": "2026-05-22",
     "report_date": "2026-05-22",
     "stale": true,
-    "note": "宏观日报缺失（日报生成链路异常 2026-05-19 后中断），使用Glassnode SQLite替代数据源构建，数据截至2026-05-20",
-    "report_status": "今日宏观日报未生成，workspace-macro-monitor/memory/2026-05-22.md及2026-05-21.md不存在",
-    "alternative_source": "Glassnode SQLite + FRED指标",
-    "data_quality": "A级数据源（Glassnode + FRED），但缺少宏观晚报原文分析"
+    "note": "宏观日报滞后（最新日报为 2026-05-14），数据来源于 web_search + risk-manager 日志 + pending 文件融合",
+    "source": "web_search + workspace-risk-manager/memory/2026-05-23.md + pending-signal"
   },
   "market_snapshot": {
     "spx": {
-      "price": 7353.61,
-      "change": "-0.67%",
-      "date": "2026-05-19",
-      "note": "SPX收盘下跌，周初回调"
+      "price": null,
+      "change": null,
+      "note": "数据暂缺（搜索受限）"
     },
     "nasdaq": {
-      "price": 28818.84,
-      "change": "-0.60%",
-      "date": "2026-05-19",
-      "note": "科技股同步回调"
+      "price": null,
+      "change": null,
+      "note": "数据暂缺（搜索受限）"
     },
     "dow": {
-      "price": 49363.88,
-      "change": "-0.65%",
-      "date": "2026-05-19",
-      "note": "道指小幅下跌"
+      "price": 50636.90,
+      "change": "+0.70%",
+      "note": "创纪录新高，美伊谈判进展推动"
     },
     "btc": {
-      "price": 77550.30,
-      "change": "+0.93%",
-      "date": "2026-05-20",
-      "note": "BTC逆势上涨，77K区间震荡"
+      "price": 77600,
+      "change": "-1%",
+      "note": "risk-manager 日志数据"
     },
     "eth": {
-      "price": 2129.58,
-      "change": "+0.83%",
-      "date": "2026-05-20",
-      "note": "ETH跟随BTC上涨"
+      "price": null,
+      "note": "数据暂缺"
     },
     "gold": {
-      "price": 4483.00,
-      "change": null,
-      "date": "2026-05-20",
-      "note": "金价高位运行"
+      "price": 4525,
+      "change": "+0.2%",
+      "note": "美元走强压制"
     },
     "silver": {
-      "price": 74.28,
-      "date": "2026-05-20",
-      "note": "银价跟随黄金"
+      "price": null,
+      "note": "数据暂缺"
     },
     "wti": {
-      "price": 103.81,
-      "date": "2026-05-20",
-      "note": "油价维持100+高位"
+      "price": 97.44,
+      "change": null,
+      "note": "Kitco 数据"
+    },
+    "brent": {
+      "price": 104.44,
+      "change": null,
+      "note": "接近 $115 风控阈值"
     },
     "dxy": {
-      "price": 99.36,
-      "date": "2026-05-20",
-      "note": "美元指数偏弱，跌破100"
+      "price": null,
+      "note": "美元走强（Kitco 报道）"
     },
     "vix": {
-      "price": null,
-      "note": "数据暂缺，Fear & Greed=29显示恐慌情绪"
+      "price": 16.73,
+      "change": null,
+      "note": "低位，远低于 25 阈值"
     },
     "usdjpy": {
-      "price": 158.99,
-      "date": "2026-05-19",
-      "note": "日元持续弱势"
-    },
-    "fear_greed_index": {
-      "price": 29,
-      "date": "2026-05-21",
-      "note": "恐慌区间，市场情绪偏谨慎"
+      "price": 159.205,
+      "change": null,
+      "note": "本周高点，日元无急升压力"
     }
   },
   "rates": {
     "ffr": {
-      "value": 3.62,
-      "date": "2026-05-19",
-      "note": "Fed有效利率，维持高位"
+      "value": null,
+      "note": "数据暂缺"
     },
     "usy2": {
-      "value": 4.13,
-      "date": "2026-05-19",
-      "note": "2Y收益率高位"
+      "value": null,
+      "note": "数据暂缺"
     },
     "usy10": {
-      "value": 4.67,
-      "date": "2026-05-19",
-      "note": "10Y收益率维持4.5%+高位"
+      "value": null,
+      "note": "mid-4% area（Kitco）"
     },
     "usy30": {
       "value": null,
       "note": "数据暂缺"
     },
     "spread_2s10s": {
-      "value": 0.53,
-      "date": "2026-05-20",
-      "note": "期限利差正常化，倒挂结束"
+      "value": null,
+      "note": "数据暂缺"
     },
     "bei_5y": {
-      "value": 2.59,
-      "date": "2026-05-20",
-      "note": "5年通胀预期2.59%"
+      "value": null,
+      "note": "数据暂缺"
     },
     "tips_10y": {
-      "value": 2.18,
-      "date": "2026-05-19",
-      "note": "10Y TIPS实际利率"
-    }
-  },
-  "credit": {
-    "hy_spread": {
-      "value": 286,
-      "date": "2026-05-19",
-      "note": "高收益债利差286bps"
-    },
-    "ig_spread": {
-      "value": 95,
-      "date": "2026-05-19",
-      "note": "投资级债利差95bps"
-    },
-    "fed_balance_sheet_t": {
-      "value": 6.73,
-      "date": "2026-05-13",
-      "note": "Fed资产负债表约6.73万亿（FRED WALCL）"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "数据暂缺（需计算 Fed BS - RRP - TGA）"
-    },
-    "reverse_repo_b": {
-      "value": 24.87,
-      "date": "2026-05-20",
-      "note": "逆回购24.87B，流动性低位"
-    },
-    "m2_yoy": {
       "value": null,
       "note": "数据暂缺"
     }
   },
-  "btc_onchain": {
-    "mvrv": {
-      "value": 1.42,
-      "date": "2026-05-19",
-      "note": "MVRV适中偏低，非过热区间"
+  "credit": {
+    "hy_spread": {
+      "value": null,
+      "note": "数据暂缺"
     },
-    "nupl": {
-      "value": 0.30,
-      "date": "2026-05-20",
-      "note": "NUPL 0.30，中立偏恐惧"
+    "ig_spread": {
+      "value": null,
+      "note": "数据暂缺"
     },
-    "mayer_multiple": {
-      "value": 0.95,
-      "date": "2026-05-20",
-      "note": "低于200日均线，价格偏弱"
+    "fed_balance_sheet_t": {
+      "value": null,
+      "note": "数据暂缺"
     },
-    "ahr999": {
-      "value": 0.47,
-      "date": "2026-05-21",
-      "note": "AHR999低估值区间，囤币指标利好"
+    "net_liquidity_b": {
+      "value": null,
+      "note": "数据暂缺"
     },
-    "funding_rate": {
-      "value": 0.0000325,
-      "date": "2026-05-20",
-      "note": " Funding Rate正值但极低，多头仓位轻"
-    },
-    "coinbase_premium": {
-      "value": -0.03,
-      "date": "2026-05-19",
-      "note": "Coinbase负溢价，美盘买盘偏弱"
-    },
-    "etf_flow_today_m": {
-      "value": -9,
-      "date": "2026-05-20",
-      "note": "ETF今日净流出$9M"
-    },
-    "etf_flow_5d_m": {
-      "value": -1147.8,
-      "date": "2026-05-20",
-      "note": "ETF 5日累计净流出$1147.8M，持续流出趋势"
+    "m2_yoy": {
+      "value": null,
+      "note": "M2 $22.69T (Mar 2026)，继续扩张"
     }
   },
   "dalio_quadrant": {
     "quadrant_name": "Reflation",
     "growth_signals": [
-      "美股周初回调 - SPX/Nasdaq/Dow均下跌约0.6-0.7%",
-      "BTC逆势上涨 - 风险偏好分化，crypto韧性"
+      "Dow 创纪录新高 +400点（美伊谈判进展）",
+      "VIX 16.73 低位，风险偏好改善"
     ],
     "inflation_signals": [
-      "10Y收益率维持4.67%高位",
-      "油价维持103+高位，通胀二次上行风险未解除",
-      "5Y BEI 2.59%，通胀预期仍偏高"
+      "Brent $104.44 接近 $115 风控阈值",
+      "油价高位维持，通胀二次上行风险未解除"
     ],
-    "regime_label": "高通胀+延后降息"
+    "regime_label": "高通胀+延后降息+地缘缓和"
   },
   "btc_signals": {
-    "direction": "neutral_bullish",
+    "direction": "neutral",
     "confidence": "medium",
-    "action": "观望偏左侧布局",
-    "entry_zone": "$75K-78K区间分批建仓",
-    "stop_loss": "$72K有效跌破则趋势转空",
-    "rationale": "AHR999=0.47低估+MVRV=1.42适中+ETF持续流出+Fear&Greed=29恐慌，估值偏低但资金面偏弱"
+    "action": "观望",
+    "entry_zone": "$72K以下分批建仓（risk-manager 抄底位）",
+    "stop_loss": "$75K有效跌破则趋势转空",
+    "note": "ETF本周$1B流出，需观察下周持续性"
   },
   "three_market_advice": {
     "gold": {
       "advice": "维持观察，不追高",
-      "logic": "金价高位运行，油价高位，通胀二次上行风险未解除，黄金仍有避险价值"
+      "logic": "美元走强压制金价，地缘缓和降低避险需求"
     },
     "spx": {
-      "advice": "偏防守，降低追价冲动",
-      "logic": "美股回调+利率高位+期限利差正常化，等待更明确信号"
+      "advice": "偏乐观但谨慎",
+      "logic": "美伊谈判进展推动 Dow 创新高，但油价仍高，利率压力大"
     },
     "btc": {
-      "advice": "$75-78K分批左侧布局",
-      "logic": "AHR999低估+MVRV适中，但ETF持续流出+Coinbase负溢价，资金面偏弱，不宜追高"
+      "advice": "$72K以下分批建仓",
+      "logic": "本周ETF$1B流出，需观察持续性；$77K附近观望"
     }
   },
   "key_events": {
-    "P0": [],
+    "P0": [
+      {
+        "title": "美伊谈判进展",
+        "fact": "美国和伊朗谈判取得进展，可能结束中东冲突",
+        "importance": "推动 Dow 创纪录新高 +400点",
+        "investment_implication": "地缘缓和利好风险资产，油价下行压力"
+      }
+    ],
     "P1": [
       {
-        "title": "ETF持续流出",
-        "fact": "5日累计净流出$1147.8M",
-        "importance": "BTC资金面信号",
-        "implication": "机构买盘减弱，需关注流出趋势是否延续"
+        "title": "Brent 接近风控阈值",
+        "fact": "Brent $104.44，接近 $115 风控阈值",
+        "importance": "若突破则宏观维度升级",
+        "investment_implication": "通胀二次上行风险未解除"
       },
       {
-        "title": "Fear & Greed Index = 29",
-        "fact": "进入恐慌区间",
-        "importance": "市场情绪信号",
-        "implication": "情绪偏恐慌，可能接近底部区域"
+        "title": "BTC ETF周流出",
+        "fact": "本周$1B流出",
+        "importance": "需观察下周持续性",
+        "investment_implication": "机构需求减弱，短期承压"
       },
       {
-        "title": "期限利差正常化",
-        "fact": "2s10s Spread = 0.53%",
-        "importance": "宏观周期信号",
-        "implication": "收益率倒挂结束，经济周期进入新阶段"
+        "title": "Drift Protocol 漏洞",
+        "fact": "$270M DeFi 漏洞",
+        "importance": "非CEX系统性风险",
+        "investment_implication": "year-to-date DeFi损失$770M，非交易所异常"
+      },
+      {
+        "title": "USD/JPY 高位",
+        "fact": "159.205 本周高点",
+        "importance": "日元无急升压力",
+        "investment_implication": "carry trade 未触发熔断信号"
       }
     ]
   },
-  "full_report_text": "【宏观晚报缺失】今日宏观日报生成链路异常，自2026-05-19后未更新。本macro-signal.json基于Glassnode SQLite+FRED替代数据源构建，缺少完整的宏观晚报原文分析。建议检查macro-monitor cron任务状态及日报生成流程。"
+  "full_report_text": "⚠️ 宏观日报滞后警告：\n\n最新宏观日报为 2026-05-14（已滞后9天）。macro-monitor workspace memory 目录下无 2026-05-19 至 2026-05-23 的日报文件。\n\n本同步任务基于以下数据源融合构建：\n1. workspace-risk-manager/memory/2026-05-23.md（CRL 日志）\n2. web_search 搜索结果（May 22, 2026 市场数据）\n3. workspace-macro-monitor/memory/macro-signal-pending.json（历史基线）\n\n关键发现：\n- Dow 创纪录新高 50,636.90 (+0.70%)，美伊谈判进展推动\n- VIX 16.73 低位，风险偏好改善\n- Gold $4,525/oz (+0.2%)，美元走强压制\n- WTI $97.44, Brent $104.44（接近$115风控阈值）\n- USD/JPY 159.205 高点，carry trade 未触发熔断\n- BTC $77.6K，本周ETF流出$1B\n- CRL 21 🟢 GREEN（risk-manager 计算）\n\n数据源状态：\n- web_fetch：❌ 被阻止（SSRF策略限制）\n- tavily_search：❌ 被阻止\n- firecrawl_search：❌ 被阻止\n- web_search：✅ 部分成功（Dow/BTC/Gold/WTI/USD/JPY）\n\n建议：检查 macro-monitor agent cron 任务是否正常运行，确保日报按时生成。"
 }
