@@ -1,33 +1,162 @@
 {
-  "timestamp": "2026-05-21T11:00:00+08:00",
-  "price": 78010,
-  "bottom_score": 0,
-  "top_score": 0,
-  "direction": "NEUTRAL",
-  "confidence": 3,
-  "action": "不建仓，观望",
-  "phase": "熊市初期向中期过渡",
-  "drawdown_pct": -37.5,
-  "peak_price": 124774,
-  "mvrv_z": 0.7779,
-  "nupl": 0.2921,
-  "puell": 0.7911,
-  "monthly_rsi": 74.14,
-  "fear_greed": 29,
-  "dxy": 100.5,
-  "vix": 17.44,
-  "gold": 4537,
-  "spx": 7433,
-  "ahr999": 0.4749,
-  "lth_sopr": 0.82,
-  "asopr": 1.001,
-  "dz_activated": 2,
-  "l1_triggered": false,
-  "l2_triggered": false,
-  "l3_triggered": false,
-  "etf_flow": -648.6,
-  "target_range_low": 55000,
-  "target_range_high": 65000,
-  "stop_loss": 42000,
-  "max_position_pct": 50
+  "_schema_version": "2.0",
+  "report_date": "2026-05-22",
+  "generated_at": "2026-05-22T10:34:46.262531+08:00",
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
+  "signal": {
+    "direction": "观望",
+    "action": "0%新增建仓，维持现货，零杠杆",
+    "confidence": "中等偏低",
+    "bottom_score": 0,
+    "bottom_score_max": 8,
+    "top_risk_score": 0,
+    "top_risk_score_max": 8,
+    "data_freshness_warning": true,
+    "warning": "09:45 flag=NOT_FOUND；核心链上指标存在T-2/T-3滞后"
+  },
+  "price": {
+    "btc_realtime": null,
+    "btc_close": 77467.5516,
+    "date": "2026-05-20",
+    "source": "glassnode_v1.sqlite; OKX实时接口连接失败",
+    "stale_days": 2
+  },
+  "onchain": {
+    "mvrv_z_score": {
+      "value": 0.7779,
+      "date": "2026-05-19",
+      "trigger": false,
+      "stale_days": 3
+    },
+    "mvrv": {
+      "value": 1.4156,
+      "date": "2026-05-19",
+      "stale_days": 3
+    },
+    "nupl": {
+      "value": 0.2977,
+      "date": "2026-05-20",
+      "trigger": false,
+      "stale_days": 2
+    },
+    "puell_multiple": {
+      "value": 0.7911,
+      "date": "2026-05-19",
+      "trigger": false,
+      "stale_days": 3
+    },
+    "sopr_adjusted": {
+      "value": 1.001,
+      "date": "2026-05-20",
+      "continuous_below_1_days": 0,
+      "recent_14_rows_below_1": 10,
+      "stale_days": 2
+    },
+    "lth_sopr": {
+      "value": 0.82,
+      "date": "2026-05-19",
+      "stale_days": 3
+    },
+    "sth_sopr": {
+      "value": 0.992,
+      "date": "2026-05-19",
+      "stale_days": 3
+    },
+    "ahr999": {
+      "value": 0.4747,
+      "date": "2026-05-21",
+      "trigger": false
+    },
+    "mayer_multiple": {
+      "value": 0.9531,
+      "date": "2026-05-20",
+      "trigger": false,
+      "stale_days": 2
+    },
+    "monthly_rsi_14": {
+      "value": 41.26,
+      "date": "2026-05-20",
+      "source": "sqlite_realtime_calc",
+      "trigger": false
+    }
+  },
+  "depression_zone": {
+    "score": 0,
+    "max": 5,
+    "conditions": {
+      "price_below_200wma": false,
+      "price_below_realized_price": false,
+      "ahr999_below_045": false,
+      "mvrv_z_below_0": false,
+      "mayer_below_065": false
+    },
+    "values": {
+      "ma_200w": 61190.7348,
+      "realized_price": 54235.4595,
+      "ahr999": 0.4747,
+      "mvrv_z_score": 0.7779,
+      "mayer_multiple": 0.9531
+    }
+  },
+  "levels": {
+    "L1": {
+      "triggered": false,
+      "cvdd": 46153.9066,
+      "balanced_price": 40367.2572
+    },
+    "L2": {
+      "triggered": false,
+      "reason": "DZ未激活；Puell未低于0.5"
+    },
+    "L3": {
+      "triggered": false,
+      "reason": "DZ未激活；MA5<MA20；RSI未确认"
+    }
+  },
+  "macro": {
+    "regime": "B Neutral/Cooling（保守判定）",
+    "growth": {
+      "initial_jobless_claims": "209K [2026-05-21]",
+      "spx": "7445.72, +0.2% [2026-05-21]",
+      "yield_curve_10y2y": "+0.50pp [2026-05-15]"
+    },
+    "inflation": {
+      "bei_5y": "2.58%-2.60% [2026-05]",
+      "oil": "油价冲击回落但仍为尾风险",
+      "gold": "暂无可靠更新",
+      "silver": "暂无可靠更新"
+    },
+    "script_missing": [
+      "net_liq",
+      "m2",
+      "hy_spread",
+      "vix",
+      "dxy",
+      "usdjpy",
+      "btc_etf"
+    ]
+  },
+  "sentiment": {
+    "fear_greed": 29,
+    "label": "Fear/数据库值",
+    "date": "2026-05-21",
+    "realtime_api": "failed"
+  },
+  "cycle": {
+    "phase": "周期中段回撤/修复区，非投降底",
+    "bottom_progress": "0/8",
+    "dz_progress": "0/5",
+    "vix_tactical": "暂无可靠更新"
+  },
+  "strategy": {
+    "new_allocation_pct": 0,
+    "max_allocation_pct": "40-50%",
+    "leverage": "0x",
+    "plan": "底部矩阵>=3/8后才允许5%-15%试仓"
+  },
+  "risks": [
+    "链上数据滞后2-3天",
+    "5Y BEI高于2.5%",
+    "MA5<MA20短线偏弱"
+  ]
 }
