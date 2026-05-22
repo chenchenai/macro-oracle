@@ -1,49 +1,60 @@
 {
-  "timestamp": "2026-05-19T10:00:00+08:00",
-  "crl": 24,
+  "timestamp": "2026-05-22T10:00:00+08:00",
+  "crl": 13.5,
   "level": "GREEN",
-  "levelNote": "ETF橙灯延续+质性按YELLOW执行",
+  "levelNote": "ETF周流出未消+Hormuz尾险，按GREEN偏保守执行",
   "scores": {
-    "macro": 20,
-    "structure": 50,
+    "macro": 0,
+    "structure": 35,
     "chain": 0,
     "event": 20
   },
   "marketAnchors": {
-    "btcPrice": 76246,
+    "btcPrice": 76803,
     "btcATH": 126210,
     "btcDrawdown": 39,
-    "vix": 17.5,
-    "usdJpy": 158.77,
-    "brent": 109.28,
-    "fearGreed": 31,
-    "etfFlowWeekly": -1000000000
+    "vix": 17.85,
+    "usdJpy": 159.1,
+    "brent": 102.9,
+    "fearGreed": 28,
+    "etfFlowDaily": 1100000,
+    "etfFlowWeekly": -2000000000,
+    "sp500": 7445.72,
+    "nasdaq": 26293.10
   },
   "activeAlerts": [
     {
-      "id": "S-04",
+      "id": "S-05",
       "name": "ETF周累计流出",
-      "value": "$1B",
-      "threshold": ">$1B周累计",
+      "value": "7日约-$2.0B",
+      "threshold": ">$2.0B周累计",
       "status": "ORANGE",
       "priority": "P1"
     },
     {
+      "id": "S-07",
+      "name": "Put偏斜偏高",
+      "value": "~11%",
+      "threshold": ">10%",
+      "status": "ORANGE",
+      "priority": "P2"
+    },
+    {
       "id": "E-06",
-      "name": "Hormuz停火脆弱",
-      "value": "两周谈判窗口",
-      "threshold": "交火恢复",
+      "name": "Hormuz谈判尾险",
+      "value": "谈判继续，航运未常态化",
+      "threshold": "谈判恶化或Brent重返110+",
       "status": "YELLOW",
       "priority": "P0"
     }
   ],
   "positionRecommendations": {
-    "corePosition": "60-70%",
-    "trendPosition": "0-20%（清零）",
-    "totalPositionCap": "≤60%",
-    "leverage": "零杠杆",
-    "putHedge": "净值2%",
+    "corePosition": "60-80%",
+    "trendPosition": "0-20%轻仓",
+    "totalPositionCap": "≤80%",
+    "leverage": "≤1x实操",
+    "putHedge": "净值1-2%",
     "ammoBucket": "20-35%待命"
   },
-  "nextUpdate": "2026-05-19T12:15:00+08:00"
+  "nextUpdate": "2026-05-22T14:00:00+08:00"
 }
