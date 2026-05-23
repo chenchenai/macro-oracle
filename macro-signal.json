@@ -1,69 +1,51 @@
 {
   "meta": {
-    "generated_at": "2026-05-23 02:20 CST",
-    "data_date": "2026-05-22",
-    "report_date": "2026-05-22",
+    "generated_at": "2026-05-24 02:20 CST",
+    "data_date": "2026-05-14",
+    "report_date": "2026-05-24",
     "stale": true,
-    "note": "宏观日报滞后（最新日报为 2026-05-14），数据来源于 web_search + risk-manager 日志 + pending 文件融合",
-    "source": "web_search + workspace-risk-manager/memory/2026-05-23.md + pending-signal"
+    "note": "数据来源于 2026-05-14 宏观信号，今日及近5日无新报告生成",
+    "source": "macro-signal-pending.json (2026-05-15)"
   },
   "market_snapshot": {
     "spx": {
-      "price": null,
-      "change": null,
-      "note": "数据暂缺（搜索受限）"
+      "price": 7444.25,
+      "change": "+0.6%"
     },
     "nasdaq": {
-      "price": null,
-      "change": null,
-      "note": "数据暂缺（搜索受限）"
+      "price": 26088.20,
+      "change": "+1.2%"
     },
     "dow": {
-      "price": 50636.90,
-      "change": "+0.70%",
-      "note": "创纪录新高，美伊谈判进展推动"
+      "price": 49693.20,
+      "change": "-0.1%"
     },
     "btc": {
-      "price": 77600,
-      "change": "-1%",
-      "note": "risk-manager 日志数据"
+      "price": 80611
     },
     "eth": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 2294.71
     },
     "gold": {
-      "price": 4525,
-      "change": "+0.2%",
-      "note": "美元走强压制"
+      "price": 4709.15
     },
     "silver": {
       "price": null,
       "note": "数据暂缺"
     },
     "wti": {
-      "price": 97.44,
-      "change": null,
-      "note": "Kitco 数据"
-    },
-    "brent": {
-      "price": 104.44,
-      "change": null,
-      "note": "接近 $115 风控阈值"
+      "price": 101.66
     },
     "dxy": {
-      "price": null,
-      "note": "美元走强（Kitco 报道）"
+      "price": 98.43
     },
     "vix": {
-      "price": 16.73,
-      "change": null,
-      "note": "低位，远低于 25 阈值"
+      "price": null,
+      "note": "数据暂缺"
     },
     "usdjpy": {
-      "price": 159.205,
-      "change": null,
-      "note": "本周高点，日元无急升压力"
+      "price": null,
+      "note": "数据暂缺"
     }
   },
   "rates": {
@@ -76,8 +58,7 @@
       "note": "数据暂缺"
     },
     "usy10": {
-      "value": null,
-      "note": "mid-4% area（Kitco）"
+      "value": 4.461
     },
     "usy30": {
       "value": null,
@@ -115,78 +96,71 @@
     },
     "m2_yoy": {
       "value": null,
-      "note": "M2 $22.69T (Mar 2026)，继续扩张"
+      "note": "数据暂缺"
     }
   },
   "dalio_quadrant": {
     "quadrant_name": "Reflation",
     "growth_signals": [
-      "Dow 创纪录新高 +400点（美伊谈判进展）",
-      "VIX 16.73 低位，风险偏好改善"
+      "增长暂未失速 - 经济韧性仍存",
+      "Nasdaq强 +1.2%，AI主线情绪强劲"
     ],
     "inflation_signals": [
-      "Brent $104.44 接近 $115 风控阈值",
-      "油价高位维持，通胀二次上行风险未解除"
+      "CPI年增速升至3.8%（近三年高位区间）",
+      "油价维持高位 ~$101，通胀二次上行风险未解除"
     ],
-    "regime_label": "高通胀+延后降息+地缘缓和"
+    "regime_label": "高通胀+延后降息"
   },
   "btc_signals": {
     "direction": "neutral",
     "confidence": "medium",
     "action": "观望",
-    "entry_zone": "$72K以下分批建仓（risk-manager 抄底位）",
-    "stop_loss": "$75K有效跌破则趋势转空",
-    "note": "ETF本周$1B流出，需观察下周持续性"
+    "entry_zone": "$78K以下分批建仓",
+    "stop_loss": "$75K有效跌破则趋势转空"
   },
   "three_market_advice": {
     "gold": {
       "advice": "维持观察，不追高",
-      "logic": "美元走强压制金价，地缘缓和降低避险需求"
+      "logic": "油价仍高，通胀二次上行风险没解除"
     },
     "spx": {
-      "advice": "偏乐观但谨慎",
-      "logic": "美伊谈判进展推动 Dow 创新高，但油价仍高，利率压力大"
+      "advice": "偏防守，降低追价冲动",
+      "logic": "若零售销售>预期，利率上行压力大"
     },
     "btc": {
-      "advice": "$72K以下分批建仓",
-      "logic": "本周ETF$1B流出，需观察持续性；$77K附近观望"
+      "advice": "$78K以下分批建仓",
+      "logic": "$80K附近横盘，避免追高"
     }
   },
   "key_events": {
     "P0": [
       {
-        "title": "美伊谈判进展",
-        "fact": "美国和伊朗谈判取得进展，可能结束中东冲突",
-        "importance": "推动 Dow 创纪录新高 +400点",
-        "investment_implication": "地缘缓和利好风险资产，油价下行压力"
+        "title": "美国4月CPI高于预期",
+        "fact": "CPI年增速升至3.8%，高于预期3.7%",
+        "importance": "全资产定价锚点",
+        "investment_implication": "通胀粘性超预期，降息预期延后"
       }
     ],
     "P1": [
       {
-        "title": "Brent 接近风控阈值",
-        "fact": "Brent $104.44，接近 $115 风控阈值",
-        "importance": "若突破则宏观维度升级",
-        "investment_implication": "通胀二次上行风险未解除"
+        "title": "零售销售（待公布）",
+        "fact": "预期+0.4% MoM",
+        "importance": "验证消费韧性",
+        "investment_implication": "若超预期强化利率上行压力"
       },
       {
-        "title": "BTC ETF周流出",
-        "fact": "本周$1B流出",
-        "importance": "需观察下周持续性",
-        "investment_implication": "机构需求减弱，短期承压"
+        "title": "初请失业金",
+        "fact": "预期约20.5万",
+        "importance": "劳动力市场信号",
+        "investment_implication": "持续低位支撑紧缩政策"
       },
       {
-        "title": "Drift Protocol 漏洞",
-        "fact": "$270M DeFi 漏洞",
-        "importance": "非CEX系统性风险",
-        "investment_implication": "year-to-date DeFi损失$770M，非交易所异常"
-      },
-      {
-        "title": "USD/JPY 高位",
-        "fact": "159.205 本周高点",
-        "importance": "日元无急升压力",
-        "investment_implication": "carry trade 未触发熔断信号"
+        "title": "Nvidia财报",
+        "fact": "5月20日公布",
+        "importance": "AI主线风险偏好关键锚点",
+        "investment_implication": "业绩指引影响科技股情绪"
       }
     ]
   },
-  "full_report_text": "⚠️ 宏观日报滞后警告：\n\n最新宏观日报为 2026-05-14（已滞后9天）。macro-monitor workspace memory 目录下无 2026-05-19 至 2026-05-23 的日报文件。\n\n本同步任务基于以下数据源融合构建：\n1. workspace-risk-manager/memory/2026-05-23.md（CRL 日志）\n2. web_search 搜索结果（May 22, 2026 市场数据）\n3. workspace-macro-monitor/memory/macro-signal-pending.json（历史基线）\n\n关键发现：\n- Dow 创纪录新高 50,636.90 (+0.70%)，美伊谈判进展推动\n- VIX 16.73 低位，风险偏好改善\n- Gold $4,525/oz (+0.2%)，美元走强压制\n- WTI $97.44, Brent $104.44（接近$115风控阈值）\n- USD/JPY 159.205 高点，carry trade 未触发熔断\n- BTC $77.6K，本周ETF流出$1B\n- CRL 21 🟢 GREEN（risk-manager 计算）\n\n数据源状态：\n- web_fetch：❌ 被阻止（SSRF策略限制）\n- tavily_search：❌ 被阻止\n- firecrawl_search：❌ 被阻止\n- web_search：✅ 部分成功（Dow/BTC/Gold/WTI/USD/JPY）\n\n建议：检查 macro-monitor agent cron 任务是否正常运行，确保日报按时生成。"
+  "full_report_text": "【数据滞后警告】2026-05-24 无当日宏观报告。以下为 2026-05-14 历史数据摘要：\n\n=== 市场快照 ===\nSPX: 7444.25 (+0.6%)\nNasdaq: 26088.20 (+1.2%)\nDow: 49693.20 (-0.1%)\nBTC: $80,611\nETH: $2,294.71\nGold: $4,709.15\nWTI: $101.66\nDXY: 98.43\nUS10Y: 4.461%\n\n=== Dalio象限 ===\n当前：Reflation（再通胀）\n增长信号：韧性仍存，AI主线强劲\n通胀信号：CPI 3.8%高位，油价维持$101\n\n=== 三市场建议 ===\n黄金：维持观察，不追高\n美股：偏防守，降低追价冲动\nBTC：$78K以下分批建仓\n\n=== 关键事件 ===\nP0: 美国4月CPI高于预期 (3.8% vs 3.7%)\nP1: 零售销售、初请失业金、Nvidia财报"
 }
