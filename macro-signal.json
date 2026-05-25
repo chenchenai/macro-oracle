@@ -1,166 +1,67 @@
 {
   "meta": {
-    "generated_at": "2026-05-24 02:20 CST",
-    "data_date": "2026-05-14",
-    "report_date": "2026-05-24",
+    "generated_at": "2026-05-26T02:20:00+08:00",
+    "data_date": "2026-05-19",
+    "report_date": "2026-05-26",
     "stale": true,
-    "note": "数据来源于 2026-05-14 宏观信号，今日及近5日无新报告生成",
-    "source": "macro-signal-pending.json (2026-05-15)"
+    "stale_days": 7,
+    "stale_reason": "宏观分析师日报自 2026-05-19 后未更新，最近7天无新报告"
   },
   "market_snapshot": {
-    "spx": {
-      "price": 7444.25,
-      "change": "+0.6%"
-    },
-    "nasdaq": {
-      "price": 26088.20,
-      "change": "+1.2%"
-    },
-    "dow": {
-      "price": 49693.20,
-      "change": "-0.1%"
-    },
-    "btc": {
-      "price": 80611
-    },
-    "eth": {
-      "price": 2294.71
-    },
-    "gold": {
-      "price": 4709.15
-    },
-    "silver": {
-      "price": null,
-      "note": "数据暂缺"
-    },
-    "wti": {
-      "price": 101.66
-    },
-    "dxy": {
-      "price": 98.43
-    },
-    "vix": {
-      "price": null,
-      "note": "数据暂缺"
-    },
-    "usdjpy": {
-      "price": null,
-      "note": "数据暂缺"
-    }
+    "spx": { "price": null, "change_pct": null, "note": "数据滞后，请检查宏观分析师任务状态" },
+    "nasdaq": { "price": null, "change_pct": null },
+    "dow": { "price": null, "change_pct": null },
+    "btc": { "price": null, "change_pct": null },
+    "eth": { "price": null, "change_pct": null },
+    "gold": { "price": null, "change_pct": null },
+    "silver": { "price": null, "change_pct": null },
+    "wti": { "price": null, "change_pct": null },
+    "dxy": { "price": null, "change_pct": null },
+    "vix": { "price": null, "change_pct": null },
+    "usdjpy": { "price": null, "change_pct": null }
   },
   "rates": {
-    "ffr": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "usy2": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "usy10": {
-      "value": 4.461
-    },
-    "usy30": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "spread_2s10s": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "bei_5y": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "tips_10y": {
-      "value": null,
-      "note": "数据暂缺"
-    }
+    "ffr": null,
+    "usy2": null,
+    "usy10": null,
+    "usy30": null,
+    "spread_2s10s": null,
+    "bei_5y": null,
+    "tips_10y": null
   },
   "credit": {
-    "hy_spread": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "ig_spread": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "fed_balance_sheet_t": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "m2_yoy": {
-      "value": null,
-      "note": "数据暂缺"
-    }
+    "hy_spread": null,
+    "ig_spread": null,
+    "fed_balance_sheet_t": null,
+    "net_liquidity_b": null,
+    "m2_yoy": null
   },
   "dalio_quadrant": {
-    "quadrant_name": "Reflation",
-    "growth_signals": [
-      "增长暂未失速 - 经济韧性仍存",
-      "Nasdaq强 +1.2%，AI主线情绪强劲"
-    ],
-    "inflation_signals": [
-      "CPI年增速升至3.8%（近三年高位区间）",
-      "油价维持高位 ~$101，通胀二次上行风险未解除"
-    ],
-    "regime_label": "高通胀+延后降息"
+    "quadrant_name": "数据缺失",
+    "growth_signals": [],
+    "inflation_signals": [],
+    "regime_label": "无法判断"
   },
   "btc_signals": {
     "direction": "neutral",
-    "confidence": "medium",
-    "action": "观望",
-    "entry_zone": "$78K以下分批建仓",
-    "stop_loss": "$75K有效跌破则趋势转空"
+    "confidence": "low",
+    "action": "等待数据更新",
+    "entry_zone": null,
+    "stop_loss": null
   },
   "three_market_advice": {
-    "gold": {
-      "advice": "维持观察，不追高",
-      "logic": "油价仍高，通胀二次上行风险没解除"
-    },
-    "spx": {
-      "advice": "偏防守，降低追价冲动",
-      "logic": "若零售销售>预期，利率上行压力大"
-    },
-    "btc": {
-      "advice": "$78K以下分批建仓",
-      "logic": "$80K附近横盘，避免追高"
+    "gold": { "advice": "数据滞后", "logic": "等待宏观日报更新" },
+    "spx": { "advice": "数据滞后", "logic": "等待宏观日报更新" },
+    "btc": { "advice": "数据滞后", "logic": "等待宏观日报更新" }
+  },
+  "key_events": [
+    {
+      "priority": "P0",
+      "title": "宏观日报数据滞后",
+      "fact": "最新日报为2026-05-19，距今已7天无更新",
+      "importance": "高",
+      "implication": "Dashboard数据可能过时，需检查宏观分析师cron任务状态"
     }
-  },
-  "key_events": {
-    "P0": [
-      {
-        "title": "美国4月CPI高于预期",
-        "fact": "CPI年增速升至3.8%，高于预期3.7%",
-        "importance": "全资产定价锚点",
-        "investment_implication": "通胀粘性超预期，降息预期延后"
-      }
-    ],
-    "P1": [
-      {
-        "title": "零售销售（待公布）",
-        "fact": "预期+0.4% MoM",
-        "importance": "验证消费韧性",
-        "investment_implication": "若超预期强化利率上行压力"
-      },
-      {
-        "title": "初请失业金",
-        "fact": "预期约20.5万",
-        "importance": "劳动力市场信号",
-        "investment_implication": "持续低位支撑紧缩政策"
-      },
-      {
-        "title": "Nvidia财报",
-        "fact": "5月20日公布",
-        "importance": "AI主线风险偏好关键锚点",
-        "investment_implication": "业绩指引影响科技股情绪"
-      }
-    ]
-  },
-  "full_report_text": "【数据滞后警告】2026-05-24 无当日宏观报告。以下为 2026-05-14 历史数据摘要：\n\n=== 市场快照 ===\nSPX: 7444.25 (+0.6%)\nNasdaq: 26088.20 (+1.2%)\nDow: 49693.20 (-0.1%)\nBTC: $80,611\nETH: $2,294.71\nGold: $4,709.15\nWTI: $101.66\nDXY: 98.43\nUS10Y: 4.461%\n\n=== Dalio象限 ===\n当前：Reflation（再通胀）\n增长信号：韧性仍存，AI主线强劲\n通胀信号：CPI 3.8%高位，油价维持$101\n\n=== 三市场建议 ===\n黄金：维持观察，不追高\n美股：偏防守，降低追价冲动\nBTC：$78K以下分批建仓\n\n=== 关键事件 ===\nP0: 美国4月CPI高于预期 (3.8% vs 3.7%)\nP1: 零售销售、初请失业金、Nvidia财报"
+  ],
+  "full_report_text": "# ⚠️ 数据滞后警告\n\n宏观分析师日报自 2026-05-19 后未更新。\n\n最新日志：`/Users/cc/.openclaw/workspace-macro-monitor/memory/2026-05-19.md`\n\n请检查：\n1. 宏观分析师cron任务是否正常运行\n2. macro-monitor agent是否处于活跃状态\n3. 是否有运行时错误阻止日报生成\n\n---\n_同步时间: 2026-05-26T02:20 CST_"
 }
