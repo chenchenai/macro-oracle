@@ -1,228 +1,148 @@
 {
   "meta": {
-    "generated_at": "2026-05-27 02:46:04 CST",
-    "data_date": "2026-05-26",
-    "report_date": "2026-05-26",
+    "generated_at": "2026-05-28T02:40:00 CST",
+    "data_date": "2026-05-27",
+    "report_date": "2026-05-28",
     "data_lag_days": 1,
-    "stale": false,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-05-26.md"
+    "stale": true,
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-05-27.md",
+    "notes": "今日日志不存在，使用前一天日志。日志仅包含日报，缺少周期解读(report2)和鲸鱼报告(report3)。"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.1",
-    "date": "2026-05-26",
+    "date": "2026-05-27",
     "exec_time": "10:10 CST",
-    "data_flag": "daily-2026-05-26.flag",
+    "data_flag": "/tmp/btc-onchain-daily-2026-05-27.flag",
+    "telegram_group": "-5042386860",
+    "message_ids": ["3段消息发送成功"],
     "core_data": {
-      "price": 77287,
-      "ath_drawdown": 38.8,
-      "fear_greed_index": 34,
+      "price_realtime": "$75,695 (CoinGecko实时)",
+      "price_db": "$77,287 (05-25)",
+      "six_dimension_score": 51,
+      "signal_grade": "C级",
       "cycle_phase": "熊市中段",
-      "cycle_progress": "60.7%",
-      "ahr999": 0.461,
-      "lth_sopr": 0.954,
-      "sth_sopr": null,
-      "mvrv": null,
-      "mvrv_z_score": null,
-      "nupl": null,
+      "cycle_day": "ATH后233天/382天",
+      "cycle_progress": "61.0%",
+      "fear_greed_index": 25,
+      "fgi_state": "极度恐惧",
+      "ahr999": 0.468,
+      "ahr999_gap_to_bottom": "4% (距抄底区0.45)",
+      "lth_sopr": 0.949,
+      "lth_sopr_status": "持续低于1.0（第6天）",
       "spot_rvol": 0.0925,
-      "coinbase_premium": -0.029,
-      "exchange_net_flow_7d": "+116K BTC"
+      "spot_rvol_status": "极度低迷(05-19数据)",
+      "coinbase_premium": "-0.029%",
+      "coinbase_premium_status": "美国机构持续无买入意愿",
+      "mvrv": 1.426,
+      "mvrv_z_score": 0.794,
+      "valuation_status": "估值中性偏低，未到极端低估",
+      "exchange_net_flow_7d": "+116K BTC",
+      "exchange_net_flow_status": "延续昨日趋势，卖压未缓解"
     },
     "six_dimension_score": {
-      "valuation": null,
-      "holder_behavior": null,
-      "miner_economics": null,
-      "network_activity": null,
-      "capital_flow": 28,
-      "market_structure": null,
-      "total": 49,
-      "grade": "C"
+      "total": 51,
+      "grade": "C",
+      "capital_flow": 35,
+      "capital_flow_note": "最大拖累维度",
+      "change_from_yesterday": "+2",
+      "change_reason": "主要因LTH-SOPR和Puell数据更新小幅改善"
     },
     "cycle_judgment": {
       "phase": "熊市中段",
-      "confidence": null,
-      "signal_level": null,
-      "entry_zone": null,
-      "position_advice": null
+      "confidence": "中等",
+      "signal_level": "C级",
+      "entry_zone": "观望",
+      "position_suggestion": "维持观察仓或轻仓"
     },
     "skills_triggered": {
       "triggered": [],
       "near_trigger": [
         {
-          "name": "Ahr999抄底信号",
-          "current": 0.461,
+          "name": "ahr999-bottom-zone",
+          "current_value": 0.468,
           "threshold": 0.45,
-          "gap": "2.5%"
-        }
-      ]
-    },
-    "anomaly_detection": {
-      "stale_data": [
-        {
-          "metric": "nvt_signal",
-          "lag_days": 35,
-          "priority": "P0"
-        },
-        {
-          "metric": "supply_in_profit_pct",
-          "lag_days": 35,
-          "priority": "P0"
-        },
-        {
-          "metric": "coinbase_premium",
-          "lag_days": 7,
-          "priority": "P1"
-        },
-        {
-          "metric": "funding_rate",
-          "lag_days": 6,
-          "priority": "P1"
-        },
-        {
-          "metric": "spot_rvol_30d",
-          "lag_days": 7,
-          "priority": "P1"
+          "gap_pct": 4,
+          "trend": "接近触发"
         }
       ],
-      "no_skill_changes": true,
-      "no_2sigma_changes": true
+      "notes": "无S/A级Skill状态变化，无2σ变化"
     },
-    "full_report_text": "## 10:10 BTC链上深度日报 V2.1\n\n- **发送成功**: 4段消息发送至Telegram群 -5042386860\n- **Flag已写**: /tmp/btc-onchain-daily-2026-05-26.flag\n\n### 核心数据快照\n- 价格: $77,287 | ATH回撤: 38.8%\n- 六维评分: 49/100 → C级\n- 周期阶段: 熊市中段（ATH后232天/382天 = 60.7%）\n- 恐贪指数: 34（恐惧）\n\n### 关键发现\n1. **交易所7日净流入+116K BTC** — 近期最大规模卖压，资本流动维度仅28分，是最大拖累\n2. **Ahr999 = 0.461** — 距抄底区0.45仅2.5%！最接近触发的信号\n3. **LTH-SOPR = 0.954** — 持续低于1.0，长期持有者微亏卖出\n4. **现货RVol = 0.0925** — 极度低迷，市场定价权转衍生品\n5. **Coinbase溢价 = -0.029%** — 美国机构无买入意愿\n\n### 数据异常\n- nvt_signal / supply_in_profit_pct 滞后35天（P0）\n- coinbase_premium 滞后7天，funding_rate 滞后6天\n- spot_rvol_30d 滞后7天\n\n### 无异动触发\n- 无S/A级Skill状态变化\n- 无2σ日变化\n- 交易所持续净流入值得持续监控"
+    "anomaly_detection": {
+      "nvt_signal": {
+        "lag_days": 36,
+        "priority": "P1",
+        "last_date": "未知"
+      },
+      "supply_in_profit_pct": {
+        "lag_days": 36,
+        "priority": "P1",
+        "last_date": "未知"
+      },
+      "coinbase_premium": {
+        "lag_days": 8,
+        "priority": "P0",
+        "last_date": "未知"
+      },
+      "spot_rvol_30d": {
+        "lag_days": 8,
+        "priority": "P0",
+        "last_date": "05-19"
+      },
+      "funding_rate": {
+        "lag_days": 7,
+        "priority": "P1",
+        "last_date": "未知"
+      },
+      "realized_pl_ratio": {
+        "lag_days": 52,
+        "priority": "P1",
+        "last_date": "未知"
+      },
+      "tmm": {
+        "lag_days": 52,
+        "priority": "P1",
+        "last_date": "未知"
+      }
+    },
+    "vs_yesterday": {
+      "six_dimension": "49 → 51 (+2)",
+      "signal_level": "C级维持",
+      "no_trigger": "总分变化<10，无S/A级Skill状态变化，无2σ变化"
+    },
+    "key_findings": [
+      "交易所7日净流入+116K BTC — 延续昨日趋势，卖压未缓解",
+      "Ahr999 = 0.468 — 距抄底区0.45仅4%，最接近触发的底部信号",
+      "LTH-SOPR = 0.949 — 持续低于1.0（第6天），长期持有者微亏卖出延续",
+      "现货RVol = 0.0925 — 极度低迷（05-19数据），市场定价权仍由衍生品主导",
+      "Coinbase溢价 = -0.029% — 美国机构持续无买入意愿"
+    ],
+    "full_report_text": "## 10:10 BTC链上深度日报 V2.1\n\n- **发送成功**: 3段消息发送至Telegram群 -5042386860\n- **Flag已写**: /tmp/btc-onchain-daily-2026-05-27.flag\n\n### 核心数据快照\n- 价格: $75,695（CoinGecko实时）| DB: $77,287（05-25）\n- 六维评分: 51/100 → C级\n- 周期阶段: 熊市中段（ATH后233天/382天 = 61.0%）\n- 恐贪指数: 25（极度恐惧）\n\n### 关键发现\n1. **交易所7日净流入+116K BTC** — 延续昨日趋势，卖压未缓解，资本流动维度仅35分仍为最大拖累\n2. **Ahr999 = 0.468** — 距抄底区0.45仅4%！最接近触发的底部信号\n3. **LTH-SOPR = 0.949** — 持续低于1.0（第6天），长期持有者微亏卖出延续\n4. **现货RVol = 0.0925** — 极度低迷（05-19数据），市场定价权仍由衍生品主导\n5. **Coinbase溢价 = -0.029%** — 美国机构持续无买入意愿\n6. **MVRV = 1.426 / Z-Score = 0.794** — 估值中性偏低，未到极端低估\n\n### 与昨日对比\n- 六维评分: 49 → 51（+2，主要因LTH-SOPR和Puell数据更新小幅改善）\n- 信号级别: C级维持\n- 无异动触发（总分变化<10，无S/A级Skill状态变化，无2σ变化）\n\n### 数据异常\n- nvt_signal / supply_in_profit_pct 滞后36天（P1）\n- coinbase_premium 滞后8天（P0）\n- spot_rvol_30d 滞后8天（P0）\n- funding_rate 滞后7天（P1）\n- realized_pl_ratio / TMM 滞后52天（P1）"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-05-26",
-    "price_anchors": {
-      "realtime_price": 76675,
-      "close_price": 77287,
-      "realized_price": 54207,
-      "tmm": 47274,
-      "cvdd": 60029,
-      "equilibrium_price": 40336,
-      "ma_2y": 87451,
-      "ath": 126100,
-      "miner_cost": 70027
-    },
-    "cycle_position": {
-      "phase": "深度熊市后期 / 底部整固期",
-      "confidence": 72,
-      "cycle_day": 766,
-      "earliest_bottom": 777,
-      "mean_bottom": 840,
-      "latest_bottom": 900,
-      "days_to_earliest": 11
-    },
-    "core_judgment": {
-      "rebound_probability": 78,
-      "trend_start_probability": 15,
-      "key_conflict": "LTH在投降但全市场仍有余粮，类似2018-11状态"
-    },
-    "entry_tiers": {
-      "tier_a": {
-        "range": "$65K-$72K",
-        "status": "接近",
-        "conditions": [
-          "Ahr999<0.45",
-          "Mayer<0.80"
-        ]
-      },
-      "tier_b": {
-        "range": "$55K-$62K",
-        "status": "远离",
-        "conditions": [
-          "MVRV→1.0-1.1",
-          "NUPL<0.12",
-          "Puell<0.5",
-          "LTH-SOPR回升"
-        ]
-      },
-      "tier_c": {
-        "range": "$42K-$52K",
-        "status": "极远",
-        "conditions": [
-          "MVRV Z<0",
-          "NUPL<0",
-          "Hash Ribbon金叉"
-        ]
-      }
-    },
-    "signal_level": "C+",
-    "position_suggestion": "15-20%（总仓位），维持定投节奏",
-    "full_report_text": "━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📊 BTC周期深度解读 | 2026-05-26（周二）\n执行时间: 10:20 CST | 周期第766天 | 恐贪: 34（恐惧）\n━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n▌一、价格锚点系统\n实时价:  $76,675（CoinGecko实时）\n收盘价:  $77,287 [05-25]\nRP:      $54,207 [05-25] ← 全市场持仓成本线\nTMM:     $47,274 [04-05⚠️派生] ← 活跃交易者成本\nCVDD:    $60,029 [05-28⚠️] ← 深度价值下轨\n均衡价:  $40,336 [05-25] ← 历史最强底部支撑\n2YMA:    $87,451 [05-25]\nATH:     $126,100 | 当前回撤: -39.2%\n矿工成本: ~$70,027（MARA财报参考）\n\n⚠️ 数据新鲜度警告: CVDD数据出现跳跃（05-24 $46K → 05-28 $60K），可能为数据源重算，使用时需谨慎；TMM最后更新04-05，存在滞后\n\n▌二、周期阶段定位\n阶段:    深度熊市后期 / 底部整固期（置信度72%）\n周期天:  第766天（2024-04-20减半起算）\n历史参考: 最早底部第777天（2026-06-04）/ 平均第840天 / 最晚第900天\n         距最早底部还有约11天\n类比:    2018-11周期（第350-400天），LTH投降+矿工压力并存，距周期底部1-3个月\n\n▌三、核心研判：反弹 vs 上涨趋势\n研判结论: 反弹概率 78% │ 趋势启动概率 15%\n\n⛔ 支持反弹的证据（5条）:\n• MVRV=1.43 仍在中性偏低区间，未到极端低估（<1.0）水准\n• NUPL=0.30 仍处\"乐观\"体制，未触及\"投降\"（<0.15）或\"恐惧\"（<0.25）\n• STH-SOPR=0.99 在盈亏平衡线附近震荡，未形成持续盈利结构\n• 恐贪=34 恐惧但非极端恐慌（<15为极端）\n• RSI 14D=48.1 中性偏弱，缺乏超卖反弹的动能积蓄\n\n✅ 支持趋势启动的证据（2条）:\n• aSOPR=1.005 微幅盈利，链上整体卖出开始实现利润（连续2日>1.0）\n• 交易所净流出趋势延续（27,191 BTC净流出），余额15.09%持续下降\n\n⚡ 关键矛盾:\nLTH-SOPR=0.949（长期持有者持续亏损卖出=底部特征） vs NUPL=0.30（整体未实现利润仍正=非极端底部）。矛盾核心：LTH在投降，但全市场仍有余粮。这更接近2018-11的状态——LTH先投降，NUPL后跟随。若未来2-4周NUPL跌破0.25进入恐惧区，则底部信号显著强化。\n\n▌四、建仓档位状态（含昨日Diff）\n\n┌──────────────────────────────────────────────────────────┐\n│档位│区间        │状态   │触发条件          │今日变化      │\n├──────────────────────────────────────────────────────────┤\n│ A  │$65K-$72K  │接近   │Ahr999<0.45      │0.4618→0.4612 ▼│\n│    │           │       │Mayer<0.80       │0.9566→0.9611 ▲│\n├──────────────────────────────────────────────────────────┤\n│ B  │$55K-$62K  │远离   │MVRV→1.0-1.1    │1.4214→1.4256 ▲│\n│    │           │       │NUPL<0.12        │0.2965→0.2986 ▲│\n│    │           │       │Puell<0.5        │0.7345→0.9028 ▲│\n│    │           │       │LTH-SOPR回升     │0.954→0.949 ▼  │\n├──────────────────────────────────────────────────────────┤\n│ C  │$42K-$52K  │极远   │MVRV Z<0        │0.7885→0.7939 ▲│\n│    │           │       │NUPL<0           │0.2986 → 距0差∞│\n│    │           │       │Hash Ribbon金叉  │未出现          │\n└──────────────────────────────────────────────────────────┘\n\n📍 最接近触发的B档条件（按距离排序）:\n① LTH-SOPR回升至1.0: 当前0.949 → 需1.0，差5.4%，趋势▼（仍在投降中）\n② Ahr999降至0.45: 当前0.4612 → 需0.45，差2.4%，趋势▼（缓慢接近）\n③ Mayer降至0.80: 当前0.9611 → 需0.80，差16.8%，趋势▲（偏离中）\n\n▌五、关键指标快照（含Diff）\n\n【估值层】\nAhr999:   0.4612 [05-26] 🟡 │ 昨日0.4618 │ ▼-0.0006\nMVRV Z:   0.7939 [05-25] 🟡 │ 昨日0.7885 │ ▲+0.0054\nMVRV:     1.4256 [05-28] 🟡 │ 昨日1.4214 │ ▲+0.0042\nNUPL:     0.2986 [05-25] 🟡 │ 昨日0.2965 │ ▲+0.0021\nPuell:    0.9028 [05-28] 🟡 │ 昨日0.7345 │ ▲+0.1683\nMayer:    0.9611 [05-25] 🟡 │ 昨日0.9566 │ ▲+0.0045\n\n【持有者层】\nLTH-SOPR: 0.949 [05-28] 🔴 │ 昨日0.954 │ ▼-0.005\nSTH-SOPR: 0.99 [05-28] 🟡 │ 昨日1.0 │ ▼-0.010\naSOPR:    1.005 [05-25] 🟢 │ 昨日1.0006 │ ▲+0.0044\nLTH供应:  74.40% [05-25] 🟡 │ 昨日74.36% │ ▲+0.04pp\n\n【资本流动层】\n交易所净流: 27,191 BTC流出 [05-25] 🟢 │ 昨日28,176 │ ▲985（流出减少）\n交易所余额: 15.09% [05-25] 🟢 │ 昨日15.10% │ ▼-0.01pp\n\n【矿工层】\nHash Rate: 1,130 EH/s [05-26] ↑（延续增长）\nPuell:     0.9028 → 距矿工投降(<0.5)差44.6%\n\n▌六、信号级别 & 策略\n信号级别: C+（置信度50%）\n├─ ❌ MVRV Z<0（当前0.79，远未触发）\n├─ ❌ NUPL<0.15（当前0.30，远未触发）\n├─ ✅ LTH-SOPR<1.0（0.949，LTH投降中）\n├─ ❌ Puell<0.5（当前0.90，远未触发）\n└─ ⚠️ Ahr999接近0.45（0.4612，差2.4%）\n\n策略建议: 维持定投节奏，A档信号接近（Ahr999距0.45仅2.4%），可提前布局A档1/3仓位；B/C档仍需等待链上进一步恶化\n仓位参考: 15-20%（总仓位）\n止损参考: 跌破$70,027（矿工成本线）时暂停加仓，重新评估\n\n▌七、核心风险提示\n1. 距周期最早底部仅11天（第777天=6月4日），但当前链上数据未出现S级底部特征，历史上底部时间窗口方差大（777-900天），不宜赌\"最早底部\"\n2. CVDD从$46K跳升至$60K（数据源重算？），若CVDD $60K为真，则当前价$76.7K距CVDD仅22%，而非此前预期的41%空间——支撑位大幅上移\n3. Puell从0.73跳升至0.90（日度+0.17异常波动），需观察是否为数据修正，若真实反映矿工收入恢复则利好\n\n🔗 链叔 | BTC On-Chain Oracle\n━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    "date": "2026-05-27",
+    "status": "缺失",
+    "notes": "日志中未包含周期深度解读报告，该报告应在10:20执行。请检查btc_onchain agent的cron执行状态。",
+    "price_anchors": null,
+    "cycle_position": null,
+    "core_judgment": null,
+    "entry_tiers": null,
+    "signal_level": null,
+    "position_suggestion": null,
+    "full_report_text": null
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-05-26",
-    "core_decision": {
-      "signal": "B+级",
-      "phase": "熊末磨底期",
-      "confidence": 62,
-      "summary": "LTH亏损出货+弱手出清未完成+积累未启动",
-      "position": "15-20%"
-    },
-    "top3_data_points": [
-      {
-        "metric": "LTH-SOPR",
-        "value": 0.949,
-        "insight": "LTH亏损出货，历史底部区信号"
-      },
-      {
-        "metric": "ATS",
-        "value": 0.035,
-        "insight": "积累几乎归零，底部信号需等待确认"
-      },
-      {
-        "metric": "交易所净流入",
-        "value": "+116K BTC",
-        "insight": "短期卖压显著"
-      }
-    ],
-    "chip_map": {
-      "lth_pct": 74.4,
-      "lth_btc": "1490.6万",
-      "lth_7d_change": "+0.13pp",
-      "sth_pct": 10.51,
-      "sth_btc": "210.6万",
-      "sth_7d_change": "-0.13pp",
-      "exchange_pct": 15.09,
-      "exchange_30d_flow": "-870,766BTC"
-    },
-    "whale_behavior": {
-      "net_flow_7d": "+116,458BTC",
-      "net_flow_30d": "-870,766BTC",
-      "whale_balance": null,
-      "coinbase_premium": -2.91,
-      "funding_rate": 0.0
-    },
-    "sopr_decode": {
-      "lth_sopr": 0.949,
-      "lth_sopr_7d": [
-        "0.949",
-        "0.954",
-        "0.949",
-        "0.821",
-        "1.07",
-        "0.801",
-        "0.82"
-      ],
-      "sth_sopr": 0.99,
-      "sth_sopr_7d": null,
-      "asopr": 1.005,
-      "asopr_7d": null
-    },
-    "ats_dashboard": {
-      "current": 0.035,
-      "target": 0.8,
-      "gap_pct": null,
-      "14d_trend": "持续下降"
-    },
-    "fusion_conclusion": {
-      "综合结论": "周期磨底区中后段",
-      "六维分": null,
-      "操作": "谨慎分批建仓15-20%",
-      "止损": "$60K(CVDD)",
-      "反向触发": "交易所持续净流入>30K/日+ATS<0.1持续14天"
-    },
-    "full_report_text": "🐋 BTC鲸鱼链上深度报告 V3.0 | 2026-05-26\n数据截至05-25/28 | FGI:34（恐惧）| 现价:$77,287\n\n━━━━━ 🎯 核心决策 & 操作建议 ━━━━━\n\n📌 一句话定性：LTH亏损出货+弱手出清未完成+积累未启动→价值区间的黎明前，谨慎DCA但勿重仓\n\n🔢 周期阶段：熊末磨底期（置信度68%）\n📊 综合信号：B+级（置信度62%）\n\n💡 操作方向：谨慎分批建仓\n🎯 仓位参考：\n  ▶ 当前阶段：15-20% — LTH-SOPR<1+Mayer<1+Ahr999近抄底区，但ATS极低未确认积累\n  ▶ 下一批触发：ATS>0.4 → 加至25-30%\n  ▶ 主力建仓触发：ATS>0.5+持续净流出+RP/L>5 → 加至35-40%\n  ▶ 极端底部：价格接近RP($54.2K)/NUPL<0 → 加至50%+\n🛡️ 止损逻辑：价格跌破$60K(CVDD)且LTH-SOPR<0.75→减仓至5%\n❌ 否定信号：交易所持续净流入>30K/日+ATS<0.1持续14天→暂停建仓\n\n今日三个最重要数据点：\n① LTH-SOPR=0.949 → LTH亏损出货，历史底部区信号\n② ATS=0.035 → 积累几乎归零，底部信号需等待确认\n③ 交易所7日净流入+116K BTC → 短期卖压显著\n\n━━━━━ 🗺️ 筹码地图：谁持有什么 ━━━━━\n\nLTH 74.40% | 1490.6万BTC | 7日+0.13pp\n  真实净流入（剔重分类）：+5,856BTC/日\n  ⚠️ 04月全月LTH净持仓数据均为重分类（>50K/日），真实均值取剔重后7日MA=+5,856\nSTH 10.51% | 210.6万BTC | 7日-0.13pp → 出清进行中\n交易所余额 15.09% | 30日净流出-870,766BTC\n\n价格锚点（筹码成本参考）：\n现价$77,287 | RP$54,207[05-25]溢价42.6% | TMM~$87,451[05-25]折价11.6%\n200WMA$61,385[05-25]溢价25.9% | BP$40,336[05-25]溢价91.6% | CVDD$60,029[05-28]溢价28.8%\n\n📍位置：价格低于TMM但高于RP/200WMA/CVDD/BP，处于TMM-RP走廊中偏上，历史类比2018年末-2019初\"价值发现区\"\n\n━━━━━ 🔄 鲸鱼行为追踪 ━━━━━\n\n交易所净流量 7日:+116,458BTC | 30日:-870,766BTC\n交易所余额% 15.09% → 7日序列:15.09→15.10→15.08→15.08→15.08→15.07→15.05 → 微升\n鲸鱼→交易所 最新数据03-21:39,669BTC/日 | 03月7日均值~45,821 → 数据滞后，暂无可靠更新\n流量诊断：7日持续净流入（17K→27K/日递增），短期卖压显著；30日维度仍为净流出，长期结构未破\nCoinbase溢价:-2.91%[05-19] → 美国机构需求低迷，卖方主导\n资金费率:0.00%[05-20] → 杠杆中性偏冷\n\n💡 综合结论：短期鲸鱼/大户向交易所转移筹码（7日+116K净流入），但30日维度仍为净流出；Coinbase负溢价+零资金费率=市场无做多动力，处于\"压价出货→被动卖出\"阶段\n\n━━━━━ 📊 SOPR行为解码 ━━━━━\n\nLTH-SOPR 0.949[05-28] → LTH平均亏损5.1%出货！历史罕见，仅见于周期底部区\n  距极端投降(<0.75)：差20.5% | 7日趋势:0.949→0.954→0.949→0.821→1.07→0.801→0.82（剧烈波动，部分日出现>1脉冲为成本基础异动）\n  ⚠️ LTH-SOPR近期多日出现0.80-1.07极端跳变，疑似155天重分类脉冲效应\n\nSTH-SOPR 0.99[05-28] → STH接近盈亏平衡，弱手仍在割肉边缘\naSOPR 1.005[05-25] → 围绕1.0反复穿越，14日趋势:1.005→1.001→0.989→0.986→0.996→1.001→0.989→0.983→0.999\n  aSOPR持续在1.0附近震荡，未确认趋势方向\n\n💡 体制判断：LTH亏损出货+STH盈亏平衡+aSOPR徘徊1.0=经典\"亏损出清体制\"，但出清尚未完成（需aSOPR持续<1.0至少14天+LTH-SOPR稳定<0.9）\n\n━━━━━ 📐 筹码成本结构（Glassnode框架） ━━━━━\n\n① STH成本基础走廊：\n  STH CB~$83K-88K[估算，TMM/RP区间派生] | STH CB-1σ~$72K-75K\n  当前价$77,287 未失守-1σ → STH防御尚未完全崩溃，但已深入亏损区\n  恢复STH CB条件：价格需回到$85K以上\n\n② URPD需求密度区：\n  已清洗区间：$83K-95K（STH浮筹密集区，大量筹码被套）\n  下方高信念需求区：$60K-68K（CVDD/200WMA/机构成本带）\n  上方供应压力区：$88K-95K + $100K+\n  Conviction信号要求：RP/L Ratio>5 + ATS>0.5 + 净流出持续 → 当前三项均未满足\n\n③ TMM-RP防御走廊：\n  TMM~$87,451[05-25] | RP$54,207[05-25]\n  当前价格位置：走廊内，偏下1/3 → 已跌破TMM但远高于RP\n  历史类比：2018.11价格跌破TMM后在走廊内震荡2-3月，最终触底于接近RP处\n\n④ NUPL周期定位：\n  NUPL 0.2986[05-25] → 市场整体未实现利润约29.9%\n  位置：乐观→焦虑过渡区，接近投降区边界(NUPL<0.25)\n  距投降区：约5pp，趋势向下\n  历史参考：NUPL≈0.30对应2018.10/2015.01/2022.06，均为周期中后段磨底\n\n⑤ aSOPR 14日均线（Realized P/L Ratio近似）：\n  当前~0.995 | 牛市恢复确认阈值：持续>1.05 | 状态：距确认仍有5%+\n  aSOPR均线仍在1.0以下挣扎，牛市区确认需持续>1.05至少30天\n\n💡 综合定位：五框架一致指向\"周期磨底区中后段\"——LTH在亏、STH在割、NUPL逼近投降、价格已破TMM但守住RP/200WMA；历史上此阶段需1-3月完成最终出清\n\n━━━━━ 📡 积累强度仪表盘 ━━━━━\n\nATS        0.035  ↓  >0.8  ❌\nLTH净持仓* +5,856/日 →  >0   ✅\n交易所余额% 15.09% ↑  <13%  ❌\nMVRV Z     0.794  ↓  <0.5  ⏳（接近）\nFGI        34     极端区  <15/7天 ❌\n*剔除重分类\n\nATS 14日趋势（过滤0值）：\n05-21:0.035→05-20:0.068→05-19:0.125→05-18:0.080→05-17:0.055→05-16:0.099→05-15:0.142→05-14:0.164\n月内：从0.303(04-15)→0.035(05-21)，方向持续下降\n\nATS矛盾解读：\nATS=0.035（小实体积累极弱，几乎停止）\nLTH净持仓=+5,856/日（大实体在囤积，但数据受重分类干扰需谨慎）\n→ 分化含义：小散户恐慌离场/停止买入，而大户在低位缓慢吸筹；但ATS极低说明散户级别的需求缺失\n→ 类比：2022.06-07，ATS触底0附近后2-3月才恢复，随后迎来反弹\n→ 确认门槛：ATS突破0.4 = 积累全面展开（当前0.035，距门槛极远）\n\n━━━━━ 📏 回测辅助参考（非独立交易触发）━━━━━\n⚠️ 基于v1.2回测（H1-H4历史），H4样本极少，降级为辅助参考\n\nL1 极端底部锚点（历史30日胜率97.92%）：\n  触发：价格≤CVDD($60,029) 或 ≤BP($40,336)\n  当前：$77,287，溢价CVDD 28.8%，溢价BP 91.6%\n  状态：❌ 未触发（H4至今从未触发）\n\nL2 低估区（可靠性下降）：\n  DZ激活（2/5）：RP✅（Mayer<1.0视为接近低估）| 200WMA✅（价格>200WMA）| Ahr999 0.461✅ | MVRV Z 0.794❌ | Mayer 0.961⚠️（接近）\n  Puell 0.903（需<0.5触发，差80.5%）\n  状态：⚠️ 部分激活（Ahr999已入抄底区+Mayer接近1.0）\n\n有效参考触发状态：\n  Ahr999 0.461 <0.45 ⏳（即将进入历史抄底区间）\n  MVRV Z 0.794 <0.5 ⏳（距低估区边界37%）\n  LTH-SOPR 0.949 接近投降区（<1.0已确认）\n\n当前定位：L2观察区偏暖，距L1行动区仍有28.8%\n策略：保守分批建仓（15-20%），L1触发前不大仓追入\n\n━━━━━ ⚠️ 风险与替代情景 ━━━━━\n\n主判断（55%）：熊末磨底期，LTH亏损出货+弱手出清进行中，2-3月内完成底部门；价格在$60K-78K区间震荡，随后开启新一轮上涨\n依据：LTH-SOPR<1 + NUPL逼近投降 + Ahr999近抄底区 + 价格仍在RP之上\n\n风险A（30%）：深度投降加速 → 触发：价格跌破RP($54.2K) + LTH-SOPR<0.80 → 应对：价格到$54-60K区间加仓至35%，设止损$48K\n风险B（15%）：假破底→V型反转 → 触发：aSOPR连续5日>1.02 + ATS>0.3 + 交易所转净流出 → 应对：快速加仓至30%+，跟随动量\n\n分析师分歧：链上指标（LTH亏损/ATS极低/NUPL近投降）指向底部区 vs 周期分析师（减半后766天未到历史底部窗口777天）认为仍需等待 | 验证：2026-06-04前后\n错误信号预警：若交易所连续7日净流入>30K/日+ATS持续<0.05 → 底部尚未到来，暂停加仓\n\n━━━━━ 📅 关键观察节点 ━━━━━\n\nP0（立即推送异动）：\n• ATS突破0.4 → 积累全面展开\n• 价格跌破RP $54,207 → 防御走廊下沿\n• LTH-SOPR跌破0.70 → 深度投降加速\n• aSOPR穿越1.0并持续5天同向 → 体制切换确认\n\nP1（日常跟踪）：ATS趋势/交易所余额/LTH净持仓均值\nP2（周度）：NUPL方向/MVRV Z趋势/Coinbase溢价方向\n\n周期：第766天 | 历史底部窗口：第777天（2026-06-04起）\n⚠️ 距历史底部窗口仅11天，密切关注链上异动\n\n🔗 链叔 | BTC鲸鱼链上深度报告 V3.0"
+    "date": "2026-05-27",
+    "status": "缺失",
+    "notes": "日志中未包含鲸鱼深度报告，该报告应在10:35/10:50执行。请检查btc_onchain agent的cron执行状态。",
+    "core_decision": null,
+    "top3_data_points": null,
+    "chip_map": null,
+    "whale_behavior": null,
+    "sopr_decode": null,
+    "ats_dashboard": null,
+    "fusion_conclusion": null,
+    "full_report_text": null
   }
 }
