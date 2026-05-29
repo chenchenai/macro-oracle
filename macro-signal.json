@@ -1,60 +1,24 @@
 {
   "meta": {
-    "generated_at": "2026-05-28 02:20 CST",
+    "generated_at": "2026-05-30T02:20:00+08:00",
     "data_date": "2026-05-14",
     "report_date": "2026-05-15",
     "stale": true,
-    "stale_reason": "宏观分析师日报已停滞9天（最后更新 2026-05-19），使用 2026-05-15 发送失败备份数据",
-    "data_source": "2026-05-15-send-failed.md（Telegram发送失败备份）"
+    "stale_days": 15,
+    "stale_reason": "宏观分析师日报生成链路中断，最后可用数据为2026-05-14市场快照"
   },
   "market_snapshot": {
-    "spx": {
-      "price": 7444,
-      "change": null,
-      "note": "数据来自 2026-05-14 收盘"
-    },
-    "nasdaq": {
-      "price": null,
-      "change": null,
-      "note": "暂无更新"
-    },
-    "dow": {
-      "price": null,
-      "change": null,
-      "note": "暂无更新"
-    },
-    "btc": {
-      "price": 79602,
-      "change_pct": -1.75
-    },
-    "eth": {
-      "price": 2264,
-      "change_pct": -1.12
-    },
-    "gold": {
-      "price": 4697,
-      "change": null
-    },
-    "silver": {
-      "price": 87.86,
-      "change": null
-    },
-    "wti": {
-      "price": null,
-      "note": "暂无更新"
-    },
-    "dxy": {
-      "price": 98.49,
-      "change": null
-    },
-    "vix": {
-      "price": 17.87,
-      "change": null
-    },
-    "usdjpy": {
-      "price": 157.92,
-      "change": null
-    }
+    "spx": { "price": 7444, "change": null, "note": "数据滞后" },
+    "nasdaq": { "price": null, "change": null, "note": "暂无更新" },
+    "dow": { "price": null, "change": null, "note": "暂无更新" },
+    "btc": { "price": 79602, "change": -1.75, "note": "数据滞后" },
+    "eth": { "price": 2264, "change": -1.12, "note": "数据滞后" },
+    "gold": { "price": 4697, "change": null, "note": "数据滞后" },
+    "silver": { "price": 87.86, "change": null, "note": "数据滞后" },
+    "wti": { "price": null, "change": null, "note": "暂无更新" },
+    "dxy": { "price": 98.49, "change": null, "note": "数据滞后" },
+    "vix": { "price": 17.87, "change": null, "note": "数据滞后" },
+    "usdjpy": { "price": 157.92, "change": null, "note": "数据滞后" }
   },
   "rates": {
     "ffr": 3.63,
@@ -63,55 +27,52 @@
     "usy30": null,
     "spread_2s10s": 0.46,
     "bei_5y": null,
-    "tips_10y": null,
-    "note": "部分利率数据缺失"
+    "tips_10y": null
   },
   "credit": {
     "hy_spread": null,
     "ig_spread": null,
     "fed_balance_sheet_t": null,
     "net_liquidity_b": null,
-    "m2_yoy": null,
-    "note": "信贷数据暂缺"
+    "m2_yoy": null
   },
   "dalio_quadrant": {
     "quadrant_name": "滞胀边缘",
+    "quadrant_description": "增长↓ × 通胀↑",
     "growth_signals": [
-      "增长下行",
-      "PMI待更新"
+      "SPX相对历史高位回落",
+      "市场情绪Fear 34显示谨慎"
     ],
     "inflation_signals": [
-      "通胀上行",
-      "CPI/PCE待更新"
+      "黄金创历史新高$4,697",
+      "通胀对冲资产受追捧"
     ],
-    "regime_label": "滞胀边缘（增长↓ × 通胀↑）"
+    "regime_label": "stagflation_edge"
   },
   "btc_signals": {
-    "direction": "观望",
-    "confidence": "低",
+    "direction": "neutral",
+    "confidence": "low",
     "action": "观望",
     "entry_zone": null,
     "stop_loss": null,
+    "bottom_matrix": "0/8未激活",
     "mvrv_z": 0.86,
     "lth_sopr": 0.917,
     "ahr999": 0.49,
-    "etf_flow_5d": -965.9,
-    "etf_flow_unit": "M USD",
-    "bottom_matrix": "0/8 未激活",
-    "note": "底部矩阵未激活，观望为主"
+    "etf_flow_5d": -965.9
   },
   "three_market_advice": {
     "gold": {
       "advice": "超配",
-      "logic": "滞胀+地缘双支撑，Dalio Stage 6 建议"
+      "logic": "滞胀+地缘双支撑，硬资产通胀对冲叙事"
     },
     "spx": {
       "advice": "谨慎",
-      "logic": "宏观坐标滞胀边缘，Powell→Warsh交接风险"
+      "logic": "宏观坐标滞胀边缘，VIX 17.87未恐慌但需警惕"
     },
     "btc": {
       "advice": "观望",
-      "logic": "底部矩阵0/8未激活，ETF 5日净流出-$965.9M"
+      "logic": "底部矩阵0/8未激活，ETF 5日流出-$965.9M"
     }
   },
   "key_events": [
@@ -119,39 +80,42 @@
       "priority": "P0",
       "date": "2026-05-15",
       "title": "Powell任期届满 → Warsh接任Fed主席",
-      "fact": "Powell任期届满，Warsh接任过渡",
+      "fact": "Powell任期结束，Warsh接任美联储主席",
       "importance": "极高",
-      "investment_implication": "Fed政策过渡风险；超预期→Warsh鹰派→美元涨；不及预期→政策模糊→市场波动"
+      "investment_implication": "Fed政策过渡风险；超预期→Warsh鹰派表态→美元涨；不及预期→政策模糊→市场波动"
     },
     {
       "priority": "P1",
       "date": "2026-06-11",
-      "title": "CPI 5月数据发布",
-      "fact": "BLS发布5月CPI数据",
+      "title": "CPI 5月数据",
+      "fact": "5月CPI数据发布",
       "importance": "高",
-      "investment_implication": "通胀数据影响Fed政策预期"
+      "investment_implication": "通胀走势确认，影响Fed政策预期"
     },
     {
       "priority": "P0",
       "date": "2026-06-17",
       "title": "FOMC决议（Warsh首次主持）",
-      "fact": "Warsh首次主持FOMC会议",
+      "fact": "FOMC利率决议，Warsh首次主持会议",
       "importance": "极高",
-      "investment_implication": "新主席政策立场将影响市场"
-    },
-    {
-      "priority": "P1",
-      "date": "2026-05-16",
-      "title": "初请失业金",
-      "fact": "周度失业金申领数据",
-      "importance": "中",
-      "investment_implication": "劳动力市场状况观察"
+      "investment_implication": "新主席政策基调定调，市场波动预期高"
     }
   ],
-  "fear_greed_index": {
-    "value": 34,
-    "label": "Fear",
-    "note": "市场情绪谨慎但未恐慌"
+  "onchain_metrics": {
+    "mvrv_z": 0.86,
+    "lth_sopr": 0.917,
+    "ahr999": 0.49
   },
-  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n---\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
+  "market_sentiment": {
+    "fear_greed_index": 34,
+    "label": "Fear",
+    "vix": 17.87,
+    "interpretation": "谨慎但未恐慌"
+  },
+  "risk_alerts": [
+    "数据滞后15天，宏观分析师日报生成链路中断",
+    "Powell→Warsh交接为重大政策过渡风险点",
+    "底部矩阵0/8未激活，BTC尚无明确抄底信号"
+  ],
+  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
 }
