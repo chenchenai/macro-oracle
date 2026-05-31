@@ -1,163 +1,199 @@
 {
   "meta": {
-    "generated_at": "2026-05-31T02:40:00+08:00",
-    "data_date": "2026-05-27",
-    "report_date": "2026-05-31",
-    "data_lag_days": 4,
+    "generated_at": "2026-06-01T02:40:00+08:00",
+    "data_date": "2026-05-31",
+    "report_date": "2026-06-01",
+    "data_lag_days": 1,
     "stale": true,
-    "source_file": "2026-05-27.md",
-    "warning": "⚠️ 数据滞后4天，最新报告为2026-05-27，缺少报告二、报告三完整原文"
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-05-31.md",
+    "notes": "今日日志不存在，使用昨日周报数据；日志为摘要格式，完整报告原文通过Telegram发送(messageIds:14188-14192)"
   },
   "report1_daily": {
-    "title": "BTC链上深度日报 V2.1",
-    "date": "2026-05-27",
-    "exec_time": "10:10 CST",
-    "data_flag": "发送成功至Telegram群 -5042386860",
+    "title": "BTC链上深度日报 V2.1 + 周报追加",
+    "date": "2026-05-31",
+    "exec_time": "2026-05-31 10:14 CST",
+    "data_flag": "stale-p0",
     "core_data": {
-      "price": {
-        "coingecko_realtime": 75695,
-        "date": "2026-05-27"
-      },
-      "db_price": {
-        "value": 77287,
-        "date": "2026-05-25"
-      },
-      "six_dimension_score": {
-        "total": 51,
-        "grade": "C"
-      },
-      "cycle_phase": {
-        "phase": "熊市中段",
-        "days_since_ath": 233,
-        "total_cycle_days": 382,
-        "progress_pct": 61.0
-      },
-      "fear_greed_index": {
-        "value": 25,
-        "label": "极度恐惧",
-        "date": "2026-05-27"
-      },
-      "ahr999": {
-        "value": 0.468,
-        "distance_to_buy_zone": 0.04,
-        "date": "2026-05-27"
-      },
-      "exchange_7d_netflow": {
-        "value_kbtc": 116,
-        "trend": "持续流入",
-        "date": "2026-05-27"
-      },
-      "lth_sopr": {
-        "value": 0.949,
-        "days_below_1": 6,
-        "date": "2026-05-27"
-      },
-      "spot_rvol": {
-        "value": 0.0925,
-        "status": "极度低迷",
-        "date": "2026-05-19"
-      },
-      "coinbase_premium": {
-        "value_pct": -0.029,
-        "status": "美国机构无买入意愿",
-        "date": "2026-05-27"
-      },
-      "mvrv": {
-        "value": 1.426,
-        "date": "2026-05-27"
-      },
-      "mvrv_z_score": {
-        "value": 0.794,
-        "status": "估值中性偏低",
-        "date": "2026-05-27"
-      }
+      "price_usd_close": "$74,038",
+      "mvrv": 1.359,
+      "mvrv_z_score": 0.664,
+      "nupl": 0.298,
+      "ahr999": 0.427,
+      "lth_sopr": 0.954,
+      "sth_sopr": "滞后7天",
+      "asopr": null,
+      "puell_multiple": null,
+      "rsi_14d": null,
+      "exchange_netflow_7d": "+176K BTC",
+      "exchange_balance_pct": null,
+      "coinbase_premium": "滞后12天",
+      "funding_rate": "滞后11天",
+      "cycle_day": 406,
+      "days_since_ath": 237,
+      "bear_market_progress_pct": 62.0
     },
     "six_dimension_score": {
-      "total": 51,
+      "valuation": null,
+      "holder_behavior": null,
+      "market_structure": null,
+      "capital_flow": 35,
+      "technical": null,
+      "sentiment": null,
+      "total": 52,
       "grade": "C",
-      "dimensions": {
-        "capital_flow": 35,
-        "valuation": null,
-        "sentiment": null,
-        "network_health": null,
-        "supply_pressure": null,
-        "momentum": null
-      },
-      "note": "资本流动维度仅35分仍为最大拖累"
+      "confidence_pct": 52
     },
     "cycle_judgment": {
-      "phase": "熊市中段",
-      "confidence": null,
-      "signal_level": "C级",
-      "entry_zone": null,
-      "position_suggestion": null
+      "phase": "熊市中段偏后 / 底部探测期",
+      "confidence": "中等",
+      "signal_level": "C",
+      "entry_zone": "观望/左侧布局准备",
+      "position_suggestion": "观望/5%"
     },
     "skills_triggered": {
-      "triggered": [],
-      "near_trigger": [
-        {
-          "name": "Ahr999抄底区",
-          "current": 0.468,
-          "threshold": 0.45,
-          "distance_pct": 4
-        }
+      "active": [
+        "S-mvrv-cycle-overlay",
+        "A-lth-sopr-capitulation",
+        "A-ath-drawdown-mapping",
+        "A-triaxis-bottom-pattern",
+        "A-supply-repair-phase",
+        "B-ahr999-bottom"
+      ],
+      "approaching": [
+        "A-supply-profit-regime (SIP→63.98%,距60%仅6%)"
       ]
     },
     "anomaly_detection": {
-      "nvt_signal": {
-        "lag_days": 36,
-        "priority": "P1"
-      },
-      "supply_in_profit_pct": {
-        "lag_days": 36,
-        "priority": "P1"
-      },
-      "coinbase_premium": {
-        "lag_days": 8,
-        "priority": "P0"
-      },
-      "spot_rvol_30d": {
-        "lag_days": 8,
-        "priority": "P0"
-      },
-      "funding_rate": {
-        "lag_days": 7,
-        "priority": "P1"
-      },
-      "realized_pl_ratio": {
-        "lag_days": 52,
-        "priority": "P1"
-      },
-      "tmm": {
-        "lag_days": 52,
-        "priority": "P1"
-      }
+      "p0_critical": [
+        {
+          "indicator": "lth_sopr/sth_sopr",
+          "lag_days": 7,
+          "date": "2026-05-24"
+        },
+        {
+          "indicator": "coinbase_premium",
+          "lag_days": 12,
+          "date": "2026-05-19"
+        },
+        {
+          "indicator": "funding_rate",
+          "lag_days": 11,
+          "date": "2026-05-20"
+        }
+      ],
+      "p1_warning": [
+        {
+          "indicator": "nvt_signal/supply_in_profit_pct",
+          "lag_days": 40,
+          "date": "2026-04-21"
+        },
+        {
+          "indicator": "true_market_mean/realized_pl_ratio",
+          "lag_days": 56,
+          "date": "2026-04-05"
+        }
+      ]
     },
-    "full_report_text": "## 10:10 BTC链上深度日报 V2.1\n\n- **发送成功**: 3段消息发送至Telegram群 -5042386860\n- **Flag已写**: /tmp/btc-onchain-daily-2026-05-27.flag\n\n### 核心数据快照\n- 价格: $75,695（CoinGecko实时）| DB: $77,287（05-25）\n- 六维评分: 51/100 → C级\n- 周期阶段: 熊市中段（ATH后233天/382天 = 61.0%）\n- 恐贪指数: 25（极度恐惧）\n\n### 关键发现\n1. **交易所7日净流入+116K BTC** — 延续昨日趋势，卖压未缓解，资本流动维度仅35分仍为最大拖累\n2. **Ahr999 = 0.468** — 距抄底区0.45仅4%！最接近触发的底部信号\n3. **LTH-SOPR = 0.949** — 持续低于1.0（第6天），长期持有者微亏卖出延续\n4. **现货RVol = 0.0925** — 极度低迷（05-19数据），市场定价权仍由衍生品主导\n5. **Coinbase溢价 = -0.029%** — 美国机构持续无买入意愿\n6. **MVRV = 1.426 / Z-Score = 0.794** — 估值中性偏低，未到极端低估\n\n### 与昨日对比\n- 六维评分: 49 → 51（+2，主要因LTH-SOPR和Puell数据更新小幅改善）\n- 信号级别: C级维持\n- 无异动触发（总分变化<10，无S/A级Skill状态变化，无2σ变化）\n\n### 数据异常\n- nvt_signal / supply_in_profit_pct 滞后36天（P1）\n- coinbase_premium 滞后8天（P0）\n- spot_rvol_30d 滞后8天（P0）\n- funding_rate 滞后7天（P1）\n- realized_pl_ratio / TMM 滞后52天（P1）"
+    "full_report_text": "NOT_AVAILABLE_IN_LOG - 原报告已发送至Telegram群(-5042386860)，消息IDs: 14188-14192(5段)。日志仅保存摘要，完整原文需从Telegram历史消息获取。"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": null,
-    "price_anchors": null,
-    "cycle_position": null,
-    "core_judgment": null,
-    "entry_tiers": null,
-    "signal_level": null,
-    "position_suggestion": null,
-    "full_report_text": null,
-    "error": "⚠️ 2026-05-27日志中未包含报告二完整原文"
+    "date": "2026-05-31",
+    "price_anchors": {
+      "realtime_price": "$74,038",
+      "close_price": "$74,038",
+      "realized_price": "$54.2K",
+      "tmm": "$78.3K",
+      "cvdd": null,
+      "equilibrium_price": null,
+      "ma_2y": null,
+      "ath": "$126K",
+      "miner_cost": null
+    },
+    "cycle_position": {
+      "phase": "熊市中段偏后",
+      "cycle_day": 406,
+      "earliest_bottom": 777,
+      "mean_bottom": null,
+      "latest_bottom": null,
+      "bear_progress_pct": 62.0
+    },
+    "core_judgment": {
+      "scenario_probabilities": {
+        "底部已近": "35%",
+        "底部Q4见底": "40%",
+        "底部2027Q1": "25%"
+      },
+      "key_evidence": [
+        "Ahr999=0.427首次进入抄底区(05-28起)",
+        "LTH-SOPR=0.954投降延续但缓解",
+        "交易所7日净流入+176K BTC(风险)",
+        "六维52分C级"
+      ]
+    },
+    "entry_tiers": {
+      "tier_a": "$66K-$70K (URPD支撑区)",
+      "tier_b": "$54K-$60K (Realized/CVDD区间)",
+      "tier_c": "$45K (极端熊底Woo框架)"
+    },
+    "signal_level": "C",
+    "position_suggestion": "观望/左侧布局准备",
+    "full_report_text": "NOT_AVAILABLE_IN_LOG - 周报追加中包含周期分析，完整原文需从Telegram获取。"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": null,
-    "core_decision": null,
-    "top3_data_points": null,
-    "chip_map": null,
-    "whale_behavior": null,
-    "sopr_decode": null,
-    "ats_dashboard": null,
-    "fusion_conclusion": null,
-    "full_report_text": null,
-    "error": "⚠️ 2026-05-27日志中未包含报告三完整原文"
+    "date": "2026-05-31",
+    "core_decision": {
+      "signal": "观望",
+      "phase": "熊市中段偏后",
+      "summary": "鲸鱼/Dolphin积累停滞+ETF流出=需求真空",
+      "position": "观望/5%"
+    },
+    "top3_data_points": [
+      "鲸鱼余额2月以来持平(CryptoQuant 5/28)",
+      "Dolphin自2025年9月持续走低",
+      "ETF 6连流出$1.55B"
+    ],
+    "chip_map": {
+      "lth_supply_pct": 74.17,
+      "sth_supply_pct": null,
+      "exchange_balance_pct": null,
+      "notes": "LTH供应创纪录16.3M+ BTC"
+    },
+    "whale_behavior": {
+      "netflow_7d": null,
+      "netflow_30d": null,
+      "whale_balance_trend": "持平(2月以来)",
+      "coinbase_premium": "滞后12天",
+      "funding_rate": "滞后11天"
+    },
+    "sopr_decode": {
+      "lth_sopr": {
+        "value": 0.954,
+        "lag_days": 7,
+        "trend_7d": "投降延续"
+      },
+      "sth_sopr": {
+        "value": null,
+        "lag_days": 7
+      },
+      "asopr": {
+        "value": null
+      }
+    },
+    "ats_dashboard": {
+      "current": null,
+      "target": null,
+      "gap_pct": null,
+      "14d_trend": null
+    },
+    "fusion_conclusion": {
+      "综合结论": "熊市中后段，分析师立场收敛(5/5承认抛压衰减)，但需求确认仍未发生",
+      "六维分": 52,
+      "操作建议": "观望，准备左侧布局方案",
+      "止损位": "$66K-$70K支撑区失守",
+      "反向触发": "ETF连续3天净流入+BTC站稳$80K"
+    },
+    "full_report_text": "NOT_AVAILABLE_IN_LOG - 鲸鱼分析散布于周报和进化学习报告中，完整原文需从Telegram获取。"
   }
 }
