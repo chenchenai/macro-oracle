@@ -1,53 +1,53 @@
 {
   "meta": {
-    "generated_at": "2026-06-01T02:40:00+08:00",
-    "data_date": "2026-05-31",
-    "report_date": "2026-06-01",
+    "generated_at": "2026-06-02T02:41:58+08:00",
+    "data_date": "2026-06-01",
+    "report_date": "2026-06-02",
     "data_lag_days": 1,
     "stale": true,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-05-31.md",
-    "notes": "今日日志不存在，使用昨日周报数据；日志为摘要格式，完整报告原文通过Telegram发送(messageIds:14188-14192)"
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-06-01.md",
+    "notes": "数据滞后：btc_onchain agent 6月2日日志尚未生成，使用6月1日进化学习报告；日报/周期报告/鲸鱼报告原文未在本地存储，仅保存摘要；完整报告原文已通过Telegram推送"
   },
   "report1_daily": {
-    "title": "BTC链上深度日报 V2.1 + 周报追加",
-    "date": "2026-05-31",
-    "exec_time": "2026-05-31 10:14 CST",
-    "data_flag": "stale-p0",
+    "title": "BTC链上深度日报 V2.1",
+    "date": "2026-06-01",
+    "exec_time": "2026-06-01 数据未推送",
+    "data_flag": "stale-no-report",
     "core_data": {
-      "price_usd_close": "$74,038",
-      "mvrv": 1.359,
-      "mvrv_z_score": 0.664,
-      "nupl": 0.298,
-      "ahr999": 0.427,
-      "lth_sopr": 0.954,
-      "sth_sopr": "滞后7天",
+      "price_usd_close": "~$73K-$78K区间",
+      "mvrv": null,
+      "mvrv_z_score": 0.41,
+      "nupl": null,
+      "ahr999": null,
+      "lth_sopr": null,
+      "sth_sopr": "滞后",
       "asopr": null,
-      "puell_multiple": null,
+      "puell_multiple": "<2 (矿工压力区)",
       "rsi_14d": null,
-      "exchange_netflow_7d": "+176K BTC",
+      "exchange_netflow_7d": null,
       "exchange_balance_pct": null,
-      "coinbase_premium": "滞后12天",
-      "funding_rate": "滞后11天",
-      "cycle_day": 406,
-      "days_since_ath": 237,
-      "bear_market_progress_pct": 62.0
+      "coinbase_premium": "滞后",
+      "funding_rate": "滞后",
+      "cycle_day": null,
+      "days_since_ath": null,
+      "bear_market_progress_pct": null
     },
     "six_dimension_score": {
       "valuation": null,
       "holder_behavior": null,
       "market_structure": null,
-      "capital_flow": 35,
+      "capital_flow": null,
       "technical": null,
       "sentiment": null,
-      "total": 52,
-      "grade": "C",
-      "confidence_pct": 52
+      "total": null,
+      "grade": null,
+      "confidence_pct": null
     },
     "cycle_judgment": {
-      "phase": "熊市中段偏后 / 底部探测期",
-      "confidence": "中等",
+      "phase": "熊市僵局期",
+      "confidence": "中等偏低",
       "signal_level": "C",
-      "entry_zone": "观望/左侧布局准备",
+      "entry_zone": "观望/左侧准备",
       "position_suggestion": "观望/5%"
     },
     "skills_triggered": {
@@ -60,48 +60,33 @@
         "B-ahr999-bottom"
       ],
       "approaching": [
-        "A-supply-profit-regime (SIP→63.98%,距60%仅6%)"
+        "A-supply-profit-regime"
       ]
     },
     "anomaly_detection": {
       "p0_critical": [
         {
-          "indicator": "lth_sopr/sth_sopr",
-          "lag_days": 7,
-          "date": "2026-05-24"
-        },
-        {
-          "indicator": "coinbase_premium",
-          "lag_days": 12,
-          "date": "2026-05-19"
-        },
-        {
-          "indicator": "funding_rate",
-          "lag_days": 11,
-          "date": "2026-05-20"
+          "indicator": "日报/周期报告未生成",
+          "lag_days": 1,
+          "date": "2026-06-02"
         }
       ],
       "p1_warning": [
         {
-          "indicator": "nvt_signal/supply_in_profit_pct",
-          "lag_days": 40,
-          "date": "2026-04-21"
-        },
-        {
-          "indicator": "true_market_mean/realized_pl_ratio",
-          "lag_days": 56,
-          "date": "2026-04-05"
+          "indicator": "多维度数据滞后",
+          "lag_days": 7,
+          "date": "多指标"
         }
       ]
     },
-    "full_report_text": "NOT_AVAILABLE_IN_LOG - 原报告已发送至Telegram群(-5042386860)，消息IDs: 14188-14192(5段)。日志仅保存摘要，完整原文需从Telegram历史消息获取。"
+    "full_report_text": "NOT_AVAILABLE - 2026-06-02 btc_onchain agent日报任务未执行或未记录到本地日志。进化学习报告存在但仅包含外部分析师汇总，不含标准日报格式。建议检查cron任务执行状态。"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-05-31",
+    "date": "2026-06-01",
     "price_anchors": {
-      "realtime_price": "$74,038",
-      "close_price": "$74,038",
+      "realtime_price": "~$73K-$78K",
+      "close_price": null,
       "realized_price": "$54.2K",
       "tmm": "$78.3K",
       "cvdd": null,
@@ -111,67 +96,68 @@
       "miner_cost": null
     },
     "cycle_position": {
-      "phase": "熊市中段偏后",
-      "cycle_day": 406,
-      "earliest_bottom": 777,
-      "mean_bottom": null,
-      "latest_bottom": null,
-      "bear_progress_pct": 62.0
+      "phase": "熊市中段",
+      "cycle_day": null,
+      "earliest_bottom": null,
+      "mean_bottom": "Q4 2026 (分析师共识)",
+      "latest_bottom": "2027 Q1 (Ki Young Ju)",
+      "bear_progress_pct": null
     },
     "core_judgment": {
       "scenario_probabilities": {
-        "底部已近": "35%",
-        "底部Q4见底": "40%",
-        "底部2027Q1": "25%"
+        "底部Q3-Q4 2026": "60%",
+        "底部2027 H1": "30%",
+        "新低(<$45K)": "10%"
       },
       "key_evidence": [
-        "Ahr999=0.427首次进入抄底区(05-28起)",
-        "LTH-SOPR=0.954投降延续但缓解",
-        "交易所7日净流入+176K BTC(风险)",
-        "六维52分C级"
+        "ETF 9连流出$2.97B创纪录",
+        "Bull-Bear翻绿(5/12)但与ETF流出矛盾",
+        "热钱轮动至AI(BTC边缘化风险)",
+        "5/5分析师承认抛压衰减",
+        "Realized P/L Ratio=1.56远低于牛市早期2-5"
       ]
     },
     "entry_tiers": {
       "tier_a": "$66K-$70K (URPD支撑区)",
-      "tier_b": "$54K-$60K (Realized/CVDD区间)",
-      "tier_c": "$45K (极端熊底Woo框架)"
+      "tier_b": "$54K-$60K (Realized Price区间)",
+      "tier_c": "$45K (Woo极端熊底)"
     },
     "signal_level": "C",
-    "position_suggestion": "观望/左侧布局准备",
-    "full_report_text": "NOT_AVAILABLE_IN_LOG - 周报追加中包含周期分析，完整原文需从Telegram获取。"
+    "position_suggestion": "观望，等待6月关键变量(ETF流向+$78.3K TMM突破)",
+    "full_report_text": "NOT_AVAILABLE - 周期报告原文未存储于本地日志。关键信息从进化学习报告(2026-06-01)提取汇总。分析师底部时间窗口共识：Willy Woo(Q4 2026) / CryptoQuant(6月-12月) / Ki Young Ju(2027初)"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-05-31",
+    "date": "2026-06-01",
     "core_decision": {
       "signal": "观望",
-      "phase": "熊市中段偏后",
-      "summary": "鲸鱼/Dolphin积累停滞+ETF流出=需求真空",
+      "phase": "熊市僵局",
+      "summary": "ETF创纪录流出+热钱轮动至AI=需求真空；但5/5分析师确认抛压衰减",
       "position": "观望/5%"
     },
     "top3_data_points": [
-      "鲸鱼余额2月以来持平(CryptoQuant 5/28)",
-      "Dolphin自2025年9月持续走低",
-      "ETF 6连流出$1.55B"
+      "ETF 9连流出$2.97B(5月$2.3B创2026最大月度流出)",
+      "年累计净流入仅剩$536M，逼近年度净流出",
+      "Jane Street减持70% BTC ETF，Goldman Sachs减10%"
     ],
     "chip_map": {
-      "lth_supply_pct": 74.17,
+      "lth_supply_pct": null,
       "sth_supply_pct": null,
-      "exchange_balance_pct": null,
-      "notes": "LTH供应创纪录16.3M+ BTC"
+      "exchange_balance_pct": "2019年来最低",
+      "notes": "15%流通供应集中在$74K-$83K，上方供应沉重"
     },
     "whale_behavior": {
       "netflow_7d": null,
       "netflow_30d": null,
-      "whale_balance_trend": "持平(2月以来)",
-      "coinbase_premium": "滞后12天",
-      "funding_rate": "滞后11天"
+      "whale_balance_trend": "机构去风险化(Jane Street -70%, Goldman -10%)",
+      "coinbase_premium": "滞后",
+      "funding_rate": "滞后"
     },
     "sopr_decode": {
       "lth_sopr": {
-        "value": 0.954,
+        "value": null,
         "lag_days": 7,
-        "trend_7d": "投降延续"
+        "trend_7d": null
       },
       "sth_sopr": {
         "value": null,
@@ -188,12 +174,12 @@
       "14d_trend": null
     },
     "fusion_conclusion": {
-      "综合结论": "熊市中后段，分析师立场收敛(5/5承认抛压衰减)，但需求确认仍未发生",
-      "六维分": 52,
-      "操作建议": "观望，准备左侧布局方案",
-      "止损位": "$66K-$70K支撑区失守",
-      "反向触发": "ETF连续3天净流入+BTC站稳$80K"
+      "综合结论": "三收敛框架：卖压耗尽🟢↑(5/5分析师确认) + MVRV🟡(Z=0.41中性) + 新资本🔴↓(ETF 9连流出)。底部时间窗口Q3-Q4 2026是分析师共识。",
+      "六维分": null,
+      "操作建议": "观望，维持防御姿态。无S级或A级买入信号。6月关键变量：ETF能否止住流出 + BTC能否重新站稳$78.3K TMM。",
+      "止损位": "$66K-$70K URPD支撑区失守",
+      "反向触发": "ETF连续3天净流入 + BTC站稳$80K + Bull-Bear翻绿持续验证"
     },
-    "full_report_text": "NOT_AVAILABLE_IN_LOG - 鲸鱼分析散布于周报和进化学习报告中，完整原文需从Telegram获取。"
+    "full_report_text": "NOT_AVAILABLE - 鲸鱼报告原文未存储于本地日志。关键信息从进化学习报告(2026-06-01)提取汇总。三收敛框架状态：卖压耗尽(收敛↑) + MVRV(中性) + 新资本流入(发散↓)"
   }
 }
