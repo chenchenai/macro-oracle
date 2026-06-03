@@ -1,177 +1,165 @@
 {
   "meta": {
-    "generated_at": "2026-06-03T02:20:00+08:00",
+    "generated_at": "2026-06-04 02:20 CST",
     "data_date": "2026-05-14",
-    "report_date": "2026-05-15",
+    "report_date": "2026-06-04",
     "stale": true,
-    "stale_days": 20,
-    "stale_note": "宏观分析师日报生成链路中断，最后可用报告为2026-05-15"
+    "note": "宏观分析师日报链路已恢复（2026-06-03 修复），但今日日报尚未生成。数据来源于 2026-05-15 发送失败备份，滞后 21 天。晨报 cron 修复详情见 MEMORY.md arch-20260603-01。"
   },
   "market_snapshot": {
     "spx": {
-      "price": 7444,
-      "change": null,
-      "note": "数据来自2026-05-14快照"
+      "price": 7444.25,
+      "change": "+0.6%"
     },
     "nasdaq": {
-      "price": null,
-      "note": "暂无更新"
+      "price": 26088.20,
+      "change": "+1.2%"
     },
     "dow": {
-      "price": null,
-      "note": "暂无更新"
+      "price": 49693.20,
+      "change": "-0.1%"
     },
     "btc": {
-      "price": 79602,
-      "change_pct": -1.75,
-      "note": "数据来自2026-05-14"
+      "price": 80611
     },
     "eth": {
-      "price": 2264,
-      "change_pct": -1.12
+      "price": 2294.71
     },
     "gold": {
-      "price": 4697,
-      "note": "滞胀对冲叙事支撑"
+      "price": 4709.15
     },
     "silver": {
-      "price": 87.86
+      "price": null,
+      "note": "数据暂缺"
     },
     "wti": {
-      "price": null,
-      "note": "暂无更新"
+      "price": 101.66
     },
     "dxy": {
-      "price": 98.49
+      "price": 98.43
     },
     "vix": {
-      "price": 17.87
+      "price": null,
+      "note": "数据暂缺"
     },
     "usdjpy": {
-      "price": 157.92
+      "price": null,
+      "note": "数据暂缺"
     }
   },
   "rates": {
     "ffr": {
-      "rate": 3.63,
-      "note": "Fed Funds Rate"
+      "value": null,
+      "note": "数据暂缺"
     },
     "usy2": {
-      "yield": 4.00,
-      "note": "2年期美债收益率"
+      "value": null,
+      "note": "数据暂缺"
     },
     "usy10": {
-      "yield": 4.46,
-      "note": "10年期美债收益率"
+      "value": 4.461
     },
     "usy30": {
-      "yield": null,
-      "note": "暂无数据"
+      "value": null,
+      "note": "数据暂缺"
     },
     "spread_2s10s": {
-      "spread": -0.46,
-      "note": "2Y-10Y利差倒挂"
+      "value": null,
+      "note": "数据暂缺"
     },
     "bei_5y": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     },
     "tips_10y": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     }
   },
   "credit": {
     "hy_spread": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     },
     "ig_spread": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     },
     "fed_balance_sheet_t": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     },
     "net_liquidity_b": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     },
     "m2_yoy": {
       "value": null,
-      "note": "暂无数据"
+      "note": "数据暂缺"
     }
   },
   "dalio_quadrant": {
-    "quadrant_name": "滞胀边缘",
+    "quadrant_name": "Reflation",
     "growth_signals": [
-      "增长下行压力",
-      "GDP预期下调"
+      "增长暂未失速 - 经济韧性仍存",
+      "Nasdaq强 +1.2%，AI主线情绪强劲"
     ],
     "inflation_signals": [
-      "通胀上行压力",
-      "滞胀风险上升"
+      "CPI年增速升至3.8%（近三年高位区间）",
+      "油价维持高位 ~$101，通胀二次上行风险未解除"
     ],
-    "regime_label": "Stagflation Risk"
+    "regime_label": "高通胀+延后降息"
   },
   "btc_signals": {
     "direction": "neutral",
-    "confidence": "low",
+    "confidence": "medium",
     "action": "观望",
-    "entry_zone": null,
-    "stop_loss": null,
-    "mvrv_z": 0.86,
-    "lth_sopr": 0.917,
-    "ahr999": 0.49,
-    "bottom_matrix": "0/8未激活",
-    "etf_flow_5d": -965.9,
-    "note": "底部矩阵未激活，ETF持续流出"
+    "entry_zone": "$78K以下分批建仓",
+    "stop_loss": "$75K有效跌破则趋势转空"
   },
   "three_market_advice": {
     "gold": {
-      "advice": "超配",
-      "logic": "滞胀+地缘双支撑，Dalio Stage 6配置方向"
+      "advice": "维持观察，不追高",
+      "logic": "油价仍高，通胀二次上行风险没解除"
     },
     "spx": {
-      "advice": "谨慎",
-      "logic": "滞胀环境下美股承压，等待政策明朗"
+      "advice": "偏防守，降低追价冲动",
+      "logic": "若零售销售>预期，利率上行压力大"
     },
     "btc": {
-      "advice": "观望",
-      "logic": "底部矩阵0/8未激活，ETF持续流出，等待明确信号"
+      "advice": "$78K以下分批建仓",
+      "logic": "$80K附近横盘，避免追高"
     }
   },
-  "key_events": [
-    {
-      "priority": "P0",
-      "date": "2026-05-15",
-      "title": "Powell任期届满 → Warsh接任Fed主席",
-      "fact": "Powell任期结束，Warsh接任过渡",
-      "importance": "极高",
-      "investment_implication": "Fed政策过渡风险，Warsh鹰派表态→美元涨；政策模糊→市场波动"
-    },
-    {
-      "priority": "P1",
-      "date": "2026-06-11",
-      "title": "CPI 5月数据",
-      "fact": "5月CPI数据发布",
-      "importance": "高",
-      "investment_implication": "通胀超预期→加息预期升温"
-    },
-    {
-      "priority": "P0",
-      "date": "2026-06-17",
-      "title": "FOMC决议（Warsh首次主持）",
-      "fact": "Warsh首次主持FOMC会议",
-      "importance": "极高",
-      "investment_implication": "新任主席政策立场定调"
-    }
-  ],
-  "market_sentiment": {
-    "fear_greed_index": 34,
-    "vix": 17.87,
-    "label": "谨慎但未恐慌"
+  "key_events": {
+    "P0": [
+      {
+        "title": "美国4月CPI高于预期",
+        "fact": "CPI年增速升至3.8%，高于预期3.7%",
+        "importance": "全资产定价锚点",
+        "investment_implication": "通胀粘性强化延后降息预期"
+      }
+    ],
+    "P1": [
+      {
+        "title": "零售销售（待公布）",
+        "fact": "预期+0.4% MoM",
+        "importance": "验证消费韧性",
+        "investment_implication": "若超预期则利率压力加大"
+      },
+      {
+        "title": "初请失业金",
+        "fact": "预期约20.5万",
+        "importance": "劳动力市场信号",
+        "investment_implication": "数据若走弱可能提振降息预期"
+      },
+      {
+        "title": "Nvidia财报",
+        "fact": "5月20日公布",
+        "importance": "AI主线风险偏好关键锚点",
+        "investment_implication": "业绩指引将影响科技股情绪"
+      }
+    ]
   },
-  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n---\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
+  "full_report_text": "【宏观日报同步滞后说明】\n\n2026-06-04 02:20 CST Dashboard 同步任务执行。\n\n状态：数据滞后 21 天\n原因：宏观分析师日报生成链路在 2026-05-24 至 2026-06-02 期间中断（cron model 配置错误），现已修复（见 MEMORY.md arch-20260603-01），但今日日报尚未生成。\n\n数据来源：2026-05-15 发送失败备份（市场快照为 2026-05-14）\n\n修复详情：\n- 问题：晨报 cron 的 payload.model 配置为 openai/gpt-5.4，该模型不在 Gateway 白名单中\n- 白名单模型：ark/deepseek-v4-pro, ark/glm-5.1, ark/kimi-k2.6, ark/minimax-m2.7, openai-codex/gpt-5.4, openai-codex/gpt-5.5, openai/gpt-5.5, qwen/glm-5\n- 修复：将主推 cron（jobId: 293a1713）和 Guardian cron（jobId: 548eb289）的 model 改为 qwen/glm-5\n- 验证：2026-06-03 已手动触发 Guardian 补发晨报，标志文件更新正常\n\n预期：明日起（2026-06-05）日报生成恢复正常，Dashboard 数据将更新。\n\n---\n历史数据快照（2026-05-14）：\n\n【市场快照】\nSPX: 7444.25 (+0.6%)\nNasdaq: 26088.20 (+1.2%)\nDow: 49693.20 (-0.1%)\nBTC: $80,611\nETH: $2,294.71\nGold: $4,709.15\nWTI: $101.66\nDXY: 98.43\nUS10Y: 4.461%\n\n【Dalio象限】Reflation\n增长信号：经济韧性仍存，Nasdaq强劲\n通胀信号：CPI 3.8%，油价高位\n\n【BTC策略】\n方向：中性\n建议：$78K以下分批建仓\n止损：$75K有效跌破\n\n【三市建议】\n黄金：维持观察，不追高\n美股：偏防守，降低追价冲动\nBTC：$78K以下分批建仓\n\n【P0事件】\n美国4月CPI 3.8%高于预期，通胀粘性强化延后降息预期"
 }
