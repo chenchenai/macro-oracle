@@ -1,217 +1,203 @@
 {
   "meta": {
-    "generated_at": "2026-06-03T02:42:04+08:00",
-    "data_date": "2026-06-02",
-    "report_date": "2026-06-03",
+    "generated_at": "2026-06-04T02:42:15+08:00",
+    "data_date": "2026-06-03",
+    "report_date": "2026-06-04",
     "data_lag_days": 1,
     "stale": true,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-06-02.md",
-    "notes": "数据滞后：btc_onchain agent 6月3日日志不存在，使用6月2日进化学习报告；日报/周期报告/鲸鱼报告原文未推送至Telegram或未记录到本地；memory/2026-06-02.md为用户请求发送的摘要格式。"
+    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-06-03.md",
+    "notes": "数据滞后：btc_onchain agent 未在活跃运行状态，今日（6/4凌晨）三报告未推送。使用6月3日进化学习摘要数据填充。日报/周期/鲸鱼完整报告原文缺失，仅保留进化学习摘要内容。"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.1",
-    "date": "2026-06-02",
-    "exec_time": "2026-06-02 14:49 CST（用户请求推送摘要）",
-    "data_flag": "stale-partial",
+    "date": "2026-06-03",
+    "exec_time": "2026-06-03 15:00 CST（进化学习摘要）",
+    "data_flag": "stale-evolution-summary",
     "core_data": {
-      "price_usd_close": "$71,286",
-      "mvrv": 1.32,
-      "mvrv_z_score": 0.597,
-      "nupl": 0.376,
-      "ahr999": 0.395,
-      "lth_sopr": 0.892,
-      "sth_sopr": "滞后7天",
+      "price_usd_close": "$66,240",
+      "mvrv": 1.22,
+      "mvrv_z_score": null,
+      "nupl": null,
+      "ahr999": null,
+      "lth_sopr": null,
+      "sth_sopr": 0.985,
       "asopr": null,
-      "puell_multiple": "<2.0（矿工压力区）",
-      "rsi_14d": 30.3,
-      "exchange_netflow_7d": "+42,929 BTC（连续7天净流入）",
+      "puell_multiple": null,
+      "rsi_14d": null,
+      "exchange_netflow_7d": null,
       "exchange_balance_pct": null,
-      "coinbase_premium": "滞后12天",
-      "funding_rate": "滞后11天",
+      "coinbase_premium": "+0.035%",
+      "funding_rate": "轻微负值",
       "cycle_day": null,
       "days_since_ath": null,
       "bear_market_progress_pct": null,
-      "fear_greed_index": 95
+      "fear_greed_index": null
     },
     "six_dimension_score": {
-      "valuation": null,
+      "valuation": 50,
       "holder_behavior": null,
-      "market_structure": null,
-      "capital_flow": 25,
+      "market_structure": 45,
+      "capital_flow": 20,
       "technical": null,
       "sentiment": null,
-      "total": 58,
+      "total": null,
       "grade": "C",
-      "confidence_pct": null
+      "confidence_pct": 55
     },
     "cycle_judgment": {
-      "phase": "熊市中段偏后 / 底部探测期",
-      "confidence": "中等偏低",
-      "signal_level": "B",
-      "entry_zone": "分批建仓，不追高",
-      "position_suggestion": "15-25%"
+      "phase": "熊市中后期震荡区间（$60k-$79k）",
+      "confidence": "中等",
+      "signal_level": "C",
+      "entry_zone": "分批建仓，观望",
+      "position_suggestion": "10-15%"
     },
     "skills_triggered": {
-      "active": [
-        "🟢 B-ahr999-bottom（首次进入抄底区<0.45）",
-        "S-mvrv-cycle-overlay",
-        "A-lth-sopr-capitulation（连续<1）",
-        "A-ath-drawdown-mapping",
-        "A-triaxis-bottom-pattern",
-        "A-supply-repair-phase"
-      ],
-      "approaching": [
-        "🟡 RSI-14d-super-oversold（差0.3至阈值30）",
-        "A-supply-profit-regime（距60%仅6%）"
-      ]
+      "active": [],
+      "approaching": []
     },
     "anomaly_detection": {
       "p0_critical": [
         {
-          "indicator": "lth_sopr / sth_sopr",
-          "lag_days": 7,
-          "date": "2026-05-24"
+          "indicator": "Apparent Demand",
+          "value": "-147,000 BTC",
+          "status": "2026年最低，无现货需求反弹"
         },
         {
-          "indicator": "coinbase_premium",
-          "lag_days": 12,
-          "date": "2026-05-19"
-        },
-        {
-          "indicator": "funding_rate",
-          "lag_days": 11,
-          "date": "2026-05-20"
+          "indicator": "ETF连续11天净流出",
+          "value": "$4.84亿",
+          "status": "机构需求实质性撤退"
         }
       ],
       "p1_warning": [
         {
-          "indicator": "恐贪指数95与链上低估矛盾",
-          "lag_days": 0,
-          "date": "2026-06-01"
-        },
-        {
-          "indicator": "交易所连续7天净流入",
-          "lag_days": 0,
-          "date": "2026-06-01"
+          "indicator": "Bull-Bear Cycle Indicator",
+          "value": "5/12翻绿",
+          "status": "2023年3月以来首次，与18个月熊市框架矛盾"
         }
       ]
     },
     "key_discoveries": [
-      "AHR999=0.395首次进入抄底区（<0.45），历史胜率83%",
-      "恐贪指数95异常背离（与链上低估矛盾）",
-      "交易所净流入连续7天累计+26万BTC，卖压持续",
-      "LTH-SOPR=0.892连续低于1，长期持有者亏损卖出",
-      "RSI 14d=30.3距超卖阈值仅差0.3"
+      "BTC处于熊市中后期震荡区间，卖压接近耗尽但新资本流入尚未确认",
+      "STH-SOPR持续<1（2025年10月至今）=教科书级熊市特征",
+      "18个月熊市框架(→2027Q1) vs Bull-Bear翻绿 = 2026核心信号矛盾",
+      "ETF连续11天净流出，机构需求实质性撤退",
+      "Apparent Demand降至2026年最低=-147k BTC"
     ],
-    "full_report_text": "NOT_AVAILABLE - 2026-06-03 btc_onchain agent日报cron任务未执行。memory/2026-06-02.md仅包含用户14:49请求发送的摘要格式，不含完整日报原文。关键数据从摘要+进化学习报告提取。建议检查cron任务执行状态。"
+    "full_report_text": null
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-06-02",
+    "date": "2026-06-03",
     "price_anchors": {
-      "realtime_price": "$71,286",
-      "close_price": "$73,568（5月收盘）",
-      "realized_price": "$54.2K",
-      "tmm": "$78.3K",
+      "realtime_price": "$66,240",
+      "close_price": "$66,240",
+      "realized_price": "$54,400",
+      "tmm": "$78-79K",
       "cvdd": null,
       "equilibrium_price": null,
       "ma_2y": null,
       "ath": "$126,272",
-      "miner_cost": null,
-      "ma_200w": "$61K"
+      "miner_cost": null
     },
     "cycle_position": {
-      "phase": "熊市整固期",
+      "phase": "熊市中后期",
       "cycle_day": null,
-      "earliest_bottom": null,
-      "mean_bottom": "Q4 2026（Willy Woo/K33共识）",
-      "latest_bottom": "2027 Q1（Ki Young Ju）",
-      "bear_progress_pct": "未知"
+      "earliest_bottom": "$25K（PlanB情景1）",
+      "mean_bottom": "$50K-$60K（PlanB情景2，与Realized吻合）",
+      "latest_bottom": null
     },
     "core_judgment": {
-      "scenario_probabilities": {
-        "继续下行至200WMA $61K": ">50%（PlanB）",
-        "底部Q3-Q4 2026": "60%",
-        "底部2027 H1": "30%",
-        "极端新低<$45K": "10%"
-      },
-      "key_evidence": [
-        "Supply in Profit比例高于历史底部水平（PlanB）",
-        "Realized P/L Ratio=1.56远低于牛市2-5区间",
-        "STH P&L接近零未转正",
-        "衍生品缺口24K BTC OI未恢复",
-        "Bull-Bear翻绿(5/12 $81K)后回落至$71K"
-      ]
+      "prob_early_bull": "20%",
+      "prob_continued_bear": "60%",
+      "prob_bottom_building": "20%"
     },
     "entry_tiers": {
-      "tier_a": "$66K-$70K（URPD支撑区）",
-      "tier_b": "$61K（200WMA）-$54K（Realized Price）",
-      "tier_c": "$45K-$53K（Willy Woo极端熊底）"
+      "tier_a": "$54K-$60K（Realized Price附近）",
+      "tier_b": "$65K-$70K（当前区间）",
+      "tier_c": "$78K+（TMM突破确认）"
     },
     "signal_level": "C",
-    "position_suggestion": "观望为主，若跌至$61K附近评估S级买入信号条件",
-    "risk_points": [
-      "日收盘<$70K可能触发加速下行",
-      "Bull-Bear翻绿后回落增加假信号风险",
-      "ETF流出持续，需求侧严重不足"
+    "position_suggestion": "10-15%分批",
+    "core_conflicts": [
+      "18个月框架(2025.10→2027Q1) vs Bull-Bear翻绿(5/12首次)",
+      "估值底($54K Realized) vs 流动性底($30K-$45K Woo极端情景)"
     ],
-    "full_report_text": "NOT_AVAILABLE - 周期报告原文未推送。关键信息从进化学习报告(2026-06-02)提取：PlanB+Glassnode+Ki Young Ju三方数据交叉指向底部尚未确认。"
+    "full_report_text": null
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-06-02",
+    "date": "2026-06-03",
     "core_decision": {
       "signal": "观望",
-      "phase": "熊市整固期",
-      "summary": "供给侧改善（卖压缓解）但需求侧严重不足（ETF流出+现货需求fading），底部尚未确认",
-      "position": "观望/15-25%"
+      "phase": "熊市中后期",
+      "summary": "卖压近竭但新资本流入未确认，Bull-Bear翻绿提供底部早期信号",
+      "position": "10-15%"
     },
     "top3_data_points": [
-      "AHR999=0.395首次触发抄底区信号（<0.45阈值）",
-      "交易所连续7天净流入+42,929 BTC，累计5/25→5/31 +26万BTC",
-      "恐贪指数95异常背离（链上低估vs极度贪婪）"
+      "Apparent Demand = -147,000 BTC（2026最低）",
+      "ETF连续11天净流出，IBIT单日-$4.4亿",
+      "STH-SOPR 7D-EMA = 0.985（熊市教科书读数）"
     ],
     "chip_map": {
-      "lth_supply_pct": null,
-      "sth_supply_pct": null,
-      "exchange_balance_pct": "2019年来最低",
-      "notes": "15%流通供应集中在$74K-$83K（上方供应沉重）"
+      "lth_pct": null,
+      "sth_pct": null,
+      "exchange_pct": null
     },
     "whale_behavior": {
-      "netflow_7d": "+42,929 BTC",
+      "netflow_7d": null,
       "netflow_30d": null,
-      "whale_balance_trend": "机构去风险化（进化学习报告提及Jane Street -70%, Goldman -10%）",
-      "coinbase_premium": "滞后12天",
-      "funding_rate": "滞后11天"
+      "balance": "持平（Ki Young Ju：2月以来无变化）",
+      "coinbase_premium": "+0.035%",
+      "funding_rate": "轻微负值（空头拥挤，存在short-squeeze可能）"
     },
     "sopr_decode": {
       "lth_sopr": {
-        "value": 0.892,
-        "lag_days": 7,
-        "trend_7d": "连续低于1（投降进行中）",
-        "sequence_7d": "6/1: 0.892 | 5/28: 0.753 | 5/30: 0.834"
+        "current": null,
+        "7d_sequence": null
       },
       "sth_sopr": {
-        "value": null,
-        "lag_days": 7
+        "current": 0.985,
+        "7d_sequence": "2025年10月至今持续<1"
       },
       "asopr": {
-        "value": null
+        "current": null,
+        "7d_sequence": null
       }
     },
     "ats_dashboard": {
-      "current": null,
+      "current": 0.43,
       "target": null,
       "gap_pct": null,
-      "14d_trend": null
+      "14d_trend": "从<0.1升至0.43（卖出放缓但缺乏积累信念）"
     },
     "fusion_conclusion": {
-      "综合结论": "三收敛框架：MVRV🟡（Z=0.597中性偏低）+ 卖压耗尽🟡（供给侧改善但需求不足）+ 新资本流入🔴（ETF流出+现货需求fading）。底部时间窗口Q4 2026-2027 Q1是分析师共识。",
-      "六维分": 58,
-      "操作建议": "观望，维持防御。AHR999抄底区触发是左侧信号，但交易所净流入+恐贪背离是右侧风险。若跌至$61K附近可评估S级买入条件。",
-      "止损位": "$66K-$70K URPD支撑区失守或日收盘<$70K",
-      "反向触发": "交易所净流入转负+BTC站稳$78.3K TMM+Bull-Bear翻绿持续验证"
+      "综合结论": "三收敛框架：MVRV低估🟡 / 卖压耗尽🟢 / 新资本流入🔴（发散）→ 当前是方向选择前的窄幅蓄力区",
+      "六维分": null,
+      "操作": "维持C级观望，关注Bull-Bear连续4周绿色确认",
+      "止损": "跌破$54K暂停加仓",
+      "反向触发": "ETF连续7天净流入+STH-SOPR突破1.0"
     },
-    "full_report_text": "NOT_AVAILABLE - 鲸鱼报告原文未推送。关键信息从memory摘要+进化学习报告提取。三收敛框架：供给侧改善但需求侧发散。"
+    "full_report_text": null
+  },
+  "evolution_summary": {
+    "date": "2026-06-03",
+    "top_sources": [
+      "Glassnode Week 07+10 组合",
+      "Ki Young Ju 18个月熊市框架",
+      "James Check 叙事vs数据",
+      "Willy Woo 卖压耗尽判断",
+      "PlanB 四情景",
+      "CryptoQuant Apparent Demand极值"
+    ],
+    "key_conflicts": [
+      "18个月统计框架(熊→2027Q1) vs Bull-Bear翻绿(底部早期信号)",
+      "估值底($54K) vs 流动性底($30K-$45K Woo极端)"
+    ],
+    "next_track": [
+      "Bull-Bear是否连续4周绿色",
+      "ETF 7日均净流方向",
+      "STH-SOPR突破1.0时机",
+      "Mt. Gox 34,504 BTC处置进展(10/31截止)"
+    ]
   }
 }
