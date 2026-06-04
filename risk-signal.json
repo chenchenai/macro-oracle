@@ -1,60 +1,41 @@
 {
-  "timestamp": "2026-05-24T10:00:00+08:00",
-  "crl": 15,
+  "timestamp": "2026-06-04T10:00:00+08:00",
+  "crl": 24,
   "level": "GREEN",
-  "levelNote": "VIX/USDJPY稳定，但ETF流出与Hormuz尾险延续，按GREEN偏保守执行",
   "scores": {
     "macro": 20,
-    "structure": 20,
+    "structure": 30,
     "chain": 0,
     "event": 20
   },
-  "marketAnchors": {
-    "btcPrice": 76534,
-    "btcATH": 126210,
-    "btcDrawdown": 39,
-    "vix": 17.44,
-    "usdJpy": 159.2,
-    "brent": 104.0,
-    "fearGreed": 27,
-    "etfFlowDaily": null,
-    "etfFlowWeekly": -1260000000,
-    "sp500": 7473.47,
-    "nasdaq": 26343.97
+  "btcPrice": 67000,
+  "btcAth": 126210,
+  "btcDrawdown": 47,
+  "vix": 16.00,
+  "usdjpy": 159.40,
+  "fearGreed": 11,
+  "etfFlow": {
+    "daily": -440000000,
+    "weekly": -1670000000,
+    "monthly": -2300000000,
+    "total": -4210000000,
+    "consecutiveDays": 10,
+    "status": "YELLOW"
   },
-  "activeAlerts": [
-    {
-      "id": "S-05",
-      "name": "ETF周累计流出",
-      "value": "约-$1.26B",
-      "threshold": ">$1.0B周累计",
-      "status": "YELLOW",
-      "priority": "P0"
-    },
-    {
-      "id": "S-02",
-      "name": "BTC OI增长观察",
-      "value": "快速增长，待定量",
-      "threshold": ">10%且横盘",
-      "status": "YELLOW",
-      "priority": "P1"
-    },
-    {
-      "id": "E-06",
-      "name": "Hormuz停火脆弱",
-      "value": "谈判继续，航运恢复慢",
-      "threshold": "停火失效或航运再封锁",
-      "status": "YELLOW",
-      "priority": "P0"
-    }
+  "activeSignals": [
+    {"id": "S-04", "name": "ETF连续流出", "status": "YELLOW", "value": "-$4.21B"},
+    {"id": "S-05", "name": "ETF累计流出", "status": "YELLOW", "value": "-$4.21B"},
+    {"id": "M-06", "name": "BTC跌幅", "status": "YELLOW", "value": "-47%"},
+    {"id": "E-05", "name": "Drift黑客", "status": "YELLOW", "value": "$270-285M"},
+    {"id": "E-02", "name": "ZB暂停提款", "status": "背景监控", "value": "$5M"}
   ],
-  "positionRecommendations": {
+  "positionAdvice": {
     "corePosition": "60-70%",
-    "trendPosition": "20-30%轻仓",
-    "totalPositionCap": "≤80%",
-    "leverage": "不新增，≤1x更优",
-    "putHedge": "净值1-2%",
-    "ammoBucket": "20-25%待命"
+    "ammoBucket": "20-25%",
+    "hedgeBucket": "1-2%",
+    "leverage": "零杠杆",
+    "action": "维持GREEN仓位配置，监控ETF是否加速至$500M单日触发橙灯"
   },
-  "nextUpdate": "2026-05-26T10:00:00+08:00"
+  "nextReport": "2026-06-04T14:00:00+08:00",
+  "nextMorningReport": "2026-06-05T10:00:00+08:00"
 }
