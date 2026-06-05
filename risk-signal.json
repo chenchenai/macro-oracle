@@ -1,41 +1,40 @@
 {
-  "timestamp": "2026-06-04T10:00:00+08:00",
-  "crl": 24,
+  "timestamp": "2026-06-05T10:00:00+08:00",
+  "crl": 15,
   "level": "GREEN",
-  "scores": {
-    "macro": 20,
-    "structure": 30,
-    "chain": 0,
-    "event": 20
-  },
-  "btcPrice": 67000,
-  "btcAth": 126210,
-  "btcDrawdown": 47,
-  "vix": 16.00,
-  "usdjpy": 159.40,
-  "fearGreed": 11,
-  "etfFlow": {
-    "daily": -440000000,
-    "weekly": -1670000000,
-    "monthly": -2300000000,
-    "total": -4210000000,
-    "consecutiveDays": 10,
-    "status": "YELLOW"
-  },
-  "activeSignals": [
-    {"id": "S-04", "name": "ETF连续流出", "status": "YELLOW", "value": "-$4.21B"},
-    {"id": "S-05", "name": "ETF累计流出", "status": "YELLOW", "value": "-$4.21B"},
-    {"id": "M-06", "name": "BTC跌幅", "status": "YELLOW", "value": "-47%"},
-    {"id": "E-05", "name": "Drift黑客", "status": "YELLOW", "value": "$270-285M"},
-    {"id": "E-02", "name": "ZB暂停提款", "status": "背景监控", "value": "$5M"}
+  "macro_score": 0,
+  "structure_score": 20,
+  "chain_score": 0,
+  "event_score": 20,
+  "btc_price": 63500,
+  "vix": 15.37,
+  "usdjpy": 159.97,
+  "etf_flow_cumulative": -4400000000,
+  "etf_flow_daily": -483800000,
+  "fear_greed": 12,
+  "active_alerts": [
+    {
+      "id": "S-04",
+      "name": "ETF连续流出",
+      "status": "YELLOW",
+      "value": "-$4.4B累计，-$483.8M单日",
+      "threshold": "$500M单日黄灯"
+    },
+    {
+      "id": "M-06",
+      "name": "BTC跌幅",
+      "status": "YELLOW",
+      "value": "-47% vs ATH",
+      "threshold": "回撤黄灯"
+    },
+    {
+      "id": "E-05",
+      "name": "Drift黑客",
+      "status": "YELLOW",
+      "value": "时间衰减",
+      "threshold": "已过14天"
+    }
   ],
-  "positionAdvice": {
-    "corePosition": "60-70%",
-    "ammoBucket": "20-25%",
-    "hedgeBucket": "1-2%",
-    "leverage": "零杠杆",
-    "action": "维持GREEN仓位配置，监控ETF是否加速至$500M单日触发橙灯"
-  },
-  "nextReport": "2026-06-04T14:00:00+08:00",
-  "nextMorningReport": "2026-06-05T10:00:00+08:00"
+  "next_update": "2026-06-05T13:50:00+08:00",
+  "report_type": "morning_v3"
 }
