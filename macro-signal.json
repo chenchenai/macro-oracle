@@ -1,48 +1,119 @@
 {
   "meta": {
-    "generated_at": "2026-06-05T02:20:00+08:00",
-    "data_date": "2026-06-03",
-    "report_date": "2026-06-05",
+    "generated_at": "2026-06-06 02:20 CST",
+    "data_date": null,
+    "report_date": null,
     "stale": true,
-    "stale_reason": "2026-06-05与2026-06-04日志均不存在；2026-06-03日志仅含运维信息，无市场数据"
+    "alert": "⚠️ 严重滞后：最近3日(06-04/05/06)宏观日报缺失，最新有效数据为2026-05-14，滞后超过3周",
+    "missing_dates": ["2026-06-04", "2026-06-05", "2026-06-06"],
+    "latest_available": "2026-05-14",
+    "sync_status": "no_data",
+    "push_reason": "cron任务按时执行，但源数据缺失"
   },
   "market_snapshot": {
-    "spx": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "nasdaq": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "dow": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "btc": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "eth": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "gold": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "silver": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "wti": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "dxy": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "vix": { "price": null, "change_pct": null, "note": "数据缺失" },
-    "usdjpy": { "price": null, "change_pct": null, "note": "数据缺失" }
+    "spx": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "nasdaq": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "dow": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "btc": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "eth": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "gold": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "silver": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "wti": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "dxy": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "vix": {
+      "price": null,
+      "note": "数据缺失"
+    },
+    "usdjpy": {
+      "price": null,
+      "note": "数据缺失"
+    }
   },
   "rates": {
-    "ffr": null,
-    "usy2": null,
-    "usy10": null,
-    "usy30": null,
-    "spread_2s10s": null,
-    "bei_5y": null,
-    "tips_10y": null,
-    "note": "数据缺失"
+    "ffr": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "usy2": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "usy10": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "usy30": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "spread_2s10s": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "bei_5y": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "tips_10y": {
+      "value": null,
+      "note": "数据缺失"
+    }
   },
   "credit": {
-    "hy_spread": null,
-    "ig_spread": null,
-    "fed_balance_sheet_t": null,
-    "net_liquidity_b": null,
-    "m2_yoy": null,
-    "note": "数据缺失"
+    "hy_spread": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "ig_spread": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "fed_balance_sheet_t": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "net_liquidity_b": {
+      "value": null,
+      "note": "数据缺失"
+    },
+    "m2_yoy": {
+      "value": null,
+      "note": "数据缺失"
+    }
   },
   "dalio_quadrant": {
     "quadrant_name": null,
     "growth_signals": [],
     "inflation_signals": [],
     "regime_label": null,
-    "note": "数据缺失"
+    "note": "数据缺失，无法判断象限"
   },
   "btc_signals": {
     "direction": null,
@@ -53,22 +124,32 @@
     "note": "数据缺失"
   },
   "three_market_advice": {
-    "gold": { "advice": null, "logic": null, "note": "数据缺失" },
-    "spx": { "advice": null, "logic": null, "note": "数据缺失" },
-    "btc": { "advice": null, "logic": null, "note": "数据缺失" }
+    "gold": {
+      "advice": null,
+      "logic": null,
+      "note": "数据缺失"
+    },
+    "spx": {
+      "advice": null,
+      "logic": null,
+      "note": "数据缺失"
+    },
+    "btc": {
+      "advice": null,
+      "logic": null,
+      "note": "数据缺失"
+    }
   },
   "key_events": {
-    "p0_events": [],
-    "p1_events": [],
+    "P0": [],
+    "P1": [],
     "note": "数据缺失"
   },
-  "full_report_text": "",
-  "system_status": {
-    "last_successful_report": "未知",
-    "cron_issue": {
-      "detected_at": "2026-06-03T10:48:00+08:00",
-      "issue": "晨报cron模型配置错误(openai/gpt-5.4不在白名单)，导致日报连续失败116+次",
-      "fix": "模型已改为qwen/glm-5，但后续日报似乎仍未正常生成市场数据"
-    }
+  "full_report_text": null,
+  "diagnostic": {
+    "issue": "宏观日报生成任务可能已停止运行或失败",
+    "latest_memory_file": "2026-06-03.md（仅为晨报修复日志，非宏观日报）",
+    "latest_macro_data": "2026-05-14（macro-signal-pending.json）",
+    "recommendation": "检查宏观日报生成cron任务状态，确认macro-monitor agent是否正常运行"
   }
 }
