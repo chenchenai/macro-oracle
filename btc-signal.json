@@ -1,130 +1,85 @@
 {
   "schema": "v2.0",
-  "generated_at": "2026-06-04T10:33:00+08:00",
+  "generated_at": "2026-06-05T10:34:00+08:00",
   "signal": {
     "direction": "bearish",
+    "confidence": "medium-low",
+    "action": "5% light position",
     "bottom_score": 3,
-    "bottom_max": 8,
-    "confidence": "medium",
-    "action": "观察为主，轻仓试探5%",
-    "dz_activated": 1,
-    "dz_max": 5,
-    "l1_triggered": false,
-    "l2_triggered": false,
-    "l3_triggered": false
+    "bottom_max": 8
   },
   "price": {
-    "btc_usd": 63500,
-    "price_ts": "06-04",
-    "ma_200w": 61668.59,
-    "ma_200w_ts": "06-02",
-    "realized_price": 53909.56,
-    "realized_price_ts": "06-02",
-    "cvdd": 46263.13,
-    "cvdd_ts": "06-02",
-    "balanced_price": 40050.02,
-    "balanced_price_ts": "06-02"
+    "btc_usd": 63808.0,
+    "as_of": "2026-06-04"
   },
   "onchain": {
-    "mvrv_z_score": 0.4380,
-    "mvrv_z_score_ts": "06-02",
-    "nupl": 0.1912,
-    "nupl_ts": "06-02",
-    "puell_multiple": 0.5385,
-    "puell_multiple_ts": "06-02",
-    "ahr999": 0.3578,
-    "ahr999_ts": "06-03",
-    "lth_sopr": 0.7170,
-    "lth_sopr_ts": "06-02",
-    "sopr_adjusted": 0.9390,
-    "sopr_adjusted_ts": "06-02",
-    "asopr_consecutive_below_1": 8,
-    "mayer_multiple": 0.8410,
-    "mayer_multiple_ts": "06-02",
-    "rsi_14d": 21.88,
-    "rsi_14d_ts": "06-02",
-    "monthly_rsi_14": 30.22,
-    "exchange_net_flow": 65026.13,
-    "exchange_net_flow_ts": "06-02",
-    "exchange_balance_pct": 15.30,
-    "exchange_balance_pct_ts": "06-02",
-    "lth_supply_pct": 74.30,
-    "lth_supply_pct_ts": "06-02"
-  },
-  "sentiment": {
-    "fear_greed_index": 11,
-    "fear_greed_classification": "Extreme Fear",
-    "fear_greed_ts": "06-03"
+    "mvrv_z_score": {"value": 0.3290, "date": "2026-06-04"},
+    "nupl": {"value": 0.1578, "date": "2026-06-04"},
+    "puell_multiple": {"value": 0.6649, "date": "2026-06-04"},
+    "asopr": {"value": 0.9544, "date": "2026-06-04", "consecutive_below_1_days": 8},
+    "lth_sopr": {"value": 0.6930, "date": "2026-06-04"},
+    "sth_sopr": {"value": 0.9580, "date": "2026-06-04"},
+    "ahr999": {"value": 0.3186, "date": "2026-06-05"},
+    "mayer_multiple": {"value": 0.8083, "date": "2026-06-04"},
+    "rsi_14d": {"value": 18.46, "date": "2026-06-04"},
+    "monthly_rsi": {"value": 29.27, "date": "2026-05-31"},
+    "realized_price": {"value": 53740.69, "date": "2026-06-04"},
+    "cvdd": {"value": 46299.61, "date": "2026-06-04"},
+    "balanced_price": {"value": 39866.17, "date": "2026-06-04"},
+    "ma_200w": {"value": 61727.42, "date": "2026-06-04"},
+    "exchange_net_flow": {"value": 72590.5, "date": "2026-06-04"},
+    "exchange_balance_pct": {"value": 0.1530, "date": "2026-06-04"},
+    "lth_supply_pct": {"value": 74.26, "date": "2026-06-04"},
+    "fear_greed_index": {"value": 12, "classification": "Extreme Fear", "date": "2026-06-04"}
   },
   "macro": {
-    "fed_rate": 3.75,
-    "dxy": 99.55,
-    "dxy_ts": "06-03",
-    "vix": 16.05,
-    "vix_ts": "06-01",
-    "spx": 7600,
-    "spx_ts": "06-01",
-    "gold": 4482,
-    "gold_ts": "06-02",
-    "silver": 74.15,
-    "silver_ts": "06-03",
-    "usd_jpy": 159.92,
-    "usd_jpy_ts": "06-02",
-    "m2_trillion": 22.8,
-    "m2_ts": "2026-04",
-    "net_liquidity_trillion": 5.80,
-    "net_liquidity_ts": "2026-03",
-    "hy_spread": null,
-    "hy_spread_ts": null,
-    "five_y_bei": 2.54,
-    "five_y_bei_ts": "06-03",
-    "treasury_10y": 4.46,
-    "treasury_10y_ts": "06-03",
-    "yield_curve_10y_2y_spread_positive": true
+    "dxy": {"value": 99.43, "date": "2026-06-04"},
+    "vix": {"value": 15.77, "date": "2026-06-02"},
+    "spx": {"value": 7584.31, "date": "2026-06-04"},
+    "gold": {"value": 4495.8, "date": "2026-06-01"},
+    "silver_futures": {"value": 75.49, "date": "2026-06-03"},
+    "us10y": {"value": 4.48, "date": "2026-06-04"},
+    "us2y": {"value": 4.06, "date": "2026-06-03"},
+    "spread_2s10s": {"value": 0.40, "date": "2026-06-03"},
+    "bei_5y": {"value": 2.38, "date": "2026-05-15"},
+    "hy_oas": {"value": 2.75, "date": "2026-06-03"},
+    "sahm_rule": {"value": 0.13, "date": "2026-04"},
+    "initial_claims_k": {"value": 215, "date": "2026-05"},
+    "etf_flow_10d_m": {"value": -1803.4, "date": "2026-06-04", "note": "10-day net outflow"}
   },
-  "dalio_quadrant": {
-    "code": "D/E",
-    "name": "过热晚期/滞胀前兆",
-    "btc_bias": "有条件顺风",
-    "growth_evidence": ["Sahm Rule安全区", "SPX~7600高位"],
-    "inflation_evidence": ["5Y BEI 2.54%偏热", "黄金强势$4482"]
+  "depression_zone": {
+    "activated": true,
+    "score": 1,
+    "max": 5,
+    "conditions": {
+      "price_below_200wma": false,
+      "price_below_realized": false,
+      "ahr999_below_045": true,
+      "mvrv_z_below_0": false,
+      "mayer_below_065": false
+    }
   },
-  "throughline": {
-    "main": "Fed降息周期确认+M2正增长→流动性边际改善",
-    "conflict": "通胀预期偏高限制降息空间，10Y 4.46%居高",
-    "tail_risk": "伊朗冲突升级→油价飙升→通胀二次抬头→Fed暂停降息"
+  "levels": {
+    "L1": {"triggered": false, "cvdd": false, "balanced_price": false},
+    "L2": {"triggered": false, "dz_activated": true, "puell_below_05": false},
+    "L3": {"triggered": true, "dz_activated": true, "lth_sopr_below_1": true, "slingshot": true, "micro_trend": false, "rebound": false}
   },
   "top_monitor": {
-    "mvrv_z_alert": 2.5,
-    "mvrv_z_reduce": 3.0,
-    "mvrv_z_current": 0.4380,
-    "puell_alert": 2.5,
-    "puell_reduce": 3.0,
-    "puell_current": 0.5385,
-    "nupl_alert": 0.65,
-    "nupl_reduce": 0.70,
-    "nupl_current": 0.1912,
-    "monthly_rsi_alert": 75,
-    "monthly_rsi_current": 30.22,
-    "fng_alert": 75,
-    "fng_current": 11,
-    "top_score": "0/5 安全区"
+    "mvrv_z_alert": false,
+    "puell_alert": false,
+    "nupl_alert": false,
+    "monthly_rsi_alert": false,
+    "fear_greed_alert": false,
+    "risk_level": "safe"
   },
-  "position_plan": {
-    "current_allocation_pct": 5,
-    "max_allocation_pct": 50,
-    "leverage": "零杠杆铁律",
-    "next_trigger": "底部4/8（MVRV Z或NUPL转负）",
-    "next_allocation": 15
+  "position_advice": {
+    "current_pct": 5,
+    "max_pct": 50,
+    "leverage": "zero",
+    "entry_price": 63808,
+    "stop_loss": 53741
   },
-  "cycle_progress": {
-    "bottom_progress_pct": 38,
-    "bottom_score": "3/8",
-    "time_window": "2026 Q2-Q3",
-    "vix_signal": "正常区间"
-  },
-  "etf_flow": {
-    "btc_etf_net_flow_m": -533.90,
-    "etf_flow_ts": "06-01"
-  }
+  "cycle_phase": "Deep Bear Mid-Late / Early Depression",
+  "bottom_progress_pct": 35,
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
 }
