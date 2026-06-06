@@ -1,119 +1,50 @@
 {
   "meta": {
-    "generated_at": "2026-06-06 02:20 CST",
-    "data_date": null,
-    "report_date": null,
+    "generated_at": "2026-06-07 02:20 CST",
+    "data_date": "2026-06-03",
+    "report_date": "2026-06-07",
     "stale": true,
-    "alert": "⚠️ 严重滞后：最近3日(06-04/05/06)宏观日报缺失，最新有效数据为2026-05-14，滞后超过3周",
-    "missing_dates": ["2026-06-04", "2026-06-05", "2026-06-06"],
-    "latest_available": "2026-05-14",
-    "sync_status": "no_data",
-    "push_reason": "cron任务按时执行，但源数据缺失"
+    "stale_reason": "最新宏观日报为 2026-06-03，距当前 4 天无更新",
+    "lag_days": 4
   },
   "market_snapshot": {
-    "spx": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "nasdaq": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "dow": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "btc": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "eth": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "gold": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "silver": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "wti": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "dxy": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "vix": {
-      "price": null,
-      "note": "数据缺失"
-    },
-    "usdjpy": {
-      "price": null,
-      "note": "数据缺失"
-    }
+    "spx": null,
+    "nasdaq": null,
+    "dow": null,
+    "btc": null,
+    "eth": null,
+    "gold": null,
+    "silver": null,
+    "wti": null,
+    "dxy": null,
+    "vix": null,
+    "usdjpy": null,
+    "note": "数据源日志未包含市场快照，需 macro-monitor agent 补充"
   },
   "rates": {
-    "ffr": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "usy2": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "usy10": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "usy30": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "spread_2s10s": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "bei_5y": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "tips_10y": {
-      "value": null,
-      "note": "数据缺失"
-    }
+    "ffr": null,
+    "usy2": null,
+    "usy10": null,
+    "usy30": null,
+    "spread_2s10s": null,
+    "bei_5y": null,
+    "tips_10y": null,
+    "note": "数据源日志未包含利率数据"
   },
   "credit": {
-    "hy_spread": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "ig_spread": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "fed_balance_sheet_t": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "数据缺失"
-    },
-    "m2_yoy": {
-      "value": null,
-      "note": "数据缺失"
-    }
+    "hy_spread": null,
+    "ig_spread": null,
+    "fed_balance_sheet_t": null,
+    "net_liquidity_b": null,
+    "m2_yoy": null,
+    "note": "数据源日志未包含信用数据"
   },
   "dalio_quadrant": {
     "quadrant_name": null,
     "growth_signals": [],
     "inflation_signals": [],
     "regime_label": null,
-    "note": "数据缺失，无法判断象限"
+    "note": "数据源日志未包含Dalio象限分析"
   },
   "btc_signals": {
     "direction": null,
@@ -121,35 +52,15 @@
     "action": null,
     "entry_zone": null,
     "stop_loss": null,
-    "note": "数据缺失"
+    "note": "数据源日志未包含BTC信号"
   },
   "three_market_advice": {
-    "gold": {
-      "advice": null,
-      "logic": null,
-      "note": "数据缺失"
-    },
-    "spx": {
-      "advice": null,
-      "logic": null,
-      "note": "数据缺失"
-    },
-    "btc": {
-      "advice": null,
-      "logic": null,
-      "note": "数据缺失"
-    }
+    "gold": null,
+    "spx": null,
+    "btc": null,
+    "note": "数据源日志未包含三市场建议"
   },
-  "key_events": {
-    "P0": [],
-    "P1": [],
-    "note": "数据缺失"
-  },
-  "full_report_text": null,
-  "diagnostic": {
-    "issue": "宏观日报生成任务可能已停止运行或失败",
-    "latest_memory_file": "2026-06-03.md（仅为晨报修复日志，非宏观日报）",
-    "latest_macro_data": "2026-05-14（macro-signal-pending.json）",
-    "recommendation": "检查宏观日报生成cron任务状态，确认macro-monitor agent是否正常运行"
-  }
+  "key_events": [],
+  "full_report_text": "# 2026-06-03 日志\n\n## 🔧 晨报推送修复（10:48 BJT）\n\n### 问题诊断\n- **现象**：晨报自 2026-05-24 起 10 天未推送\n- **根本原因**：两个晨报 cron（主推 + Guardian）的 `payload.model` 配置为 `openai/gpt-5.4`，但该模型不在 Gateway 白名单中\n- **白名单模型**：`ark/deepseek-v4-pro, ark/glm-5.1, ark/kimi-k2.6, ark/minimax-m2.7, openai-codex/gpt-5.4, openai-codex/gpt-5.5, openai/gpt-5.5, qwen/glm-5`\n- **错误详情**：cron preflight 检查拒绝 `openai/gpt-5.4`，导致任务连续失败 116+ 次\n\n### 修复措施\n1. 修改主推 cron（jobId: `293a1713`）的 model 从 `openai/gpt-5.4` → `qwen/glm-5`\n2. 修改 Guardian cron（jobId: `548eb289`）的 model 从 `openai/gpt-5.4` → `qwen/glm-5`\n3. 手动触发 Guardian 任务补发今日晨报（runId: `manual:548eb289...:1780454949719:3`）\n4. 验证标志文件更新为 `2026-06-03`\n\n### 验证结果\n- ✅ 标志文件已写入：`2026-06-03`\n- ✅ Guardian 任务成功补发晨报\n- ⏳ 待验证：Telegram 群消息送达确认\n\n### 后续预防\n- 建议：在更新 cron payload.model 时，必须先验证模型在 `agents.defaults.models` 白名单中\n- 记录：此教训写入 MEMORY.md 作为架构知识\n\n---\ntype: decision | confidence: high | source: observed | updated_at: 2026-06-03",
+  "system_alert": "⚠️ 宏观数据滞后 4 天，请检查 macro-monitor agent 晨报生成任务是否正常执行"
 }
