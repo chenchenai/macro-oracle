@@ -1,40 +1,76 @@
 {
-  "timestamp": "2026-06-05T10:00:00+08:00",
-  "crl": 15,
+  "timestamp": "2026-06-07T02:00:00Z",
+  "crl": 12,
   "level": "GREEN",
-  "macro_score": 0,
-  "structure_score": 20,
-  "chain_score": 0,
-  "event_score": 20,
-  "btc_price": 63500,
-  "vix": 15.37,
-  "usdjpy": 159.97,
-  "etf_flow_cumulative": -4400000000,
-  "etf_flow_daily": -483800000,
-  "fear_greed": 12,
-  "active_alerts": [
+  "levelNote": "技术性GREEN，建议按YELLOW保守执行",
+  "scores": {
+    "macro": 6,
+    "structure": 6,
+    "chain": 0,
+    "event": 0
+  },
+  "btcPrice": 63210,
+  "btcVsAth": -50,
+  "vix": 21.51,
+  "vixChange24h": 39.68,
+  "usdJpy": 160.32,
+  "usdJpyChange24h": 0.23,
+  "etfFlowDay": 3.05,
+  "etfFlowWeek": -1670,
+  "etfStreakEnded": true,
+  "etfStreakDays": 13,
+  "etfStreakTotal": -4400,
+  "fearGreed": 13,
+  "fearGreedLabel": "Extreme Fear",
+  "brentOil": 98.89,
+  "iranWarStatus": "Ceasefire negotiations progressing, ships coordinating exit from Hormuz",
+  "iranThreatLevel": "Medium - negotiations fragile",
+  "activeAlerts": [
+    {
+      "id": "M-05",
+      "name": "VIX涨幅",
+      "value": 39.68,
+      "threshold": 30,
+      "status": "YELLOW"
+    },
+    {
+      "id": "M-07",
+      "name": "Nasdaq跌幅",
+      "value": -4,
+      "threshold": -2.5,
+      "status": "YELLOW"
+    },
+    {
+      "id": "S-05",
+      "name": "ETF周度流出",
+      "value": -1670,
+      "threshold": -1000,
+      "status": "YELLOW"
+    },
+    {
+      "id": "E-06",
+      "name": "Iran-US战争",
+      "value": "Ceasefire progressing",
+      "status": "YELLOW"
+    }
+  ],
+  "resolvedAlerts": [
     {
       "id": "S-04",
       "name": "ETF连续流出",
-      "status": "YELLOW",
-      "value": "-$4.4B累计，-$483.8M单日",
-      "threshold": "$500M单日黄灯"
-    },
-    {
-      "id": "M-06",
-      "name": "BTC跌幅",
-      "status": "YELLOW",
-      "value": "-47% vs ATH",
-      "threshold": "回撤黄灯"
-    },
-    {
-      "id": "E-05",
-      "name": "Drift黑客",
-      "status": "YELLOW",
-      "value": "时间衰减",
-      "threshold": "已过14天"
+      "value": "Streak ended Jun5",
+      "previousStatus": "YELLOW",
+      "currentStatus": "GREEN"
     }
   ],
-  "next_update": "2026-06-05T13:50:00+08:00",
-  "report_type": "morning_v3"
+  "positionRecommendation": {
+    "corePosition": 60,
+    "trendPosition": 0,
+    "maxPosition": 60,
+    "leverage": 0,
+    "putHedge": 1.5,
+    "ammoBucket": 20
+  },
+  "nextUpdate": "2026-06-07T05:50:00Z",
+  "nextMorningReport": "2026-06-08T02:00:00Z"
 }
