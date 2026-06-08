@@ -1,249 +1,121 @@
 {
   "meta": {
-    "generated_at": "2026-06-08 02:20 CST",
-    "data_date": "2026-05-14",
-    "report_date": "2026-05-15",
+    "generated_at": "2026-06-09 02:20 CST",
+    "data_date": "2026-06-05",
+    "report_date": "2026-06-08",
     "stale": true,
-    "lag_days": 24,
-    "warning": "宏观分析师日报链路已停滞24天，数据来自2026-05-15发送失败备份"
+    "lag_note": "2026-06-09日志不存在，使用2026-06-08晨报数据"
   },
   "market_snapshot": {
     "spx": {
-      "price": 7444,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
+      "price": 7383.74,
+      "change_pct": -2.64,
+      "note": "半导体暴跌触发risk-off"
     },
     "nasdaq": {
-      "price": null,
-      "change": null,
-      "note": "暂无更新"
+      "change_pct": -4.0,
+      "note": "半导体指数暴跌>10%"
     },
     "dow": {
-      "price": null,
-      "change": null,
-      "note": "暂无更新"
+      "price": 50866.78,
+      "change_pct": -1.35
     },
     "btc": {
-      "price": 79602,
-      "change": -1.75,
-      "note": "数据日期: 2026-05-14"
+      "price": 61800
     },
     "eth": {
-      "price": 2264,
-      "change": -1.12,
-      "note": "数据日期: 2026-05-14"
+      "price": 1567
     },
     "gold": {
-      "price": 4697,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
+      "price": 4434,
+      "note": "从高点回调12%"
     },
-    "silver": {
-      "price": 87.86,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
-    },
-    "wti": {
-      "price": null,
-      "change": null,
-      "note": "暂无更新"
-    },
+    "silver": null,
+    "wti": null,
     "dxy": {
-      "price": 98.49,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
+      "price": 100.03
     },
-    "vix": {
-      "price": 17.87,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
-    },
-    "usdjpy": {
-      "price": 157.92,
-      "change": null,
-      "note": "数据日期: 2026-05-14"
-    }
+    "vix": null,
+    "usdjpy": null
   },
   "rates": {
-    "ffr": {
-      "value": 3.63,
-      "note": "Fed Funds Rate, 数据日期: 2026-05-14"
-    },
-    "usy2": {
-      "value": 4.00,
-      "note": "2年期国债收益率, 数据日期: 2026-05-14"
-    },
-    "usy10": {
-      "value": 4.46,
-      "note": "10年期国债收益率, 数据日期: 2026-05-14"
-    },
-    "usy30": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "spread_2s10s": {
-      "value": -0.46,
-      "note": "计算值: 4.00 - 4.46 = -0.46%"
-    },
-    "bei_5y": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "tips_10y": {
-      "value": null,
-      "note": "暂无更新"
-    }
+    "ffr": null,
+    "usy2": 4.15,
+    "usy10": 4.52,
+    "usy30": null,
+    "spread_2s10s": 0.42,
+    "bei_5y": null,
+    "tips_10y": null
   },
   "credit": {
-    "hy_spread": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "ig_spread": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "fed_balance_sheet_t": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "暂无更新"
-    },
-    "m2_yoy": {
-      "value": null,
-      "note": "暂无更新"
-    }
+    "hy_spread": null,
+    "ig_spread": null,
+    "fed_balance_sheet_t": null,
+    "net_liquidity_b": null,
+    "m2_yoy": null
   },
   "dalio_quadrant": {
-    "quadrant_name": "滞胀边缘",
-    "growth_signals": [
-      "增长↓",
-      "经济动能减弱"
-    ],
-    "inflation_signals": [
-      "通胀↑",
-      "硬资产价格强劲"
-    ],
-    "regime_label": "滞胀边缘（增长↓ × 通胀↑）"
+    "quadrant_name": null,
+    "growth_signals": [],
+    "inflation_signals": [],
+    "regime_label": null
   },
   "btc_signals": {
-    "direction": "neutral",
-    "confidence": "low",
-    "action": "观望",
+    "direction": null,
+    "confidence": null,
+    "action": null,
     "entry_zone": null,
-    "stop_loss": null,
-    "rationale": "底部矩阵0/8未激活，ETF 5日流出-$965.9M",
-    "onchain_metrics": {
-      "mvrv_z": 0.86,
-      "lth_sopr": 0.917,
-      "ahr999": 0.49
-    }
+    "stop_loss": null
   },
   "three_market_advice": {
-    "gold": {
-      "advice": "超配",
-      "logic": "滞胀+地缘双支撑，通胀对冲叙事强劲"
-    },
-    "spx": {
-      "advice": "谨慎",
-      "logic": "Powell→Warsh过渡风险，政策不确定性"
-    },
-    "btc": {
-      "advice": "观望",
-      "logic": "底部矩阵0/8未激活，ETF持续流出"
-    }
-  },
-  "market_sentiment": {
-    "fear_greed_index": 34,
-    "label": "Fear",
-    "interpretation": "谨慎但未恐慌"
+    "gold": null,
+    "spx": null,
+    "btc": null
   },
   "key_events": [
     {
-      "date": "2026-05-15",
       "priority": "P0",
-      "title": "Powell任期届满 → Warsh接任Fed主席",
-      "fact": "Jerome Powell任期届满，Kevin Warsh接任美联储主席",
-      "investment_implication": "Fed政策过渡风险，超预期鹰派→美元涨，不及预期→市场波动"
+      "date": "2026-06-05",
+      "title": "NFP非农数据",
+      "fact": "新增172K职位，失业率4.3%",
+      "implication": "加息选项重回讨论桌"
+    },
+    {
+      "priority": "P0",
+      "date": "2026-06-05",
+      "title": "半导体崩跌",
+      "fact": "市值蒸发约$1万亿",
+      "implication": "Risk-off情绪主导市场"
+    },
+    {
+      "priority": "P1",
+      "date": "2026-06-05",
+      "title": "黄金回调",
+      "fact": "从高点回落12%",
+      "implication": "测试年度支撑"
+    }
+  ],
+  "upcoming_calendar": [
+    {
+      "date": "2026-06-10",
+      "priority": "P0",
+      "event": "美国5月CPI发布"
     },
     {
       "date": "2026-06-11",
       "priority": "P1",
-      "title": "CPI 5月数据",
-      "fact": "美国5月CPI数据发布",
-      "investment_implication": "通胀数据影响FOMC政策预期"
+      "event": "FOMC纪要(4月28-29会议)"
     },
     {
       "date": "2026-06-17",
       "priority": "P0",
-      "title": "FOMC决议（Warsh首次主持）",
-      "fact": "新任主席Warsh首次主持FOMC会议",
-      "investment_implication": "新主席政策立场表态将影响市场"
+      "event": "FOMC利率决议+Powell记者会"
     }
   ],
-  "master_moves": {
-    "dalio": {
-      "stage": "Stage 6",
-      "position": "超配黄金"
-    },
-    "druckenmiller": {
-      "focus": "AI电力瓶颈"
-    },
-    "ackman": {
-      "position": "Mag7增仓65%"
-    }
-  },
-  "weekly_calendar": [
-    {
-      "date": "2026-05-15",
-      "priority": "P0",
-      "event": "Powell任期届满/Warsh接任",
-      "impact": "Fed政策过渡风险"
-    },
-    {
-      "date": "2026-05-16",
-      "priority": "P1",
-      "event": "初请失业金",
-      "impact": "预期：稳定"
-    },
-    {
-      "date": "2026-05-17",
-      "priority": "P2",
-      "event": "联储官员讲话",
-      "impact": "政策信号"
-    }
-  ],
-  "monthly_calendar": {
-    "month": "2026-05",
-    "remaining_events": [
-      {
-        "date": "2026-05-15",
-        "event": "Powell→Warsh交接",
-        "priority": "P0"
-      },
-      {
-        "date": "2026-05-20",
-        "event": "FOMC纪要发布",
-        "priority": "P1"
-      },
-      {
-        "date": "2026-05-26",
-        "event": "Memorial Day休市",
-        "priority": "P3"
-      },
-      {
-        "date": "2026-05-28",
-        "event": "PCE通胀数据",
-        "priority": "P1"
-      },
-      {
-        "date": "2026-05-30",
-        "event": "月末收盘",
-        "priority": "P3"
-      }
-    ]
-  },
-  "full_report_text": "🌅 Macro Monitor 内部研究晨报 | 2026-05-15（周五）\n🔗 https://chenchenai.github.io/macro-oracle/\n\n⚡ 今日核心判断\n宏观坐标：滞胀边缘（增长↓ × 通胀↑）\n最大风险：Powell任期届满 → Warsh接任过渡风险\n最大机会：硬资产（黄金$4,697）通胀对冲叙事\n市场情绪：Fear 34 + VIX 17.87 → 谨慎但未恐慌\n\n📊 市场快照（截至05-14）\n美股：SPX 7,444 | Nasdaq/Dow 暂无更新\n加密：BTC $79,602 (-1.75%) | ETH $2,264 (-1.12%)\n商品：黄金 $4,697 | WTI 暂无更新 | Silver $87.86\n利率：10Y 4.46% | 2Y 4.00% | Fed Funds 3.63%\n外汇：DXY 98.49 | USD/JPY 157.92\n链上：MVRV Z=0.86 | LTH-SOPR 0.917 | Ahr999 0.49\n\n🔥 重大事件\n[P0] 05-15 Powell任期届满 → Warsh接任Fed主席\n[P1] 06-11 CPI 5月数据\n[P0] 06-17 FOMC决议（Warsh首次主持）\n\n🧭 投资决策\n1. BTC观望：底部矩阵0/8未激活\n2. 黄金超配：滞胀+地缘双支撑\n3. ETF监控：5日流出-$965.9M\n\n🧠 大师动向\nDalio：Stage 6 → 超配黄金\nDruckenmiller：AI电力瓶颈\nAckman：Mag7增仓65%\n\n📅 本周关键日历\n· 05-15[P0]Powell任期届满/Warsh接任 | 影响：Fed政策过渡风险\n  超预期 → Warsh鹰派表态→美元涨\n  不及预期 → 政策模糊→市场波动\n· 05-16[P1]初请失业金 | 预期：稳定\n· 05-17[P2]联储官员讲话\n───\n🗓 本月关键日历（2026年05月）\n剩余关键节点：\n· 05-15 Powell→Warsh交接 🔴\n· 05-20 FOMC纪要发布\n· 05-26 Memorial Day休市\n· 05-28 PCE通胀数据\n· 05-30 月末收盘\n───\n⚠️ 风险提示：不构成买卖指令。🦞 Macro Oracle"
+  "full_report_text": "# 2026-06-08 记忆日志\n\n## 晨报任务执行记录\n- 时间：09:35 BJT（cron触发）\n- 结果：成功发送两段晨报到专属群 -5110324753\n- messageId：14928（第一段）、14929（第二段）\n- 送达凭证：已写入 .daily-sent-flag\n\n## 市场数据快照（6/5收盘）\n- S&P 500: 7,383.74 ▼-2.64%（半导体暴跌触发risk-off）\n- Dow: 50,866.78 ▼-1.35%\n- Nasdaq: ▼-4%（半导体指数暴跌>10%）\n- BTC: ~$61,800\n- ETH: ~$1,567\n- Gold: ~$4,434（从高点回调12%）\n- DXY: 100.03\n- US10Y: 4.52%, US2Y: 4.15%, 10Y-2Y Spread: +0.42%\n\n## 关键事件记录\n- [P0] 6/5 NFP：新增172K职位，失业率4.3% → 加息选项重回讨论桌\n- [P0] 半导体崩跌：市值蒸发约$1万亿\n- [P1] 黄金回调：从高点回落12%，测试年度支撑\n\n## 本周关键日历\n- 06/10[P0]: 美国5月CPI发布\n- 06/11[P1]: FOMC纪要(4月28-29会议)\n- 06/17[P0]: FOMC利率决议+Powell记者会（本月最高优先级）\n\n---\ntype: daily_log | created: 2026-06-08 09:35 BJT",
+  "data_quality": {
+    "completeness": "partial",
+    "missing_fields": ["silver", "wti", "vix", "usdjpy", "ffr", "usy30", "bei_5y", "tips_10y", "hy_spread", "ig_spread", "fed_balance_sheet", "net_liquidity", "m2_yoy", "dalio_quadrant", "btc_signals", "three_market_advice"],
+    "source": "memory/2026-06-08.md (晨报执行记录，非完整晚报)"
+  }
 }
