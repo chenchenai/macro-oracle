@@ -1,189 +1,145 @@
 {
   "meta": {
-    "generated_at": "2026-06-09 02:41 CST",
-    "data_date": "2026-06-08",
-    "report_date": "2026-06-09",
+    "generated_at": "2026-06-10 02:40 CST",
+    "data_date": "2026-06-09",
+    "report_date": "2026-06-10",
     "data_lag_days": 1,
     "stale": true,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/evolution/2026-06-08.md",
-    "notes": "今日(2026-06-09)三报告未生成，使用2026-06-08进化学习摘要数据"
+    "source_file": "memory/2026-06-09.md",
+    "warning": "今日日志(2026-06-10.md)不存在，使用昨日数据"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.0",
-    "date": "2026-06-08",
-    "exec_time": "数据滞后 - 无今日报告",
-    "data_flag": "STALE",
+    "date": "2026-06-09",
+    "exec_time": "11:05-11:10 CST（手动补发）",
+    "data_flag": {
+      "p0_lag": ["lth_net_position_change (滞后50天)", "whale_tx_to_exchanges (滞后80天)"],
+      "p1_lag": ["lth_sopr/sth_sopr (滞后3天)", "accumulation_trend_score (滞后6天)", "coinbase_premium (滞后7天)"]
+    },
     "core_data": {
-      "price": "$63,200",
-      "mvrv": "1.18-1.41",
-      "realized_price": "$54K",
-      "true_market_mean": "$77.8K",
-      "sth_cost_basis": "$76.4K",
-      "200wma": "$61,300",
-      "ahr999": "0.32",
-      "rsi_14d": "18.5",
-      "supply_in_loss": "10.5M BTC (>50%)",
-      "supply_in_profit": "9.8M BTC",
-      "realized_p_l_ratio_7d": "0.29",
-      "etf_flow_13d": "-$43.3亿"
+      "price_usd_close": {"value": 63066.5657, "date": "2026-06-09", "note": "较ATH回撤50%"},
+      "mvrv": {"value": 1.1761, "date": "2026-06-09", "threshold": "<1.2", "status": "低估"},
+      "mvrv_z_score": {"value": 0.3262, "date": "2026-06-09", "threshold": "<0", "status": "接近低估"},
+      "nupl": {"value": 0.1497, "date": "2026-06-09", "threshold": "<0.25", "status": "恐惧区间"},
+      "puell_multiple": {"value": 0.5971, "date": "2026-06-09", "threshold": "<0.5", "status": "矿工压力区"},
+      "rsi_14d": {"value": 26.2359, "date": "2026-06-09", "threshold": "<30", "status": "极端超卖"},
+      "fear_greed_index": {"value": 8, "date": "2026-06-09", "threshold": "<20", "status": "极端恐惧"},
+      "ahr999": {"value": 0.3144, "date": "2026-06-09", "threshold": "<0.45", "status": "抄底区"},
+      "mayer_multiple": {"value": 0.8047, "date": "2026-06-09", "threshold": "<1.0", "status": "低估"},
+      "ma_200w": {"value": 61838.1792, "date": "2026-06-09", "note": "已触及"},
+      "lth_supply_pct": {"value": 74.32, "date": "2026-06-09", "note": "历史高位囤积"},
+      "sth_supply_pct": {"value": 10.37, "date": "2026-06-09", "note": "散户撤离"},
+      "exchange_balance_pct": {"value": 15.3, "date": "2026-06-09"},
+      "exchange_net_flow": {"value": 59950, "date": "2026-06-09", "note": "单日流入BTC"}
     },
     "six_dimension_score": {
-      "mvrv": {
-        "score": "B",
-        "value": "1.18",
-        "date": "2026-06-08",
-        "threshold": "<1.5为低估",
-        "status": "🟡接近低估"
-      },
-      "nupl": {
-        "score": "B",
-        "value": "0.158",
-        "date": "2026-06-08",
-        "threshold": "<0.25为投降区",
-        "status": "🟡投降区"
-      },
-      "holder_behavior": {
-        "score": "C",
-        "value": "LTH投降$7.7亿/日",
-        "date": "2026-06-08",
-        "threshold": "LTH持续卖出",
-        "status": "🔴恶化"
-      },
-      "miner_economics": {
-        "score": "B",
-        "value": "Puell 0.67-0.79, MPI -0.53",
-        "date": "2026-06-08",
-        "threshold": "积累中",
-        "status": "🟡恢复中"
-      },
-      "new_capital": {
-        "score": "C",
-        "value": "ETF 13连流出$43.3亿",
-        "date": "2026-06-08",
-        "threshold": "净流入转正",
-        "status": "🔴恶化"
-      },
-      "risk_sentiment": {
-        "score": "C",
-        "value": "Fed加息概率>50%",
-        "date": "2026-06-08",
-        "threshold": "降息预期",
-        "status": "🔴紧缩"
-      },
-      "total": "C级观望"
+      "chain_valuation": {"score": 18, "max": 20, "status": "🟢低估收敛"},
+      "holder_behavior": {"score": 12, "max": 25, "status": "🟠恶化发散", "lag_note": "LTH净头寸滞后50天"},
+      "miner_economics": {"score": 8, "max": 15, "status": "🟡压力区"},
+      "network_activity": {"score": 8, "max": 15, "status": "🔴萎缩"},
+      "capital_flow": {"score": 6, "max": 15, "status": "🔴恶化", "lag_note": "Premium滞后7天"},
+      "market_structure": {"score": 8, "max": 10, "status": "🟡中性"},
+      "total": {"score": 54, "max": 100, "grade": "C"}
     },
     "cycle_judgment": {
-      "phase": "熊市后期/结构性出清加速",
-      "confidence": "中等",
+      "phase": "熊市中期",
+      "confidence": "65%",
       "signal_level": "C级观望",
-      "entry_zones": {
-        "A档": "$54K-$60K (Realized Price支撑)",
-        "B档": "$61K-$63K (200WMA)",
-        "C档": "$45K-$50K (极端低估区)"
-      },
-      "position_suggestion": "观望，等待充分条件触发"
+      "entry_zone": "历史级底部信号首次闪现但卖压未缓解",
+      "position_suggestion": "等待拐点确认：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估"
     },
     "skills_triggered": {
-      "已触发": [
-        "Supply in Loss > Supply in Profit (>10.5M BTC)",
-        "200WMA触及 ($61,300)",
-        "Ahr999 < 0.45 抄底区 (0.32)",
-        "RSI 14d 极端超卖 (18.5)"
-      ],
-      "接近触发": [
-        "Realized P/L Ratio 恢复>1.0 (当前0.29)",
-        "ETF流出减速 (当前13连流出)",
-        "Spot CVD转正"
-      ]
+      "triggered": ["MVRV<1.2低估区", "MVRV Z-Score逼近0（当前0.24）", "ahr999<0.45抄底区", "RSI 14d<30极端超卖", "恐贪指数<20极端恐惧", "200WMA触及"],
+      "near_trigger": ["LTH-SOPR接近0.75投降阈值（当前0.736）", "Puell Multiple接近0.5矿工投降区（当前0.597）"]
     },
-    "anomaly_detection": [
-      "ETF 13天连续流出创历史纪录$43.3亿",
-      "Supply in Loss首次超过Supply in Profit",
-      "STH成本基础跌破True Market Mean (2022.1以来首次)",
-      "Willy Woo卖压耗尽 vs Glassnode卖压加速分歧"
-    ],
-    "full_report_text": "数据滞后：今日三报告未生成，详见evolution报告"
+    "anomaly_detection": {
+      "supply_in_loss_gt_profit": true,
+      "exchange_8d_inflow": "+60万BTC",
+      "etf_13_consecutive_outflow": "$43.3亿",
+      "data_quality_issues": ["LTH净头寸滞后50天", "鲸鱼交易所流量滞后80天"]
+    },
+    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-06-08",
+    "date": "2026-06-09",
     "price_anchors": {
-      "realtime_price": "$63,200",
-      "close_price": "$63,200",
-      "realized_price": "$54K",
-      "tmm": "$77.8K",
-      "cvdd": "$45,500",
-      "equilibrium_price": "N/A",
-      "ma_2y": "$61,300 (200WMA)",
-      "ath": "$126,080",
-      "miner_cost": "N/A"
+      "realtime_price": 63066.5657,
+      "close_price": 63066.5657,
+      "realized_price": null,
+      "tmm": 77800,
+      "cvdd": null,
+      "equilibrium_price": null,
+      "ma_2y": 87461.2194,
+      "ath": 126000,
+      "miner_cost": null
     },
     "cycle_position": {
-      "phase": "熊市后期",
-      "cycle_day": "约250天(自2025.10趋势反转)",
-      "earliest_bottom": "Q4 2026",
-      "mean_bottom": "2027 Q1/Q2",
-      "latest_bottom": "2027年初"
+      "phase": "熊市中期",
+      "cycle_day": 780,
+      "earliest_bottom": "2026-07",
+      "mean_bottom": "2026-10-20",
+      "latest_bottom": "2027-Q1"
     },
     "core_judgment": {
-      "bull_case": "15% - 宏观转暖+ETF反弹+底部信号确认",
-      "base_case": "50% - 结构性出清持续，Q4触底",
-      "bear_case": "35% - 宏观恶化，跌至$45K甚至$30K"
+      "bear_continuation": {"prob": "70%", "evidence": "ETF加速流出+Realized P/L崩溃+Supply in Loss>50%"},
+      "consolidation": {"prob": "20%", "evidence": "LTH历史级囤积+MVRV逼近底部区域"},
+      "reversal": {"prob": "10%", "evidence": "需ETF流出转正+资本流入确认"}
     },
     "entry_tiers": {
-      "A档": "$54K-$60K - Realized Price支撑，历史级买入区",
-      "B档": "$61K-$67K - 200WMA+当前区间",
-      "C档": "$45K-$50K - CVDD底部区间"
+      "tier_a": {"range": "$53K-$58K", "trigger": "MVRV<1.0 + ETF转正"},
+      "tier_b": {"range": "$58K-$63K", "trigger": "MVRV Z<0 + LTH-SOPR<0.75"},
+      "tier_c": {"range": "$63K-$68K", "trigger": "交易所流入转负"}
     },
     "signal_level": "C级观望",
-    "position_suggestion": "观望等待充分条件触发",
-    "full_report_text": "数据滞后：今日周期报告未生成"
+    "position_suggestion": "历史级底部信号首次闪现但卖压未缓解，等待拐点确认",
+    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-06-08",
+    "date": "2026-06-09",
     "core_decision": {
       "signal": "C级观望",
-      "phase": "结构性出清加速",
-      "summary": "LTH投降$7.7亿/日，ETF 13连流出创纪录，卖压未耗尽",
-      "position": "空仓观望，等待充分条件"
+      "phase": "熊市投降阶段启动",
+      "summary": "Supply in Loss>50% + MVRV Z逼近0，但新资本流入仍为硬约束",
+      "position": "等待ETF流出减速+LTH/STH MVRV收敛确认"
     },
     "top3_data_points": [
-      "1. Supply in Loss > 10.5M BTC，历史上100%对应熊市底部区域",
-      "2. LTH Realized Loss $7.7亿/日 = 投降级别加速",
-      "3. ETF 13天连续流出$43.3亿 = 历史最长纪录"
+      {"metric": "Supply in Loss", "value": ">50%", "note": "历史级底部信号首次闪现"},
+      {"metric": "Exchange 8d净流入", "value": "+60万BTC", "note": "卖压未缓解"},
+      {"metric": "ETF 13连流出", "value": "$43.3亿", "note": "机构去风险"}
     ],
     "chip_map": {
-      "LTH": "加速投降，$7.7亿/日已实现亏损",
-      "STH": "成本基础$76.4K跌破TMM$77.8K",
-      "exchange": "持续流出但卖压仍主导"
+      "lth": {"supply_pct": 74.32, "status": "历史高位囤积"},
+      "sth": {"supply_pct": 10.37, "status": "散户撤离"},
+      "exchange": {"balance_pct": 15.3, "net_flow_7d": 515503, "net_flow_30d": 1208711}
     },
     "whale_behavior": {
-      "net_flow_7d": "负值(流出)",
-      "net_flow_30d": "负值(流出)",
-      "balance": "N/A",
-      "coinbase_premium": "N/A",
-      "funding_rate": "N/A"
+      "net_flow_7d": null,
+      "net_flow_30d": null,
+      "balance": null,
+      "coinbase_premium": {"value": -0.0626, "date": "2026-06-02", "lag": "7天"},
+      "funding_rate": {"value": 0.0, "date": "2026-06-09"}
     },
     "sopr_decode": {
-      "lth_sopr": "N/A",
-      "lth_sopr_7d_series": [],
-      "sth_sopr": "N/A",
-      "asopr": "N/A"
+      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag": "3天", "series_7d": [], "note": "接近投降阈值0.75"},
+      "sth_sopr": {"value": 0.962, "date": "2026-06-06", "lag": "3天", "note": "近期买入者亏损"},
+      "asopr": {"value": 0.9879, "date": "2026-06-09", "note": "接近成本线"}
     },
     "ats_dashboard": {
-      "current": "C级",
-      "target": "B级",
-      "gap_pct": "充分条件缺2/4",
-      "14d_trend": "恶化→企稳待确认"
+      "current": {"value": 0.5018, "date": "2026-06-03"},
+      "target": 0.7,
+      "gap_pct": -28.3,
+      "trend_14d": "中性偏弱",
+      "lag": "6天"
     },
     "fusion_conclusion": {
-      "综合结论": "底部区域必要条件已满足(4/4)，充分条件未触发(0/4)",
-      "六维分": "C级",
-      "操作": "观望，等待Realized P/L>1.0/ETF减速/宏观转暖",
-      "止损": "跌破$54K Realized Price需重新评估",
-      "反向触发": "ETF净流入转正+Realized P/L恢复"
+      "综合结论": "熊市投降阶段已启动，但新资本流入仍为硬约束",
+      "六维分": "54/100 (C级)",
+      "操作": "等待拐点确认",
+      "止损": "跌破$50K（极端情景）",
+      "反向触发": "ETF转正+交易所流入转负+LTH-SOPR<0.75"
     },
-    "full_report_text": "数据滞后：今日鲸鱼报告未生成"
+    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
   }
 }
