@@ -1,35 +1,80 @@
 {
-  "timestamp": "2026-06-08T10:00:00+08:00",
+  "timestamp": "2026-06-09T10:00:00+08:00",
   "crl": 7,
   "level": "GREEN",
   "scores": {
-    "macro": 6,
-    "structure": 0,
+    "macro": 0,
+    "structure": 6,
     "chain": 0,
     "event": 1
   },
-  "btc_price": 63210,
-  "btc_from_ath": -50,
-  "vix": 18,
-  "vix_change": "attenuated",
-  "usdjpy": 160,
-  "fear_greed": 13,
-  "etf_weekly_flow": -1670000000,
-  "etf_daily_flow": 3050000,
-  "iran_ceasefire": "progressing-fragile",
-  "active_signals": [
-    "E-06 Iran ceasefire fragile",
-    "S-05 ETF weekly -1.67B",
-    "M-06/M-07 US equity drops historical"
+  "activeAlerts": [
+    {
+      "id": "S-05",
+      "name": "ETF周度黄灯延续",
+      "value": "-$1.72B",
+      "threshold": ">$10亿/周",
+      "status": "YELLOW",
+      "weight": 6
+    },
+    {
+      "id": "E-06",
+      "name": "Iran停火谈判",
+      "value": "推进中",
+      "threshold": "黄灯衰减",
+      "status": "YELLOW_DECAYING",
+      "weight": 1
+    },
+    {
+      "id": "M-03",
+      "name": "BOJ加息预期",
+      "value": "6/16预期1%",
+      "threshold": "若意外>25bp",
+      "status": "WATCH",
+      "weight": 0
+    }
   ],
-  "resolved_signals": [
-    "S-04 ETF streak ended",
-    "M-05 VIX surge attenuated"
-  ],
-  "recommendations": {
-    "position": "60%",
-    "leverage": "zero",
-    "hedge": "1.5% put"
+  "marketData": {
+    "btcPrice": 63000,
+    "btcAth": 126080,
+    "btcDrawdown": 50,
+    "vix": 18.92,
+    "vixChange24h": -12.04,
+    "usdJpy": 160.17,
+    "sp500": 7430,
+    "sp500Change24h": 0.63,
+    "nasdaq": 27087,
+    "nasdaqChange24h": 1.44,
+    "brentOil": 95.65,
+    "fearGreed": 13
   },
-  "next_update": "2026-06-08T14:00:00+08:00"
+  "etfData": {
+    "dailyFlow": 3.05,
+    "weeklyFlow": -1720,
+    "streakEnded": true,
+    "streakDays": 13,
+    "totalOutflow": -4400
+  },
+  "portfolioRecommendation": {
+    "corePosition": 60,
+    "trendPosition": 0,
+    "hedgePut": 1.5,
+    "ammoBucket": 20,
+    "leverage": 0,
+    "maxLeverage": 2
+  },
+  "keyEvents": [
+    {
+      "date": "2026-06-12",
+      "event": "CPI数据发布",
+      "priority": "P2"
+    },
+    {
+      "date": "2026-06-16",
+      "event": "BOJ利率决议",
+      "priority": "P1"
+    }
+  ],
+  "nextUpdate": "2026-06-09T14:00:00+08:00",
+  "reportVersion": "V3"
 }
