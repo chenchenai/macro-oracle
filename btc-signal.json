@@ -1,73 +1,91 @@
 {
-  "schema": "v2.0",
-  "generated_at": "2026-06-09T11:07:00+08:00",
-  "btc_price": 62662,
+  "_schema_version": "2.0",
+  "report_date": "2026-06-10",
+  "report_time": "11:18 CST",
+  "price": 61400,
   "price_source": "CoinGecko",
-  "price_ts": "06-09",
-  "bottom_score": 5,
-  "bottom_score_max": 8,
-  "direction": "↓ 偏空",
-  "action": "DZ激活3/5，分批建仓15-25%",
-  "cycle_phase": "深熊 - Depression Zone",
-  "entry_window": "中期窗口开启",
-  "metrics": {
-    "mvrv_z_score": {"value": 0.3262, "ts": "06-08"},
-    "nupl": {"value": 0.1497, "ts": "06-08"},
-    "puell_multiple": {"value": 0.5971, "ts": "06-08"},
-    "sopr_adjusted": {"value": 0.9879, "ts": "06-08", "consecutive_below_1": 5},
-    "monthly_rsi": {"value": 29.03, "ts": "06-08"},
-    "fear_greed": {"value": 10, "classification": "Extreme Fear", "ts": "06-08"},
-    "dxy": {"value": 99.95, "ts": "06-08"},
-    "ahr999": {"value": 0.3144, "ts": "06-09"},
-    "mayer_multiple": {"value": 0.8047, "ts": "06-08"},
-    "rsi_14d": {"value": 26.24, "ts": "06-08"},
-    "price_realized": {"value": 53623, "ts": "06-08"},
-    "cvdd": {"value": 46332, "ts": "06-08"},
-    "balanced_price": {"value": 39719, "ts": "06-08"},
-    "ma_200w": {"value": 61838, "ts": "06-08"},
-    "vix": {"value": 20.29, "ts": "06-08"},
-    "spx": {"value": 7405, "ts": "06-08"},
-    "gold": {"value": 4325, "ts": "06-09"},
-    "hy_spread": {"value": 2.98, "ts": "06-04"},
-    "bei_5y": {"value": 2.48, "ts": "06-05"},
-    "treasury_10y_2y_spread": {"value": 0.37, "ts": "06-05"}
+  "price_date": "06-10",
+  "signal": {
+    "bottom_score": 3,
+    "bottom_max": 8,
+    "direction": "偏空",
+    "action": "观察等待",
+    "confidence": "中",
+    "suggested_position": "0%"
   },
-  "bottom_8_matrix": {
-    "mvrv_z_score_below_0": false,
-    "nupl_below_0": false,
-    "puell_multiple_below_05": false,
-    "asopr_consecutive_7d_below_1": false,
-    "monthly_rsi_below_33": true,
-    "fear_greed_below_15": true,
-    "dxy_cycle_topping": false,
-    "macro_policy_fed_tail": true,
-    "score": 3,
-    "score_max": 8
+  "onchain": {
+    "mvrv_z_score": {"value": 0.33, "date": "06-08", "threshold": "<0", "triggered": false},
+    "nupl": {"value": 0.15, "date": "06-08", "threshold": "<0", "triggered": false},
+    "puell_multiple": {"value": 0.59, "date": "06-08", "threshold": "<0.5", "triggered": false},
+    "asopr": {"value": 0.963, "date": "06-09", "threshold": "连续7日<1", "consecutive_days_below_1": 1, "triggered": false},
+    "monthly_rsi": {"value": 29.03, "date": "06-10", "threshold": "<33", "triggered": true},
+    "fear_greed": {"value": 9, "date": "06-10", "threshold": "<15", "triggered": true},
+    "dxy_peaked": {"value": 99.95, "date": "06-10", "threshold": "见顶回落", "triggered": true},
+    "fed_policy": {"value": "观望", "date": "06-10", "threshold": "加息尾期/降息前夜", "triggered": "partial"},
+    "ahr999": {"value": 0.32, "date": "06-09"},
+    "lth_sopr": {"value": 0.736, "date": "06-06"},
+    "sth_sopr": {"value": 0.962, "date": "06-06"},
+    "rsi_14d": {"value": 26.24, "date": "06-08"},
+    "mayer_multiple": {"value": 0.80, "date": "06-08"},
+    "exchange_net_flow": {"value": 59951, "date": "06-08"},
+    "exchange_balance_pct": {"value": 15.30, "date": "06-08"}
   },
-  "dz_activation": {
-    "price_below_200wma": false,
-    "price_below_realized": true,
-    "ahr999_below_045": true,
-    "mvrv_z_below_0": false,
-    "mayer_below_065": false,
-    "activated_count": 2,
-    "activated_total": 5
+  "depression_zone": {
+    "activated": 2,
+    "total": 5,
+    "strength": "弱",
+    "conditions": {
+      "price_below_200wma": {"triggered": true, "price": 61400, "200wma": 61838},
+      "price_below_realized": {"triggered": false, "price": 61400, "realized": 53623},
+      "ahr999_below_045": {"triggered": true, "value": 0.32},
+      "mvrv_z_below_0": {"triggered": false, "value": 0.33},
+      "mayer_below_065": {"triggered": false, "value": 0.80}
+    }
+  },
+  "levels": {
+    "L1": {"triggered": false, "price_vs_cvdd": "61400 > 46340", "price_vs_balanced": "61400 > 39691"},
+    "L2": {"triggered": false, "dz_activated": "2/5弱", "puell": "0.59>0.5"},
+    "L3": {"triggered": false, "lth_sopr_below_1": true, "slingshot": false, "micro_trend": false, "rebound": false}
+  },
+  "macro": {
+    "dxy": 99.95,
+    "vix": 19.87,
+    "gold": 4197.60,
+    "spx": 7386.65,
+    "us_10y": 4.53,
+    "us_5y": 4.25,
+    "m2_billion": 22804.5,
+    "m2_date": "2026-04",
+    "etf_flow": "连续3周净流出，周均-$1.67B",
+    "hy_spread": null,
+    "bei_5y": null,
+    "dalio_quadrant": "增长放缓+通胀粘性",
+    "regime": "B/E过渡"
+  },
+  "sentiment": {
+    "fear_greed": 9,
+    "fear_greed_label": "Extreme Fear",
+    "exchange_balance_pct": 15.30,
+    "exchange_net_flow": "+59951 BTC(流入=抛压)"
+  },
+  "cycle": {
+    "phase": "Depression过渡期",
+    "bottom_progress": 35,
+    "time_window": "2026 Q2-Q3",
+    "top_signals": 0,
+    "top_max": 5
   },
   "top_monitor": {
-    "mvrv_z_above_25": false,
-    "puell_above_25": false,
-    "nupl_above_065": false,
-    "monthly_rsi_above_75": false,
-    "fear_greed_above_75": false,
-    "top_score": 0,
-    "top_score_max": 5
+    "mvrv_z": {"current": 0.33, "warn": 2.5, "reduce": 3.0, "status": "安全"},
+    "puell": {"current": 0.59, "warn": 2.5, "reduce": 3.0, "status": "安全"},
+    "nupl": {"current": 0.15, "warn": 0.65, "reduce": 0.70, "status": "安全"},
+    "monthly_rsi": {"current": 29.03, "warn": 75, "status": "安全"},
+    "fear_greed": {"current": 9, "warn": 75, "status": "安全"}
   },
-  "macro_regime": "C - Risk-Off Bear",
-  "throughline": {
-    "main": "VIX飙升+ETF持续流出+恐贪10=极端恐慌，底部信号加速汇聚",
-    "contradiction": "DXY回落但尚未确认周期见顶；5Y BEI 2.48%通胀锚定偏强",
-    "tail_risk": "FOMC 6/16-17若维持鹰派，流动性紧缩延长熊市底部时间窗口"
-  },
-  "position_advice": "15-25%仓位分批建仓，零杠杆",
-  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
+  "data_freshness_warnings": [
+    "lth_sopr 截至06-06 滞后4天",
+    "lth_net_position_change 截至05-29 滞后12天",
+    "nvt_signal 截至06-01 滞后9天",
+    "true_market_mean 截至04-05 滞后66天"
+  ]
 }
