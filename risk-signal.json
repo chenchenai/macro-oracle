@@ -1,80 +1,78 @@
 {
-  "timestamp": "2026-06-09T10:00:00+08:00",
+  "timestamp": "2026-06-10T10:00:00+08:00",
   "crl": 7,
   "level": "GREEN",
   "scores": {
+    "macro": 0,
+    "structure": 20,
+    "chain": 0,
+    "event": 6
+  },
+  "weightedScores": {
     "macro": 0,
     "structure": 6,
     "chain": 0,
     "event": 1
   },
-  "activeAlerts": [
+  "activeSignals": [
     {
       "id": "S-05",
-      "name": "ETF周度黄灯延续",
-      "value": "-$1.72B",
-      "threshold": ">$10亿/周",
-      "status": "YELLOW",
-      "weight": 6
-    },
-    {
-      "id": "E-06",
-      "name": "Iran停火谈判",
-      "value": "推进中",
-      "threshold": "黄灯衰减",
-      "status": "YELLOW_DECAYING",
-      "weight": 1
+      "name": "ETF周度流出",
+      "value": "-$1.67B",
+      "threshold": ">$10亿",
+      "status": "YELLOW"
     },
     {
       "id": "M-03",
       "name": "BOJ加息预期",
-      "value": "6/16预期1%",
-      "threshold": "若意外>25bp",
-      "status": "WATCH",
-      "weight": 0
+      "value": "6/16加息1%",
+      "threshold": "意外>25bp",
+      "status": "关注"
+    },
+    {
+      "id": "E-06",
+      "name": "Iran停火",
+      "value": "Day 55",
+      "threshold": "停火破裂",
+      "status": "YELLOW衰减"
     }
   ],
-  "marketData": {
+  "marketAnchors": {
     "btcPrice": 63000,
-    "btcAth": 126080,
-    "btcDrawdown": 50,
-    "vix": 18.92,
-    "vixChange24h": -12.04,
-    "usdJpy": 160.17,
-    "sp500": 7430,
-    "sp500Change24h": 0.63,
-    "nasdaq": 27087,
-    "nasdaqChange24h": 1.44,
-    "brentOil": 95.65,
-    "fearGreed": 13
+    "btcATH": 126080,
+    "btcDrawdown": "50%",
+    "vix": 20.30,
+    "usdJpy": 160.38,
+    "fearGreed": 15,
+    "etfWeeklyFlow": "-$1.67B",
+    "bojRate": 0.75,
+    "sp500": 7386,
+    "brentOil": 95
   },
-  "etfData": {
-    "dailyFlow": 3.05,
-    "weeklyFlow": -1720,
-    "streakEnded": true,
-    "streakDays": 13,
-    "totalOutflow": -4400
-  },
-  "portfolioRecommendation": {
-    "corePosition": 60,
-    "trendPosition": 0,
-    "hedgePut": 1.5,
-    "ammoBucket": 20,
-    "leverage": 0,
-    "maxLeverage": 2
+  "portfolioAdvice": {
+    "corePosition": "60%",
+    "trendPosition": "不新增",
+    "leverage": "零杠杆",
+    "tailPut": "1.5%",
+    "ammoBucket": "30%待命"
   },
   "keyEvents": [
     {
-      "date": "2026-06-12",
-      "event": "CPI数据发布",
-      "priority": "P2"
+      "date": "2026-06-16",
+      "event": "BOJ决议",
+      "priority": "P0",
+      "impact": "加息>25bp→CRL升级"
     },
     {
-      "date": "2026-06-16",
-      "event": "BOJ利率决议",
-      "priority": "P1"
+      "date": "2026-06-11",
+      "event": "美国CPI",
+      "priority": "P2",
+      "impact": "超预期→BTC承压"
     }
   ],
-  "nextUpdate": "2026-06-09T14:00:00+08:00",
+  "trend": "稳定",
+  "previousCrl": 7,
+  "change": 0,
+  "reportType": "morning",
   "reportVersion": "V3"
 }
