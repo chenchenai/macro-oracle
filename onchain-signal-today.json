@@ -1,145 +1,372 @@
 {
+  "_schema_version": "2.0",
   "meta": {
-    "generated_at": "2026-06-10 02:40 CST",
-    "data_date": "2026-06-09",
+    "generated_at": "2026-06-11 02:40 CST",
+    "data_date": "2026-06-10",
     "report_date": "2026-06-10",
     "data_lag_days": 1,
-    "stale": true,
-    "source_file": "memory/2026-06-09.md",
-    "warning": "今日日志(2026-06-10.md)不存在，使用昨日数据"
+    "stale": false,
+    "source_file": "btc-signal-2026-06-10.json + evolution/2026-06-10.md + session logs"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.0",
-    "date": "2026-06-09",
-    "exec_time": "11:05-11:10 CST（手动补发）",
-    "data_flag": {
-      "p0_lag": ["lth_net_position_change (滞后50天)", "whale_tx_to_exchanges (滞后80天)"],
-      "p1_lag": ["lth_sopr/sth_sopr (滞后3天)", "accumulation_trend_score (滞后6天)", "coinbase_premium (滞后7天)"]
-    },
+    "date": "2026-06-10",
+    "exec_time": "11:28 CST",
+    "data_flag": "sent",
     "core_data": {
-      "price_usd_close": {"value": 63066.5657, "date": "2026-06-09", "note": "较ATH回撤50%"},
-      "mvrv": {"value": 1.1761, "date": "2026-06-09", "threshold": "<1.2", "status": "低估"},
-      "mvrv_z_score": {"value": 0.3262, "date": "2026-06-09", "threshold": "<0", "status": "接近低估"},
-      "nupl": {"value": 0.1497, "date": "2026-06-09", "threshold": "<0.25", "status": "恐惧区间"},
-      "puell_multiple": {"value": 0.5971, "date": "2026-06-09", "threshold": "<0.5", "status": "矿工压力区"},
-      "rsi_14d": {"value": 26.2359, "date": "2026-06-09", "threshold": "<30", "status": "极端超卖"},
-      "fear_greed_index": {"value": 8, "date": "2026-06-09", "threshold": "<20", "status": "极端恐惧"},
-      "ahr999": {"value": 0.3144, "date": "2026-06-09", "threshold": "<0.45", "status": "抄底区"},
-      "mayer_multiple": {"value": 0.8047, "date": "2026-06-09", "threshold": "<1.0", "status": "低估"},
-      "ma_200w": {"value": 61838.1792, "date": "2026-06-09", "note": "已触及"},
-      "lth_supply_pct": {"value": 74.32, "date": "2026-06-09", "note": "历史高位囤积"},
-      "sth_supply_pct": {"value": 10.37, "date": "2026-06-09", "note": "散户撤离"},
-      "exchange_balance_pct": {"value": 15.3, "date": "2026-06-09"},
-      "exchange_net_flow": {"value": 59950, "date": "2026-06-09", "note": "单日流入BTC"}
+      "price": {
+        "value": 61400,
+        "source": "CoinGecko",
+        "date": "06-10"
+      },
+      "ath_drawdown": {
+        "value": -51.3,
+        "date": "06-10"
+      },
+      "mvrv": {
+        "value": 1.1509,
+        "threshold": "<1.2低估",
+        "date": "06-09"
+      },
+      "mvrv_z_score": {
+        "value": 0.2789,
+        "threshold": "<0极端低估",
+        "date": "06-09"
+      },
+      "nupl": {
+        "value": 0.1311,
+        "threshold": "<0投降",
+        "date": "06-09"
+      },
+      "puell_multiple": {
+        "value": 0.5747,
+        "threshold": "<0.5矿工投降",
+        "date": "06-09"
+      },
+      "ahr999": {
+        "value": 0.3003,
+        "threshold": "<0.45抄底区",
+        "date": "06-10"
+      },
+      "lth_sopr": {
+        "value": 0.725,
+        "threshold": "<0.75投降",
+        "date": "06-09"
+      },
+      "sth_sopr": {
+        "value": 0.963,
+        "threshold": "<1亏损",
+        "date": "06-09"
+      },
+      "rsi_14d": {
+        "value": 24.17,
+        "threshold": "<25极端超卖",
+        "date": "06-09"
+      },
+      "fear_greed_index": {
+        "value": 9,
+        "threshold": "<15极端恐惧",
+        "date": "06-10"
+      },
+      "exchange_net_flow": {
+        "value": 63252,
+        "threshold": "负值=买压",
+        "date": "06-09"
+      },
+      "exchange_balance_pct": {
+        "value": 15.32,
+        "date": "06-09"
+      },
+      "mayer_multiple": {
+        "value": 0.7882,
+        "threshold": "<0.8低估",
+        "date": "06-09"
+      }
     },
     "six_dimension_score": {
-      "chain_valuation": {"score": 18, "max": 20, "status": "🟢低估收敛"},
-      "holder_behavior": {"score": 12, "max": 25, "status": "🟠恶化发散", "lag_note": "LTH净头寸滞后50天"},
-      "miner_economics": {"score": 8, "max": 15, "status": "🟡压力区"},
-      "network_activity": {"score": 8, "max": 15, "status": "🔴萎缩"},
-      "capital_flow": {"score": 6, "max": 15, "status": "🔴恶化", "lag_note": "Premium滞后7天"},
-      "market_structure": {"score": 8, "max": 10, "status": "🟡中性"},
-      "total": {"score": 54, "max": 100, "grade": "C"}
+      "valuation": {
+        "score": 18,
+        "max": 20,
+        "status": "低估收敛"
+      },
+      "holder_behavior": {
+        "score": 12,
+        "max": 25,
+        "status": "恶化"
+      },
+      "miner_economics": {
+        "score": 8,
+        "max": 15,
+        "status": "压力区"
+      },
+      "network_activity": {
+        "score": 8,
+        "max": 15,
+        "status": "萎缩"
+      },
+      "capital_flow": {
+        "score": 6,
+        "max": 15,
+        "status": "恶化"
+      },
+      "market_structure": {
+        "score": 8,
+        "max": 10,
+        "status": "中性"
+      },
+      "total": 54,
+      "grade": "B",
+      "confidence": 62
     },
     "cycle_judgment": {
-      "phase": "熊市中期",
-      "confidence": "65%",
-      "signal_level": "C级观望",
-      "entry_zone": "历史级底部信号首次闪现但卖压未缓解",
-      "position_suggestion": "等待拐点确认：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估"
+      "phase": "深熊投降后期",
+      "confidence": 72,
+      "signal_level": "B+",
+      "entry_range": "$55K-$62K B档观察",
+      "position_suggestion": "5-10% 分批保守建仓"
     },
     "skills_triggered": {
-      "triggered": ["MVRV<1.2低估区", "MVRV Z-Score逼近0（当前0.24）", "ahr999<0.45抄底区", "RSI 14d<30极端超卖", "恐贪指数<20极端恐惧", "200WMA触及"],
-      "near_trigger": ["LTH-SOPR接近0.75投降阈值（当前0.736）", "Puell Multiple接近0.5矿工投降区（当前0.597）"]
+      "triggered": [
+        "ahr999抄底区",
+        "mayer<0.8低估",
+        "FGI<10极端恐惧"
+      ],
+      "near_trigger": [
+        "NUPL<0.12",
+        "MVRV->1.05",
+        "Puell<0.5矿工投降"
+      ]
     },
     "anomaly_detection": {
-      "supply_in_loss_gt_profit": true,
-      "exchange_8d_inflow": "+60万BTC",
-      "etf_13_consecutive_outflow": "$43.3亿",
-      "data_quality_issues": ["LTH净头寸滞后50天", "鲸鱼交易所流量滞后80天"]
+      "fgi_below_10": {
+        "detected": true,
+        "value": 9
+      },
+      "ats_breakout_04": {
+        "detected": true,
+        "from": 0.04,
+        "to": 0.5
+      },
+      "asopr_false_breakout": {
+        "detected": true,
+        "value": "06-07/08短暂>1.0后回落"
+      }
     },
-    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
+    "full_report_text": "[原文存放在btc_onchain session日志，本次同步因数据滞后标注为部分提取]"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-06-09",
+    "date": "2026-06-10",
     "price_anchors": {
-      "realtime_price": 63066.5657,
-      "close_price": 63066.5657,
-      "realized_price": null,
-      "tmm": 77800,
-      "cvdd": null,
-      "equilibrium_price": null,
-      "ma_2y": 87461.2194,
-      "ath": 126000,
-      "miner_cost": null
+      "realtime_price": {
+        "value": 61422,
+        "source": "OKX"
+      },
+      "close_price": {
+        "value": 61676.6,
+        "date": "06-09"
+      },
+      "realized_price": {
+        "value": 53591,
+        "date": "06-09"
+      },
+      "tmm": {
+        "value": 39691,
+        "date": "06-09",
+        "note": "派生"
+      },
+      "cvdd": {
+        "value": 46340,
+        "date": "06-09"
+      },
+      "equilibrium_price": {
+        "value": 39691,
+        "date": "06-09"
+      },
+      "ma_2y": {
+        "value": 87453,
+        "date": "06-09"
+      },
+      "ath": {
+        "value": 126100,
+        "drawdown": -51.3
+      },
+      "miner_cost": {
+        "value": 70027,
+        "note": "MARA财报参考"
+      }
     },
     "cycle_position": {
-      "phase": "熊市中期",
-      "cycle_day": 780,
-      "earliest_bottom": "2026-07",
-      "mean_bottom": "2026-10-20",
-      "latest_bottom": "2027-Q1"
+      "phase": "深熊投降区",
+      "cycle_day": 781,
+      "earliest_bottom": {
+        "day": 777,
+        "date": "2026-06-04",
+        "status": "已过4天"
+      },
+      "mean_bottom": {
+        "day": 840,
+        "date": "2026-08-08",
+        "days_remaining": 59
+      },
+      "latest_bottom": {
+        "day": 900,
+        "date": "2026-10-07",
+        "days_remaining": 119
+      }
     },
     "core_judgment": {
-      "bear_continuation": {"prob": "70%", "evidence": "ETF加速流出+Realized P/L崩溃+Supply in Loss>50%"},
-      "consolidation": {"prob": "20%", "evidence": "LTH历史级囤积+MVRV逼近底部区域"},
-      "reversal": {"prob": "10%", "evidence": "需ETF流出转正+资本流入确认"}
+      "rebound_probability": 25,
+      "trend_start_probability": 8,
+      "evidence_rebound": [
+        "RSI(14D)=24.17极度超卖",
+        "Ahr999=0.3003历史底部区间",
+        "恐贪=9连续极端恐惧",
+        "Mayer=0.788低于200周均线22%",
+        "STH-SOPR=0.963短期持有者亏损卖出"
+      ],
+      "evidence_trend": [
+        "LTH供应持续增加74.34%"
+      ],
+      "key_conflict": "估值指标进入历史底部区间，但SOPR全线<1表明所有持有者都在亏损卖出"
     },
     "entry_tiers": {
-      "tier_a": {"range": "$53K-$58K", "trigger": "MVRV<1.0 + ETF转正"},
-      "tier_b": {"range": "$58K-$63K", "trigger": "MVRV Z<0 + LTH-SOPR<0.75"},
-      "tier_c": {"range": "$63K-$68K", "trigger": "交易所流入转负"}
+      "tier_a": {
+        "range": "$65K-$72K",
+        "status": "部分触发",
+        "conditions": [
+          "Ahr999<0.45已触发",
+          "Mayer<0.80已触发"
+        ]
+      },
+      "tier_b": {
+        "range": "$55K-$62K",
+        "status": "接近触发",
+        "conditions": [
+          "MVRV->1.05差8.8%",
+          "NUPL<0.12差8.5%",
+          "Puell<0.5差13%"
+        ]
+      },
+      "tier_c": {
+        "range": "$42K-$52K",
+        "status": "未触发",
+        "conditions": [
+          "MVRV Z<0未触发",
+          "NUPL<0未触发",
+          "Hash Ribbon金叉未出现"
+        ]
+      }
     },
-    "signal_level": "C级观望",
-    "position_suggestion": "历史级底部信号首次闪现但卖压未缓解，等待拐点确认",
-    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
+    "signal_level": "B+",
+    "position_suggestion": "5-10%分批保守建仓，等待更多B档条件触发",
+    "full_report_text": "Guardian补发 BTC周期深度解读 2026-06-10\n执行时间: 11:28 CST | 周期第781天 | 恐贪: 9\n价格锚点: 实时价$61,422 | RP$53,591 | CVDD$46,340 | 200WMA$61,838(已跌破)\n周期阶段: 深度熊市/周期底部区间 置信度72%\n核心研判: 反弹概率25% 趋势启动概率8%\n建仓档位: A档部分触发(Ahr999+Mayer) B档接近触发(NUPL差8.5%)\n信号级别: B+ 置信度62% | 仓位参考: 5-10%\n风险: 交易所净流入63K BTC/日 矿工投降未完成 宏观压制"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-06-09",
+    "date": "2026-06-10",
     "core_decision": {
-      "signal": "C级观望",
-      "phase": "熊市投降阶段启动",
-      "summary": "Supply in Loss>50% + MVRV Z逼近0，但新资本流入仍为硬约束",
-      "position": "等待ETF流出减速+LTH/STH MVRV收敛确认"
+      "signal": "A",
+      "phase": "深熊投降后期",
+      "summary": "FGI=9极端恐惧+LTH-SOPR<0.75深度投降+价格跌破200WMA，建议分批保守建仓",
+      "position": "15%"
     },
     "top3_data_points": [
-      {"metric": "Supply in Loss", "value": ">50%", "note": "历史级底部信号首次闪现"},
-      {"metric": "Exchange 8d净流入", "value": "+60万BTC", "note": "卖压未缓解"},
-      {"metric": "ETF 13连流出", "value": "$43.3亿", "note": "机构去风险"}
+      "FGI=9 极度恐惧，历史底部区域特征",
+      "价格跌破200WMA$61,838 关键技术破位",
+      "ATS=0.5018 积累趋势突破0.5，大实体开始吸筹"
     ],
     "chip_map": {
-      "lth": {"supply_pct": 74.32, "status": "历史高位囤积"},
-      "sth": {"supply_pct": 10.37, "status": "散户撤离"},
-      "exchange": {"balance_pct": 15.3, "net_flow_7d": 515503, "net_flow_30d": 1208711}
+      "lth": {
+        "pct": 74.32,
+        "btc_millions": 14.89,
+        "change": "+0.07pp/7d"
+      },
+      "sth": {
+        "pct": 10.37,
+        "btc_millions": 2.08,
+        "change": "-0.07pp/7d"
+      },
+      "exchange": {
+        "pct": 15.3,
+        "net_flow_30d": "+1,208,711 BTC"
+      }
     },
     "whale_behavior": {
-      "net_flow_7d": null,
-      "net_flow_30d": null,
-      "balance": null,
-      "coinbase_premium": {"value": -0.0626, "date": "2026-06-02", "lag": "7天"},
-      "funding_rate": {"value": 0.0, "date": "2026-06-09"}
+      "exchange_net_flow_7d": "+515,503 BTC",
+      "exchange_net_flow_30d": "+1,208,711 BTC",
+      "exchange_balance_pct": "15.30%",
+      "whale_to_exchange_7d_avg": "46,181 BTC/d",
+      "coinbase_premium": "-0.063%",
+      "funding_rate": "0.0%"
     },
     "sopr_decode": {
-      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag": "3天", "series_7d": [], "note": "接近投降阈值0.75"},
-      "sth_sopr": {"value": 0.962, "date": "2026-06-06", "lag": "3天", "note": "近期买入者亏损"},
-      "asopr": {"value": 0.9879, "date": "2026-06-09", "note": "接近成本线"}
+      "lth_sopr": {
+        "value": 0.725,
+        "date": "06-09",
+        "status": "深度投降区",
+        "7d_sequence": [
+          0.717,
+          0.692,
+          0.693,
+          0.753,
+          0.736
+        ]
+      },
+      "sth_sopr": {
+        "value": 0.963,
+        "date": "06-09",
+        "status": "亏损卖出",
+        "7d_sequence": [
+          0.938,
+          0.945,
+          0.958,
+          0.926,
+          0.962
+        ]
+      },
+      "asopr": {
+        "value": 0.9746,
+        "date": "06-09",
+        "status": "整体亏损",
+        "7d_sequence": [
+          0.963,
+          1.008,
+          1.009,
+          0.97,
+          0.952
+        ]
+      }
     },
     "ats_dashboard": {
-      "current": {"value": 0.5018, "date": "2026-06-03"},
-      "target": 0.7,
-      "gap_pct": -28.3,
-      "trend_14d": "中性偏弱",
-      "lag": "6天"
+      "current": 0.5018,
+      "target": 0.8,
+      "gap_pct": 37.4,
+      "14d_trend": "冲高回落后中位企稳",
+      "14d_sequence": [
+        0.055,
+        0.08,
+        0.125,
+        0.068,
+        0.035,
+        0.187,
+        0.332,
+        0.468,
+        0.689,
+        0.941,
+        0.872,
+        0.851,
+        0.947,
+        0.502
+      ]
     },
     "fusion_conclusion": {
-      "综合结论": "熊市投降阶段已启动，但新资本流入仍为硬约束",
-      "六维分": "54/100 (C级)",
-      "操作": "等待拐点确认",
-      "止损": "跌破$50K（极端情景）",
-      "反向触发": "ETF转正+交易所流入转负+LTH-SOPR<0.75"
+      "summary": "深熊投降后期，LTH吸筹+极度恐惧=分批建仓窗口",
+      "six_dim_score": 54,
+      "action": "保守分批建仓5-10%",
+      "stop_loss": "跌破$55K或NUPL转负",
+      "reverse_trigger": "ATS回落<0.2+交易所流入加速"
     },
-    "full_report_text": "⚠️ 完整原文缺失：日志中仅保留摘要数据，三报告完整原文未存储于memory文件"
+    "full_report_text": "[原文存放在btc_onchain session日志，本次同步因数据滞后标注为部分提取]"
   }
 }
