@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-10T10:00:00+08:00",
+  "timestamp": "2026-06-11T02:00:00Z",
   "crl": 7,
   "level": "GREEN",
   "scores": {
@@ -8,71 +8,11 @@
     "chain": 0,
     "event": 6
   },
-  "weightedScores": {
-    "macro": 0,
-    "structure": 6,
-    "chain": 0,
-    "event": 1
-  },
-  "activeSignals": [
-    {
-      "id": "S-05",
-      "name": "ETF周度流出",
-      "value": "-$1.67B",
-      "threshold": ">$10亿",
-      "status": "YELLOW"
-    },
-    {
-      "id": "M-03",
-      "name": "BOJ加息预期",
-      "value": "6/16加息1%",
-      "threshold": "意外>25bp",
-      "status": "关注"
-    },
-    {
-      "id": "E-06",
-      "name": "Iran停火",
-      "value": "Day 55",
-      "threshold": "停火破裂",
-      "status": "YELLOW衰减"
-    }
-  ],
-  "marketAnchors": {
-    "btcPrice": 63000,
-    "btcATH": 126080,
-    "btcDrawdown": "50%",
-    "vix": 20.30,
-    "usdJpy": 160.38,
-    "fearGreed": 15,
-    "etfWeeklyFlow": "-$1.67B",
-    "bojRate": 0.75,
-    "sp500": 7386,
-    "brentOil": 95
-  },
-  "portfolioAdvice": {
-    "corePosition": "60%",
-    "trendPosition": "不新增",
-    "leverage": "零杠杆",
-    "tailPut": "1.5%",
-    "ammoBucket": "30%待命"
-  },
-  "keyEvents": [
-    {
-      "date": "2026-06-16",
-      "event": "BOJ决议",
-      "priority": "P0",
-      "impact": "加息>25bp→CRL升级"
-    },
-    {
-      "date": "2026-06-11",
-      "event": "美国CPI",
-      "priority": "P2",
-      "impact": "超预期→BTC承压"
-    }
-  ],
-  "trend": "稳定",
-  "previousCrl": 7,
-  "change": 0,
-  "reportType": "morning",
-  "reportVersion": "V3"
+  "btc_price": 62254,
+  "vix": 20.10,
+  "usd_jpy": 160.37,
+  "etf_weekly_flow": -1670000000,
+  "fear_greed": 12,
+  "active_signals": ["S-05"],
+  "notes": "ETF周度黄灯延续+BOJ加息预期+Iran停火脆弱，底部信号集群，建议按YELLOW保守标准执行"
 }
