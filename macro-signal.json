@@ -1,143 +1,175 @@
 {
   "meta": {
-    "generated_at": "2026-06-11T02:20:00+08:00",
-    "data_date": "2026-06-05",
-    "report_date": "2026-06-08",
+    "generated_at": "2026-06-12 02:20 CST",
+    "data_date": "2026-06-08",
+    "report_date": "2026-06-12",
     "stale": true,
-    "stale_note": "最新日报为6月8日，数据日期为6月5日收盘，滞后3天"
+    "note": "数据来源于 2026-06-08 宏观晨报，最新日报滞后"
   },
   "market_snapshot": {
     "spx": {
       "price": 7383.74,
-      "change_pct": -2.64,
+      "change": "-2.64%",
       "note": "半导体暴跌触发risk-off"
     },
     "nasdaq": {
-      "change_pct": -4.0,
+      "price": null,
+      "change": "-4%",
       "note": "半导体指数暴跌>10%"
     },
     "dow": {
       "price": 50866.78,
-      "change_pct": -1.35
+      "change": "-1.35%"
     },
     "btc": {
-      "price": 61800,
-      "note": "约数"
+      "price": 61800
     },
     "eth": {
-      "price": 1567,
-      "note": "约数"
+      "price": 1567
     },
     "gold": {
       "price": 4434,
       "note": "从高点回调12%"
     },
-    "silver": null,
-    "wti": null,
+    "silver": {
+      "price": null,
+      "note": "数据暂缺"
+    },
+    "wti": {
+      "price": null,
+      "note": "数据暂缺"
+    },
     "dxy": {
       "price": 100.03
     },
-    "vix": null,
-    "usdjpy": null
+    "vix": {
+      "price": null,
+      "note": "数据暂缺"
+    },
+    "usdjpy": {
+      "price": null,
+      "note": "数据暂缺"
+    }
   },
   "rates": {
-    "ffr": null,
-    "usy2": 4.15,
-    "usy10": 4.52,
-    "usy30": null,
-    "spread_2s10s": 0.42,
-    "bei_5y": null,
-    "tips_10y": null
+    "ffr": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "usy2": {
+      "value": 4.15
+    },
+    "usy10": {
+      "value": 4.52
+    },
+    "usy30": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "spread_2s10s": {
+      "value": 0.42,
+      "note": "+42bps"
+    },
+    "bei_5y": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "tips_10y": {
+      "value": null,
+      "note": "数据暂缺"
+    }
   },
   "credit": {
-    "hy_spread": null,
-    "ig_spread": null,
-    "fed_balance_sheet_t": null,
-    "net_liquidity_b": null,
-    "m2_yoy": null
+    "hy_spread": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "ig_spread": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "fed_balance_sheet_t": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "net_liquidity_b": {
+      "value": null,
+      "note": "数据暂缺"
+    },
+    "m2_yoy": {
+      "value": null,
+      "note": "数据暂缺"
+    }
   },
   "dalio_quadrant": {
-    "quadrant_name": "Reflation/Reflationary Boom嫌疑",
+    "quadrant_name": "Reflation → Risk-Off Alert",
     "growth_signals": [
-      "NFP新增172K强于预期",
-      "失业率4.3%维持低位"
+      "NFP新增172K职位，失业率4.3% - 劳动力市场韧性",
+      "半导体暴跌$1万亿市值蒸发 - 风险资产承压"
     ],
     "inflation_signals": [
       "加息选项重回讨论桌",
-      "收益率曲线陡峭化(2s10s +42bp)"
+      "黄金从高点回调12% - 通胀对冲资产获利了结"
     ],
-    "regime_label": "Risk-Off（半导体崩跌触发）"
+    "regime_label": "Risk-Off + 加息预期升温"
   },
   "btc_signals": {
-    "direction": "观望",
+    "direction": "cautious",
     "confidence": "medium",
-    "action": "等待市场企稳",
-    "entry_zone": null,
-    "stop_loss": null
+    "action": "观望",
+    "entry_zone": "$60K以下分批建仓",
+    "stop_loss": "$58K有效跌破则趋势转空",
+    "logic": "Risk-off环境下避险，等待市场情绪企稳"
   },
   "three_market_advice": {
     "gold": {
-      "advice": "谨慎",
-      "logic": "从高点回调12%测试支撑，等待企稳信号"
+      "advice": "观望，测试年度支撑",
+      "logic": "从高点回调12%，risk-off下可能继续承压"
     },
     "spx": {
-      "advice": "Risk-Off",
-      "logic": "半导体暴跌触发risk-off模式，市值蒸发约$1万亿"
+      "advice": "防守，避免追跌",
+      "logic": "半导体暴跌触发risk-off，等待情绪企稳信号"
     },
     "btc": {
-      "advice": "观望",
-      "logic": "Risk-off环境下风险资产承压，等待市场情绪企稳"
+      "advice": "观望，$60K以下分批建仓",
+      "logic": "Risk-off环境下现金为王，等待市场企稳再介入"
     }
   },
-  "key_events": [
-    {
-      "priority": "P0",
-      "date": "2026-06-05",
-      "title": "美国5月NFP就业报告",
-      "fact": "新增172K职位，失业率4.3%",
-      "importance": "加息选项重回讨论桌，市场重新评估美联储政策路径",
-      "investment_implication": "紧缩预期升温，风险资产承压"
-    },
-    {
-      "priority": "P0",
-      "date": "2026-06-05",
-      "title": "半导体板块崩跌",
-      "fact": "半导体指数暴跌>10%，市值蒸发约$1万亿",
-      "importance": "科技股risk-off信号，市场情绪急剧恶化",
-      "investment_implication": "成长股避险，资金可能流向防御板块"
-    },
-    {
-      "priority": "P1",
-      "date": "2026-06-05",
-      "title": "黄金回调",
-      "fact": "从高点回落12%，测试年度支撑",
-      "importance": "避险资产同步回调，市场流动性紧张信号",
-      "investment_implication": "等待企稳后重新评估避险配置"
-    },
-    {
-      "priority": "P0",
-      "date": "2026-06-10",
-      "title": "美国5月CPI发布",
-      "fact": "待发布",
-      "importance": "关键通胀数据，影响美联储6/17决议",
-      "investment_implication": "关注通胀环比数据"
-    },
-    {
-      "priority": "P1",
-      "date": "2026-06-11",
-      "title": "FOMC纪要",
-      "fact": "4月28-29会议纪要发布",
-      "importance": "了解美联储内部对经济前景的看法",
-      "investment_implication": "关注通胀展望和政策路径暗示"
-    },
-    {
-      "priority": "P0",
-      "date": "2026-06-17",
-      "title": "FOMC利率决议+Powell记者会",
-      "fact": "本月最高优先级事件",
-      "importance": "决定6月利率政策及下半年前瞻",
-      "investment_implication": "关键市场转折点"
-    }
-  ],
+  "key_events": {
+    "P0": [
+      {
+        "title": "6/5 NFP超预期",
+        "fact": "新增172K职位，失业率4.3%",
+        "importance": "加息选项重回讨论桌",
+        "investment_implication": "利率上行风险加大，risk-off资产承压"
+      },
+      {
+        "title": "半导体崩跌",
+        "fact": "市值蒸发约$1万亿，半导体指数暴跌>10%",
+        "importance": "AI主线风险偏好急剧恶化",
+        "investment_implication": "科技股承压，避险情绪升温"
+      }
+    ],
+    "P1": [
+      {
+        "title": "黄金回调",
+        "fact": "从高点回落12%，测试年度支撑",
+        "importance": "通胀对冲资产获利了结",
+        "investment_implication": "等待支撑位确认再判断趋势"
+      },
+      {
+        "title": "6/10 CPI发布（待公布）",
+        "fact": "预期关键通胀数据",
+        "importance": "验证通胀走势",
+        "investment_implication": "CPI超预期将强化加息预期"
+      },
+      {
+        "title": "6/17 FOMC决议+Powell记者会",
+        "fact": "本月最高优先级事件",
+        "importance": "利率政策关键窗口",
+        "investment_implication": "关注点阵图和前瞻指引"
+      }
+    ]
+  },
   "full_report_text": "# 2026-06-08 记忆日志\n\n## 晨报任务执行记录\n- 时间：09:35 BJT（cron触发）\n- 结果：成功发送两段晨报到专属群 -5110324753\n- messageId：14928（第一段）、14929（第二段）\n- 送达凭证：已写入 .daily-sent-flag\n\n## 市场数据快照（6/5收盘）\n- S&P 500: 7,383.74 ▼-2.64%（半导体暴跌触发risk-off）\n- Dow: 50,866.78 ▼-1.35%\n- Nasdaq: ▼-4%（半导体指数暴跌>10%）\n- BTC: ~$61,800\n- ETH: ~$1,567\n- Gold: ~$4,434（从高点回调12%）\n- DXY: 100.03\n- US10Y: 4.52%, US2Y: 4.15%, 10Y-2Y Spread: +0.42%\n\n## 关键事件记录\n- [P0] 6/5 NFP：新增172K职位，失业率4.3% → 加息选项重回讨论桌\n- [P0] 半导体崩跌：市值蒸发约$1万亿\n- [P1] 黄金回调：从高点回落12%，测试年度支撑\n\n## 本周关键日历\n- 06/10[P0]: 美国5月CPI发布\n- 06/11[P1]: FOMC纪要(4月28-29会议)\n- 06/17[P0]: FOMC利率决议+Powell记者会（本月最高优先级）\n\n---\ntype: daily_log | created: 2026-06-08 09:35 BJT"
 }
