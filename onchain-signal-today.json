@@ -1,470 +1,196 @@
 {
-  "_schema_version": "2.0",
   "meta": {
-    "generated_at": "2026-06-12 02:40 CST",
-    "data_date": "2026-06-11",
-    "report_date": "2026-06-11",
+    "generated_at": "2026-06-13T02:40:00+08:00",
+    "data_date": "2026-06-12",
+    "report_date": "2026-06-13",
     "data_lag_days": 1,
     "stale": false,
-    "source_file": "evolution/2026-06-11.md + MEMORY.md (无标准三报告格式)",
-    "notes": "btc_onchain agent 未生成标准三报告，使用进化学习摘要数据构建"
+    "source_file": "evolution/2026-06-12.md + MEMORY.md",
+    "note": "标准三报告格式文件未找到，使用进化学习摘要替代"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.0",
-    "date": "2026-06-11",
-    "exec_time": "数据整合构建",
-    "data_flag": "partial",
+    "date": "2026-06-12",
+    "exec_time": "15:04 CST",
+    "data_flag": "数据滞后1天，核心链上指标可用",
     "core_data": {
-      "price": {
-        "value": 61500,
-        "source": "Glassnode",
-        "date": "06-11"
-      },
-      "ath_drawdown": {
-        "value": -51.0,
-        "date": "06-11"
-      },
-      "mvrv": {
-        "value": 1.1509,
-        "threshold": "<1.2低估",
-        "date": "06-09"
-      },
-      "mvrv_z_score": {
-        "value": 0.2789,
-        "threshold": "<0极端低估",
-        "date": "06-09",
-        "note": "建议使用AVIV Z-Score替代"
-      },
-      "aviv_z_score": {
-        "value": -1.06,
-        "threshold": "<-1极端折价",
-        "date": "06-09",
-        "source": "Glassnode Week 23"
-      },
-      "nupl": {
-        "value": 0.1311,
-        "threshold": "<0投降",
-        "date": "06-09"
-      },
-      "puell_multiple": {
-        "value": 0.57,
-        "threshold": "<0.5矿工投降",
-        "date": "06-09",
-        "status": "接近矿工投降阈值"
-      },
-      "ahr999": {
-        "value": 0.3003,
-        "threshold": "<0.45抄底区",
-        "date": "06-10",
-        "status": "✅抄底区触发"
-      },
-      "sth_sopr_z_score": {
-        "value": -1.86,
-        "threshold": "<-2彻底投降",
-        "date": "06-09",
-        "status": "逼近投降阈值（仅差0.14）"
-      },
-      "sth_supply_in_profit": {
-        "value": 3.3,
-        "threshold": "4年均值55%",
-        "date": "06-09",
-        "status": "95%+短期持有者亏损"
-      },
-      "rsi_14d": {
-        "value": 24.17,
-        "threshold": "<25极端超卖",
-        "date": "06-09",
-        "status": "✅极端超卖触发"
-      },
-      "fear_greed_index": {
-        "value": 9,
-        "threshold": "<15极端恐惧",
-        "date": "06-10",
-        "status": "✅极端恐惧触发"
-      },
-      "exchange_balance_pct": {
-        "value": 15.32,
-        "date": "06-09"
-      },
-      "exchange_reserve": {
-        "value": 2720000,
-        "unit": "BTC",
-        "date": "06-08",
-        "change": "+62600 BTC (+2.36% vs 4/25)",
-        "status": "供给回流交易所"
-      },
-      "mayer_multiple": {
-        "value": 0.7882,
-        "threshold": "<0.8低估",
-        "date": "06-09",
-        "status": "✅低估触发"
-      },
-      "200wma": {
-        "value": 61300,
-        "date": "06-11",
-        "status": "反复测试支撑"
-      },
-      "realized_price": {
-        "value": 55800,
-        "date": "06-09",
-        "status": "极端支撑锚定"
-      }
+      "price_usd_close": 63552,
+      "mvrv": 1.41,
+      "mvrv_z_score": 1.0,
+      "aviv_z_score": -1.06,
+      "nupl": 0.15,
+      "puell_multiple": 0.57,
+      "rsi_14d": 26.24,
+      "fear_greed_index": 8,
+      "ahr999": 0.314,
+      "lth_supply_pct": 72.6,
+      "sth_supply_pct": 10.37,
+      "lth_sopr": 0.736,
+      "sth_sopr": 0.962,
+      "sth_mvrv": 0.83,
+      "sth_sopr_z_score": -1.57,
+      "exchange_balance_pct": 15.3,
+      "exchange_net_flow_7d": -515503,
+      "exchange_net_flow_30d": -1208711,
+      "coinbase_premium": -0.0626,
+      "funding_rate": 0.0,
+      "ma_200w": 61300,
+      "realized_price": 53600,
+      "tmm": 77800,
+      "cvdd": 45500,
+      "data_date": "2026-06-12"
     },
     "six_dimension_score": {
-      "valuation": {
-        "score": 18,
-        "max": 20,
-        "status": "极端低估收敛",
-        "key_signals": [
-          "AVIV Z=-1.06",
-          "Puell 0.57",
-          "ahr999抄底区"
-        ]
-      },
-      "holder_behavior": {
-        "score": 10,
-        "max": 25,
-        "status": "恶化",
-        "key_signals": [
-          "STH-SOPR Z=-1.86逼近投降",
-          "Exchange储备+2.36%"
-        ]
-      },
-      "miner_economics": {
-        "score": 10,
-        "max": 15,
-        "status": "压力区",
-        "key_signals": [
-          "Puell 0.57接近0.5投降"
-        ]
-      },
-      "network_activity": {
-        "score": 8,
-        "max": 15,
-        "status": "萎缩",
-        "note": "活跃地址数据滞后"
-      },
-      "capital_flow": {
-        "score": 5,
-        "max": 15,
-        "status": "恶化",
-        "key_signals": [
-          "ETF流出-$91.4M",
-          "Coinbase贴水",
-          "企业买入近零"
-        ]
-      },
-      "market_structure": {
-        "score": 8,
-        "max": 10,
-        "status": "中性",
-        "key_signals": [
-          "Funding≈0",
-          "衍生品萎缩"
-        ]
-      },
-      "total": 51,
+      "chain_valuation": {"score": 18, "max": 20, "status": "低估收敛", "note": "AVIV Z=-1.06极端折价"},
+      "holder_behavior": {"score": 12, "max": 25, "status": "恶化发散", "note": "LTH滞后50天，无法判断投降状态"},
+      "miner_economics": {"score": 8, "max": 15, "status": "压力区", "note": "Puell 0.57极端低估"},
+      "network_activity": {"score": 8, "max": 15, "status": "萎缩", "note": "活跃地址数据缺失"},
+      "capital_flow": {"score": 6, "max": 15, "status": "恶化", "note": "ETF流出+Coinbase贴水"},
+      "market_structure": {"score": 8, "max": 10, "status": "中性", "note": "Funding=0，衍生品萎缩"},
+      "total": 54,
       "grade": "C",
       "confidence": 65
     },
     "cycle_judgment": {
-      "phase": "深熊投降后期（Finding a Floor）",
-      "confidence": 72,
-      "signal_level": "C+",
-      "entry_range": "$53K-$62K 分批观察",
-      "position_suggestion": "5-10% 分批保守建仓，保留火力至极端区域",
-      "three_convergence": {
-        "mvrv_undervalued": "✅收敛（AVIV Z=-1.06极端折价）",
-        "sell_pressure_exhausted": "🟡中性偏收敛（STH-SOPR逼近-2但未触发）",
-        "new_capital_inflow": "🔴发散（ETF流出+贴水+企业买入近零）"
+      "phase": "后期熊市深Capitulation阶段",
+      "phase_detail": "BTC从$74K→$60K急速sell-off+回弹$64K，LTH基底稳固+网络基本面扩张=capitulation但非系统性崩溃",
+      "confidence": 65,
+      "signal_level": "C级观望",
+      "entry_zone": "$60K-$64K区间可分批建仓10-15%",
+      "position_suggestion": "观望为主，保留火力至$53K-$56K极端区域",
+      "key_levels": {
+        "resistance": [78000, 79000],
+        "current": 63552,
+        "support_1": 61300,
+        "support_2": 53600
       }
     },
     "skills_triggered": {
       "triggered": [
-        "ahr999抄底区（0.30<0.45）",
-        "mayer<0.8低估",
-        "FGI<10极端恐惧",
-        "RSI<25极端超卖",
-        "AVIV Z<-1极端折价"
+        "MVRV低估收敛",
+        "AVIV Z-Score极端折价(-1.06)",
+        "Puell Multiple极端低估(0.57)",
+        "STH-SOPR Z-Score接近投降(-1.57)",
+        "200WMA触及"
       ],
       "near_trigger": [
-        "STH-SOPR Z触-2投降（当前-1.86，差0.14）",
-        "Puell<0.5矿工投降（当前0.57）",
-        "ETF连续净流入拐点"
+        "STH-SOPR Z-Score触-2阈值(仅差0.14)",
+        "LTH-SOPR跌破0.75投降阈值",
+        "交易所流入转负拐点"
       ]
     },
     "anomaly_detection": {
-      "fgi_below_10": {
-        "detected": true,
-        "value": 9
-      },
-      "aviv_extreme_discount": {
-        "detected": true,
-        "value": -1.06,
-        "threshold": -1.0
-      },
-      "sth_supply_profit_extreme": {
-        "detected": true,
-        "value": 3.3,
-        "threshold": 10
-      }
+      "mvrv_threshold_invalid": "本周期峰值3.5远低于历史6+，传统阈值失效",
+      "lth_data_lag": "LTH净头寸滞后50天(2026-04-20)，无法判断当前投降状态",
+      "whale_data_lag": "鲸鱼转账滞后80天(2026-03-21)",
+      "etf_flow_negative": "ETF连续流出，资本流入发散"
     },
-    "full_report_text": "[无标准日报格式，数据来自evolution/2026-06-11.md进化学习摘要]"
+    "full_report_text": "见 evolution/2026-06-12.md 完整内容"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
-    "date": "2026-06-11",
+    "date": "2026-06-12",
     "price_anchors": {
-      "realtime_price": {
-        "value": 61500,
-        "source": "Glassnode"
-      },
-      "close_price": {
-        "value": 61500,
-        "date": "06-11"
-      },
-      "realized_price": {
-        "value": 55800,
-        "date": "06-09",
-        "status": "底部锚定带$53.6K-$55.8K"
-      },
-      "tmm": {
-        "value": 77800,
-        "date": "06-09",
-        "note": "True Market Mean，关键阻力"
-      },
-      "cvdd": {
-        "value": 46340,
-        "date": "06-09"
-      },
-      "equilibrium_price": {
-        "value": 39691,
-        "date": "06-09"
-      },
-      "ma_2y": {
-        "value": 87453,
-        "date": "06-09"
-      },
-      "ath": {
-        "value": 126272,
-        "drawdown": -51.0
-      },
-      "miner_cost": {
-        "value": 70027,
-        "note": "MARA财报参考"
-      },
-      "cryptoquant_bottom": {
-        "value": 53600,
-        "source": "CryptoQuant Moreno 6/10",
-        "status": "多源底部锚定"
-      },
-      "200wma": {
-        "value": 61300,
-        "date": "06-11",
-        "status": "反复测试支撑"
-      }
+      "realtime_price": 63552,
+      "close_price": 63552,
+      "realized_price": 53600,
+      "tmm": 77800,
+      "cvdd": 45500,
+      "equilibrium_price": 55000,
+      "ma_2y": 87461,
+      "ath": 126272,
+      "miner_cost": 70027
     },
     "cycle_position": {
-      "phase": "深熊Finding a Floor阶段",
+      "phase": "后期熊市深Capitulation",
       "cycle_day": 780,
-      "ath_day": 246,
-      "bear_progress": "64.4%",
-      "earliest_bottom": "Q2 2026",
-      "mean_bottom": "Q4 2026（2026-10-20）",
-      "latest_bottom": "Q1 2027",
-      "analyst_window": {
-        "Glassnode": "数周至数月",
-        "Ki Young Ju": "2027初",
-        "Willy Woo": "Q4 2026",
-        "CryptoQuant": "6-12月"
-      }
+      "cycle_start": "2024-04-20减半",
+      "ath_date": "2025-10-06",
+      "ath_days": 246,
+      "earliest_bottom": "2026-06-04(最早777天)",
+      "mean_bottom": "2026-10-20(约133天后)",
+      "latest_bottom": "2027-02-20(Ki Young Ju 18个月框架)",
+      "bear_progress": "64.4%(246/382)"
     },
     "core_judgment": {
-      "probabilities": {
-        "底部已现": "35%",
-        "底部接近": "55%",
-        "继续下跌": "10%"
+      "bottom_probability": {
+        "confirmed": 15,
+        "forming": 45,
+        "extended_bear": 40
       },
-      "key_evidence": [
+      "evidence": [
         "AVIV Z-Score -1.06极端折价",
         "STH Supply in Profit仅3.3%",
-        "Supply in Loss>Profit",
-        "200WMA反复测试",
-        "ahr999抄底区第7次"
+        "STH-SOPR Z-Score -1.57接近-2投降阈值",
+        "Puell Multiple 0.57矿工收入极端低估",
+        "Supply in Loss>Supply in Profit历史级信号",
+        "200WMA触及支撑"
       ],
-      "key_contradictions": [
-        "ETF仍流出（6/8 -$91.4M）",
-        "交易所储备+2.36%",
-        "Bull-Bear翻绿但BTC仍$61.5K=假阳性",
-        "宏观未松动（DXY 100.01/10Y 4.53%）"
+      "contradictions": [
+        "ETF持续流出无新资本流入",
+        "Coinbase Premium贴水机构需求弱",
+        "宏观极度紧缩(DXY>100, 10Y>4.5%)",
+        "LTH数据滞后50天无法判断投降状态",
+        "MVRV传统阈值可能已失效"
       ]
     },
     "entry_tiers": {
-      "tier_a": {
-        "range": "$53K-$56K",
-        "trigger": "STH-SOPR Z触-2彻底投降+ETF净流入",
-        "confidence": 85
-      },
-      "tier_b": {
-        "range": "$56K-$62K",
-        "trigger": "当前区间，分批观察",
-        "confidence": 65
-      },
-      "tier_c": {
-        "range": "$62K-$70K",
-        "trigger": "反弹测试TMM阻力",
-        "confidence": 40
-      }
+      "tier_a": {"range": "53000-56000", "allocation": "30-50%", "trigger": "STH-SOPR触-2+宏观松动"},
+      "tier_b": {"range": "60000-64000", "allocation": "10-20%", "trigger": "当前区间分批建仓"},
+      "tier_c": {"range": "45000-50000", "allocation": "5-10%", "trigger": "宏观崩溃极端情景"}
     },
-    "signal_level": "C+",
-    "position_suggestion": "5-10%分批保守建仓，保留火力至$53K-$56K极端区域",
-    "full_report_text": "[无标准周期报告格式，数据来自evolution/2026-06-11.md]"
+    "signal_level": "C级观望(65%置信度)",
+    "position_suggestion": "分批建仓准备10-15%在$60K-$64K，保留火力至$53K-$56K极端区域",
+    "full_report_text": "见 evolution/2026-06-12.md + MEMORY.md 周期定位部分"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
-    "date": "2026-06-11",
+    "date": "2026-06-12",
     "core_decision": {
       "signal": "C级观望",
-      "phase": "底部信号密集但三收敛未完成",
-      "summary": "AVIV极端折价+STH-SOPR逼近投降+Puell矿工压力，但ETF流出+交易所储备回升+宏观未松动",
-      "position": "5-10%分批观察"
+      "phase": "后期熊市Capitulation",
+      "summary": "底部信号密度2026年以来最高，三维指标同时指向极端折价，但三收敛未完成",
+      "position": "分批建仓准备10-15%"
     },
     "top3_data_points": [
-      {
-        "metric": "AVIV Z-Score",
-        "value": -1.06,
-        "status": "极端折价带",
-        "significance": "周期定位首选指标"
-      },
-      {
-        "metric": "STH Supply in Profit",
-        "value": "3.3%",
-        "status": "95%+短期持有者亏损",
-        "significance": "投降强度指标"
-      },
-      {
-        "metric": "Exchange Reserve",
-        "value": "2.72M BTC",
-        "change": "+2.36%",
-        "significance": "供给回流交易所=短期卖压"
-      }
+      {"indicator": "AVIV Z-Score", "value": -1.06, "meaning": "极端折价带，历史底部信号"},
+      {"indicator": "STH-SOPR Z-Score", "value": -1.57, "meaning": "逼近-2投降阈值，仅差0.14"},
+      {"indicator": "交易所储备", "value": "2.72M BTC", "meaning": "7年最低，供给冲击潜力"}
     ],
     "chip_map": {
-      "lth": {
-        "supply_pct": 72.6,
-        "status": "历史高位囤积",
-        "note": "James Check指出LTH在卖（非钻石手）"
-      },
-      "sth": {
-        "supply_pct": 12.4,
-        "cost_basis": 76400,
-        "status": "散户撤离，成本<TMM"
-      },
-      "exchange": {
-        "balance_pct": 15.32,
-        "reserve": "2.72M BTC",
-        "flow_7d": "待更新",
-        "flow_30d": "待更新",
-        "status": "供给回升"
-      }
+      "lth_supply_pct": 72.6,
+      "sth_supply_pct": 10.37,
+      "exchange_balance_pct": 15.3,
+      "lth_change_30d": "数据滞后50天无法判断",
+      "sth_in_profit": 3.3
     },
     "whale_behavior": {
-      "whale_balance": "持平（2月以来）",
-      "dolphin_balance": "走低（2025年9月起）",
-      "net_flow_7d": "数据滞后",
-      "net_flow_30d": "数据滞后",
+      "net_flow_7d": -515503,
+      "net_flow_30d": -1208711,
+      "whale_balance": "滞后80天无法判断",
       "coinbase_premium": -0.0626,
-      "premium_status": "贴水=美国机构缺席",
       "funding_rate": 0.0,
-      "funding_status": "中性，衍生品无杠杆"
+      "note": "交易所大量净流出=历史级囤积信号"
     },
     "sopr_decode": {
-      "lth_sopr": {
-        "value": 0.725,
-        "threshold": "<0.75投降",
-        "status": "逼近投降",
-        "date": "06-09"
-      },
-      "sth_sopr": {
-        "value": 0.963,
-        "threshold": "<1亏损",
-        "status": "近期买入者亏损",
-        "date": "06-09"
-      },
-      "sth_sopr_z_score": {
-        "value": -1.86,
-        "threshold": "<-2彻底投降",
-        "status": "仅差0.14",
-        "7d_series": "逼近历史极端"
-      },
-      "asopr": {
-        "value": 0.9879,
-        "threshold": "<1投降",
-        "status": "接近成本线"
-      }
+      "lth_sopr": {"value": 0.736, "threshold": 0.75, "status": "接近投降", "7d_sequence": "滞后3天"},
+      "sth_sopr": {"value": 0.962, "threshold": 1.0, "status": "亏损卖出", "7d_sequence": "滞后3天"},
+      "asopr": {"value": 0.9879, "threshold": 1.0, "status": "接近成本线"}
     },
     "ats_dashboard": {
-      "current": 0.5,
-      "target": 0.04,
-      "gap_pct": 92,
-      "14d_trend": "中性偏卖压缓解但无买方信念",
-      "note": "卖压缓解但无新资本"
+      "current": 0.5018,
+      "target": 0.75,
+      "gap_pct": 33,
+      "14d_trend": "中性偏收敛",
+      "note": "滞后6天"
     },
     "fusion_conclusion": {
-      "综合结论": "底部信号密度为2026年以来最高——三维指标（AVIV/STH-SOPR/Puell）同时指向极端折价，唯一缺失的是彻底投降事件(STH-SOPR触-2)和宏观条件松动",
-      "六维分": "51/100 → C级观望",
-      "操作建议": "分批建仓准备（10-15%仓位在$60K-$64K区间），保留火力至$53K-$56K极端区域",
-      "止损条件": "200WMA周线收盘<$59K",
-      "反向触发": "STH-SOPR Z-Score触-2彻底投降"
+      "综合结论": "三维底部信号汇聚(AVIV/STH-SOPR/Puell)，但三收敛未完成——MVRV低估🟢收敛(阈值需校准)，卖压耗尽🟡中性偏收敛，新资本流入🔴发散",
+      "六维评分": "54/100 → C级观望",
+      "操作建议": "分批建仓10-15%在$60K-$64K区间，保留火力至$53K-$56K极端区域",
+      "止损位": "周线收盘<$59K确认200WMA破位→下看$53.6K",
+      "反向触发": "STH-SOPR Z触-2 + ETF连续3天净流入 + DXY<99或10Y<4.2%"
     },
-    "analyst_views": {
-      "Glassnode_W23": "Finding a Floor - AVIV极端折价+STH-SOPR逼近投降",
-      "CryptoQuant": "底部$53.6K + MorenoDV 40%未达最大机会",
-      "Willy Woo": "卖压耗尽但流动性未归→Q4熊市结束",
-      "Ki Young Ju": "18个月框架→2027初，Bull-Bear翻绿假阳性",
-      "James Check": "LTH在卖，市场结构已根本改变",
-      "PlanB": "可能跌至200WMA/Realized以下，$54K锚定",
-      "David_Puell": "聚焦5年维度，信念买家+69%"
-    },
-    "full_report_text": "[无标准鲸鱼报告格式，数据来自evolution/2026-06-11.md]"
-  },
-  "macro_context": {
-    "dxy": 100.01,
-    "dxy_change": "+0.8% WoW",
-    "10y_yield": 4.53,
-    "2y_yield": 4.14,
-    "10y_2y_spread": 0.39,
-    "status": "晚周期形态",
-    "btc_recovery_conditions": [
-      "DXY<99",
-      "10Y<4.2%"
-    ],
-    "current_status": "均未满足"
-  },
-  "etf_flow": {
-    "date": "06-08",
-    "flow": -91400000,
-    "ibit_flow": -233000000,
-    "fbtc_flow": 59000000,
-    "arkb_flow": 63000000,
-    "status": "流出放缓但未恢复净流入",
-    "13_day_outflow": "44亿美元6/5终止",
-    "ytd_status": "净流入转负后微小恢复"
-  },
-  "derivatives": {
-    "btc_ultimate_derivatives_index": 0.273,
-    "date": "06-10",
-    "status": "接近2/11恐慌水平0.260",
-    "options_expiry": "6/29",
-    "oi": 6600000000,
-    "max_pain": 75000,
-    "call_wall": 80000
-  },
-  "next_watch": [
-    "STH-SOPR Z-Score是否触-2彻底投降",
-    "ETF净流入拐点（连续3天净流入）",
-    "宏观松动（DXY<99/10Y<4.2%）",
-    "Puell Multiple是否跌破0.5矿工投降",
-    "200WMA $61.3K周线收盘"
-  ]
+    "full_report_text": "见 evolution/2026-06-12.md + MEMORY.md 鲸鱼分析部分"
+  }
 }
