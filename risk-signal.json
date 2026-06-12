@@ -1,18 +1,44 @@
 {
-  "timestamp": "2026-06-11T02:00:00Z",
+  "timestamp": "2026-06-12T02:40:00Z",
   "crl": 7,
   "level": "GREEN",
-  "scores": {
-    "macro": 0,
-    "structure": 20,
-    "chain": 0,
-    "event": 6
+  "macroScore": 0,
+  "structureScore": 20,
+  "chainScore": 0,
+  "eventScore": 6,
+  "btcPrice": 62000,
+  "vix": 22,
+  "usdJpy": 160,
+  "etfWeeklyFlow": -1670000000,
+  "fearGreedIndex": 11,
+  "activeSignals": [
+    {
+      "id": "S-05",
+      "name": "ETF周度流出",
+      "value": "-$1.67B",
+      "threshold": ">$10B",
+      "status": "YELLOW"
+    },
+    {
+      "id": "M-03",
+      "name": "BOJ决议临近",
+      "value": "6/15-16加息预期",
+      "threshold": "意外>25bp",
+      "status": "关注"
+    },
+    {
+      "id": "E-06",
+      "name": "Iran停火",
+      "value": "Day 58",
+      "threshold": "破裂",
+      "status": "YELLOW衰减"
+    }
+  ],
+  "positionAdvice": {
+    "corePosition": "60%",
+    "trendPosition": "不新增",
+    "leverage": "零杠杆",
+    "tailPut": "1.5%"
   },
-  "btc_price": 62254,
-  "vix": 20.10,
-  "usd_jpy": 160.37,
-  "etf_weekly_flow": -1670000000,
-  "fear_greed": 12,
-  "active_signals": ["S-05"],
-  "notes": "ETF周度黄灯延续+BOJ加息预期+Iran停火脆弱，底部信号集群，建议按YELLOW保守标准执行"
+  "nextUpdateTime": "2026-06-12T06:00:00Z"
 }
