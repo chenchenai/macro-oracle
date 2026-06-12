@@ -1,91 +1,62 @@
 {
-  "_schema_version": "2.0",
-  "report_date": "2026-06-10",
-  "report_time": "11:18 CST",
-  "price": 61400,
-  "price_source": "CoinGecko",
-  "price_date": "06-10",
+  "schema": "v2.0",
+  "generated_at": "2026-06-12T11:05:00+08:00",
+  "btc_price": 63561,
   "signal": {
-    "bottom_score": 3,
-    "bottom_max": 8,
-    "direction": "偏空",
-    "action": "观察等待",
+    "direction": "中性偏多-观察",
     "confidence": "中",
-    "suggested_position": "0%"
+    "action": "维持观察仓位，等待更多底部确认信号",
+    "bottom_matrix_score": 3,
+    "bottom_matrix_total": 8
   },
-  "onchain": {
-    "mvrv_z_score": {"value": 0.33, "date": "06-08", "threshold": "<0", "triggered": false},
-    "nupl": {"value": 0.15, "date": "06-08", "threshold": "<0", "triggered": false},
-    "puell_multiple": {"value": 0.59, "date": "06-08", "threshold": "<0.5", "triggered": false},
-    "asopr": {"value": 0.963, "date": "06-09", "threshold": "连续7日<1", "consecutive_days_below_1": 1, "triggered": false},
-    "monthly_rsi": {"value": 29.03, "date": "06-10", "threshold": "<33", "triggered": true},
-    "fear_greed": {"value": 9, "date": "06-10", "threshold": "<15", "triggered": true},
-    "dxy_peaked": {"value": 99.95, "date": "06-10", "threshold": "见顶回落", "triggered": true},
-    "fed_policy": {"value": "观望", "date": "06-10", "threshold": "加息尾期/降息前夜", "triggered": "partial"},
-    "ahr999": {"value": 0.32, "date": "06-09"},
-    "lth_sopr": {"value": 0.736, "date": "06-06"},
-    "sth_sopr": {"value": 0.962, "date": "06-06"},
-    "rsi_14d": {"value": 26.24, "date": "06-08"},
-    "mayer_multiple": {"value": 0.80, "date": "06-08"},
-    "exchange_net_flow": {"value": 59951, "date": "06-08"},
-    "exchange_balance_pct": {"value": 15.30, "date": "06-08"}
+  "indicators": {
+    "mvrv_z_score": {"value": 0.3438, "date": "2026-06-11", "triggered": false},
+    "nupl": {"value": 0.1289, "date": "2026-06-10", "triggered": false},
+    "puell_multiple": {"value": 0.6317, "date": "2026-06-11", "triggered": false},
+    "asopr": {"value": 0.9781, "date": "2026-06-11", "consecutive_below_1": 2, "triggered": false},
+    "monthly_rsi": {"value": 29.19, "date": "2026-06-11", "triggered": true},
+    "fear_greed": {"value": 12, "date": "2026-06-12", "triggered": true},
+    "dxy": {"value": 100.22, "date": "2026-06-12", "triggered": false, "note": "从高位回落但未确认周期见顶"},
+    "macro_policy": {"value": "Fed 3.75% 降息周期中", "date": "2026-06-12", "triggered": true},
+    "ahr999": {"value": 0.3145, "date": "2026-06-11"},
+    "lth_sopr": {"value": 0.8210, "date": "2026-06-10"},
+    "sth_sopr": {"value": 0.9830, "date": "2026-06-10"},
+    "rsi_14d": {"value": 23.86, "date": "2026-06-10"},
+    "mayer_multiple": {"value": 0.7867, "date": "2026-06-10"},
+    "realized_price": 53516.77,
+    "balanced_price": 39684.71,
+    "cvdd": 46202.58,
+    "ma_200w": 61892.49
   },
   "depression_zone": {
-    "activated": 2,
+    "activated": true,
+    "score": 1,
     "total": 5,
-    "strength": "弱",
     "conditions": {
-      "price_below_200wma": {"triggered": true, "price": 61400, "200wma": 61838},
-      "price_below_realized": {"triggered": false, "price": 61400, "realized": 53623},
-      "ahr999_below_045": {"triggered": true, "value": 0.32},
-      "mvrv_z_below_0": {"triggered": false, "value": 0.33},
-      "mayer_below_065": {"triggered": false, "value": 0.80}
+      "price_below_200wma": false,
+      "price_below_realized": false,
+      "ahr999_below_045": true,
+      "mvrv_z_below_0": false,
+      "mayer_below_065": false
     }
   },
-  "levels": {
-    "L1": {"triggered": false, "price_vs_cvdd": "61400 > 46340", "price_vs_balanced": "61400 > 39691"},
-    "L2": {"triggered": false, "dz_activated": "2/5弱", "puell": "0.59>0.5"},
-    "L3": {"triggered": false, "lth_sopr_below_1": true, "slingshot": false, "micro_trend": false, "rebound": false}
+  "l1_l2_l3": {
+    "l1_triggered": false,
+    "l2_triggered": false,
+    "l3_triggered": false,
+    "lth_sopr_below_1": true
   },
   "macro": {
-    "dxy": 99.95,
-    "vix": 19.87,
-    "gold": 4197.60,
-    "spx": 7386.65,
-    "us_10y": 4.53,
-    "us_5y": 4.25,
-    "m2_billion": 22804.5,
-    "m2_date": "2026-04",
-    "etf_flow": "连续3周净流出，周均-$1.67B",
-    "hy_spread": null,
-    "bei_5y": null,
-    "dalio_quadrant": "增长放缓+通胀粘性",
-    "regime": "B/E过渡"
+    "dxy": 100.22,
+    "vix": 20.39,
+    "fed_rate": 3.75,
+    "spx": 7287,
+    "gold": 4180,
+    "initial_claims_k": 229,
+    "etf_flow": "连续3周净流出，6月累计流出$4.21B",
+    "10y_2y_spread": 0.42
   },
-  "sentiment": {
-    "fear_greed": 9,
-    "fear_greed_label": "Extreme Fear",
-    "exchange_balance_pct": 15.30,
-    "exchange_net_flow": "+59951 BTC(流入=抛压)"
-  },
-  "cycle": {
-    "phase": "Depression过渡期",
-    "bottom_progress": 35,
-    "time_window": "2026 Q2-Q3",
-    "top_signals": 0,
-    "top_max": 5
-  },
-  "top_monitor": {
-    "mvrv_z": {"current": 0.33, "warn": 2.5, "reduce": 3.0, "status": "安全"},
-    "puell": {"current": 0.59, "warn": 2.5, "reduce": 3.0, "status": "安全"},
-    "nupl": {"current": 0.15, "warn": 0.65, "reduce": 0.70, "status": "安全"},
-    "monthly_rsi": {"current": 29.03, "warn": 75, "status": "安全"},
-    "fear_greed": {"current": 9, "warn": 75, "status": "安全"}
-  },
-  "data_freshness_warnings": [
-    "lth_sopr 截至06-06 滞后4天",
-    "lth_net_position_change 截至05-29 滞后12天",
-    "nvt_signal 截至06-01 滞后9天",
-    "true_market_mean 截至04-05 滞后66天"
-  ]
+  "cycle_stage": "熊市中后期-底部区域试探",
+  "position_advice": "维持5%观察仓位，等待4/8以上底部信号再行动",
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/"
 }
