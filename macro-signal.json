@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-06-13 02:20 CST",
-    "data_date": "2026-06-12",
+    "generated_at": "2026-06-14 02:20 CST",
+    "data_date": "2026-06-13",
     "report_date": "2026-06-13",
     "stale": true,
-    "note": "数据来源于 2026-06-12 晨报日志，完整宏观晚报缺失"
+    "note": "原始宏观日报缺失，数据整合自 btc-signal.json (2026-06-13) + memory/2026-06-12.md + events.json"
   },
   "market_snapshot": {
     "spx": {
       "price": 7394.30,
-      "change": null,
-      "note": "WSJ，6月11日收盘"
+      "change": "+0.5%",
+      "date": "2026-06-12"
     },
     "nasdaq": {
       "price": null,
@@ -23,37 +23,38 @@
       "note": "数据暂缺"
     },
     "btc": {
-      "price": 62000,
-      "note": "CoinDesk"
+      "price": 63554.0,
+      "date": "2026-06-13",
+      "source": "Coingecko fallback"
     },
     "eth": {
       "price": null,
       "note": "数据暂缺"
     },
     "gold": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 4205,
+      "date": "2026-06-12"
     },
     "silver": {
       "price": null,
       "note": "数据暂缺"
     },
     "wti": {
-      "price": 92,
-      "note": "$90-94区间，Capital Street FX分析"
+      "price": 100.45,
+      "date": "2026-05-08",
+      "note": "数据滞后"
     },
     "dxy": {
-      "price": 100.17,
-      "change": "+0.22%",
-      "note": "Trading Economics"
+      "price": 99.807,
+      "date": "2026-06-12"
     },
     "vix": {
-      "price": 22,
-      "note": "VIX期限倒挂：9天VIX 25.67 vs 30天VIX 22.22"
+      "price": 17.68,
+      "date": "2026-06-12"
     },
     "usdjpy": {
-      "price": null,
-      "note": "数据暂缺"
+      "price": 160.22,
+      "date": "2026-06-12"
     }
   },
   "rates": {
@@ -63,11 +64,11 @@
     },
     "usy2": {
       "value": 4.15,
-      "note": "Trading Economics"
+      "date": "2026-06-12"
     },
     "usy10": {
       "value": 4.53,
-      "note": "Trading Economics"
+      "date": "2026-06-12"
     },
     "usy30": {
       "value": null,
@@ -75,11 +76,11 @@
     },
     "spread_2s10s": {
       "value": 0.38,
-      "note": "+38bps"
+      "note": "计算自 10Y-2Y"
     },
     "bei_5y": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 2.47,
+      "date": "2026-06"
     },
     "tips_10y": {
       "value": null,
@@ -88,8 +89,8 @@
   },
   "credit": {
     "hy_spread": {
-      "value": null,
-      "note": "数据暂缺"
+      "value": 2.78,
+      "date": "2026-06-11"
     },
     "ig_spread": {
       "value": null,
@@ -101,7 +102,7 @@
     },
     "net_liquidity_b": {
       "value": null,
-      "note": "数据暂缺"
+      "note": "暂无可靠更新"
     },
     "m2_yoy": {
       "value": null,
@@ -109,79 +110,92 @@
     }
   },
   "dalio_quadrant": {
-    "quadrant_name": "Stagflation Risk",
+    "quadrant_name": "D/E过渡",
     "growth_signals": [
-      "VIX期限倒挂（9天25.67 vs 30天22.22）- 短期恐慌加剧",
-      "SpaceX IPO $1.75T估值 - 市场风险偏好极端分化"
+      "S&P 500 +0.5% 仍显韧性",
+      "初请失业金 229K 劳动力市场稳定"
     ],
     "inflation_signals": [
-      "5月CPI 4.2% YoY（2023年4月以来最高）",
-      "能源价格+23.5%，WTI $90-94区间"
+      "CPI 4.2% YoY（2023年4月以来最高）",
+      "核心CPI 2.9%，能源+23.5%推高整体通胀"
     ],
-    "regime_label": "Risk-Off + 高通胀 + 地缘冲突"
+    "regime_label": "通胀冲击 + 增长尚未破坏"
   },
   "btc_signals": {
-    "direction": "neutral",
-    "confidence": "medium",
-    "action": "观望",
-    "entry_zone": "$58K-60K分批建仓",
-    "stop_loss": "$55K有效跌破",
-    "logic": "VIX倒挂+地缘冲突，风险资产承压"
+    "direction": "observe",
+    "confidence": 2,
+    "action": "今日新增0%；等待周线站稳200WMA或回踩链上成本区；零杠杆",
+    "entry_zone": [58000, 53500, 46200],
+    "stop_loss": null,
+    "bottom_score": "2/8",
+    "top_score": "0/8",
+    "depression_zone_activated": true,
+    "cycle_phase": "底部观察区，非铁底"
   },
   "three_market_advice": {
     "gold": {
-      "advice": "持有观望",
-      "logic": "高通胀+地缘风险支撑，但短期Risk-Off可能承压"
+      "advice": "维持观察",
+      "logic": "油价高位，通胀二次上行风险未解除"
     },
     "spx": {
-      "advice": "防守",
-      "logic": "VIX倒挂+SpaceX IPO极端估值，警惕回调风险"
+      "advice": "偏防守",
+      "logic": "FOMC会议在即，点阵图偏移可能引发波动"
     },
     "btc": {
-      "advice": "观望",
-      "logic": "Risk-Off环境下现金为王，等待VIX期限结构正常化"
+      "advice": "底部观察，不追涨",
+      "logic": "DZ 1/5弱激活，Ahr999=0.319（<0.45触发），等待周线确认"
     }
   },
   "key_events": {
     "P0": [
       {
         "id": "20260612-001",
-        "title": "SpaceX IPO",
-        "fact": "史上最大IPO，$1.75T估值，定价$135，今晚纳斯达克上市",
-        "importance": "市场风险偏好极端分化信号",
-        "investment_implication": "极端估值可能引发科技股分化"
+        "title": "SpaceX IPO - 史上最大IPO",
+        "fact": "$1.75T估值，定价$135，6月12日纳斯达克上市",
+        "importance": "流动性与风险偏好重大锚点",
+        "investment": "关注IPO后市场资金分流效应",
+        "sources": []
       },
       {
         "id": "20260612-002",
-        "title": "5月CPI超预期",
+        "title": "美国5月CPI",
         "fact": "4.2% YoY（2023年4月以来最高），核心+0.2% m/m，能源+23.5%",
-        "importance": "通胀压力重新抬头",
-        "investment_implication": "加息预期升温，利率敏感资产承压"
+        "importance": "全资产定价锚点",
+        "investment": "高通胀压制降息预期，风险资产承压",
+        "sources": []
       },
       {
         "id": "20260612-003",
-        "title": "US-Iran冲突升级",
+        "title": "US-Iran冲突",
         "fact": "美军连续打击，霍尔木兹被封锁",
-        "importance": "能源供应风险急剧上升",
-        "investment_implication": "原油价格上行风险加大，避险资产获支撑"
+        "importance": "能源供应与地缘政治风险",
+        "investment": "油价、黄金对冲需求上升",
+        "sources": []
       }
     ],
     "P1": [
       {
-        "id": "20260612-004",
-        "title": "FOMC会议",
-        "fact": "6月16-17日，Kevin Warsh首次主持",
-        "importance": "利率政策关键窗口",
-        "investment_implication": "关注点阵图和通胀应对措辞"
+        "id": "20260617-001",
+        "title": "FOMC会议（有SEP）- Warsh首次主持",
+        "fact": "6月17-18日FOMC会议，有SEP/点阵图更新",
+        "importance": "利率路径定价关键锚点",
+        "investment": "关注策略2（利率意外冲击）+策略4（点阵图偏移）",
+        "sources": [
+          {
+            "label": "FOMC日历",
+            "url": "https://www.federalreserve.gov/"
+          }
+        ]
       },
       {
-        "id": "20260612-005",
+        "id": "20260624-001",
         "title": "美联储压力测试",
         "fact": "6月24日发布",
-        "importance": "银行系统韧性评估",
-        "investment_implication": "影响金融股表现"
+        "importance": "银行股与信用市场影响",
+        "investment": "关注银行股波动",
+        "sources": []
       }
     ]
   },
-  "full_report_text": "# 2026-06-12 每日记录\n\n## 晨报任务完成\n- **时间**: 10:35 BJT（实际执行时间约09:35 BJT）\n- **结果**: ✅ 两段消息均发送成功\n  - 第一段 messageId: 15521\n  - 第二段 messageId: 15522\n- **标志文件**: ✅ 已写入 `.daily-sent-flag`\n\n## 数据收集情况\n- S&P 500: 7394.30（WSJ，6月11日）\n- DXY: 100.17 (+0.22%)（Trading Economics）\n- 10Y: 4.53% | 2Y: 4.15%（Trading Economics）\n- BTC: ~$62,000（CoinDesk）\n- WTI: $90-94（Capital Street FX分析）\n- VIX: 21-22（9天VIX 25.67 vs 30天VIX 22.22，倒挂）\n\n## 关键事件\n- [P0] SpaceX IPO：史上最大IPO，$1.75T估值，定价$135，今晚纳斯达克上市\n- [P0] 5月CPI：4.2% YoY（2023年4月以来最高），核心+0.2% m/m，能源+23.5%\n- [P0] US-Iran冲突：美军连续打击，霍尔木兹被封锁\n- [P1] FOMC：6月16-17日，Kevin Warsh首次主持\n- [P1] 美联储压力测试：6月24日发布\n\n## 日历核查结果（官方源）\n- BLS CPI日历：https://www.bls.gov/schedule/news_release/cpi.htm\n  - 6月10日发布5月CPI（已发布）\n  - 7月14日发布6月CPI\n- Fed FOMC日历：https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm\n  - 6月16-17日 FOMC会议\n\n## 待改进项\n- [type: todo] 晨报日历格式：第二段日历写错日期（\"6月14日\"应改为\"7月14日\"），下次需复核\n- [type: todo] 事件同步JSON格式：需包含id字段（格式：YYYYMMDD-001），title/fact/importance/investment/sources\n- [type: lesson] BTC/ETH/黄金具体价格数据来源不稳定，需要备用数据源\n\n---\n*记录时间: 2026-06-12 09:35+08:00*"
+  "full_report_text": "=== 2026-06-13 BTC链上信号 ===\n\n报告时间：2026-06-13 10:53 CST\n\n【底部矩阵】2/8 | 【顶部风险】0/8\n\n【信号状态】🟡 底部观察区：不追涨，等待确认\n\n【价格】$63,554（Coingecko fallback）\n\n【链上指标】\n- Ahr999: 0.319 ✅ (<0.45触发，定投区)\n- MVRV Z-Score: 0.3438\n- NUPL: 0.1548\n- Puell Multiple: 0.639\n- SOPR (调整): 0.9781 (连续3日<1)\n- RSI 14D: 23.86 (超卖)\n- 200WMA: $61,892\n- Realized Price: $53,517\n\n【D/E象限】通胀冲击 + 增长尚未破坏\n- CPI: 4.2% YoY\n- 初请失业金: 229K\n- S&P 500: +0.5%\n\n【策略】\n- 今日新增: 0%\n- 关注位: $58K / $53.5K / $46.2K\n- 杠杆: 零\n\n【关键事件】\n- [P0] SpaceX IPO ($1.75T)\n- [P0] 5月CPI 4.2%\n- [P0] US-Iran冲突\n- [P1] 6/17-18 FOMC (有SEP)\n\n【数据警告】\n数据新鲜度: flag NOT_FOUND，核心链上指标滞后2-3天。\n\n---\n原始宏观日报缺失，数据整合自btc-signal.json + memory日志。"
 }
