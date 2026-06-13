@@ -1,44 +1,93 @@
 {
-  "timestamp": "2026-06-12T02:40:00Z",
   "crl": 7,
   "level": "GREEN",
+  "levelEmoji": "🟢",
   "macroScore": 0,
   "structureScore": 20,
   "chainScore": 0,
   "eventScore": 6,
-  "btcPrice": 62000,
-  "vix": 22,
-  "usdJpy": 160,
-  "etfWeeklyFlow": -1670000000,
-  "fearGreedIndex": 11,
+  "btcPrice": 63307,
+  "btcAth": 126080,
+  "btcDrawdown": 50.0,
+  "vix": 19.44,
+  "usdJpy": 160.08,
+  "etfWeeklyFlow": -77000000,
+  "fearGreedIndex": 12,
+  "iranWarDay": 105,
+  "iranStatus": "Ceasefire deal wording agreed",
+  "bojDecisionDate": "2026-06-16",
+  "bojExpectedRate": 1.0,
+  "brentOil": 95,
+  "oilChange": -3.4,
   "activeSignals": [
     {
       "id": "S-05",
       "name": "ETF周度流出",
-      "value": "-$1.67B",
-      "threshold": ">$10B",
-      "status": "YELLOW"
-    },
-    {
-      "id": "M-03",
-      "name": "BOJ决议临近",
-      "value": "6/15-16加息预期",
-      "threshold": "意外>25bp",
-      "status": "关注"
+      "value": "-$77M Day3",
+      "threshold": ">$10亿黄灯",
+      "status": "YELLOW",
+      "confidence": "高"
     },
     {
       "id": "E-06",
-      "name": "Iran停火",
-      "value": "Day 58",
-      "threshold": "破裂",
-      "status": "YELLOW衰减"
+      "name": "Iran停火推进",
+      "value": "协议措辞已达成",
+      "threshold": "签署失败触发升级",
+      "status": "YELLOW衰减",
+      "confidence": "高"
+    },
+    {
+      "id": "M-03",
+      "name": "BOJ加息预期",
+      "value": "6/16加息1%",
+      "threshold": ">25bp触发升级",
+      "status": "关注",
+      "confidence": "高"
+    }
+  ],
+  "scenarioMatrix": [
+    {
+      "scenario": "A 停火签署",
+      "probability": 55,
+      "btcExpected": "+5%",
+      "crlImpact": 3
+    },
+    {
+      "scenario": "B BOJ加息落地",
+      "probability": 25,
+      "btcExpected": "±3%",
+      "crlImpact": 7
+    },
+    {
+      "scenario": "C 协议破裂",
+      "probability": 15,
+      "btcExpected": "-10%",
+      "crlImpact": 15
+    },
+    {
+      "scenario": "D BOJ意外鹰派",
+      "probability": 5,
+      "btcExpected": "-12%",
+      "crlImpact": 20
     }
   ],
   "positionAdvice": {
-    "corePosition": "60%",
-    "trendPosition": "不新增",
-    "leverage": "零杠杆",
-    "tailPut": "1.5%"
+    "corePosition": 60,
+    "trendPosition": 0,
+    "leverage": 0,
+    "tailPut": 1.5,
+    "ammoBucket": 30
   },
-  "nextUpdateTime": "2026-06-12T06:00:00Z"
+  "nextUpdate": "2026-06-13 14:00 CST",
+  "nextMorningReport": "2026-06-14 10:00 CST",
+  "reportVersion": "V3",
+  "generatedAt": "2026-06-13 10:00 CST",
+  "dataSources": {
+    "btc": "Changelly/Fortune",
+    "vix": "FRED/MarketWatch",
+    "usdJpy": "OFX",
+    "etf": "SoSoValue/Farside",
+    "iran": "Guardian/AP/CNN",
+    "boj": "Nikkei/FXStreet"
+  }
 }
