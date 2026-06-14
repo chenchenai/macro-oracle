@@ -1,93 +1,64 @@
 {
+  "timestamp": "2026-06-14T10:00:00+08:00",
   "crl": 7,
   "level": "GREEN",
-  "levelEmoji": "🟢",
-  "macroScore": 0,
-  "structureScore": 20,
-  "chainScore": 0,
-  "eventScore": 6,
-  "btcPrice": 63307,
-  "btcAth": 126080,
-  "btcDrawdown": 50.0,
-  "vix": 19.44,
-  "usdJpy": 160.08,
-  "etfWeeklyFlow": -77000000,
-  "fearGreedIndex": 12,
-  "iranWarDay": 105,
-  "iranStatus": "Ceasefire deal wording agreed",
-  "bojDecisionDate": "2026-06-16",
-  "bojExpectedRate": 1.0,
-  "brentOil": 95,
-  "oilChange": -3.4,
-  "activeSignals": [
+  "level_name": "底部盘整延续",
+  "scores": {
+    "macro": 0,
+    "structure": 20,
+    "chain": 0,
+    "event": 6
+  },
+  "weighted_scores": {
+    "macro": 0,
+    "structure": 6,
+    "chain": 0,
+    "event": 1
+  },
+  "btc_price": 64119,
+  "btc_from_ath": -49,
+  "vix": 17.68,
+  "usd_jpy": 160.22,
+  "fear_greed": 18,
+  "etf_weekly_flow": -1670000000,
+  "etf_yellow": true,
+  "iran_ceasefire": "推进中-协议措辞已达成",
+  "boj_decision_date": "2026-06-15",
+  "boj_expected_rate": 1.0,
+  "active_signals": [
     {
       "id": "S-05",
-      "name": "ETF周度流出",
-      "value": "-$77M Day3",
-      "threshold": ">$10亿黄灯",
+      "name": "ETF周度黄灯",
+      "value": "-$1.67B",
+      "threshold": ">$10亿",
       "status": "YELLOW",
-      "confidence": "高"
+      "trend": "衰减"
     },
     {
       "id": "E-06",
-      "name": "Iran停火推进",
-      "value": "协议措辞已达成",
-      "threshold": "签署失败触发升级",
+      "name": "Iran停火",
+      "value": "协议推进",
+      "threshold": "签署失败",
       "status": "YELLOW衰减",
-      "confidence": "高"
+      "trend": "衰减"
     },
     {
       "id": "M-03",
       "name": "BOJ加息预期",
-      "value": "6/16加息1%",
-      "threshold": ">25bp触发升级",
+      "value": "D-2",
+      "threshold": "意外>25bp",
       "status": "关注",
-      "confidence": "高"
+      "trend": "稳定"
     }
   ],
-  "scenarioMatrix": [
-    {
-      "scenario": "A 停火签署",
-      "probability": 55,
-      "btcExpected": "+5%",
-      "crlImpact": 3
-    },
-    {
-      "scenario": "B BOJ加息落地",
-      "probability": 25,
-      "btcExpected": "±3%",
-      "crlImpact": 7
-    },
-    {
-      "scenario": "C 协议破裂",
-      "probability": 15,
-      "btcExpected": "-10%",
-      "crlImpact": 15
-    },
-    {
-      "scenario": "D BOJ意外鹰派",
-      "probability": 5,
-      "btcExpected": "-12%",
-      "crlImpact": 20
-    }
-  ],
-  "positionAdvice": {
-    "corePosition": 60,
-    "trendPosition": 0,
+  "position_recommendation": {
+    "core": 60,
+    "trend": 0,
     "leverage": 0,
-    "tailPut": 1.5,
-    "ammoBucket": 30
+    "put_hedge": 1.5,
+    "ammo_bucket": 30
   },
-  "nextUpdate": "2026-06-13 14:00 CST",
-  "nextMorningReport": "2026-06-14 10:00 CST",
-  "reportVersion": "V3",
-  "generatedAt": "2026-06-13 10:00 CST",
-  "dataSources": {
-    "btc": "Changelly/Fortune",
-    "vix": "FRED/MarketWatch",
-    "usdJpy": "OFX",
-    "etf": "SoSoValue/Farside",
-    "iran": "Guardian/AP/CNN",
-    "boj": "Nikkei/FXStreet"
-  }
+  "next_boj_decision": "2026-06-16",
+  "report_version": "V3",
+  "data_cutoff": "2026-06-14T05:50:00+08:00"
 }
