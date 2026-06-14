@@ -1,289 +1,202 @@
 {
   "_schema_version": "2.0",
-  "report_date": "2026-06-13",
-  "updated_at": "2026-06-13T10:56:20.896110+08:00",
+  "report_date": "2026-06-14",
+  "generated_at": "2026-06-14T10:44:00+08:00",
+  "dashboard": "https://chenchenai.github.io/macro-oracle/",
   "data_freshness": {
-    "flag": "NOT_FOUND",
-    "status": "stale_warning",
-    "warnings": [
+    "flag": "stale:1 spot_rvol_30d=2026-06-02",
+    "status": "warning",
+    "core_metrics_last_date": "2026-06-13",
+    "stale_metrics": [
       {
-        "metric": "lth_sopr",
-        "last_date": "2026-06-10",
-        "lag_days": 3
+        "metric": "spot_rvol_30d",
+        "last_date": "2026-06-02",
+        "lag_days": 12
       },
       {
-        "metric": "mvrv_z_score",
-        "last_date": "2026-06-11",
-        "lag_days": 2
+        "metric": "lth_net_position_change",
+        "last_date": "2026-05-29",
+        "lag_days": 16
       },
       {
-        "metric": "nupl",
-        "last_date": "2026-06-11",
-        "lag_days": 2
+        "metric": "nvt_signal",
+        "last_date": "2026-06-01",
+        "lag_days": 13
       },
       {
-        "metric": "puell_multiple",
-        "last_date": "2026-06-11",
-        "lag_days": 2
-      },
-      {
-        "metric": "sopr_adjusted",
-        "last_date": "2026-06-11",
-        "lag_days": 2
+        "metric": "true_market_mean",
+        "last_date": "2026-04-05",
+        "lag_days": 70
       }
     ]
   },
   "signal": {
-    "status": "🟡 底部观察区：不追涨，等待确认",
-    "status_code": "observe",
+    "direction": "NEUTRAL_WATCH",
     "bottom_score": 2,
+    "bottom_score_max": 8,
     "top_score": 0,
-    "confidence": 2,
-    "action": "今日新增0%；等待周线站稳200WMA或回踩链上成本区；零杠杆"
+    "top_score_max": 5,
+    "confidence": 3,
+    "action": "不追涨；仅允许在$61,980-$53,507分批试探5%-15%，跌破$53,507后再扩大，零杠杆。"
   },
   "price": {
-    "current": 63554.0,
-    "close_ref": 63561.11,
-    "drawdown_from_peak_pct": null,
-    "date": "2026-06-13",
-    "source": "Coingecko fallback"
+    "current": 64520.2,
+    "source": "Binance web quote",
+    "change_24h_pct": 1.35,
+    "as_of": "2026-06-14"
   },
   "onchain": {
     "ahr999": {
-      "value": 0.319,
-      "date": "2026-06-12"
-    },
-    "balanced_price_usd": {
-      "value": 39684.71,
-      "date": "2026-06-11"
-    },
-    "cvdd": {
-      "value": 46202.58,
-      "date": "2026-06-11"
-    },
-    "exchange_balance_pct": {
-      "value": 0.153,
-      "date": "2026-06-10"
-    },
-    "exchange_net_flow": {
-      "value": 58987.3533,
-      "date": "2026-06-10"
-    },
-    "fear_greed_index": {
-      "value": 13,
-      "date": "2026-06-13",
-      "classification": "Extreme Fear"
-    },
-    "lth_net_position_change": {
-      "value": 39152.44,
-      "date": "2026-05-29"
-    },
-    "lth_sopr": {
-      "value": 0.821,
-      "date": "2026-06-10"
-    },
-    "lth_supply_pct": {
-      "value": 74.3816,
-      "date": "2026-06-10"
-    },
-    "ma_200w": {
-      "value": 61892.49,
-      "date": "2026-06-10"
-    },
-    "ma_20d": {
-      "value": 69405.7175,
-      "date": "2026-06-10"
-    },
-    "ma_5d": {
-      "value": 62071.9728,
-      "date": "2026-06-10"
-    },
-    "mayer_multiple": {
-      "value": 0.7867,
-      "date": "2026-06-10"
-    },
-    "mvrv": {
-      "value": 1.1479,
-      "date": "2026-06-10"
+      "value": 0.3347,
+      "date": "2026-06-14"
     },
     "mvrv_z_score": {
-      "value": 0.3438,
-      "date": "2026-06-11"
+      "value": 0.3725,
+      "date": "2026-06-13"
+    },
+    "mvrv": {
+      "value": 1.2036,
+      "date": "2026-06-13"
     },
     "nupl": {
-      "value": 0.1548,
-      "date": "2026-06-11"
-    },
-    "nvt_signal": {
-      "value": 79.09,
-      "date": "2026-06-01"
-    },
-    "price_realized_usd": {
-      "value": 53516.77,
-      "date": "2026-06-11"
-    },
-    "price_usd_close": {
-      "value": 63561.11,
-      "date": "2026-06-12"
+      "value": 0.1692,
+      "date": "2026-06-13"
     },
     "puell_multiple": {
-      "value": 0.639,
-      "date": "2026-06-11"
-    },
-    "rsi_14d": {
-      "value": 23.8613,
-      "date": "2026-06-10"
-    },
-    "monthly_rsi_14": {
-      "value": 29.19,
-      "date": "2026-06-12"
+      "value": 0.5927,
+      "date": "2026-06-13"
     },
     "sopr_adjusted": {
-      "value": 0.9781,
-      "date": "2026-06-11",
-      "continuous_below_1_days": 3,
-      "sample_below_1_count": 10,
-      "sample_size": 14
+      "value": 0.9989,
+      "date": "2026-06-13",
+      "continuous_lt_1_days": 1,
+      "cum14_lt_1_days": 12
+    },
+    "lth_sopr": {
+      "value": 0.756,
+      "date": "2026-06-13"
     },
     "sth_sopr": {
-      "value": 0.983,
-      "date": "2026-06-10"
+      "value": 1.0,
+      "date": "2026-06-13"
     },
-    "true_market_mean": {
-      "value": 47273.8213,
-      "date": "2026-04-05"
+    "realized_price": {
+      "value": 53506.7348,
+      "date": "2026-06-13"
     },
-    "two_year_ma_730": {
-      "value": 87425.408,
-      "date": "2026-06-12"
+    "cvdd": {
+      "value": 46200.5644,
+      "date": "2026-06-13"
     },
-    "two_year_ma_730_x5": {
-      "value": 437127.0399,
-      "date": "2026-06-12"
+    "balanced_price": {
+      "value": 39675.8626,
+      "date": "2026-06-13"
+    },
+    "ma_200w": {
+      "value": 61977.287,
+      "date": "2026-06-13"
+    },
+    "mayer_multiple": {
+      "value": 0.8268,
+      "date": "2026-06-13"
+    },
+    "monthly_rsi_14": {
+      "value": 33.34,
+      "date": "2026-06-13"
+    },
+    "daily_rsi_14": {
+      "value": 36.558,
+      "date": "2026-06-13"
+    },
+    "exchange_net_flow": {
+      "value": 49109.4235,
+      "date": "2026-06-13"
     }
   },
   "depression_zone": {
-    "activated_count": 1,
-    "total_conditions": 5,
-    "activated": true,
-    "conditions": [
-      {
-        "label": "Price < 200WMA",
-        "triggered": false,
-        "current": 63554.0,
-        "threshold": 61892.49
-      },
-      {
-        "label": "Price < Realized Price",
-        "triggered": false,
-        "current": 63554.0,
-        "threshold": 53516.77
-      },
-      {
-        "label": "Ahr999 < 0.45",
-        "triggered": true,
-        "current": 0.319,
-        "threshold": 0.45
-      },
-      {
-        "label": "MVRV Z-Score < 0",
-        "triggered": false,
-        "current": 0.3438,
-        "threshold": 0
-      },
-      {
-        "label": "Mayer < 0.65",
-        "triggered": false,
-        "current": 0.7867,
-        "threshold": 0.65
-      }
-    ]
+    "score": 1,
+    "max": 5,
+    "conditions": {
+      "price_below_200wma": false,
+      "price_below_realized_price": false,
+      "ahr999_below_0_45": true,
+      "mvrv_z_below_0": false,
+      "mayer_below_0_65": false
+    }
   },
   "levels": {
-    "level1": {
+    "L1": {
       "triggered": false,
-      "conditions": {
-        "price_lte_cvdd": false,
-        "price_lte_balanced": false
-      }
+      "target_position_pct": "40-50",
+      "conditions": "Price<=CVDD or Balanced Price"
     },
-    "level2": {
+    "L2": {
       "triggered": false,
-      "dz_activated": true,
-      "puell_below_0_5": false
+      "target_position_pct": "30-35",
+      "conditions": "DZ active + Puell<0.5"
     },
-    "level3": {
+    "L3": {
       "triggered": false,
-      "dz_activated": true,
-      "lth_sopr_below_1": true,
-      "slingshot": "pending_weekly_close",
-      "micro_trend": false,
-      "rebound": false
+      "target_position_pct": "10-15",
+      "conditions": "DZ active + LTH-SOPR<1 + trend confirmation"
     }
   },
   "macro": {
-    "regime": "D/E过渡：通胀冲击 + 增长尚未破坏",
-    "liquidity": {
-      "m2_usd_trn": 22.805,
-      "m2_date": "2026-04",
-      "net_liquidity": "暂无可靠更新"
-    },
-    "credit": {
-      "hy_oas_pct": 2.78,
-      "date": "2026-06-11"
-    },
-    "inflation": {
-      "five_year_bei_pct": 2.47,
-      "five_year_bei_date": "2026-06",
-      "ten_year_bei_pct": 2.31,
-      "ten_year_bei_date": "2026-06-12",
-      "cpi_yoy_pct": 4.2,
-      "core_cpi_yoy_pct": 2.9,
-      "cpi_date": "2026-05"
-    },
-    "growth": {
-      "initial_claims_k": 229,
-      "initial_claims_date": "2026-06-06",
-      "sahm_rule": 0.13,
-      "sahm_rule_date": "2026-04",
-      "spx_change_pct": 0.5,
-      "spx_date": "2026-06-12"
-    },
-    "cross_market": {
-      "vix": 17.68,
-      "vix_date": "2026-06-12",
-      "dxy": 99.807,
-      "dxy_date": "2026-06-12",
-      "gold_usd_oz": 4205,
-      "gold_date": "2026-06-12",
-      "usd_jpy": 160.22,
-      "usd_jpy_date": "2026-06-12",
-      "silver": "暂无可靠更新",
-      "etf_flow": "暂无可靠更新",
-      "yield_curve_10y_2y": "暂无可靠更新"
-    }
+    "regime": "D/E过渡",
+    "dalio_quadrant": "增长稳 + 通胀偏热",
+    "net_liquidity_trillion": 5.897,
+    "walcl_b": 6725.397,
+    "tga_b": 828.122,
+    "rrp_b": 0.454,
+    "m2_b": 22804.5,
+    "hy_spread_pct": 2.78,
+    "vix": 19.44,
+    "bei_5y": 2.39,
+    "yield_curve_10y2y": 0.39,
+    "dxy": 99.75,
+    "gold": 4239.9,
+    "spx": 7431.46,
+    "usdjpy": 160.19,
+    "sources_as_of": "2026-06-12/13"
   },
   "sentiment": {
-    "fear_greed": 13,
-    "fear_greed_classification": "Extreme Fear",
-    "exchange_net_flow_btc": 58987.4
+    "fear_greed": 18,
+    "classification": "Extreme Fear",
+    "date": "2026-06-14"
   },
   "cycle": {
-    "phase_label": "底部观察区，非铁底",
-    "bottom_progress": "██░░░░░░ 2/8",
-    "l_status": "DZ 1/5弱激活；L1/L2/L3未触发",
-    "time_window": "6月下旬观察周线确认；若MVRV Z/NUPL/Puell转入阈值，再进入主建仓窗口",
-    "vix_signal": "VIX 17.68，未触发恐慌买点"
+    "post_halving_months": 26,
+    "post_peak_months": 8,
+    "drawdown_from_peak_pct": -48.3,
+    "phase": "熊市中期/底部左侧观察区",
+    "bottom_probability_pct": 35,
+    "next_window": "2026-09 to 2026-12"
   },
   "strategy": {
-    "new_position_pct": 0,
-    "watch_levels": [
-      58000,
-      53500,
-      46200
-    ],
+    "current_position_pct": "0-5",
     "max_position_pct": "40-50",
-    "leverage": "zero"
-  },
-  "report_text": "2026-06-13 10:53 CST BTC日报已发送到Telegram；底部矩阵2/8，顶部风险0/8，今日新增0%，零杠杆。数据新鲜度警告：flag NOT_FOUND，核心链上指标滞后2-3天。"
+    "leverage": "zero",
+    "buy_levels": [
+      {
+        "price": 61977,
+        "position_pct": 5,
+        "note": "200WMA试探"
+      },
+      {
+        "price": 53507,
+        "position_pct": 15,
+        "note": "Realized Price"
+      },
+      {
+        "price": 46201,
+        "position_pct": 35,
+        "note": "CVDD + Puell<0.5"
+      },
+      {
+        "price": 39676,
+        "position_pct": 50,
+        "note": "Balanced Price/L1"
+      }
+    ]
+  }
 }
