@@ -1,64 +1,63 @@
 {
-  "timestamp": "2026-06-14T10:00:00+08:00",
-  "crl": 7,
+  "timestamp": "2026-06-15T02:00:00Z",
+  "crl": 8,
   "level": "GREEN",
-  "level_name": "底部盘整延续",
   "scores": {
     "macro": 0,
     "structure": 20,
     "chain": 0,
-    "event": 6
+    "event": 13
   },
   "weighted_scores": {
     "macro": 0,
     "structure": 6,
     "chain": 0,
-    "event": 1
+    "event": 2
   },
-  "btc_price": 64119,
-  "btc_from_ath": -49,
-  "vix": 17.68,
-  "usd_jpy": 160.22,
-  "fear_greed": 18,
-  "etf_weekly_flow": -1670000000,
-  "etf_yellow": true,
-  "iran_ceasefire": "推进中-协议措辞已达成",
-  "boj_decision_date": "2026-06-15",
-  "boj_expected_rate": 1.0,
   "active_signals": [
     {
       "id": "S-05",
-      "name": "ETF周度黄灯",
-      "value": "-$1.67B",
+      "name": "ETF月度流出",
+      "value": "-$2.1B",
       "threshold": ">$10亿",
-      "status": "YELLOW",
-      "trend": "衰减"
+      "status": "YELLOW"
     },
     {
-      "id": "E-06",
-      "name": "Iran停火",
-      "value": "协议推进",
-      "threshold": "签署失败",
-      "status": "YELLOW衰减",
-      "trend": "衰减"
+      "id": "E-05",
+      "name": "KelpDAO黑客",
+      "value": "$292M",
+      "threshold": ">$100M",
+      "status": "YELLOW"
+    },
+    {
+      "id": "E-04",
+      "name": "StablR脱锚",
+      "value": "EURR -15%",
+      "threshold": "储备争议",
+      "status": "YELLOW"
     },
     {
       "id": "M-03",
-      "name": "BOJ加息预期",
-      "value": "D-2",
+      "name": "BOJ决议",
+      "value": "今日D-Day",
       "threshold": "意外>25bp",
-      "status": "关注",
-      "trend": "稳定"
+      "status": "WATCH"
     }
   ],
-  "position_recommendation": {
-    "core": 60,
-    "trend": 0,
-    "leverage": 0,
-    "put_hedge": 1.5,
-    "ammo_bucket": 30
+  "market_anchor": {
+    "btc_price": 64470,
+    "btc_ath": 126080,
+    "btc_drawdown_pct": 49,
+    "vix": 18.78,
+    "usd_jpy": 160.23,
+    "fear_greed": 20
   },
-  "next_boj_decision": "2026-06-16",
-  "report_version": "V3",
-  "data_cutoff": "2026-06-14T05:50:00+08:00"
+  "position": {
+    "core_pct": 60,
+    "trend_pct": 0,
+    "leverage": 0,
+    "put_pct": 1.5
+  },
+  "next_update": "2026-06-15T06:00:00Z",
+  "notes": "CRL 8 GREEN - 新事件触发(KelpDAO/StablR) - BOJ决议D-Day"
 }
