@@ -1,231 +1,230 @@
 {
   "_schema_version": "2.0",
-  "report_date": "2026-06-15",
-  "generated_at": "2026-06-15T11:04:00+08:00",
-  "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
-  "data_freshness": {
-    "flag": "stale:1 spot_rvol_30d=2026-06-02",
-    "status": "warning",
-    "warnings": [
-      {
-        "metric": "lth_sopr",
-        "last_date": "2026-06-13",
-        "lag_days": 2
-      },
-      {
-        "metric": "nupl",
-        "last_date": "2026-06-13",
-        "lag_days": 2
-      },
-      {
-        "metric": "puell_multiple",
-        "last_date": "2026-06-13",
-        "lag_days": 2
-      },
-      {
-        "metric": "sopr_adjusted",
-        "last_date": "2026-06-13",
-        "lag_days": 2
-      },
-      {
-        "metric": "mvrv_z_score",
-        "last_date": "2026-06-14",
-        "lag_days": 1
-      }
-    ]
-  },
+  "report_date": "2026-06-16",
+  "updated_at": "2026-06-16T11:15:01.561292+08:00",
   "signal": {
-    "direction": "底部修复早期，不是深度投降底",
-    "action": "若当前BTC仓位<10%，分批补至10-15%；已达15%则等待L2/L1；零杠杆",
+    "status": "🟡 弱底部信号：观察/轻仓",
+    "status_code": "WEAK_L3_WATCH",
     "bottom_score": 1,
-    "bottom_score_max": 8,
-    "confidence": "中等偏低"
+    "bottom_total": 8,
+    "action": "新增0-5%；已持仓按L3弱触发上限10-15%；零杠杆",
+    "confidence": "★★☆☆☆",
+    "data_freshness": "flag=stale:1; core onchain metrics through 2026-06-15; spot_rvol_30d stale at 2026-06-02"
   },
   "price": {
-    "btc_usd": 65424.135,
-    "source": "Coinbase spot fallback after OKX/Binance unavailable",
-    "as_of": "2026-06-15"
+    "current": 65755,
+    "source": "realtime_reference_okx_failed",
+    "chain_close": 66290.799,
+    "date": "2026-06-15"
   },
   "onchain": {
     "mvrv_z_score": {
-      "value": 0.4131,
-      "date": "2026-06-14",
-      "status": "not_triggered"
-    },
-    "mvrv": {
-      "value": 1.2036,
-      "date": "2026-06-13",
-      "status": "not_triggered"
+      "value": 0.4141,
+      "date": "2026-06-15",
+      "triggered": false
     },
     "nupl": {
-      "value": 0.1692,
-      "date": "2026-06-13",
-      "status": "not_triggered"
+      "value": 0.193,
+      "date": "2026-06-15",
+      "triggered": false
     },
     "puell_multiple": {
-      "value": 0.5973,
-      "date": "2026-06-13",
-      "status": "watch"
+      "value": 0.7441,
+      "date": "2026-06-15",
+      "triggered": false
     },
     "sopr_adjusted": {
       "value": 0.9993,
-      "date": "2026-06-13",
-      "continuous_days_below_1": 6,
-      "accumulated_days_below_1": 12,
-      "sample_days": 13,
-      "status": "watch"
+      "date": "2026-06-15",
+      "continuous_lt1_days": 1,
+      "cum14_lt1_count": 11
     },
     "lth_sopr": {
-      "value": 0.756,
-      "date": "2026-06-13",
-      "status": "triggered"
+      "value": 0.758,
+      "date": "2026-06-15",
+      "triggered": true
     },
-    "ahr999": {
-      "value": 0.333,
-      "date": "2026-06-14",
-      "status": "triggered"
-    },
-    "mayer_multiple": {
-      "value": 0.828,
-      "date": "2026-06-13",
-      "status": "not_triggered"
+    "sth_sopr": {
+      "value": 1.03,
+      "date": "2026-06-15"
     },
     "realized_price": {
-      "value": 53508.4451,
-      "date": "2026-06-14"
+      "value": 53499.359,
+      "date": "2026-06-15"
     },
     "cvdd": {
-      "value": 46202.0,
-      "date": "2026-06-14"
+      "value": 46213.4648,
+      "date": "2026-06-15"
     },
     "balanced_price": {
-      "value": 39677.458,
-      "date": "2026-06-14"
+      "value": 39595.1603,
+      "date": "2026-06-15"
     },
-    "ma_200w": {
-      "value": 61977.287,
-      "date": "2026-06-13"
+    "ahr999": {
+      "value": 0.3534,
+      "date": "2026-06-16"
     },
-    "monthly_rsi_14": {
-      "value": 29.9,
-      "date": "2026-06-15",
-      "status": "triggered"
+    "exchange_net_flow": {
+      "value": 59552.8296,
+      "date": "2026-06-15"
     }
   },
   "depression_zone": {
-    "active_count": 1,
-    "max_count": 5,
-    "strength": "weak",
+    "activated": true,
+    "activated_count": 1,
+    "total_conditions": 5,
     "conditions": [
       {
-        "name": "Price < 200WMA",
+        "label": "Price < 200WMA",
         "triggered": false,
-        "value": "65424 > 61977"
+        "current": 65755,
+        "threshold": 62036.9464,
+        "date": "2026-06-15"
       },
       {
-        "name": "Price < Realized Price",
+        "label": "Price < Realized Price",
         "triggered": false,
-        "value": "65424 > 53508"
+        "current": 65755,
+        "threshold": 53499.359,
+        "date": "2026-06-15"
       },
       {
-        "name": "Ahr999 < 0.45",
+        "label": "Ahr999 < 0.45",
         "triggered": true,
-        "value": 0.333
+        "current": 0.3534,
+        "threshold": 0.45,
+        "date": "2026-06-16"
       },
       {
-        "name": "MVRV Z-Score < 0",
+        "label": "MVRV Z-Score < 0",
         "triggered": false,
-        "value": 0.4131
+        "current": 0.4141,
+        "threshold": 0,
+        "date": "2026-06-15"
       },
       {
-        "name": "Mayer Multiple < 0.65",
+        "label": "Mayer Multiple < 0.65",
         "triggered": false,
-        "value": 0.828
+        "current": 0.855,
+        "threshold": 0.65,
+        "date": "2026-06-15"
       }
     ]
   },
   "levels": {
-    "L1": {
+    "level1": {
       "triggered": false,
-      "target_position": "40-50%",
-      "notes": "Price above CVDD and Balanced Price"
+      "name": "算法铁底",
+      "conditions": [
+        {
+          "label": "Price ≤ CVDD",
+          "triggered": false,
+          "current": 65755,
+          "threshold": 46213.4648
+        },
+        {
+          "label": "Price ≤ Balanced Price",
+          "triggered": false,
+          "current": 65755,
+          "threshold": 39595.1603
+        }
+      ]
     },
-    "L2": {
+    "level2": {
       "triggered": false,
-      "target_position": "30-35%",
-      "notes": "Puell 0.5973 not below 0.5"
+      "name": "矿工投降",
+      "conditions": [
+        {
+          "label": "DZ activated",
+          "triggered": true
+        },
+        {
+          "label": "Puell Multiple < 0.5",
+          "triggered": false,
+          "current": 0.7441,
+          "threshold": 0.5
+        }
+      ]
     },
-    "L3": {
+    "level3": {
       "triggered": true,
-      "target_position": "10-15%",
-      "notes": "DZ weak + LTH-SOPR<1 + price above 200WMA"
+      "strength": "weak",
+      "name": "趋势确认",
+      "target_position": "10-15% max",
+      "pre_conditions": [
+        {
+          "label": "DZ activated 1/5",
+          "triggered": true
+        },
+        {
+          "label": "LTH-SOPR < 1.0",
+          "triggered": true,
+          "current": 0.758
+        }
+      ],
+      "confirmation_signals": [
+        {
+          "label": "Slingshot price above 200WMA",
+          "triggered": true
+        },
+        {
+          "label": "Micro Trend Mayer<0.6 and MA5>MA20",
+          "triggered": false
+        },
+        {
+          "label": "Rebound RSI<30 to >50",
+          "triggered": false
+        }
+      ]
     }
   },
   "macro": {
-    "regime": "Neutral/Cooling",
+    "regime": "B/D transition",
+    "btc_bias": "🟡 有条件顺风",
+    "growth_data": [
+      "Sahm Rule 0.10 [2026-05]",
+      "Initial claims 229k [2026-06-06]",
+      "SPX 7554.29 [2026-06-15]"
+    ],
+    "inflation_data": [
+      "5Y BEI about 2.39-2.44% [2026-06]",
+      "10Y BEI 2.32% [2026-06-15]",
+      "Gold about $4312-$4328 [2026-06-15/16]"
+    ],
     "vix": {
       "value": 17.68,
-      "date": "2026-06-15",
-      "prev": 19.44
+      "date": "2026-06-12"
+    },
+    "hy_spread": {
+      "value": 2.71,
+      "date": "2026-06-12"
     },
     "dxy": {
-      "value": 99.567,
-      "date": "2026-06-15",
-      "prev": 99.75
-    },
-    "spx": {
-      "value": 7431.46,
-      "date": "2026-06-15",
-      "prev": 7394.3
-    },
-    "gold": {
-      "value": 4354.2,
-      "date": "2026-06-15",
-      "prev": 4215.0
-    },
-    "silver": {
-      "value": 70.69,
-      "date": "2026-06-15",
-      "prev": 67.859
-    },
-    "usdjpy": {
-      "value": 160.126,
-      "date": "2026-06-15",
-      "prev": 160.13
-    },
-    "yield_curve_10y_2y": {
-      "value": 0.869,
-      "date": "2026-06-15",
-      "note": "10Y proxy 4.487 minus 2Y proxy 3.618"
+      "value": 99.67,
+      "date": "2026-06-16"
     },
     "net_liquidity": "暂无可靠更新",
-    "m2": "暂无可靠更新",
-    "hy_spread": "暂无可靠更新",
-    "five_year_bei": "暂无可靠更新",
-    "etf_flow": "暂无可靠更新"
+    "etf_flow": "暂无可靠更新",
+    "throughline_primary": "月线RSI进入底部区，LTH-SOPR投降，价格守200WMA",
+    "throughline_conflict": "链上估值未投降，aSOPR未连续7日<1",
+    "throughline_tail_risk": "交易所净流入叠加VIX上行触发二次下探"
   },
   "sentiment": {
-    "fear_greed_index": {
-      "value": 20,
-      "classification": "Extreme Fear",
-      "date": "2026-06-15",
-      "status": "watch"
-    }
+    "fear_greed": 23,
+    "label": "Extreme Fear",
+    "date": "2026-06-16"
   },
   "cycle": {
-    "phase": "熊市后段/修复早期交界",
-    "bottom_progress_pct": 20,
-    "time_window": "2026 Q2-Q3 观察/轻仓窗口",
-    "top_risk_score": 0,
-    "top_risk_score_max": 6
+    "phase_label": "中周期回撤后的弱修复/再定价区",
+    "bottom_progress": "1/8",
+    "level_status": "DZ 1/5; L1 no; L2 no; L3 weak",
+    "dashboard": "https://chenchenai.github.io/macro-oracle/"
   },
   "strategy": {
-    "target_position": "10-15% spot BTC",
-    "plan": [
-      "0-5%仓位：$65,400附近5%，$62,000附近5%，$58,000附近5%",
-      "10-15%仓位：不加仓，等待Puell<0.5或L1",
-      "最大上限50%，零杠杆"
-    ],
-    "leverage": "zero"
+    "new_capital": "0-5%",
+    "confirmed_position": "10-15% after reclaiming MA20 and aSOPR>1",
+    "deep_zone": "$53,499-$46,213",
+    "max_position": "40-50% only at L1/L2 deep bottom",
+    "leverage": "0"
   }
 }
