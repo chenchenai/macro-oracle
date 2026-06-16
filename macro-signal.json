@@ -1,16 +1,16 @@
 {
   "meta": {
-    "generated_at": "2026-06-16 02:20 CST",
+    "generated_at": "2026-06-17 02:20 CST",
     "data_date": "2026-06-12",
-    "report_date": "2026-06-16",
+    "report_date": "2026-06-12",
     "stale": true,
-    "note": "数据来源于 2026-06-12 宏观晨报，原始日报缺失（6月13-16日无记录），滞后4天"
+    "note": "数据来源于 2026-06-12 宏观日报（最新可用），当日 2026-06-17 宏观日报尚未生成"
   },
   "market_snapshot": {
     "spx": {
       "price": 7394.30,
       "change": null,
-      "note": "数据日期 6月11日（WSJ）"
+      "note": "数据来源于 WSJ，6月11日"
     },
     "nasdaq": {
       "price": null,
@@ -22,7 +22,7 @@
     },
     "btc": {
       "price": 62000,
-      "note": "约值，CoinDesk"
+      "note": "约值，数据来源于 CoinDesk"
     },
     "eth": {
       "price": null,
@@ -38,15 +38,16 @@
     },
     "wti": {
       "price": 92,
-      "note": "$90-94 区间，Capital Street FX 分析"
+      "note": "区间 $90-94"
     },
     "dxy": {
       "price": 100.17,
-      "change": "+0.22%"
+      "change": "+0.22%",
+      "note": "数据来源于 Trading Economics"
     },
     "vix": {
       "price": 22,
-      "note": "9天VIX 25.67 vs 30天VIX 22.22，倒挂"
+      "note": "9天VIX 25.67 vs 30天VIX 22.22，期限结构倒挂"
     },
     "usdjpy": {
       "price": null,
@@ -60,19 +61,20 @@
     },
     "usy2": {
       "value": 4.15,
-      "note": "Trading Economics"
+      "note": "数据来源于 Trading Economics"
     },
     "usy10": {
       "value": 4.53,
-      "note": "Trading Economics"
+      "note": "数据来源于 Trading Economics"
     },
     "usy30": {
       "value": null,
       "note": "数据暂缺"
     },
     "spread_2s10s": {
-      "value": 0.38,
-      "note": "计算值（10Y 4.53% - 2Y 4.15%）"
+      "value": 38,
+      "unit": "bps",
+      "note": "计算: 4.53% - 4.15%"
     },
     "bei_5y": {
       "value": null,
@@ -108,35 +110,35 @@
   "dalio_quadrant": {
     "quadrant_name": "Reflation",
     "growth_signals": [
-      "VIX 倒挂显示市场短期波动预期上升",
-      "AI主线情绪强劲（SpaceX IPO史上最大）"
+      "VIX期限结构倒挂（9天25.67 vs 30天22.22），短期风险情绪紧张",
+      "SPX维持在7400附近，估值韧性仍存但动能减弱"
     ],
     "inflation_signals": [
-      "5月CPI 4.2% YoY（2023年4月以来最高）",
-      "WTI 油价维持 $90-94 高位，能源+23.5%"
+      "5月CPI 4.2% YoY，2023年4月以来最高，能源价格+23.5%",
+      "WTI油价维持$90-94区间，霍尔木兹海峡被封锁加剧供应担忧"
     ],
-    "regime_label": "高通胀+地缘风险+延后降息"
+    "regime_label": "高通胀+地缘风险+政策观望"
   },
   "btc_signals": {
     "direction": "neutral",
-    "confidence": "low",
+    "confidence": "medium",
     "action": "观望",
     "entry_zone": "$58K以下分批建仓",
     "stop_loss": "$55K有效跌破则趋势转空",
-    "note": "数据滞后4天，建议重新评估"
+    "note": "当前约$62K，建议等待更好入场点"
   },
   "three_market_advice": {
     "gold": {
-      "advice": "维持观察",
-      "logic": "地缘风险（US-Iran冲突）支撑避险需求，但需验证价格数据"
+      "advice": "维持观察，地缘风险溢价已计入",
+      "logic": "霍尔木兹海峡封锁+SpaceX IPO资金分流，黄金避险需求与风险资产竞争资金"
     },
     "spx": {
-      "advice": "谨慎防守",
-      "logic": "FOMC 6月16-17日会议，Kevin Warsh首次主持，政策不确定性高"
+      "advice": "偏防守，降低仓位",
+      "logic": "VIX倒挂+SpaceX IPO抽血效应+中东地缘风险，短期波动性上升"
     },
     "btc": {
-      "advice": "观望为主",
-      "logic": "数据滞后，需重新获取最新价格和链上信号"
+      "advice": "观望，等待入场信号",
+      "logic": "$62K附近震荡，建议等待$58K以下分批建仓，严格止损$55K"
     }
   },
   "key_events": {
@@ -144,23 +146,23 @@
       {
         "id": "20260612-001",
         "title": "SpaceX IPO",
-        "fact": "史上最大IPO，$1.75T估值，定价$135，6月12日晚纳斯达克上市",
-        "importance": "AI主线风险偏好关键锚点",
-        "investment": "利好科技股情绪，关注AI产业链"
+        "fact": "史上最大IPO，$1.75T估值，定价$135，今晚纳斯达克上市",
+        "importance": "历史性事件，预计抽血效应显著",
+        "investment": "短期流动性压力，关注上市后资金回流效应"
       },
       {
         "id": "20260612-002",
-        "title": "5月CPI超预期",
-        "fact": "4.2% YoY（2023年4月以来最高），核心+0.2% m/m，能源+23.5%",
-        "importance": "全资产定价锚点，通胀二次上行确认",
-        "investment": "高通胀环境下利好硬资产（黄金/原油），利空成长股"
+        "title": "5月CPI数据",
+        "fact": "4.2% YoY，2023年4月以来最高，核心+0.2% m/m，能源+23.5%",
+        "importance": "全资产定价锚点",
+        "investment": "通胀二次上行风险加剧，降息预期延后"
       },
       {
         "id": "20260612-003",
         "title": "US-Iran冲突升级",
         "fact": "美军连续打击，霍尔木兹海峡被封锁",
-        "importance": "地缘风险溢价，原油供应冲击",
-        "investment": "利好原油、黄金避险；利空全球风险资产"
+        "importance": "能源供应冲击",
+        "investment": "油价飙升风险，能源股受益，航空/物流受损"
       }
     ],
     "P1": [
@@ -168,15 +170,15 @@
         "id": "20260612-004",
         "title": "FOMC会议",
         "fact": "6月16-17日，Kevin Warsh首次主持",
-        "importance": "货币政策方向关键节点",
-        "investment": "关注措辞变化及点阵图"
+        "importance": "政策路径关键锚点",
+        "investment": "关注声明措辞和点阵图变化"
       },
       {
         "id": "20260612-005",
         "title": "美联储压力测试",
         "fact": "6月24日发布",
-        "importance": "银行股波动预警",
-        "investment": "提前评估银行股风险敞口"
+        "importance": "银行股关键事件",
+        "investment": "关注大型银行资本要求变化"
       }
     ]
   },
