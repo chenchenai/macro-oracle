@@ -1,27 +1,63 @@
 {
-  "timestamp": "2026-06-16T10:00:00+08:00",
-  "crl": 10,
+  "timestamp": "2026-06-17T09:40:00+08:00",
+  "crl": 5,
   "level": "GREEN",
+  "label": "改善·Iran停火突破",
   "scores": {
     "macro": 0,
     "structure": 20,
     "chain": 0,
-    "event": 15
+    "event": 0
   },
-  "btc_price": 66231,
-  "vix": 16.78,
-  "usd_jpy": 160.35,
-  "etf_flow_june": -2.1,
-  "fear_greed": 20,
-  "active_risks": [
-    "S-05 ETF月度黄灯改善",
-    "E-05 Drift事件衰减",
-    "E-06 Iran停火推进",
-    "E-04 StablR EURR脱锚新增"
+  "btc_price": 65611,
+  "btc_change_24h": -0.88,
+  "btc_distance_ath_pct": -48.0,
+  "vix": 17.05,
+  "vix_status": "改善",
+  "usd_jpy": 160.33,
+  "usd_jpy_status": "稳定",
+  "etf_flow_monthly": -2100000000,
+  "etf_flow_daily": 64800000,
+  "etf_status": "改善信号",
+  "fear_greed": 22,
+  "fear_greed_status": "Extreme Fear",
+  "funding_rate": -0.003,
+  "funding_rate_status": "中性负值",
+  "active_signals": [
+    {
+      "id": "S-05",
+      "name": "ETF月度黄灯",
+      "value": "-$2.1B改善中",
+      "threshold": "> $10亿",
+      "status": "黄灯改善"
+    },
+    {
+      "id": "E-06",
+      "name": "Iran停火",
+      "value": "协议已达成",
+      "threshold": "签署失败",
+      "status": "清除",
+      "note": "重大突破：60天MOU签署，6/19正式生效"
+    }
   ],
-  "key_events_today": [
-    "BOJ加息1%预期符合（已落地）",
-    "Iran停火签署进展"
+  "cleared_signals": [
+    "E-06 Iran停火黄灯清除"
   ],
-  "next_update": "2026-06-16T13:50:00+08:00"
+  "key_events": [
+    {
+      "date": "2026-06-19",
+      "event": "Iran停火正式签署仪式",
+      "impact": "签署成功→CRL降至3"
+    }
+  ],
+  "position_advice": {
+    "core_position": 60,
+    "trend_position": 0,
+    "leverage": 0,
+    "put_allocation": 1.5,
+    "ammo_bucket": 30
+  },
+  "next_update": "2026-06-17T13:40:00+08:00",
+  "next_morning_report": "2026-06-18T10:00:00+08:00",
+  "version": "V3"
 }
