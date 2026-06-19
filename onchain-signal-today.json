@@ -1,184 +1,176 @@
 {
   "meta": {
-    "generated_at": "2026-06-19T02:40:00+08:00",
+    "generated_at": "2026-06-20T02:40:00+08:00",
     "data_date": "2026-06-09",
-    "report_date": "2026-06-19",
-    "data_lag_days": 10,
+    "report_date": "2026-06-20",
+    "data_lag_days": 11,
     "stale": true,
-    "source_file": "/Users/cc/.openclaw/workspace-btc-onchain/memory/2026-06-09.md",
-    "warning": "⚠️ 数据滞后10天，最新报告为2026-06-09，今日(2026-06-19)报告尚未生成"
+    "source_file": "2026-06-09.md",
+    "warning": "⚠️ 数据严重滞后：最新日志为2026-06-09，滞后11天。今日(2026-06-20)和昨日(2026-06-19)日志均不存在。"
   },
   "report1_daily": {
     "title": "BTC链上深度日报 V2.0",
     "date": "2026-06-09",
-    "exec_time": "11:05-11:10 CST",
-    "data_flag": "P0滞后: LTH净头寸滞后50天, 鲸鱼交易所流量滞后80天; P1滞后: SOPR滞后3天, ATS滞后6天, Coinbase溢价滞后7天",
+    "exec_time": "2026-06-09 11:27",
+    "data_flag": {
+      "p0_lag": [
+        {"indicator": "lth_net_position_change", "lag_date": "2026-04-20", "lag_days": 50, "impact": "无法判断LTH当前投降状态"},
+        {"indicator": "whale_tx_to_exchanges", "lag_date": "2026-03-21", "lag_days": 80, "impact": "无法判断鲸鱼当前卖压"}
+      ],
+      "p1_lag": [
+        {"indicator": "lth_sopr/sth_sopr", "lag_date": "2026-06-06", "lag_days": 3},
+        {"indicator": "accumulation_trend_score", "lag_date": "2026-06-03", "lag_days": 6},
+        {"indicator": "coinbase_premium", "lag_date": "2026-06-02", "lag_days": 7}
+      ]
+    },
     "core_data": {
       "price_usd_close": {"value": 63066.5657, "date": "2026-06-09", "note": "较ATH回撤50%"},
       "mvrv": {"value": 1.1761, "date": "2026-06-09", "threshold": "<1.2低估", "status": "低估"},
       "mvrv_z_score": {"value": 0.3262, "date": "2026-06-09", "threshold": "<0极端低估", "status": "接近低估"},
-      "nupl": {"value": 0.1497, "date": "2026-06-09", "status": "恐惧区间"},
-      "puell_multiple": {"value": 0.5971, "date": "2026-06-09", "status": "矿工压力区"},
-      "rsi_14d": {"value": 26.2359, "date": "2026-06-09", "status": "极端超卖"},
-      "fear_greed_index": {"value": 8, "date": "2026-06-09", "status": "极端恐惧"},
-      "ahr999": {"value": 0.3144, "date": "2026-06-09", "threshold": "<0.45抄底区", "status": "抄底区第7次"},
-      "mayer_multiple": {"value": 0.8047, "date": "2026-06-09", "status": "低估"},
-      "ma_200w": {"value": 61838.1792, "date": "2026-06-09", "status": "已触及"},
-      "two_year_ma_730": {"value": 87461.2194, "date": "2026-06-09"},
-      "lth_supply_pct": {"value": 74.32, "date": "2026-06-09", "status": "历史高位囤积"},
-      "sth_supply_pct": {"value": 10.37, "date": "2026-06-09", "status": "极低，散户撤离"},
+      "nupl": {"value": 0.1497, "date": "2026-06-09", "threshold": "<0.25恐惧", "status": "恐惧区间"},
+      "puell_multiple": {"value": 0.5971, "date": "2026-06-09", "threshold": "<0.6矿工压力", "status": "矿工压力区"},
+      "rsi_14d": {"value": 26.2359, "date": "2026-06-09", "threshold": "<30超卖", "status": "极端超卖"},
+      "fear_greed_index": {"value": 8, "date": "2026-06-09", "threshold": "<25恐惧", "status": "极端恐惧"},
+      "ahr999": {"value": 0.3144, "date": "2026-06-09", "threshold": "<0.45抄底区", "status": "抄底区(第7次)"},
+      "mayer_multiple": {"value": 0.8047, "date": "2026-06-09", "threshold": "<1低估", "status": "低估"},
+      "ma_200w": {"value": 61838.1792, "date": "2026-06-09", "note": "已触及"},
+      "lth_supply_pct": {"value": 74.32, "date": "2026-06-09", "note": "历史高位囤积"},
+      "sth_supply_pct": {"value": 10.37, "date": "2026-06-09", "note": "极低散户撤离"},
       "exchange_balance_pct": {"value": 15.3, "date": "2026-06-09"},
-      "exchange_net_flow": {"value": 59950, "date": "2026-06-09", "status": "单日大幅流入"},
-      "exchange_7d_net_flow": {"value": 515503, "date": "2026-06-09", "note": "约$32B"},
-      "exchange_30d_net_flow": {"value": 1208711, "date": "2026-06-09", "note": "约$75B"},
-      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag_days": 3, "status": "接近投降阈值0.75"},
-      "sth_sopr": {"value": 0.962, "date": "2026-06-06", "lag_days": 3, "status": "近期买入者亏损"},
-      "sopr_adjusted": {"value": 0.9879, "date": "2026-06-09", "status": "接近成本线"},
-      "coinbase_premium": {"value": -0.0626, "date": "2026-06-02", "lag_days": 7, "status": "机构需求弱"},
-      "funding_rate": {"value": 0.0, "date": "2026-06-09", "status": "衍生品无杠杆"},
+      "exchange_net_flow_1d": {"value": 59950, "date": "2026-06-09", "note": "单日净流入BTC"},
+      "exchange_net_flow_7d": {"value": 515503, "date": "2026-06-09", "note": "7日净流入约$32B"},
+      "exchange_net_flow_30d": {"value": 1208711, "date": "2026-06-09", "note": "30日净流入约$75B"},
+      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag_days": 3, "threshold": "<0.75投降", "status": "接近投降"},
+      "sth_sopr": {"value": 0.962, "date": "2026-06-06", "lag_days": 3, "note": "近期买入者亏损"},
+      "sopr_adjusted": {"value": 0.9879, "date": "2026-06-09", "note": "接近成本线"},
+      "coinbase_premium": {"value": -0.0626, "date": "2026-06-02", "lag_days": 7, "note": "机构需求弱"},
+      "funding_rate": {"value": 0.0, "date": "2026-06-09", "note": "衍生品无杠杆"},
       "accumulation_trend_score": {"value": 0.5018, "date": "2026-06-03", "lag_days": 6, "status": "中性"}
     },
     "six_dimension_score": {
-      "onchain_valuation": {"score": 18, "max": 20, "status": "低估收敛"},
-      "holder_behavior": {"score": 12, "max": 25, "status": "恶化发散"},
-      "miner_economics": {"score": 8, "max": 15, "status": "压力区"},
-      "network_activity": {"score": 8, "max": 15, "status": "萎缩"},
-      "capital_flow": {"score": 6, "max": 15, "status": "恶化"},
-      "market_structure": {"score": 8, "max": 10, "status": "中性"},
-      "total": 54,
-      "total_max": 100,
-      "grade": "C级观望",
-      "confidence": "65%"
+      "chain_valuation": {"score": 18, "max": 20, "pct": 90},
+      "holder_behavior": {"score": 12, "max": 25, "pct": 48},
+      "miner_economics": {"score": 8, "max": 15, "pct": 53},
+      "network_activity": {"score": 8, "max": 15, "pct": 53},
+      "capital_flow": {"score": 6, "max": 15, "pct": 40},
+      "market_structure": {"score": 8, "max": 10, "pct": 80},
+      "total": {"score": 54, "max": 100, "pct": 54}
     },
     "cycle_judgment": {
-      "phase": "熊市进程64.4%",
+      "phase": "熊市中期",
       "confidence": "65%",
       "signal_level": "C级观望",
-      "entry_zone": "历史级底部信号首次闪现",
-      "position_suggestion": "等待拐点确认：LTH-SOPR跌破0.75投降 或 Exchange流入转负 或 MVRV Z<0极端低估",
-      "key_contradiction": "估值极度低估(MVRV 1.176 < 1.2) vs 交易所持续流入(卖压未缓解)"
+      "entry_zone": "观望等待拐点",
+      "position_suggestion": "等待确认信号：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估"
     },
     "skills_triggered": {
       "triggered": [
-        "Supply in Loss > Supply in Profit (首次超50%供应)",
-        "200WMA $61.8K触及",
-        "ahr999=0.314抄底区(历史第7次)"
+        "MVRV Z=0.326 接近低估(<0)",
+        "ahr999=0.314 抄底区(第7次)",
+        "200WMA $61.8K 触及",
+        "Supply in Loss>Profit 历史级底部信号",
+        "RSI 14d=26.24 极端超卖"
       ],
       "near_trigger": [
-        "MVRV Z<0极端低估",
-        "LTH-SOPR<0.75投降阈值"
+        "LTH-SOPR=0.736 接近投降阈值0.75",
+        "恐贪指数=8 极端恐惧"
       ]
     },
     "anomaly_detection": {
-      "exchange_flow_warning": "交易所连续8天净流入+60万BTC，历史级卖压",
-      "data_lag_critical": [
-        {"indicator": "lth_net_position_change", "lag_days": 50, "impact": "无法判断LTH当前投降状态"},
-        {"indicator": "whale_tx_to_exchanges", "lag_days": 80, "impact": "无法判断鲸鱼当前卖压"}
-      ]
+      "critical": "交易所连续8天净流入+60万BTC卖压序列未缓解",
+      "warning": "数据严重滞后：LTH净头寸滞后50天，鲸鱼交易滞后80天",
+      "contradiction": "估值极度低估 vs 交易所持续流入卖压"
     },
-    "full_report_text": "## 📊 每日报告（紧急数据查询结果）\n- 信号级别：**C级观望（65%置信度）** → 但核心判断受数据滞后影响\n- 六维评分：54/100\n- 核心指标变化：MVRV Z=0.326（接近低估）| LTH-SOPR=0.736（接近投降）| RSI=26.24（极端超卖）| Exchange 8天净流入+60万BTC（历史卖压）\n- 今日结论：历史级底部信号首次闪现（Supply in Loss>Profit + 200WMA触及 + ahr999抄底区），但交易所连续8天净流入卖压未缓解，等待拐点确认"
+    "full_report_text": "# 2026-06-09 BTC链上分析师日志\n\n## 📊 每日报告（紧急数据查询结果）\n- 信号级别：**C级观望（65%置信度）** → 但核心判断受数据滞后影响\n- 六维评分：54/100\n- 核心指标变化：MVRV Z=0.326（接近低估）| LTH-SOPR=0.736（接近投降）| RSI=26.24（极端超卖）| Exchange 8天净流入+60万BTC（历史卖压）\n- 今日结论：历史级底部信号首次闪现（Supply in Loss>Profit + 200WMA触及 + ahr999抄底区），但交易所连续8天净流入卖压未缓解，等待拐点确认\n\n## ⚠️ 数据滞后严重警告（影响分析准确性）\n\n**P0滞后（>30天）- 严重影响判断：**\n- `lth_net_position_change`: 2026-04-20（滞后50天）→ **无法判断LTH当前投降状态**\n- `whale_tx_to_exchanges`: 2026-03-21（滞后80天）→ **无法判断鲸鱼当前卖压**\n\n**P1滞后（3-7天）- 影响短期判断：**\n- `lth_sopr/sth_sopr`: 2026-06-06（滞后3天）\n- `accumulation_trend_score`: 2026-06-03（滞后6天）\n- `coinbase_premium`: 2026-06-02（滞后7天）\n\n**已向data_spider发送反馈请求**（11:XX）\n\n## 🔧 漏发修复机制记录\n\n**问题诊断**（用户排查请求）：\n1. **根本原因**：cron任务使用`delivery.mode=announce`，message工具实际发送失败但系统仍写flag文件`:sent`后缀\n2. **漏发窗口**：2026-06-06至06-09共4天日报未实际推送（flag文件存在但群内无消息）\n3. **数据滞后**：lth_sopr/sth_sopr滞后至06-06（3天），spot_rvol_30d滞后至06-02（7天）\n\n**修复措施**：\n1. 手动生成并发送日报（11:05-11:10，分3段发送，messageIds: 15067/15068/15069）\n2. 向data_spider请求补充最新数据（11:06，status: accepted）\n3. 更新heartbeat-state.json记录修复机制\n4. 下一步：修改cron任务delivery.mode从`announce`→`none`，强制message工具发送成功后才写flag\n\n**预防机制设计**：\n- 发送后验证：每次日报发送后读取群最近消息确认存在\n- Guardian补发：若发送失败立即触发Guardian补发机制\n- 每日检查：10:15检查flag文件与群消息一致性\n- 数据监控：p0指标滞后≥3天自动触发data_spider补充请求\n\n## 📊 市场综合判断（基于可用数据）\n\n**六维分析评分（2026-06-09）：**\n\n| 维度 | 评分 | 核心指标 | 状态 | 滞后影响 |\n|------|------|---------|------|---------|\n| **链上估值** | 18/20 | MVRV=1.176/Z=0.326/Puell=0.597/ahr999=0.314 | 🟢低估收敛 | 无滞后 |\n| **持有者行为** | 12/25 | LTH-SOPR=0.736/交易所8天净流入+60万BTC | 🟠恶化发散 | **LTH净头寸滞后50天** |\n| **矿工经济学** | 8/15 | Puell=0.597/Hash Rate缺最新数据 | 🟡压力区 | Hash Rate滞后? |\n| **网络活跃度** | 8/15 | 缺最新活跃地址数据 | 🔴萎缩 | 数据未提供 |\n| **资本流动** | 6/15 | Coinbase Premium=-0.0626%/恐贪=8 | 🔴恶化 | Premium滞后7天 |\n| **市场结构** | 8/10 | Funding=0/衍生品萎缩 | 🟡中性 | 无滞后 |\n\n**总分：54/100 → C级观望信号**\n\n**三收敛框架状态（2026-06-09）：**\n| 信号 | 方向 | 数据 | 状态 |\n|------|------|------|------|\n| MVRV低估 | 🟢收敛 | Z=0.326（目标<0）| 接近触发 |\n| 卖压耗尽 | 🟠恶化 | Exchange 8天+60万BTC | **发散恶化** |\n| 新资本流入 | 🔴恶化 | 恐贪10 + Coinbase负溢价 | 发散恶化 |\n\n**主线判断升级**：\n从\"底部区域但未完成\"→\"历史级底部信号首次闪现但卖压未缓解\"\n- 🚨 Supply in Loss>Supply in Profit（首次超50%供应）+ 200WMA $61.8K触及 + ahr999=0.314（抄底区第7次）\n- ⚠️ 但交易所连续8天净流入+60万BTC卖压序列未缓解\n- ⚠️ **数据滞后导致无法判断LTH投降状态**（滞后50天）→ 核心判断受阻\n- 等待拐点：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估\n\n**关键矛盾：**\n- 估值极度低估（MVRV 1.176 < 1.2，历史底部阈值）vs 交易所持续流入（卖压未缓解）\n- LTH历史级囤积（74.32%供应）vs 无法判断当前投降状态（滞后50天）\n\n**本周关键事件：**\n- Glassnode Week 22 \"The Rally That Wasn't\"（6/8发布）→ 确认结构性出清\n- CoinDesk重大报道\"Supply in Loss>Profit历史级底部信号\"（6/4）\n- ETF创纪录13连流出$43.3亿（5/15-6/3）\n\n## ⏰ 周期定位更新\n- 周期天数：第780天（2024-04-20减半起算）\n- ATH后天数：第246天（2025-10-06）\n- 熊市进程：64.4%（246/382）\n- 距底部中位（2026-10-20）：约133天\n\n## 📚 今日学习进化\n• 补充实时恐贪指数：8（Extreme Fear）\n• 确认Glassnode Week 23未发布（Week 22仍是最新）\n• 向data_spider发送数据滞后反馈（pending）\n\n## ⚠️ 待跟进事项\n1. **等待data_spider反馈滞后数据解决方案**\n2. 修改cron任务delivery.mode配置\n3. 监控交易所净流入拐点\n4. 检查LTH-SOPR是否跌破0.75投降阈值\n\n## 💾 数据快照（2026-06-09）\n\n**核心指标最新值：**\n```\nprice_usd_close = $63,066.5657（较ATH回撤50%）\nmvrv = 1.1761（低估，<1.2）\nmvrv_z_score = 0.3262（接近低估，目标<0）\nnupl = 0.1497（恐惧区间）\npuell_multiple = 0.5971（矿工压力区）\nrsi_14d = 26.2359（极端超卖）\nfear_greed_index = 8（极端恐惧）\n\nahr999 = 0.3144（抄底区，<0.45）\nmayer_multiple = 0.8047（低估）\nma_200w = $61,838.1792（已触及）\ntwo_year_ma_730 = $87,461.2194\n\nlth_supply_pct = 74.32%（历史高位囤积）\nsth_supply_pct = 10.37%（极低，散户撤离）\nexchange_balance_pct = 15.3%\nexchange_net_flow = +59,950 BTC（单日流入）\n\nlth_sopr = 0.736（接近投降阈值0.75，滞后3天）\nsth_sopr = 0.962（近期买入者亏损，滞后3天）\nsopr_adjusted = 0.9879（接近成本线）\n\ncoinbase_premium = -0.0626%（机构需求弱，滞后7天）\nfunding_rate = 0.0（衍生品无杠杆）\naccumulation_trend_score = 0.5018（中性，滞后6天）\n```\n\n**交易所流量趋势（严重恶化）：**\n```\n单日净流入: +59,950 BTC\n7日净流入: +515,503 BTC（约$32B）\n30日净流入: +1,208,711 BTC（约$75B）\n```\n\n**鲸鱼数据（滞后80天）：**\n```\nwhale_tx_to_exchanges = 39,669 BTC（2026-03-21，滞后80天）\n7日均值: 46,181 BTC（2026-03-21附近）\n```\n\n**LTH净头寸（滞后50天）：**\n```\nlth_net_position_change = +124,590 BTC（2026-04-20，滞后50天）\n30日全部数据标记[重分类⚠️] → 数据质量问题\n7日均值（排除重分类）: +5,856 BTC（6月2日查询）\n```"
   },
   "report2_cycle": {
     "title": "BTC周期深度解读",
     "date": "2026-06-09",
     "price_anchors": {
-      "realtime_price": 63066.5657,
-      "close_price": 63066.5657,
+      "realtime_price": {"value": 63066.57, "date": "2026-06-09"},
+      "close_price": {"value": 63066.57, "date": "2026-06-09"},
       "realized_price": null,
       "tmm": null,
       "cvdd": null,
       "equilibrium_price": null,
-      "ma_2y": 87461.2194,
-      "ath": null,
+      "ma_2y": {"value": 87461.22, "date": "2026-06-09", "note": "two_year_ma_730"},
+      "ath": {"value": null, "note": "ATH 2025-10-06, 当前回撤50%"},
       "miner_cost": null
     },
     "cycle_position": {
-      "phase": "熊市",
+      "phase": "熊市中期",
       "cycle_day": 780,
-      "cycle_day_note": "2024-04-20减半起算",
+      "cycle_start": "2024-04-20（减半起算）",
+      "ath_date": "2025-10-06",
       "days_after_ath": 246,
       "bear_market_progress": "64.4%",
       "earliest_bottom": null,
       "mean_bottom": "2026-10-20",
-      "days_to_mean_bottom": 133,
-      "latest_bottom": null
+      "latest_bottom": null,
+      "days_to_mean_bottom": 133
     },
     "core_judgment": {
       "probabilities": {
-        "bottom_confirmed": "低概率（卖压未缓解）",
-        "approaching_bottom": "中高概率（估值低估+情绪极端）",
-        "continued_decline": "中概率（交易所流入持续）"
+        "bottom_confirmed": {"pct": 15, "evidence": "历史级底部信号首次闪现"},
+        "bottom_pending": {"pct": 65, "evidence": "交易所卖压未缓解，等待拐点"},
+        "continuing_decline": {"pct": 20, "evidence": "数据滞后无法判断LTH投降状态"}
       },
-      "evidence": [
-        "MVRV 1.176 < 1.2 历史底部阈值",
-        "RSI 26.24 极端超卖",
-        "Supply in Loss > Supply in Profit 首次",
-        "ahr999 0.314 抄底区第7次"
-      ],
-      "contradictions": [
-        "交易所连续8天净流入+60万BTC",
-        "Coinbase溢价-0.0626%机构需求弱",
-        "数据滞后无法判断LTH投降状态"
-      ]
+      "main_thesis": "历史级底部信号首次闪现但卖压未缓解",
+      "contradiction": "估值极度低估 vs 交易所持续流入卖压"
     },
     "entry_tiers": {
-      "tier_a": {"trigger": "MVRV Z<0 + Exchange转流出", "position": "30%"},
-      "tier_b": {"trigger": "LTH-SOPR<0.75投降确认", "position": "20%"},
-      "tier_c": {"trigger": "恐贪<10 + 溢价转正", "position": "10%"}
+      "tier_a": {"trigger": "MVRV Z<0 极端低估", "status": "接近触发(Z=0.326)", "position": "可试探性建仓"},
+      "tier_b": {"trigger": "交易所流入转负", "status": "恶化(8天+60万BTC)", "position": "观望"},
+      "tier_c": {"trigger": "LTH-SOPR<0.75投降", "status": "接近(0.736,滞后3天)", "position": "等待确认"}
     },
     "signal_level": "C级观望（65%置信度）",
-    "position_suggestion": "等待拐点确认，暂不加仓",
-    "full_report_text": "## ⏰ 周期定位更新\n- 周期天数：第780天（2024-04-20减半起算）\n- ATH后天数：第246天（2025-10-06）\n- 熊市进程：64.4%（246/382）\n- 距底部中位（2026-10-20）：约133天"
+    "position_suggestion": "等待确认信号：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估",
+    "full_report_text": "## ⏰ 周期定位更新\n- 周期天数：第780天（2024-04-20减半起算）\n- ATH后天数：第246天（2025-10-06）\n- 熊市进程：64.4%（246/382）\n- 距底部中位（2026-10-20）：约133天\n\n**主线判断升级**：\n从\"底部区域但未完成\"→\"历史级底部信号首次闪现但卖压未缓解\"\n- 🚨 Supply in Loss>Supply in Profit（首次超50%供应）+ 200WMA $61.8K触及 + ahr999=0.314（抄底区第7次）\n- ⚠️ 但交易所连续8天净流入+60万BTC卖压序列未缓解\n- ⚠️ **数据滞后导致无法判断LTH投降状态**（滞后50天）→ 核心判断受阻\n- 等待拐点：①LTH-SOPR跌破0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估\n\n**关键矛盾：**\n- 估值极度低估（MVRV 1.176 < 1.2，历史底部阈值）vs 交易所持续流入（卖压未缓解）\n- LTH历史级囤积（74.32%供应）vs 无法判断当前投降状态（滞后50天）"
   },
   "report3_whale": {
     "title": "BTC鲸鱼链上深度报告 V3.0",
     "date": "2026-06-09",
     "core_decision": {
       "signal": "C级观望",
-      "phase": "熊市中期（64.4%进程）",
-      "summary": "历史级底部信号首次闪现，但卖压未缓解，数据滞后严重影响鲸鱼行为判断",
-      "position": "等待拐点，暂不加仓"
+      "phase": "等待拐点确认",
+      "summary": "历史级底部信号首次闪现但卖压未缓解，数据严重滞后无法判断鲸鱼当前行为",
+      "position": "观望，等待交易所流入转负和LTH投降确认"
     },
     "top3_data_points": [
-      {"point": "交易所8天净流入+60万BTC", "impact": "历史级卖压，拐点未出现"},
-      {"point": "LTH-SOPR 0.736接近投降", "impact": "需跌破0.75确认投降信号"},
-      {"point": "MVRV Z=0.326接近低估", "impact": "等待Z<0极端低估触发"}
+      {"indicator": "Exchange 8天净流入", "value": "+60万BTC", "impact": "历史级卖压，未缓解"},
+      {"indicator": "LTH-SOPR", "value": "0.736", "impact": "接近投降阈值0.75，但滞后3天"},
+      {"indicator": "鲸鱼交易数据", "value": "滞后80天", "impact": "无法判断当前鲸鱼卖压"}
     ],
     "chip_map": {
-      "lth_supply_pct": {"value": 74.32, "status": "历史高位囤积", "note": "LTH信心强"},
-      "sth_supply_pct": {"value": 10.37, "status": "极低", "note": "散户已撤离"},
-      "exchange_balance_pct": {"value": 15.3, "status": "高位", "note": "潜在抛压"}
+      "lth_supply": {"value": 74.32, "pct": true, "note": "历史高位囤积"},
+      "sth_supply": {"value": 10.37, "pct": true, "note": "极低，散户撤离"},
+      "exchange_balance": {"value": 15.3, "pct": true, "note": "持续流入中"}
     },
     "whale_behavior": {
-      "net_flow_7d": {"value": 515503, "unit": "BTC", "status": "大幅流入"},
-      "net_flow_30d": {"value": 1208711, "unit": "BTC", "status": "历史级流入"},
-      "whale_tx_to_exchanges": {"value": 39669, "date": "2026-03-21", "lag_days": 80, "status": "数据严重滞后"},
+      "net_flow_7d": {"value": 515503, "unit": "BTC", "note": "约$32B流入"},
+      "net_flow_30d": {"value": 1208711, "unit": "BTC", "note": "约$75B流入"},
+      "balance_trend": "持续流入",
       "coinbase_premium": {"value": -0.0626, "date": "2026-06-02", "lag_days": 7, "status": "机构需求弱"},
-      "funding_rate": {"value": 0.0, "status": "衍生品无杠杆"}
+      "funding_rate": {"value": 0.0, "date": "2026-06-09", "status": "衍生品无杠杆"}
     },
     "sopr_decode": {
-      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag_days": 3, "status": "接近投降阈值", "trend_7d": []},
+      "lth_sopr": {"value": 0.736, "date": "2026-06-06", "lag_days": 3, "threshold": "<0.75投降", "status": "接近投降", "trend_7d": null},
       "sth_sopr": {"value": 0.962, "date": "2026-06-06", "lag_days": 3, "status": "近期买入者亏损"},
       "asopr": {"value": 0.9879, "date": "2026-06-09", "status": "接近成本线"}
     },
     "ats_dashboard": {
       "current": {"value": 0.5018, "date": "2026-06-03", "lag_days": 6},
-      "target": 0.7,
-      "gap_pct": -28.3,
-      "trend_14d": "中性，缺乏积累动力"
+      "target": null,
+      "gap_pct": null,
+      "trend_14d": "中性，数据滞后"
     },
     "fusion_conclusion": {
-      "summary": "六维54分C级观望，历史级底部信号首次闪现（Supply in Loss>Profit + 200WMA触及 + ahr999抄底区），但交易所连续8天净流入卖压未缓解，数据滞后（LTH净头寸50天、鲸鱼流量80天）严重影响判断",
-      "six_dim_score": 54,
-      "action": "等待拐点：①LTH-SOPR<0.75投降 ②Exchange流入转负 ③MVRV Z<0极端低估",
-      "stop_loss": "若交易所流入加速或LTH大规模投降则止损观望",
-      "reverse_trigger": "交易所转流出+溢价转正可考虑加仓"
+      "summary": "历史级底部信号首次闪现但卖压未缓解，数据严重滞后限制判断准确性",
+      "six_dim_score": "54/100",
+      "action": "观望等待拐点确认",
+      "stop_loss": null,
+      "reverse_trigger": "交易所流入转负 + LTH-SOPR<0.75确认投降"
     },
-    "full_report_text": "## 💾 数据快照（2026-06-09）\n\n**核心指标最新值：**\n```\nprice_usd_close = $63,066.5657（较ATH回撤50%）\nmvrv = 1.1761（低估，<1.2）\nmvrv_z_score = 0.3262（接近低估，目标<0）\nnupl = 0.1497（恐惧区间）\npuell_multiple = 0.5971（矿工压力区）\nrsi_14d = 26.2359（极端超卖）\nfear_greed_index = 8（极端恐惧）\n\nahr999 = 0.3144（抄底区，<0.45）\nmayer_multiple = 0.8047（低估）\nma_200w = $61,838.1792（已触及）\ntwo_year_ma_730 = $87,461.2194\n\nlth_supply_pct = 74.32%（历史高位囤积）\nsth_supply_pct = 10.37%（极低，散户撤离）\nexchange_balance_pct = 15.3%\nexchange_net_flow = +59,950 BTC（单日流入）\n\nlth_sopr = 0.736（接近投降阈值0.75，滞后3天）\nsth_sopr = 0.962（近期买入者亏损，滞后3天）\nsopr_adjusted = 0.9879（接近成本线）\n\ncoinbase_premium = -0.0626%（机构需求弱，滞后7天）\nfunding_rate = 0.0（衍生品无杠杆）\naccumulation_trend_score = 0.5018（中性，滞后6天）\n```\n\n**交易所流量趋势（严重恶化）：**\n```\n单日净流入: +59,950 BTC\n7日净流入: +515,503 BTC（约$32B）\n30日净流入: +1,208,711 BTC（约$75B）\n```\n\n**鲸鱼数据（滞后80天）：**\n```\nwhale_tx_to_exchanges = 39,669 BTC（2026-03-21，滞后80天）\n7日均值: 46,181 BTC（2026-03-21附近）\n```\n\n**LTH净头寸（滞后50天）：**\n```\nlth_net_position_change = +124,590 BTC（2026-04-20，滞后50天）\n30日全部数据标记[重分类⚠️] → 数据质量问题\n7日均值（排除重分类）: +5,856 BTC（6月2日查询）\n```"
-  },
-  "risk_warnings": [
-    "⚠️ 数据滞后10天，最新报告为2026-06-09",
-    "P0滞后: LTH净头寸滞后50天，鲸鱼交易所流量滞后80天",
-    "交易所连续8天净流入+60万BTC，历史级卖压未缓解"
-  ]
+    "full_report_text": "**交易所流量趋势（严重恶化）：**\n```\n单日净流入: +59,950 BTC\n7日净流入: +515,503 BTC（约$32B）\n30日净流入: +1,208,711 BTC（约$75B）\n```\n\n**鲸鱼数据（滞后80天）：**\n```\nwhale_tx_to_exchanges = 39,669 BTC（2026-03-21，滞后80天）\n7日均值: 46,181 BTC（2026-03-21附近）\n```\n\n**LTH净头寸（滞后50天）：**\n```\nlth_net_position_change = +124,590 BTC（2026-04-20，滞后50天）\n30日全部数据标记[重分类⚠️] → 数据质量问题\n7日均值（排除重分类）: +5,856 BTC（6月2日查询）\n```\n\n## 📊 市场综合判断（基于可用数据）\n\n**六维分析评分（2026-06-09）：**\n\n| 维度 | 评分 | 核心指标 | 状态 | 滞后影响 |\n|------|------|---------|------|---------|\n| **链上估值** | 18/20 | MVRV=1.176/Z=0.326/Puell=0.597/ahr999=0.314 | 🟢低估收敛 | 无滞后 |\n| **持有者行为** | 12/25 | LTH-SOPR=0.736/交易所8天净流入+60万BTC | 🟠恶化发散 | **LTH净头寸滞后50天** |\n| **矿工经济学** | 8/15 | Puell=0.597/Hash Rate缺最新数据 | 🟡压力区 | Hash Rate滞后? |\n| **网络活跃度** | 8/15 | 缺最新活跃地址数据 | 🔴萎缩 | 数据未提供 |\n| **资本流动** | 6/15 | Coinbase Premium=-0.0626%/恐贪=8 | 🔴恶化 | Premium滞后7天 |\n| **市场结构** | 8/10 | Funding=0/衍生品萎缩 | 🟡中性 | 无滞后 |\n\n**总分：54/100 → C级观望信号**"
+  }
 }
