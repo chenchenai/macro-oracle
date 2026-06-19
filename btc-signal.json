@@ -1,143 +1,86 @@
 {
-  "_schema_version": "2.0",
-  "report_date": "2026-06-18",
-  "updated_at": "2026-06-18T10:37:23.993092+08:00",
-  "dashboard": "https://chenchenai.github.io/macro-oracle/",
+  "schema_version": "2.0",
+  "generated_at": "2026-06-19T10:35:00+08:00",
+  "dashboard_url": "https://chenchenai.github.io/macro-oracle/",
   "signal": {
-    "direction": "NEUTRAL",
-    "bottom_score": 1,
-    "bottom_total": 8,
-    "top_score": 0,
-    "top_total": 5,
-    "confidence": 3,
-    "action": "0%新增仓位；$53,475下方5%试探；零杠杆",
-    "data_freshness": "stale"
+    "date": "2026-06-19",
+    "time_cst": "10:35",
+    "btc_price_usd": 62954,
+    "direction": "底部左侧接近，但未进入强建仓区",
+    "action": "主仓等待；L3弱确认试仓上限10%-15%；零杠杆",
+    "bottom_score": 2,
+    "bottom_score_max": 8,
+    "phase": "深度回撤后的底部观察期",
+    "confidence": "medium-low"
   },
-  "price": {
-    "value": 64433.18,
-    "date": "2026-06-17",
-    "source": "glassnode_v1.sqlite price_usd_close",
-    "realtime_status": "OKX unavailable"
+  "data_freshness": {
+    "flag": "NOT_FOUND",
+    "status": "warning",
+    "warnings": [
+      { "metric": "lth_sopr", "last_date": "2026-06-15", "lag_days": 4 },
+      { "metric": "mvrv_z_score", "last_date": "2026-06-17", "lag_days": 2 },
+      { "metric": "nupl", "last_date": "2026-06-17", "lag_days": 2 },
+      { "metric": "puell_multiple", "last_date": "2026-06-17", "lag_days": 2 }
+    ]
   },
   "onchain": {
-    "mvrv_z_score": {
-      "value": 0.3751,
-      "date": "2026-06-17"
-    },
-    "nupl": {
-      "value": 0.1701,
-      "date": "2026-06-17"
-    },
-    "puell_multiple": {
-      "value": 0.6464,
-      "date": "2026-06-17"
-    },
-    "asopr": {
-      "value": 0.9917,
-      "date": "2026-06-17",
-      "consecutive_lt_1": 5,
-      "cum14_lt_1": 12
-    },
-    "lth_sopr": {
-      "value": 0.758,
-      "date": "2026-06-15",
-      "stale_days": 2
-    },
-    "ahr999": {
-      "value": 0.3361,
-      "date": "2026-06-18"
-    },
-    "mayer_multiple": {
-      "value": 0.8338,
-      "date": "2026-06-17"
-    },
-    "realized_price": {
-      "value": 53474.947,
-      "date": "2026-06-17"
-    },
-    "cvdd": {
-      "value": 46387.2301,
-      "date": "2026-06-17"
-    },
-    "balanced_price": {
-      "value": 39559.5995,
-      "date": "2026-06-17"
-    },
-    "ma_200w": {
-      "value": 62096.1171,
-      "date": "2026-06-17"
-    },
-    "monthly_rsi_14": {
-      "value": 29.47,
-      "date": "2026-06"
-    }
+    "mvrv_z_score": { "value": 0.3751, "date": "2026-06-17" },
+    "mvrv": { "value": 1.2049, "date": "2026-06-17" },
+    "nupl": { "value": 0.1701, "date": "2026-06-17" },
+    "puell_multiple": { "value": 0.6386, "date": "2026-06-17" },
+    "sopr_adjusted": { "value": 0.9772, "date": "2026-06-18", "consecutive_below_1_days": 6, "last_14_days_below_1": 12 },
+    "lth_sopr": { "value": 0.7580, "date": "2026-06-15" },
+    "sth_sopr": { "value": 1.0300, "date": "2026-06-15" },
+    "ahr999": { "value": 0.3347, "date": "2026-06-18" },
+    "mayer_multiple": { "value": 0.8338, "date": "2026-06-17" },
+    "monthly_rsi_14": { "value": 29.47, "date": "2026-06-17" },
+    "rsi_14d": { "value": 38.6645, "date": "2026-06-17" },
+    "price_realized_usd": { "value": 53474.9470, "date": "2026-06-17" },
+    "cvdd": { "value": 46229.5824, "date": "2026-06-18" },
+    "balanced_price_usd": { "value": 39559.5995, "date": "2026-06-17" },
+    "ma_200w": { "value": 62096.1171, "date": "2026-06-17" },
+    "ma_5d": { "value": 65289.6495, "date": "2026-06-17" },
+    "ma_20d": { "value": 65575.3245, "date": "2026-06-17" }
   },
-  "depression_zone": {
-    "activated_count": 1,
-    "total_conditions": 5,
-    "activated": true
-  },
+  "bottom_matrix": [
+    { "name": "MVRV Z-Score < 0", "status": false, "value": 0.3751, "date": "2026-06-17" },
+    { "name": "NUPL < 0", "status": false, "value": 0.1701, "date": "2026-06-17" },
+    { "name": "Puell Multiple < 0.5", "status": false, "value": 0.6386, "date": "2026-06-17" },
+    { "name": "aSOPR 7日+ < 1", "status": "near", "value": 0.9772, "date": "2026-06-18", "consecutive_days": 6 },
+    { "name": "月线RSI < 33", "status": true, "value": 29.47, "date": "2026-06-17" },
+    { "name": "Crypto Fear & Greed < 15", "status": true, "value": 14, "date": "2026-06-19" },
+    { "name": "DXY见顶回落", "status": false, "value": 100.83, "date": "2026-06-19" },
+    { "name": "Fed加息尾期/降息前夜", "status": false, "value": null, "date": null }
+  ],
   "levels": {
-    "level1": {
-      "triggered": false
-    },
-    "level2": {
-      "triggered": false
-    },
-    "level3": {
-      "triggered": false
-    }
+    "depression_zone": { "active_count": 1, "max": 5, "active": true },
+    "l1": { "triggered": false, "reason": "price above CVDD and Balanced Price" },
+    "l2": { "triggered": false, "reason": "Puell Multiple not below 0.5" },
+    "l3": { "triggered": "weak", "reason": "DZ active, LTH-SOPR<1, price above 200WMA; data stale" }
   },
   "macro": {
-    "regime": "B/D-E过渡",
-    "dalio_quadrant": "增长降温 + 通胀粘性",
-    "vix": {
-      "value": 18.44,
-      "date": "2026-06-17"
-    },
-    "hy_spread_pct": {
-      "value": 2.71,
-      "date": "2026-06-16"
-    },
-    "bei_5y": {
-      "value": 2.4,
-      "date": "2026-06-15"
-    },
-    "gold_usd": {
-      "value": 4335.72,
-      "date": "2026-06-17"
-    },
-    "spx": {
-      "value": 7420.1,
-      "date": "2026-06-17"
-    },
-    "dxy": {
-      "value": 100.29,
-      "date": "2026-06-18"
-    },
-    "net_liquidity": "暂无可靠更新",
-    "m2": "暂无可靠更新",
-    "etf_flow": "暂无可靠更新"
+    "regime": "D",
+    "label": "Inflationary/Debasement",
+    "sahm_rule": { "value": 0.10, "date": "2026-05-01" },
+    "initial_claims": { "value": 226000, "date": "2026-06-13" },
+    "hy_oas": { "value": 2.63, "date": "2026-06-17" },
+    "bei_5y": { "value": 2.27, "date": "2026-06-18" },
+    "vix": { "value": 18.44, "date": "2026-06-17" },
+    "dxy": { "value": 100.83, "change_pct": 0.74 },
+    "gold_usd": { "value": 4196.0, "change_pct": -3.73 },
+    "spx": { "value": 7501.0, "change_pct": 1.08 },
+    "usdjpy": { "value": 161.18, "change_pct": 0.36 },
+    "yield_spread_10y2y": { "value": 0.27, "date": "2026-06-18" },
+    "btc_etf": { "status": "暂无可靠更新" }
   },
-  "sentiment": {
-    "fear_greed": 15,
-    "classification": "Extreme Fear",
-    "date": "2026-06-18"
-  },
-  "cycle": {
-    "halving_date": "2024-04-20",
-    "months_after_halving": 26,
-    "peak_price": 124774,
-    "peak_date": "2025-10-06",
-    "months_post_peak": 8,
-    "drawdown_pct": -48.4,
-    "phase": "熊市中期左侧观察"
-  },
-  "freshness_warning": [
-    "flag=stale:2",
-    "lth_sopr 2026-06-15 stale 2d",
-    "sth_sopr 2026-06-15 stale 2d",
-    "nvt_signal 2026-06-01 stale 16d",
-    "true_market_mean 2026-04-05 stale 73d"
-  ]
+  "risk": {
+    "top_risk_score": 0,
+    "top_risk_score_max": 5,
+    "invalidations": [
+      "BTC连续2日低于60000",
+      "aSOPR回到>1后价格仍跌破MA20",
+      "DXY继续上破并VIX>25",
+      "HY OAS快速升至>4%"
+    ]
+  }
 }
