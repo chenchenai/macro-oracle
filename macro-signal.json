@@ -1,210 +1,100 @@
 {
   "meta": {
-    "generated_at": "2026-06-20 02:20 CST",
-    "data_date": "2026-06-19",
-    "report_date": "2026-06-19",
+    "generated_at": "2026-06-21T02:20:00+08:00",
+    "data_date": "2026-06-12",
+    "report_date": "2026-06-12",
     "stale": true,
-    "stale_days": 8,
-    "stale_reason": "宏观分析师日报自2026-06-12后未生成完整日报格式；本信号由btc-signal.json+风控日志整合构建",
-    "sources": ["btc-signal.json", "risk-manager 2026-06-19.md", "events.json"]
+    "stale_reason": "宏观分析师生日报已滞后9天，最后报告日期 2026-06-12"
   },
   "market_snapshot": {
-    "spx": {
-      "price": 7501.0,
-      "change": "+1.08%"
-    },
-    "nasdaq": {
-      "price": null,
-      "change": "+1.9%",
-      "note": "仅有涨跌幅"
-    },
-    "dow": {
-      "price": null,
-      "change": null,
-      "note": "数据暂缺"
-    },
-    "btc": {
-      "price": 62954,
-      "change": "-0.08% ~ +0.42%"
-    },
-    "eth": {
-      "price": null,
-      "note": "数据暂缺"
-    },
-    "gold": {
-      "price": 4196.0,
-      "change": "-3.73%"
-    },
-    "silver": {
-      "price": null,
-      "note": "数据暂缺"
-    },
-    "wti": {
-      "price": 95.0,
-      "note": "Brent原油约$95"
-    },
-    "dxy": {
-      "price": 100.83,
-      "change": "+0.74%"
-    },
-    "vix": {
-      "price": 18.44,
-      "change": "-7.33% ~ +12%",
-      "range": "16.41-18.44"
-    },
-    "usdjpy": {
-      "price": 161.18,
-      "change": "+0.36%"
-    }
+    "spx": { "price": 7394.30, "change": null, "source": "WSJ 2026-06-11" },
+    "nasdaq": { "price": null, "change": null },
+    "dow": { "price": null, "change": null },
+    "btc": { "price": 62000, "change": null, "source": "CoinDesk" },
+    "eth": { "price": null, "change": null },
+    "gold": { "price": null, "change": null },
+    "silver": { "price": null, "change": null },
+    "wti": { "price": null, "change": null, "note": "$90-94 range, Capital Street FX" },
+    "dxy": { "price": 100.17, "change": "+0.22%", "source": "Trading Economics" },
+    "vix": { "price": null, "change": null, "note": "21-22 range, 9-day VIX 25.67 vs 30-day VIX 22.22 (inverted)" },
+    "usdjpy": { "price": null, "change": null }
   },
   "rates": {
-    "ffr": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "usy2": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "usy10": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "usy30": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "spread_2s10s": {
-      "value": 0.27,
-      "date": "2026-06-18"
-    },
-    "bei_5y": {
-      "value": 2.27,
-      "date": "2026-06-18"
-    },
-    "tips_10y": {
-      "value": null,
-      "note": "数据暂缺"
-    }
+    "ffr": null,
+    "usy2": { "yield": 4.15, "source": "Trading Economics" },
+    "usy10": { "yield": 4.53, "source": "Trading Economics" },
+    "usy30": null,
+    "spread_2s10s": { "spread": 0.38, "note": "10Y-2Y spread, normal" },
+    "bei_5y": null,
+    "tips_10y": null
   },
   "credit": {
-    "hy_spread": {
-      "value": 2.63,
-      "date": "2026-06-17"
-    },
-    "ig_spread": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "fed_balance_sheet_t": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "net_liquidity_b": {
-      "value": null,
-      "note": "数据暂缺"
-    },
-    "m2_yoy": {
-      "value": null,
-      "note": "数据暂缺"
-    }
+    "hy_spread": null,
+    "ig_spread": null,
+    "fed_balance_sheet_t": null,
+    "net_liquidity_b": null,
+    "m2_yoy": null
   },
   "dalio_quadrant": {
-    "quadrant_name": "D",
-    "quadrant_label": "Inflationary/Debasement",
-    "growth_signals": [
-      "S&P 500上涨1.08%，Nasdaq涨1.9%，市场情绪回暖",
-      "VIX降至16-18区间，风险情绪缓解"
-    ],
-    "inflation_signals": [
-      "BEI 5Y为2.27%，通胀预期仍高",
-      "油价Brent约$95，能源价格维持高位"
-    ],
-    "regime_label": "高通胀+延后降息"
+    "quadrant_name": null,
+    "growth_signals": [],
+    "inflation_signals": [],
+    "regime_label": null,
+    "note": "数据滞后，无法判断"
   },
   "btc_signals": {
-    "direction": "底部左侧接近，但未进入强建仓区",
-    "confidence": "medium-low",
-    "action": "主仓等待；L3弱确认试仓上限10%-15%；零杠杆",
-    "entry_zone": "$60K以下（CVDD $46,229 | Balanced Price $39,559）",
-    "stop_loss": "BTC连续2日低于$60,000则趋势转空",
-    "bottom_score": 2,
-    "bottom_score_max": 8,
-    "phase": "深度回撤后的底部观察期",
-    "onchain_metrics": {
-      "mvrv_z_score": 0.3751,
-      "nupl": 0.1701,
-      "puell_multiple": 0.6386,
-      "asopr": 0.9772,
-      "ahr999": 0.3347,
-      "monthly_rsi_14": 29.47,
-      "fear_greed": 14
-    }
+    "direction": null,
+    "confidence": null,
+    "action": null,
+    "entry_zone": null,
+    "stop_loss": null
   },
   "three_market_advice": {
-    "gold": {
-      "advice": "观察",
-      "logic": "金价回调-3.73%至$4,196，通胀预期仍高但短期回调"
+    "gold": { "advice": null, "logic": null },
+    "spx": { "advice": null, "logic": null },
+    "btc": { "advice": null, "logic": null }
+  },
+  "key_events": [
+    {
+      "id": "20260612-001",
+      "title": "SpaceX IPO",
+      "fact": "史上最大IPO，$1.75T估值，定价$135，今晚纳斯达克上市",
+      "importance": "P0",
+      "investment": "重大市场事件，关注开盘表现及流动性影响",
+      "sources": ["宏观日报 2026-06-12"]
     },
-    "spx": {
-      "advice": "偏防守，降低追价冲动",
-      "logic": "S&P涨1.08%至7501，若零售销售超预期，利率上行压力大"
+    {
+      "id": "20260612-002",
+      "title": "5月CPI",
+      "fact": "4.2% YoY（2023年4月以来最高），核心+0.2% m/m，能源+23.5%",
+      "importance": "P0",
+      "investment": "通胀压力持续，美联储政策空间受限",
+      "sources": ["宏观日报 2026-06-12"]
     },
-    "btc": {
-      "advice": "主仓等待，L3弱确认试仓上限10-15%",
-      "logic": "底部信号得分2/8，Fear & Greed 14 Extreme Fear，aSOPR连续6日<1，但未触发强建仓区"
+    {
+      "id": "20260612-003",
+      "title": "US-Iran冲突",
+      "fact": "美军连续打击，霍尔木兹被封锁",
+      "importance": "P0",
+      "investment": "地缘风险升级，油价、黄金承压关注",
+      "sources": ["宏观日报 2026-06-12"]
+    },
+    {
+      "id": "20260612-004",
+      "title": "FOMC会议",
+      "fact": "6月16-17日，Kevin Warsh首次主持",
+      "importance": "P1",
+      "investment": "关注利率决议及政策声明措辞",
+      "sources": ["宏观日报 2026-06-12"]
+    },
+    {
+      "id": "20260612-005",
+      "title": "美联储压力测试",
+      "fact": "6月24日发布",
+      "importance": "P1",
+      "investment": "关注银行股表现及信贷市场影响",
+      "sources": ["宏观日报 2026-06-12"]
     }
-  },
-  "key_events": {
-    "P0": [
-      {
-        "id": "20260617-001",
-        "date": "2026-06-17",
-        "title": "FOMC会议（有SEP）- Warsh首次主持",
-        "fact": "6月17-18日FOMC会议，有SEP/点阵图更新，Warsh首次主持会议",
-        "importance": "有SEP会议是重大定价锚点，点阵图偏移可能引发利率/风险资产剧烈波动",
-        "investment": "BTC/黄金对鸽派信号敏感，美股对鹰派信号承压"
-      },
-      {
-        "id": "20260619-001",
-        "date": "2026-06-19",
-        "title": "Iran停火正式签署仪式",
-        "fact": "协议已达成MOU（6/18签署），6/19在瑞士日内瓦举行正式签署仪式",
-        "importance": "地缘政治风险解除，预期BTC反弹+5%",
-        "investment": "签署成功→BTC反弹$64-67K，签署失败→BTC跌$58-60K"
-      }
-    ],
-    "P1": [
-      {
-        "id": "20260619-002",
-        "title": "SpaceX IPO上市",
-        "fact": "史上最大IPO，$1.75T估值，定价$135，6月19日纳斯达克上市",
-        "importance": "市场流动性测试，科技股情绪指标"
-      }
-    ]
-  },
-  "risk_signals": {
-    "crl_score": 5,
-    "crl_level": "GREEN",
-    "crl_components": {
-      "macro": 0,
-      "structure": 20,
-      "chain": 0,
-      "event": 0
-    },
-    "active_monitors": [
-      {
-        "id": "S-05",
-        "name": "ETF月度流出",
-        "value": "-$3.4B六月累计",
-        "status": "yellow_improving"
-      },
-      {
-        "id": "E-04",
-        "name": "EURR脱锚监控",
-        "status": "yellow_monitoring"
-      }
-    ]
-  },
-  "full_report_text": "# 2026-06-19 风控日志摘要\n\n## CRL计算结果\n- CRL: **6 GREEN**（计算值：Macro 0 + Structure 20 + Chain 0 + Event 0 = 6）\n- 等级: 🟢 GREEN\n- 核心驱动: Iran停火签署仪式今日举行 + S&P500大涨1.1% + ETF黄灯改善延续\n\n## 市场数据快照\n| 指标 | 当前值 | 24h变化 | 数据源 |\n|------|--------|--------|--------|\n| BTC价格 | $62,840 | -0.08% | TradingEconomics/CoinW |\n| Fear & Greed | 14 | -1 | FearGreedTracker |\n| USD/JPY | 161.1 | +0.5% | X-Rates |\n| VIX | ~19.87 | +12% | 沿用MEMORY.md |\n| S&P500 | 7493 | +1.1% | AP News/TradingEconomics |\n| Nasdaq | — | +1.9% | AP News |\n| ETF六月累计 | -$3.4B改善 | — | CoinGlass/BitcoinNewsOffice |\n| Brent原油 | ~$95 | → | 搜索结果 |\n\n## Iran停火签署仪式（今日关键事件）\n- 时间：6/19（今天）在瑞士日内瓦\n- 状态：协议已达成MOU（6/18签署），今日正式签署仪式\n- 多源确认：AP News、NDTV、TimesNow、SaharaReporters、Independent\n- 协议内容：重开Hormuz海峡、结束US海上封锁、60天延长谈判\n- 预期影响：签署成功→BTC反弹+5%至$64-67K，CRL→3\n\n## 四维度评分明细\n| 维度 | 评分 | 触发指标 | 备注 |\n|------|------|---------|------|\n| Macro (30%) | 0 | 无 | VIX<25，USD/JPY稳定，S&P500涨1.1%，和平推进 |\n| Structure (30%) | 20 | S-05黄灯改善 | ETF-$3.4B六月累计改善中，但未完全解除 |\n| Chain (25%) | 0 | 无 | USDT/USDC稳定，Curve正常，无大额异动 |\n| Event (15%) | 0 | E-06清除 | Iran停火已确认，E-05衰减不计入 |\n\n## 情景矩阵（基准A）\n- A（75%）：签署成功→BTC反弹$64-67K，CRL→3\n- B（20%）：签署延迟→BTC横盘$62-64K，CRL→8\n- C（5%）：签署失败→BTC跌$58-60K，CRL→15\n\n## 今日行动建议\n- 监控Iran签署仪式结果（若成功→反弹窗口开启）\n- 跟踪ETF 6/19数据更新（若连续流入→黄灯解除）\n- 维持GREEN标准仓位：核心60% + 零杠杆 + Put 1.5%\n- 弹药桶30%待命，等待反弹确认或抄底梯级触发\n\n---\n*日志更新: 2026-06-19 05:51 CST*\n*晨报V3追加: 2026-06-19 10:00 CST*\n*4h更新追加: 2026-06-19 09:56 CST*\n*4h更新追加: 2026-06-19 13:56 CST*\n*4h更新追加: 2026-06-19 17:56 CST*\n*4h更新追加: 2026-06-19 21:56 CST*\n\n---\n⚠️ **数据来源说明**\n本报告整合自：\n1. btc-signal.json (2026-06-19 10:35 CST)\n2. 风控日志 2026-06-19.md\n3. events.json\n\n宏观分析师日报自2026-06-12后未生成完整格式，存在8天滞后。\n---\n*同步时间：2026-06-20 02:20 CST*"
+  ],
+  "full_report_text": "# 2026-06-12 每日记录\n\n## 晨报任务完成\n- **时间**: 10:35 BJT（实际执行时间约09:35 BJT）\n- **结果**: ✅ 两段消息均发送成功\n  - 第一段 messageId: 15521\n  - 第二段 messageId: 15522\n- **标志文件**: ✅ 已写入 `.daily-sent-flag`\n\n## 数据收集情况\n- S&P 500: 7394.30（WSJ，6月11日）\n- DXY: 100.17 (+0.22%)（Trading Economics）\n- 10Y: 4.53% | 2Y: 4.15%（Trading Economics）\n- BTC: ~$62,000（CoinDesk）\n- WTI: $90-94（Capital Street FX分析）\n- VIX: 21-22（9天VIX 25.67 vs 30天VIX 22.22，倒挂）\n\n## 关键事件\n- [P0] SpaceX IPO：史上最大IPO，$1.75T估值，定价$135，今晚纳斯达克上市\n- [P0] 5月CPI：4.2% YoY（2023年4月以来最高），核心+0.2% m/m，能源+23.5%\n- [P0] US-Iran冲突：美军连续打击，霍尔木兹被封锁\n- [P1] FOMC：6月16-17日，Kevin Warsh首次主持\n- [P1] 美联储压力测试：6月24日发布\n\n## 日历核查结果（官方源）\n- BLS CPI日历：https://www.bls.gov/schedule/news_release/cpi.htm\n  - 6月10日发布5月CPI（已发布）\n  - 7月14日发布6月CPI\n- Fed FOMC日历：https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm\n  - 6月16-17日 FOMC会议\n\n## 待改进项\n- [type: todo] 晨报日历格式：第二段日历写错日期（\"6月14日\"应改为\"7月14日\"），下次需复核\n- [type: todo] 事件同步JSON格式：需包含id字段（格式：YYYYMMDD-001），title/fact/importance/investment/sources\n- [type: lesson] BTC/ETH/黄金具体价格数据来源不稳定，需要备用数据源\n\n---\n*记录时间: 2026-06-12 09:35+08:00*"
 }
